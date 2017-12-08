@@ -156,3 +156,5 @@ crashlytics-build.properties
 fabric.properties
 .idea/
 preico/__pycache__/
+
+preico/local_settings.py
