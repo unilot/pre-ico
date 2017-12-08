@@ -30,3 +30,9 @@ SESSION_REDIS = {
     'prefix': 'unilot-pre-ico-session',
     'socket_timeout': 1
 }
+
+COINBASE_CONFIG = {
+    'API_KEY': 'coinbase-api-key',
+    'API_SECRET': 'coinbase-secret',
+    'API_VERSION': '2017-09-12'
+}
