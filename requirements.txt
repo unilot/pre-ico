@@ -1,9 +1,12 @@
 certifi==2017.11.5
 chardet==3.0.4
 -e git+https://github.com/coinbase/coinbase-python@f9ed2249865c2012e3b86106dad5f8c6068366ed#egg=coinbase
-Django==2.0
+Django==1.11.4
+django-hvad==1.8.0
 django-redis-sessions==0.6.1
 idna==2.6
+Markdown==2.6.10
+martor==1.2.5
 pkg-resources==0.0.0
 psycopg2==2.7.3.2
 pycrypto==2.6.1
