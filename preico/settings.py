@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from django.utils.translation import ugettext_lazy as _
 from .local_settings import *
 
 
@@ -33,12 +34,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cp.app.BackendConfig',
-    'console.app.BackendConfig'
+    'console.app.BackendConfig',
+    'hvad',
+    'martor',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -86,10 +90,47 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SESSION_ENGINE = 'redis_sessions.session'
 
+# Global martor settings
+# Input: string boolean, `true/false`
+MARTOR_ENABLE_CONFIGS = {
+    'jquery': 'true',    # to include/revoke jquery (require for admin default django)
+}
+
+# Safe Mode
+MARTOR_MARKDOWN_SAFE_MODE = True
+
+# Markdownify
+MARTOR_MARKDOWNIFY_FUNCTION = 'martor.utils.markdownify'
+MARTOR_MARKDOWNIFY_URL = '/martor/markdownify/'
+
+# Markdown extensions (default)
+MARTOR_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra',
+    'markdown.extensions.nl2br',
+    'markdown.extensions.smarty',
+    'markdown.extensions.fenced_code',
+
+    # Custom markdown extensions.
+    'martor.extensions.urlize',
+    'martor.extensions.del_ins', # ~~strikethrough~~ and ++underscores++
+    'martor.extensions.emoji',   # require for emoji
+]
+
+# Markdown urls
+MARTOR_UPLOAD_URL = '/martor/uploader/' # default
+
+# Markdown Extensions
+MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://assets-cdn.github.com/images/icons/emoji/' # default
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = (
+    ('ru-ru', _('Русский')),
+    ('en-us', _('English')),
+)
 
 TIME_ZONE = 'UTC'
 
@@ -104,3 +145,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join( os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) ), '.static_storage')
