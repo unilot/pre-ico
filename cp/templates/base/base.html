@@ -1,0 +1,195 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Unilot | {% block title %}{% trans 'Control Panel' %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.min-d57dba8b6bce54cd6846292b06513fd0.css' %}">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://webnextbd.net/demo/js/respond.min.js"></script><![endif]-->
+    <!--[if lt IE 11]>
+    <link rel="stylesheet" type="text/css" href="http://webnextbd.net/demo/css/ie.css"><![endif]--></head>
+<body>
+<div class="container">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header"><a class="navbar-brand" href="#"><img id="logo" src="{% static 'images/unilot-logo.png' %}"
+                                                                                 alt="Logo" height="100%"></a><a
+                        class="navbar-brand" href="#">Unilot</a><!-- Social links--></div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="icon-facebook-squared"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-reddit-alien"></i></a></li>
+                    <li><a href="#"><i class="icon-telegram"></i></a></li>
+                </ul>
+                <ul class="nav nav-pills navbar-nav navbar-right">
+                    <li class="dropdown" role="presentation"><a class="dropdown-toggle" id="locale" href="#"
+                                                                type="button" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                        {{ LANGUAGE_CODE|upper }}
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="locale">
+                            {% for lang_code, lang_name in LANGUAGES %}
+                                {% if language == LANGUAGE_CODE %}
+                                <li class="active"><a href="#">{{ lang_name }}</a></li>
+                                {% else %}
+                                <li><a href="#">{{ lang_name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <nav class="navbar">
+            <ul class="nav navbar-nav navbar-left">
+                {% if user.is_authenticated %}<li class="active"><a href="#">{% trans 'Dashboard' %}</a></li>{% endif %}
+                <li><a href="#">Distribution</a></li>
+                <li><a href="#">Unilot ICO</a></li>
+                <li><a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}<li><a href="#">{% trans 'Profile' %}</a></li>{% endif %}
+                {% if user.is_authenticated %}<li><a href="#">Payments</a></li>{% endif %}
+                <li>
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'cp:sign-out' %}" method="post">
+                        {% csrf_token %}
+                        <a href="{% url 'cp:sign-out' %}" role="submit" class="submit">{% trans 'Sign out' %}</a></form>
+                    {% else %}
+                        <a href="{% url 'cp:auth' 'html' %}">{% trans 'Sign (in|up)' %}</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <content>
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% if user.is_authenticated %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="btn-group-lg"><a class="btn btn-primary btn-lg btn-block" href="#">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="panel">
+                                    <div class="panel-body"><strong>My UNT Tokens</strong>
+                                        <p class="text-2x"><strong>0</strong></p><a href="#">Set wallet for
+                                            withdrawal</a></div>
+                                </div>
+                                <hr>
+                                <div class="panel">
+                                    <div class="panel-body"><strong>My UNT Referral Tokens</strong>
+                                        <p class="text-2x"><strong>0</strong></p><a href="#">Get more tokens for
+                                            free</a></div>
+                                </div>
+                                <hr>
+                                <div class="panel">
+                                    <div class="panel-body"><strong>UNT Token Price</strong>
+                                        <p class="text-2x"><strong>0.0001 ETH</strong></p>
+                                        <p><span class="label label-primary">40% Bonus</span> for purchase &gt; 75 UNT
+                                        </p></div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="panel">
+                                    <div class="panel-body"><strong class="text-uppercase">BONUS SALE</strong><br>
+                                        <div id="js-time-counter"></div>
+                                        <script id="timeCounterTemplate" type="text/x-jsrender">
+                                            <div
+                                             class="row"><div class="col-md-2 col-xs-3"><div class="row"><div class="col-xs-12"><p class="text-center text-2x"><strong>%D</strong></p></div></div><div class="row"><div class="col-xs-12"><p class="text-center text-0-85x">Days</p></div></div></div><div class="col-md-2 col-xs-3"><div class="row"><div class="col-xs-12"><p class="text-center text-2x"><strong>%H</strong></p></div></div><div class="row"><div class="col-xs-12"><p class="text-center text-0-85x">Hours</p></div></div></div><div class="col-md-2 col-xs-3"><div class="row"><div class="col-xs-12"><p class="text-center text-2x"><strong>%M</strong></p></div></div><div class="row"><div class="col-xs-12"><p class="text-center text-0-85x">Minutes</p></div></div></div><div class="col-md-2 col-xs-3"><div class="row"><div class="col-xs-12"><p class="text-center text-2x"><strong>%S</strong></p></div></div><div class="row"><div class="col-xs-12"><p class="text-center text-0-85x">Seconds</p></div></div></div></div>
+                                        </script>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="panel">
+                                    <div class="panel-body"><strong class="text-uppercase">ETH Raised</strong>
+                                        <h3><strong>1000.2342 ETH</strong></h3>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped active"
+                                                         style="width:35%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </content>
+    <footer>
+        {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12"><h2 class="text-uppercase"><strong>Your referral link</strong></h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form class="form-inline">
+                                    <div class="form-group"><input class="form-control js-referral-link-container"
+                                                                   type="url" id="referralLink" name="referralLink"
+                                                                   value="https://pre-ico.unilot.io/sign-up/8sd8dd8sd8"
+                                                                   readonly></div>
+                                    <a class="btn btn-default js-copy-referral-link" role="button" tabindex="0"
+                                       data-toggle="focus" data-trigger="focus" data-content="Link copied">Copy Link</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12"><p>This is your unilot referral link. Share it with your contacts to
+                                get free UNIT coint for every purchased one by your referrer.</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-2x">
+                                <ul class="list-inline">
+                                    <li><a href="#"><i class="icon-facebook-squared"></i></a></li>
+                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                    <li><a href="#"><i class="icon-reddit-alien"></i></a></li>
+                                    <li><a href="#"><i class="icon-telegram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </footer>
+</div>
+<script type="application/javascript" src="{% static 'js/main.min-9ca1ed86f7dfa9547b2263754b262953.js' %}"></script>
+</body>
+</html>

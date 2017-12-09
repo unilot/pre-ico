@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'console.app.BackendConfig',
     'hvad',
     'martor',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,9 @@ ROOT_URLCONF = 'preico.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR , 'cp', 'templates' )
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,6 +92,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 SESSION_ENGINE = 'redis_sessions.session'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'preico.rest_framework.renderers.TemplateHTMLRenderer',
+    ),
+}
 
 # Global martor settings
 # Input: string boolean, `true/false`
@@ -146,3 +157,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join( os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) ), '.static_storage')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'cp', 'assets'),
+)

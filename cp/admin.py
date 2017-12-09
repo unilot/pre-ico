@@ -7,7 +7,7 @@ from . import models
 
 
 class FAQAdmin(TranslatableAdmin):
-    list_display = ('question_',)
+    list_display = ('question_', 'published')
 
     formfield_overrides = {
         django_models.TextField: {'widget': AdminMartorWidget}
