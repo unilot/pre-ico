@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from django.utils.translation import ugettext_lazy as _
 from .local_settings import *
 
 
@@ -147,8 +146,8 @@ MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://assets-cdn.github.com/images/icons/emo
 LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = (
-    ('ru-ru', _('Русский')),
-    ('en-us', _('English')),
+    ('ru-ru', 'Русский'),
+    ('en-us', 'English'),
 )
 
 TIME_ZONE = 'UTC'

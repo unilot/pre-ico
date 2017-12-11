@@ -9,7 +9,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Unilot | {% block title %}{% trans 'Control Panel' %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static '/css/main.min-906b8d33600b0d446f3849d11e71e505.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.min-e1078166fad47ad977f03f446490dc4a.css' %}">
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://webnextbd.net/demo/js/respond.min.js"></script><![endif]-->
@@ -33,14 +33,23 @@
                     <li class="dropdown" role="presentation"><a class="dropdown-toggle" id="locale" href="#"
                                                                 type="button" data-toggle="dropdown"
                                                                 aria-haspopup="true" aria-expanded="false">
-                        {{ LANGUAGE_CODE|upper }}
+                        {{ LANGUAGE_CODE|language_name_local }}
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="locale">
                             {% for lang_code, lang_name in LANGUAGES %}
-                                {% if language == LANGUAGE_CODE %}
-                                <li class="active"><a href="#">{{ lang_name }}</a></li>
+                                {% if lang_code == LANGUAGE_CODE %}
+                                <li class="active">
+                                    <a href="#">{{ lang_code|language_name_local }}</a>
+                                </li>
                                 {% else %}
-                                <li><a href="#">{{ lang_name }}</a></li>
+                                <li>
+                                    <form method="post" action="{% url 'set_language' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ redirect_to }}" name="next" />
+                                        <input type="hidden" value="{{ lang_code }}" name="language" />
+                                        <a href="#" role="submit" class="js-submit">{{ lang_code|language_name_local }}</a>
+                                    </form>
+                                </li>
                                 {% endif %}
                             {% endfor %}
                         </ul>
@@ -62,7 +71,7 @@
                     {% if user.is_authenticated %}
                     <form action="{% url 'cp:sign-out' 'html' %}" method="post">
                         {% csrf_token %}
-                        <a href="{% url 'cp:sign-out' 'html' %}" role="submit" class="submit">{% trans 'Sign out' %}</a></form>
+                        <a href="{% url 'cp:sign-out' 'html' %}" role="submit" class="js-submit">{% trans 'Sign out' %}</a></form>
                     {% else %}
                         <a href="{% url 'cp:auth' 'html' %}">{% trans 'Sign (in|up)' %}</a>
                     {% endif %}
@@ -190,6 +199,6 @@
         {% endif %}
     </footer>
 </div>
-<script type="application/javascript" src="{% static 'js/main.min-0ed62c4a7c09378bea0fd812c2279acc.js' %}"></script>
+<script type="application/javascript" src="{% static 'js/main.min-e15ec4ae783c87d6eb2646968e40a968.js' %}"></script>
 </body>
 </html>
