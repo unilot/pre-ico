@@ -1,7 +1,359 @@
 {% extends 'base/base.html' %}
+{% load i18n %}
 
 {% block title %}Sing (in|up) to access dashboard{% endblock %}
 
 {% block content %}
-
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ul class="nav nav-tabs">
+                <li class="active" role="presentation"><a href="#auth-sign-up" role="tab"
+                                                          aria-controls="auth-sign-up"
+                                                          data-toggle="tab">Sign Up</a></li>
+                <li role="presentation"><a href="#auth-sign-in" role="tab"
+                                           aria-controls="auth-sign-in" data-toggle="tab">Sign
+                    In</a></li>
+                <li role="presentation"><a href="#auth-recover-access" role="tab"
+                                           aria-controls="auth-recover-access" data-toggle="tab">Forgot
+                    password</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active js-has-overlay" id="auth-sign-up" role="tabpanel">
+                    <div class="block-overlay hidden">
+                        <div class="overlay-wrapper">
+                            <div class="row overlay-centered full-width">
+                                <div class="col-xs-8 col-xs-offset-2">
+                                    <div class="overlay-center progress">
+                                        <div class="progress-bar progress-bar-striped active full-width"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="signUpForm" role="form" data-toggle="validator"
+                          action="{% if referrer_code %}{% url 'cp:sign-up-referred' referrer_code 'json' %}{% else %}{% url 'cp:sign-up' 'json' %}{% endif %}"
+                          method="POST"
+                          data-success-message="{% trans 'Check your email.' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="alert hidden js-form-alert text-center"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group"><label class="control-label"
+                                                               for="signUpEmail">Email</label><input
+                                        class="form-control focus" id="signUpEmail" type="email"
+                                        placeholder="Email" required name="email">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="block-overlay hidden">
+                                <div class="overlay-wrapper">
+                                    <div class="row overlay-centered full-width">
+                                        <div class="col-xs-8 col-xs-offset-2">
+                                            <div class="overlay-center progress">
+                                                <div class="progress-bar progress-bar-striped active full-width"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <button class="btn btn-primary pull-right" type="button"
+                                        data-toggle="modal" data-target="#termsAndConditions">Sign
+                                    up
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="termsAndConditions" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" type="button" data-dismiss="modal"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Temrs & conditions</h4></div>
+                                    <div class="modal-body">
+                                        <div class="block-overlay hidden">
+                                            <div class="overlay-wrapper">
+                                                <div class="row overlay-centered full-width">
+                                                    <div class="col-xs-8 col-xs-offset-2">
+                                                        <div class="overlay-center progress">
+                                                            <div class="progress-bar progress-bar-striped active full-width"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="terms-content-block"><h2>Lorem ipsum
+                                                    dolor sit amet</h2>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur
+                                                        adipiscing elit. Proin ornare molestie
+                                                        purus, eu consectetur ante condimentum eu.
+                                                        Nam faucibus, felis ut auctor sollicitudin,
+                                                        massa ligula suscipit purus, id maximus mi
+                                                        odio eget felis. Nullam malesuada ultrices
+                                                        ex vel egestas. Pellentesque nisi mi,
+                                                        pellentesque tempus tempus quis, ornare sed
+                                                        felis. Vestibulum quis porttitor turpis,
+                                                        suscipit hendrerit dui. Suspendisse orci
+                                                        quam, suscipit convallis odio in, pretium
+                                                        egestas velit. Vivamus gravida tellus a
+                                                        suscipit blandit.</p>
+                                                    <h2>Maecenas luctus rutrum magna</h2>
+                                                    <p>Maecenas luctus rutrum magna, vel maximus
+                                                        felis mollis venenatis. Nulla ac gravida
+                                                        augue. Vestibulum semper varius nisl eu
+                                                        bibendum. Proin odio dolor, porttitor et
+                                                        odio ac, suscipit dictum neque. In maximus
+                                                        posuere eros, id iaculis est. Donec in
+                                                        libero suscipit, dictum odio id, pharetra
+                                                        est. Praesent non leo mi. Donec sollicitudin
+                                                        pharetra arcu et consequat. Mauris diam
+                                                        erat, luctus eu dolor quis, hendrerit
+                                                        lacinia leo. In erat ante, scelerisque vel
+                                                        lorem id, iaculis porta metus. Maecenas id
+                                                        mauris sit amet tortor semper dictum.</p>
+                                                    <h2>Maecenas id leo erat</h2>
+                                                    <p>Maecenas id leo erat. Cras vel nulla
+                                                        scelerisque, sodales eros ut, fringilla
+                                                        nunc. Vivamus quis orci lectus. Fusce vel
+                                                        eros id purus varius accumsan. Suspendisse
+                                                        commodo iaculis luctus. Donec leo quam,
+                                                        aliquam vel cursus eu, scelerisque vel
+                                                        tortor. Nullam cursus nec mauris non
+                                                        blandit. Nulla facilisis ipsum ut dapibus
+                                                        faucibus. Vivamus enim tellus, tincidunt
+                                                        eget interdum a, finibus eget ex.
+                                                        Suspendisse potenti. Curabitur tristique
+                                                        mauris eget risus efficitur, sed consequat
+                                                        ex scelerisque. Sed turpis metus, tincidunt
+                                                        id massa molestie, consequat tempus lacus.
+                                                        Mauris et lacus suscipit felis dignissim
+                                                        euismod non ac libero. Suspendisse potenti.
+                                                        Duis tincidunt imperdiet tempus.</p>
+                                                    <h2>Nulla gravida sodales odio eu hendrerit</h2>
+                                                    <p>Nulla gravida sodales odio eu hendrerit. Nam
+                                                        lacinia malesuada facilisis. Nam imperdiet,
+                                                        urna id finibus suscipit, purus purus
+                                                        placerat quam, et commodo quam lorem non
+                                                        velit. Nulla dictum ac turpis eget ornare.
+                                                        Morbi iaculis, nisi sed luctus rutrum, neque
+                                                        tortor gravida mi, quis faucibus nunc purus
+                                                        vitae tortor. Nulla commodo justo ac dolor
+                                                        elementum efficitur. Etiam eget condimentum
+                                                        quam. Donec interdum sed justo commodo
+                                                        bibendum. Ut diam lacus, fringilla vitae
+                                                        libero at, scelerisque ultricies nisl.
+                                                        Aliquam ornare vulputate neque quis
+                                                        placerat.</p>
+                                                    <h2>Praesent mollis sollicitudin felis eget
+                                                        varius</h2>
+                                                    <p>Praesent mollis sollicitudin felis eget
+                                                        varius. Ut non leo eu enim cursus lobortis
+                                                        sed nec ex. Nunc lacinia et libero a
+                                                        hendrerit. In sagittis tellus sed lorem
+                                                        ullamcorper fringilla quis nec justo. In
+                                                        dignissim nisi id sapien molestie posuere.
+                                                        Vivamus lobortis odio sed tellus iaculis,
+                                                        quis fringilla velit dictum. Donec at
+                                                        aliquet orci.</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="alert hidden js-form-alert"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="checkbox"><label><input
+                                                            id="signUpNotUsCitizen" type="checkbox"
+                                                            name="not_us_citizen" required>I am not
+                                                        U.S. citizen</label></div>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="checkbox"><label><input
+                                                            id="signUpSureNotUsCitizen"
+                                                            type="checkbox"
+                                                            name="sure_not_us_citizen" required>Yes
+                                                        I am sure I am not U.S citizen</label></div>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="checkbox"><label><input
+                                                            id="signUpAgreeWithTerms"
+                                                            type="checkbox" name="agree_with_terms"
+                                                            required>I agree with terms and
+                                                        conditions</label></div>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="checkbox"><label><input
+                                                            id="signUpNotCheatingNotUsCitizen"
+                                                            type="checkbox"
+                                                            name="not_cheating_not_us_citizen"
+                                                            required>I am not cheating. I am not U.S
+                                                        citizen</label></div>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-default" type="button"
+                                                data-dismiss="modal">Close
+                                        </button>
+                                        <button class="btn btn-primary" role="submit">I agree to all
+                                            terms and conditions
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane js-has-overlay" id="auth-sign-in" role="tabpanel">
+                    <div class="block-overlay hidden">
+                        <div class="overlay-wrapper">
+                            <div class="row overlay-centered full-width">
+                                <div class="col-xs-8 col-xs-offset-2">
+                                    <div class="overlay-center progress">
+                                        <div class="progress-bar progress-bar-striped active full-width"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="js-generic-form" role="form" data-toggle="validator"
+                          action="{% url 'cp:sign-in' 'json' %}"
+                          method="POST" {% comment %}data-url="{% url 'cp:dashboard' 'html' %}"{% endcomment %}>
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="alert js-form-alert hidden text-center"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group"><label class="control-label"
+                                                               for="signInEmail">Email</label><input
+                                        class="form-control" id="signInEmail" type="email"
+                                        placeholder="Email" required name="email">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group"><label class="control-label"
+                                                               for="signInEmail">Password</label><input
+                                        class="form-control" id="signInPassword" type="password"
+                                        placeholder="Password" required name="password">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="block-overlay hidden">
+                                <div class="overlay-wrapper">
+                                    <div class="row overlay-centered full-width">
+                                        <div class="col-xs-8 col-xs-offset-2">
+                                            <div class="overlay-center progress">
+                                                <div class="progress-bar progress-bar-striped active full-width"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <button class="btn btn-primary pull-right" role="submit">Sign In
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="auth-recover-access" role="tabpanel"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{#<div class="row">#}
+{#    <div class="col-md-8 col-md-offset-2">#}
+{#        <div class="panel panel-default">#}
+{#            <div class="panel-body">#}
+{#                <ul class="nav nav-tabs">#}
+{#                    <li class="active" role="presentation"><a href="#auth-sign-up" role="tab"#}
+{#                                                              aria-controls="auth-sign-up"#}
+{#                                                              data-toggle="tab">Sign Up</a></li>#}
+{#                    <li role="presentation"><a href="#auth-sign-in" role="tab"#}
+{#                                               aria-controls="auth-sign-in" data-toggle="tab">Sign#}
+{#                        In</a></li>#}
+{#                </ul>#}
+{#                <div class="tab-content">#}
+{#                    <div class="tab-pane active js-has-overlay" id="auth-sign-up" role="tabpanel">#}
+{#                        <div class="block-overlay hidden">#}
+{#                            <div class="overlay-wrapper">#}
+{#                                <div class="row overlay-centered full-width">#}
+{#                                    <div class="col-xs-8 col-xs-offset-2">#}
+{#                                        <div class="overlay-center progress">#}
+{#                                            <div class="progress-bar progress-bar-striped active full-width"></div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <form role="form" data-toggle="validator" action="{% url 'cp:sign-up' 'json' %}"#}
+{#                              method="POST">#}
+{#                            <div class="row">#}
+{#                                <div class="col-xs-12">#}
+{#                                    <div class="form-group"><label for="signUpEmail">Email</label><input#}
+{#                                            class="form-control" id="signUpEmail" type="email"#}
+{#                                            placeholder="Email" required name="email">#}
+{#                                        <div class="help-block with-errors"></div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="row">#}
+{#                                <div class="block-overlay hidden">#}
+{#                                    <div class="overlay-wrapper">#}
+{#                                        <div class="row overlay-centered full-width">#}
+{#                                            <div class="col-xs-8 col-xs-offset-2">#}
+{#                                                <div class="overlay-center progress">#}
+{#                                                    <div class="progress-bar progress-bar-striped active full-width"></div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="col-xs-12">#}
+{#                                    <button class="btn btn-primary pull-right" role="submit">Sign up#}
+{#                                    </button>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                    <div class="tab-pane" id="auth-sign-in" role="tabpanel">This is sign-in form</div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 {% endblock %}
