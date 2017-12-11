@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'console.app.BackendConfig',
     'hvad',
     'martor',
-    'rest_framework'
+    'rest_framework',
+    'djrill'
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -92,6 +96,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 SESSION_ENGINE = 'redis_sessions.session'
+
+EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+
+DEFAULT_FROM_EMAIL='noreply@unilot.io'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',

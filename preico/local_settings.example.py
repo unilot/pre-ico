@@ -36,3 +36,5 @@ COINBASE_CONFIG = {
     'API_SECRET': 'coinbase-secret',
     'API_VERSION': '2017-09-12'
 }
+
+MANDRILL_API_KEY='mandrill-api-key'

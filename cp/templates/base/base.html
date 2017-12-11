@@ -9,7 +9,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Unilot | {% block title %}{% trans 'Control Panel' %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static '/css/main.min-d57dba8b6bce54cd6846292b06513fd0.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.min-906b8d33600b0d446f3849d11e71e505.css' %}">
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://webnextbd.net/demo/js/respond.min.js"></script><![endif]-->
@@ -56,13 +56,13 @@
                 <li><a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}<li><a href="#">{% trans 'Profile' %}</a></li>{% endif %}
+                {% if user.is_authenticated %}<li><a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}</a></li>{% endif %}
                 {% if user.is_authenticated %}<li><a href="#">Payments</a></li>{% endif %}
                 <li>
                     {% if user.is_authenticated %}
-                    <form action="{% url 'cp:sign-out' %}" method="post">
+                    <form action="{% url 'cp:sign-out' 'html' %}" method="post">
                         {% csrf_token %}
-                        <a href="{% url 'cp:sign-out' %}" role="submit" class="submit">{% trans 'Sign out' %}</a></form>
+                        <a href="{% url 'cp:sign-out' 'html' %}" role="submit" class="submit">{% trans 'Sign out' %}</a></form>
                     {% else %}
                         <a href="{% url 'cp:auth' 'html' %}">{% trans 'Sign (in|up)' %}</a>
                     {% endif %}
@@ -190,6 +190,6 @@
         {% endif %}
     </footer>
 </div>
-<script type="application/javascript" src="{% static 'js/main.min-9ca1ed86f7dfa9547b2263754b262953.js' %}"></script>
+<script type="application/javascript" src="{% static 'js/main.min-0ed62c4a7c09378bea0fd812c2279acc.js' %}"></script>
 </body>
 </html>

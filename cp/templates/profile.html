@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Edit your profile' %}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-body js-has-overlay">
+                <h2>{% trans 'Edit your profile' %}</h2>
+                <div class="block-overlay hidden">
+                    <div class="overlay-wrapper">
+                        <div class="row overlay-centered full-width">
+                            <div class="col-xs-8 col-xs-offset-2">
+                                <div class="overlay-center progress">
+                                    <div class="progress-bar progress-bar-striped active full-width"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="js-generic-form" id="editProfile" role="form" data-toggle="validator"
+                      action="{% url 'cp:profile' 'json' %}" method="patch" data-success-message="{% trans 'Profile updated' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert hidden js-form-alert text-center"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group"><label class="control-label"
+                                                           for="editProfileFirstName">First name</label>
+                                <input class="form-control" id="editProfileFirstName" type="text"
+                                    placeholder="First name" required name="first_name" value="{{ first_name }}">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group"><label class="control-label"
+                                                           for="editProfileLastName">Last name
+                                                    </label><input class="form-control"
+                                                      id="editProfileLastName" type="text"
+                                                      placeholder="Last name" required
+                                                      name="last_name" value="{{ last_name }}">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group"><label class="control-label"
+                                                           for="editProfileWallet">Wallet
+                                                    </label><input class="form-control"
+                                                      id="editProfileWallet" type="text"
+                                                      placeholder="Wallet" required
+                                                      name="wallet" value="{{ wallet|default:'' }}"
+                                                        data-wallet>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <button class="btn btn-primary pull-right" type="submit">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
