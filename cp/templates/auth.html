@@ -241,9 +241,9 @@
                             </div>
                         </div>
                     </div>
-                    <form class="js-generic-form" role="form" data-toggle="validator"
-                          action="{% url 'cp:sign-in' 'json' %}"
-                          method="POST" {% comment %}data-url="{% url 'cp:dashboard' 'html' %}"{% endcomment %}>
+                    <form id="signInForm" class="js-generic-form" role="form"
+                          data-toggle="validator" action="{% url 'cp:sign-in' 'json' %}"
+                          method="POST" data-url="{% url 'cp:dashboard' 'html' %}">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-xs-12">

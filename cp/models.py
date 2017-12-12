@@ -25,7 +25,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', null=False, on_delete=models.deletion.PROTECT)
     wallet = models.CharField(max_length=64, null=True)
     verification_key = models.CharField(max_length=32, null=True, blank=True)
-    referrer = models.OneToOneField('Profile', to_field='user', null=True, blank=True, related_name='referral')
+    referrer = models.ForeignKey('Profile', to_field='user', null=True, blank=True, related_name='referral',
+                                 unique=False, on_delete=models.deletion.DO_NOTHING)
     referal_level = models.IntegerField(default=0)
 
     @property

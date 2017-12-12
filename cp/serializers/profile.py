@@ -10,9 +10,19 @@ class ProfileSerializer(serializers.ModelSerializer):
     ], required=True)
 
     def update(self, instance, validated_data):
+        """
+        :param instance:
+        :type instance: auth_models.User
+        :param validated_data:
+        :type validated_data: dict
+        """
+
         if isinstance(instance.profile, models.Profile):
-            instance.profile.wallet = validated_data.pop('profile').pop('wallet')
-            instance.profile.save()
+            wallet = validated_data.pop('profile').pop('wallet')
+
+            if not instance.profile.wallet:
+                instance.profile.wallet = wallet
+                instance.profile.save()
 
         return super().update(instance, validated_data)
 
