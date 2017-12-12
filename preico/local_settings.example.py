@@ -38,3 +38,5 @@ COINBASE_CONFIG = {
 }
 
 MANDRILL_API_KEY='mandrill-api-key'
+
+TOKEN_ADDRESS='token-address'
