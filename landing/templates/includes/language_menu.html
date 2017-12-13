@@ -1,0 +1,17 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<div class="js-lng-selector">
+    <p class="js-lng-label">{{ LANGUAGE_CODE|language_name_local|slice:":3"|upper }}</p><i class="icon-arrow_drop_down"></i>
+    <form method="post" action="{% url 'set_language' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ redirect_to }}"/>
+        <select name="language" class="js-submit-on-change">
+            {% for lang_code,lang_name in LANGUAGES %}
+                <option value="{{ lang_code }}"{% if lang_code == LANGUAGE_CODE %} selected{% endif %}>
+                    {{ lang_code|language_name_local|slice:":3"|upper }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+</div>

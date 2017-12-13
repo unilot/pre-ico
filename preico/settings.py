@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cp.app.BackendConfig',
     'console.app.BackendConfig',
+    'landing.apps.LandingConfig',
     'hvad',
     'martor',
     'rest_framework',
@@ -57,7 +58,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR , 'cp', 'templates' )
+            os.path.join(BASE_DIR , 'cp', 'templates' ),
+            os.path.join(BASE_DIR , 'landing', 'templates' )
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -167,4 +169,17 @@ STATIC_ROOT = os.path.join( os.path.dirname( os.path.dirname( os.path.abspath(__
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'cp', 'assets'),
+    os.path.join(BASE_DIR, 'landing', 'assets'),
 )
+
+SOCIAL_LINKS = {
+    'FACEBOOK': 'https://www.facebook.com/unilot.io/',
+    'TWITTER': 'https://twitter.com/unilot_lottery',
+    'REDDIT': 'https://www.reddit.com/user/unilot_lottery/',
+    'MEDIUM': 'https://medium.com/@unilot',
+    'TELEGRAM': 'https://t.me/unilot_channel',
+    'LINKEDIN': 'https://www.linkedin.com/company/18284068/',
+    'SLACK': 'https://unilot.herokuapp.com',
+    'YOUTUBE': 'https://www.youtube.com/channel/UCNdn2maOQEbYwpNK4Yaoxqw',
+    'GITHUB': 'https://github.com/unilot',
+}

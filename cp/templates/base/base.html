@@ -103,10 +103,9 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <form class="form-inline">
-                                    {% referral_url as referral_url %}
                                     <div class="form-group"><input class="form-control js-referral-link-container"
                                                                    type="url" id="referralLink" name="referralLink"
-                                                                   value="{{ referral_url }}"
+                                                                   value="{% referral_url %}"
                                                                    readonly></div>
                                     <a class="btn btn-default js-copy-referral-link" role="button" tabindex="0"
                                        data-toggle="focus" data-trigger="focus" data-content="Link copied">Copy Link</a>

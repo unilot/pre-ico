@@ -20,9 +20,10 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^martor/', include('martor.urls')),
-    url('', include('django.conf.urls.i18n'))
 ]
 
 urlpatterns += i18n_patterns(
     url(r'^cp/', include('cp.urls', namespace='cp')),
+    url('', include('django.conf.urls.i18n')),
+    url('', include('landing.urls'), name='landing'),
 )
