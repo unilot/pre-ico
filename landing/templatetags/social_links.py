@@ -1,4 +1,6 @@
 from django import template
+from django.utils.http import urlquote
+
 from preico import settings
 
 
@@ -48,3 +50,24 @@ def youtube_channel():
 @register.simple_tag()
 def github_organization():
     return settings.SOCIAL_LINKS.get('GITHUB')
+
+
+@register.simple_tag()
+def share_facebook(url):
+    return 'https://www.facebook.com/sharer/sharer.php?u={0}' % urlquote(url)
+
+
+@register.simple_tag()
+def share_twitter(status):
+    return 'https://twitter.com/home?status=%s' % (urlquote(status))
+
+
+@register.simple_tag()
+def share_reddit_post(title, url):
+    return 'https://www.reddit.com/submit?title=%s&url=%s&sr=unilot_lottery&sendreplies=0'\
+           % (urlquote(title), urlquote(url))
+
+
+@register.simple_tag()
+def share_telegram(url):
+    return 'https://t.me/share/url?url=%s'% (urlquote(url))

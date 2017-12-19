@@ -93,7 +93,7 @@ class SignUpView(generics.CreateAPIView):
 
 
 class SignInView(generics.GenericAPIView):
-    permission_classes = [ p_permissions.isGuest ]
+    permission_classes = [ permissions.AllowAny ]
     serializer_class = auth.SignInSerializer
     queryset = auth_models.User.objects.filter(is_active=True)
 

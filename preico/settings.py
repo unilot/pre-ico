@@ -108,6 +108,9 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'preico.rest_framework.renderers.TemplateHTMLRenderer',
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'preico.rest_framework.authentication.SessionAuthentication',
+    )
 }
 
 # Global martor settings

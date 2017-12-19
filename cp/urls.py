@@ -1,7 +1,12 @@
 from django.conf.urls import url
-from django.views.generic import TemplateView, RedirectView
+from django.core.urlresolvers import reverse_lazy
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import auth, faq, profile
+from .views import auth, faq, profile, dashboard
+
+
+LOGIN_REDIRECT_URL=reverse_lazy('dashboard', 'html')
+LOGIN_URL=reverse_lazy('auth', 'html')
+LOGOUT_URL=reverse_lazy('sign-out', 'html')
 
 
 adoptive_urls = format_suffix_patterns([
@@ -17,11 +22,11 @@ adoptive_urls = format_suffix_patterns([
 urlpatterns = format_suffix_patterns([
     url(r'^auth', auth.ShowAuthPageView.as_view(), name='auth'),
     url(r'^(?P<referrer_code>.{32,64})/auth', auth.ShowAuthPageView.as_view(), name='auth-referred'),
-    url('^dashboard', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
+    url('^dashboard', dashboard.DashboardView.as_view(), name='dashboard'),
 ], True, ('html',))
 
 urlpatterns += [
-    url('', RedirectView.as_view(pattern_name='dashboard'), name='index')
+    url('^(|/)$', dashboard.DashboardView.as_view(), name='index')
 ]
 
 urlpatterns += adoptive_urls
