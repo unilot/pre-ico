@@ -3,7 +3,7 @@
 {% load social_links %}
 {% get_current_language as LANGUAGE_CODE %}
 {% if user.is_authenticated %}{% url 'cp:dashboard' 'html' as contribute_url %}{% else %}{% url 'cp:auth' 'html' as contribute_url %}{% endif %}
-{% if referrer_code and user.is_authenticated %}{% url 'auth-referred' 'referrer_code' 'html' %}{% endif %}
+{% if referrer_code and user.is_authenticated %}{% url 'auth-referred' 'referrer_code' 'html' as contribute_url %}{% endif %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
