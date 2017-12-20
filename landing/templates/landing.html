@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load social_links %}
+{% load martortags %}
 {% get_current_language as LANGUAGE_CODE %}
 {% if user.is_authenticated %}{% url 'cp:dashboard' 'html' as contribute_url %}{% else %}
     {% url 'cp:auth' 'html' as contribute_url %}{% endif %}
@@ -37,7 +38,7 @@
                     <li><a href="#link1">What is Unilot</a></li>
                     <li><a href="#link2">White Paper</a></li>
                     <li><a href="#link3">FAQ</a></li>
-                    <li><a href="#">Upcoming Events</a></li>
+                    {% if show_roadshow %}<li><a href="#">Upcoming Events</a></li>{% endif %}
                 </ul>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-6">
@@ -439,39 +440,110 @@
                     <div class="swiper-container" id="swiper-1">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <h4>May6
-                                    <p>'18</p>
+                                <h4>May
+                                    <p>'17</p>
                                 </h4>
                                 <ul>
-                                    <li>Token Distribution</li>
-                                    <li>Token Distribution</li>
+                                    <li>Unilot is formalized</li>
+                                    <li>Initial investment is required</li>
                                 </ul>
                             </div>
+
                             <div class="swiper-slide">
-                                <h4>May6
-                                    <p>'18</p>
+                                <h4>June
+                                    <p>'17</p>
                                 </h4>
                                 <ul>
-                                    <li>Token Distribution</li>
-                                    <li>Token Distribution</li>
+                                    <li>Seed fund is received</li>
                                 </ul>
                             </div>
+
                             <div class="swiper-slide">
-                                <h4>May6
-                                    <p>'18</p>
+                                <h4>October - December
+                                    <p>'17</p>
                                 </h4>
                                 <ul>
-                                    <li>Token Distribution</li>
-                                    <li>Token Distribution</li>
+                                    <li>MVP Ready</li>
+                                    <li>Pre-ICO preparations</li>
                                 </ul>
                             </div>
+
                             <div class="swiper-slide">
-                                <h4>May6
+                                <h4>January
                                     <p>'18</p>
                                 </h4>
                                 <ul>
-                                    <li>Token Distribution</li>
-                                    <li>Token Distribution</li>
+                                    <li>11 - Pre-ICO Active</li>
+                                    <li>18 - Closed System Testing</li>
+                                </ul>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <h4>February to March
+                                    <p>'18</p>
+                                </h4>
+                                <ul>
+                                    <li>ICO #1 (50% of total ICO investment is offered)</li>
+                                    <li>1st more system tests and bug fixing</li>
+                                </ul>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <h4>March 30
+                                    <p>'18</p>
+                                </h4>
+                                <ul>
+                                    <li>Unilot launch will include licensing from Malta Remote Gaming Licence
+                                        http://www.mga.org.mt/gaming-sectors/remote-gaming/
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <h4>April
+                                    <p>'18</p>
+                                </h4>
+                                <ul>
+                                    <li>1st Unilot is released with fully functional & tested Lottery game</li>
+                                    <li>15th - ICO #2 (the remaining 50% is offered to the public)</li>
+                                </ul>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <h4>May to June
+                                    <p>'18</p>
+                                </h4>
+                                <ul>
+                                    <li>Launch of new game “BTC Auction</li>
+                                    <li>Add Lottery variants</li>
+                                </ul>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <h4>July - September
+                                    <p>'18</p>
+                                </h4>
+                                <ul>
+                                    <li>Launch of decentralized platform hosted games, white label</li>
+                                </ul>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <h4>November
+                                    <p>'18</p>
+                                </h4>
+                                <ul>
+                                    <li>Launch “Host your own game” / White label platform</li>
+                                </ul>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <h4>January to March
+                                    <p>'19</p>
+                                </h4>
+                                <ul>
+                                    <li>Launch of Poker game</li>
+                                    <li>Launch Bingo</li>
                                 </ul>
                             </div>
                         </div>
@@ -523,7 +595,9 @@
                     <p>Read our whitepaper in order to know more about the Unilot® platform, the token, the team and ICO
                         round details.</p>
                 </div>
-                <div class="col-xs-12"><a class="btn" href="#">View White Paper<i class="icon-file-text2"></i></a><span>English	|	Русский	|	中文	|	Español	|	Français	|	Italiano	|	日本語</span>
+                <div class="col-xs-12">
+                    <a class="btn" href="#">View White Paper<i class="icon-file-text2"></i></a>
+                    <span>English</span>
                 </div>
             </div>
         </div>
@@ -534,7 +608,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="heading">
-                            <h2>Roadshow</h2><span>Roadshow </span>
+                            <h2>Roadshow</h2><span>Roadshow</span>
                         </div>
                         <div class="swiper-container" id="swiper-2">
                             <div class="swiper-wrapper">
@@ -768,42 +842,24 @@
                         <h2>FAQ's</h2><span>FAQ's</span>
                     </div>
                 </div>
-                <div class="col-md-5 col-sm-7 col-xs-12">
-                    <div class="faq__block faq__block--one">
-                        <a class="closed">Is Unilot licensed online gambling site?<i class="icon-chevron-thin-down"></i></a>
-                        <p class="name">Sales are officially OPEN now, you can message me anytime if you have poblem or
-                            questions. It's Beta version of apps so please send me any comment that you have or saw.
-                            Let's get ready to rumble</p>
+                <div class="col-md-5">
+                    {% for faq in faqs|slice:":6" %}
+                    <div class="faq__block faq__block">
+                        <a class="closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
+                        <div class="name">{{ faq.answer|safe_markdown }}</div>
                     </div>
-                    <div class="faq__block"><a>What makes Unilot different from all other competitors?<i
-                            class="icon-chevron-thin-down"></i></a>
-                        <p class="name">Sales are officially OPEN now, you can message me anytime if you have poblem or
-                            questions. It's Beta version of apps so please send me any comment that you have or saw.
-                            Let's get ready to rumble</p>
+                    {% endfor %}
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    {% for faq in faqs|slice:"6:6" %}
+                    <div class="faq__block faq__block">
+                        <a class="closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
+                        <div class="name">{{ faq.answer|safe_markdown }}</div>
                     </div>
-                    <div class="faq__block"><a>Why the use of blockchain?<i class="icon-chevron-thin-down"></i></a>
-                        <p class="name">Sales are officially OPEN now, you can message me anytime if you have poblem or
-                            questions. It's Beta version of apps so please send me any comment that you have or saw.
-                            Let's get ready to rumble</p>
-                    </div>
-                    <div class="faq__block"><a>Will U.S. Citizens be able to participate?<i
-                            class="icon-chevron-thin-down"></i></a>
-                        <p class="name">Sales are officially OPEN now, you can message me anytime if you have poblem or
-                            questions. It's Beta version of apps so please send me any comment that you have or saw.
-                            Let's get ready to rumble</p>
-                    </div>
-                    <div class="faq__block"><a>How can I participate?<i class="icon-chevron-thin-down"></i></a>
-                        <p class="name">Sales are officially OPEN now, you can message me anytime if you have poblem or
-                            questions. It's Beta version of apps so please send me any comment that you have or saw.
-                            Let's get ready to rumble</p>
-                    </div>
-                    <div class="faq__block"><a>Is Unilot licensed online gambling site?<i
-                            class="icon-chevron-thin-down"></i></a>
-                        <p class="name">Sales are officially OPEN now, you can message me anytime if you have poblem or
-                            questions. It's Beta version of apps so please send me any comment that you have or saw.
-                            Let's get ready to rumble</p>
-                    </div>
-                    <a class="btn">Show all FAQ topics</a>
+                    {% endfor %}
+                    {% if faqs_total > 12 %}
+                        <a class="btn">Show all FAQ topics</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
