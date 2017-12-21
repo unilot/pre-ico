@@ -42,8 +42,10 @@
                     <li><a href="#whatIsUnilot">What is Unilot</a></li>
                     <li><a href="#whitePaper">White Paper</a></li>
                     <li><a href="#unilotBenefits">Unilot Benefits</a></li>
-                    {% if faqs_total > 0 %}<li><a href="#faq">FAQ</a></li>{% endif %}
-                    {% if show_roadshow %}<li><a href="#roadshow">Upcoming Events</a></li>{% endif %}
+                    {% if faqs_total > 0 %}
+                        <li><a href="#faq">FAQ</a></li>{% endif %}
+                    {% if show_roadshow %}
+                        <li><a href="#roadshow">Upcoming Events</a></li>{% endif %}
                 </ul>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-6">
@@ -56,15 +58,17 @@
                         </div>
                         {% if is_pre_ico %}
                             <div class="col-md-8 col-xs-12 start-md center-xs">
-                            <div class="header__left__btn">
-                                <a class="btn" href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a>
+                                <div class="header__left__btn">
+                                    <a class="btn" href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a>
+                                    <a class="btn none" href="{{ contribute_url }}">{% trans 'Contribute' %}</a>
+                                </div>
                             </div>
-                        </div>
                         {% endif %}
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </header>
 <div class="sentence__social">
     <p>Contact Us</p>
@@ -181,13 +185,10 @@
                     </div>
                 </div>
                 <div class="col-md-5 col-sm-7 col-xs-12">
-                    <p><b>Unilot</b> is Decentralized Lottery Based on<br> <b>Ethereum Smart Contracts.</b><br>The
-                        maximum amount of raised funding is $12 000 000. This will help to speed up the expansion of the
-                        project, increase the amount of guaranteed prize fund and accelerate the launch of new drawings.
-                        <b>Unilot</b> is Decentralized Lottery Based on <b>Ethereum Smart Contracts.</b></p>
-                    <p>The maximum amount of raised funding is $12 000 000. This will help to speed up the expansion of
-                        the project, increase the amount of guaranteed prize fund and accelerate the launch of new
-                        drawings.</p>
+                    <p><strong>Unilot</strong> is a decentralized gambling platform which allows players to play and
+                        host online games like poker tournaments, lottery and many other games. Unilot will be available
+                        through mobile apps on OSx and Android platforms and transact using Unilots as it’s main
+                        currency.</p>
                 </div>
                 <div class="col-md-7 col-sm-5"><img src="{% static 'landing/img/about.png' %}" alt=""></div>
             </div>
@@ -898,9 +899,9 @@
                         src="{% static 'landing/img/team/Daniel-Khalupskiy.png' %}" alt="Unilot {% trans 'Daniel Khalupskiy' %} {% trans 'PR' %}">
                     <p>{% trans 'Daniel Khalupskiy' %}<i class="icon-linkedin"></i></p><b>{% trans 'PR' %}</b><span></span></a>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-12"><a href="#" target="_blank"><img
+                <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/alyona-din/" target="_blank"><img
                         src="{% static 'landing/img/team/Alyona-Din.png' %}" alt="Unilot {% trans 'Alyona Din' %} {% trans 'Backend developer' %}">
-                    <p>{% trans 'Alyona Din' %}<a href="https://www.linkedin.com/in/alyona-din/" target="_blank"><i class="icon-linkedin"></i></a></p><b>{% trans 'Backend developer' %}</b><span></span></a>
+                    <p>{% trans 'Alyona Din' %}<i class="icon-linkedin"></i></p><b>{% trans 'Backend developer' %}</b><span></span></a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-xs-12"><a href="#" target="_blank"><img
                         src="{% static 'landing/img/team/Denis-Betsi.png' %}" alt="Unilot {% trans 'Denis Betsi' %} {% trans 'Chief strategist' %}">
@@ -1081,7 +1082,8 @@
             <div class="footer__logo">
                 <div class="row center-xs">
                     <div class="col-xs-12"><img src="{% static 'landing/img/logo.svg' %}" alt="">
-                        <p>Unilot® 2017 All Rights Reserved</p>
+                        {% now 'Y' as current_year %}
+                        <p>Unilot® {% if current_year != '2017' %}2017 - {% endif %}{% now 'Y' %} {% trans 'All Rights Reserved' %}</p>
                     </div>
                 </div>
             </div>
@@ -1090,5 +1092,59 @@
 </div>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="{% static 'landing/js/main.min.js' %}"></script>
+{% if request.get_host == 'unilot.io' %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109149155-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109149155-1');
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter46518084 = new Ya.Metrika({
+                    id:46518084,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/46518084" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+{% endif %}
+<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = '2CjQFq97pTwvE24ic';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = (d.location.protocol === 'https:' ? 'https:': 'http:')
+        + '//call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->
 </body>
 </html>
