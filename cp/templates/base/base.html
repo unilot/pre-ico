@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load referral %}
 {% load config %}
+{% load social_links %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <!DOCTYPE html>
@@ -22,17 +23,17 @@
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header"><a class="navbar-brand" href="#"><img id="logo" src="{% static 'images/unilot-logo.png' %}"
+                <div class="navbar-header"><a class="navbar-brand" href="{% url 'landing:index' %}"><img id="logo" src="{% static 'images/unilot-logo.png' %}"
                                                                                  alt="Logo" height="100%"></a><a
-                        class="navbar-brand" href="#">Unilot</a><!-- Social links--></div>
+                        class="navbar-brand" href="{% url 'landing:index' %}">Unilot</a><!-- Social links--></div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="https://www.facebook.com/unilot.io/" target="_blank">
+                    <li><a href="{% facebook_page %}" target="_blank">
                         <i class="icon-facebook-squared"></i></a></li>
-                    <li><a href="https://twitter.com/unilot_lottery" target="_blank">
+                    <li><a href="{% twitter_channel %}" target="_blank">
                         <i class="icon-twitter"></i></a></li>
-                    <li><a href="https://www.reddit.com/user/unilot_lottery/" target="_blank">
+                    <li><a href="{% reddit_url %}" target="_blank">
                         <i class="icon-reddit-alien"></i></a></li>
-                    <li><a href="https://t.me/unilot_channel" target="_blank">
+                    <li><a href="{% telegram_channel %}" target="_blank">
                         <i class="icon-telegram"></i></a></li>
                 </ul>
                 <ul class="nav nav-pills navbar-nav navbar-right">
@@ -103,10 +104,9 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <form class="form-inline">
-                                    {% referral_url as referral_url %}
                                     <div class="form-group"><input class="form-control js-referral-link-container"
                                                                    type="url" id="referralLink" name="referralLink"
-                                                                   value="{{ referral_url }}"
+                                                                   value="{% referral_url %}"
                                                                    readonly></div>
                                     <a class="btn btn-default js-copy-referral-link" role="button" tabindex="0"
                                        data-toggle="focus" data-trigger="focus" data-content="Link copied">Copy Link</a>
@@ -119,21 +119,22 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 text-2x">
+                                {% referral_url as referral_url %}
                                 <ul class="list-inline">
                                     <li><a
-                                           href="https://www.facebook.com/sharer/sharer.php?u={{ referral_url|urlencode }}"
+                                           href="{% share_facebook referral_url %}"
                                            target="_blank">
                                         <i class="icon-facebook-squared"></i></a></li>
-                                    <li><a href="https://twitter.com/home?status={{ referral_url|urlencode }}"
+                                    <li><a href="{% share_twitter referral_url %}"
                                            target="_blank">
                                         <i class="icon-twitter"></i></a></li>
                                     <li>
-                                        <a href="https://www.reddit.com/submit?title=Unilot Token Sale&url={{ referral_url|urlencode }}&sr=unilot_lottery&sendreplies=0"
+                                        {% trans 'Unilot Token Sale' as reddit_title %}
+                                        <a href="{% share_reddit_post reddit_title referral_url %}"
                                            target="_blank"><i class="icon-reddit-alien"></i>
                                         </a>
                                     </li>
-                                    <li><a href="https://t.me/share/url?url={{ referral_url|urlencode }}"
-                                           target="_blank">
+                                    <li><a href="{% share_telegram referral_url %}" target="_blank">
                                         <i class="icon-telegram"></i></a></li>
                                 </ul>
                             </div>

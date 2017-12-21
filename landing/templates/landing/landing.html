@@ -1,0 +1,910 @@
+{% extends 'landing/base/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load social_links %}
+{% load martortags %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+<section class="sentence" id="main">
+    <div class="container">
+        <div class="scene">
+            <div data-depth="0.6"><img src="{% static 'landing/img/sentence-bg.png' %}" alt=""></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-xs-12">
+                <h1>{% block title %}{% trans 'Initial Coin Offering Pre-sale on the way' %}{% endblock %}</h1>
+                <p>{% trans 'Pre-ICO starts in' %}:</p>
+                <div class="sentence__timer">
+                    <div class="row">
+                        <div class="col-xs-12"><span class="js-countdown"></span></div>
+                        <div class="col-xs-12 flex">
+                            <b>{% trans 'Days' %}</b>
+                            <b>{% trans 'Hours' %}</b>
+                            <b>{% trans 'Minutes' %}</b>
+                            <b>{% trans 'Seсs' %}</b>
+                        </div>
+                        {% if is_show_progress %}
+                            <div class="col-xs-12 end-xs">
+                                <p>Goal $1,000,000 (1,5 Million UNT)</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    {% if is_show_progress %}
+                        <div class="col-xs-12">
+                            <div class="sentence__scale">
+                                <p>$834,343 Raised</p>
+                                <div class="sentence__scale_block"><span>49%</span></div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="col-sm-4 col-xs-12 center-xs">
+                        <div class="sentence__block sentence__block--padding">
+                            <p>{% trans 'Upcoming bonus' %}</p><span>40%</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 center-xs">
+                        <div class="sentence__block sentence__block--padding">
+                            <p>{% trans 'Min commitment' %}</p><span>0 ETH</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 center-xs">
+                        <div class="sentence__block">
+                            <p>{% trans 'Token price' %}</p><span>0.000055 ETH</span>
+                        </div>
+                    </div>
+                    {% if is_pre_ico %}
+                        <div class="col-xs-12 start-sm center-xs"><a class="btn" href="{{ contribute_url }}">
+                            {% trans 'Contribute Now' %}</a></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-sm-4 end-xs"><img src="{% static 'landing/img/sentence.png' %}" alt=""></div>
+        </div>
+    </div>
+</section>
+<section class="about" id="whatIsUnilot">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>{% trans 'What is Unilot' %}</h2><span>{% trans 'Who we are' %}</span>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-7 col-xs-12">
+                <p><strong>Unilot</strong> is a decentralized gambling platform which allows players to play and
+                    host online games like poker tournaments, lottery and many other games. Unilot will be available
+                    through mobile apps on OSx and Android platforms and transact using Unilots as it’s main
+                    currency.</p>
+            </div>
+            <div class="col-md-7 col-sm-5"><img src="{% static 'landing/img/about.png' %}" alt=""></div>
+        </div>
+    </div>
+</section>
+<section class="advantages" id="unilotBenefits">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>Unilot Benefits</h2><span>Benefits</span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="advantages__block advantages__block--margin">
+                    <div class="row middle-xs">
+                        <div class="col-xs-3"><img src="{% static 'landing/img/01.svg' %}" alt=""></div>
+                        <div class="col-xs-9">
+                            <p>Unilot will not access or hold any Player Funds</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="advantages__block">
+                    <div class="row middle-xs">
+                        <div class="col-xs-3"><img src="{% static 'landing/img/02.svg' %}" alt=""></div>
+                        <div class="col-xs-9">
+                            <p>Consensus of game state is reached between players with encrypted P2P messaging</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="advantages__block advantages__block--margin">
+                    <div class="row middle-xs">
+                        <div class="col-xs-3"><img src="{% static 'landing/img/03.svg' %}" alt=""></div>
+                        <div class="col-xs-9">
+                            <p>Play games globally or make money by hosting your own game tournaments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="advantages__block">
+                    <div class="row middle-xs">
+                        <div class="col-xs-3"><img src="{% static 'landing/img/04.svg' %}" alt=""></div>
+                        <div class="col-xs-9">
+                            <p>Feature Single player RNG & Multiplayer games</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="advantages__block advantages__block--margin">
+                    <div class="row middle-xs">
+                        <div class="col-xs-3"><img src="{% static 'landing/img/05.svg' %}" alt=""></div>
+                        <div class="col-xs-9">
+                            <p>Decintrilized and isolated to prevent God Mode</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="advantages__block">
+                    <div class="row middle-xs">
+                        <div class="col-xs-3"><img src="{% static 'landing/img/06.svg' %}" alt=""></div>
+                        <div class="col-xs-9">
+                            <p>Unilot platform can be Whitelabeled</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="client" id="mobileClient">
+    <div class="container">
+        <div class="scene1">
+            <div data-depth="0.5"><img src="{% static 'landing/img/client-bg.png' %}" alt=""></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>Mobile Client</h2><span>Mobile App</span>
+                </div>
+            </div>
+            <div class="col-sm-7 col-xs-12">
+                <p>Unilot Mobile Client will be available on iOS and Android platforms. Unilot mobile will support
+                    multiple regions, languages offered English, Russian and German</p>
+            </div>
+        </div>
+        <div class="row start-sm center-xs">
+            <div class="col-md-5 col-sm-7 col-xs-12">
+                <div class="client__app">
+                    {% if is_app_public %}
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12"><a href="#">
+                                <div class="row">
+                                    <div class="col-xs-3"><img src="{% static 'landing/img/google-play.svg' %}"
+                                                               alt=""></div>
+                                    <div class="col-xs-9">
+                                        <p>Download on the</p><span>Google Play</span>
+                                    </div>
+                                </div>
+                            </a></div>
+                            <div class="col-sm-6 col-xs-12"><a href="#">
+                                <div class="row">
+                                    <div class="col-xs-3"><img src="{% static 'landing/img/apple.svg' %}" alt="">
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <p>Download on the</p><span>App Store</span>
+                                    </div>
+                                </div>
+                            </a></div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="client__lng">
+                    {% get_available_languages as LANGUAGES %}
+                    {% for lang_code, lang_name in LANGUAGES %}
+                        <a href="#"><img src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"
+                                         alt="{{ lang_code|language_name_local }}"></a>
+                    {% endfor %}</div>
+                <div class="row">
+                    {% if is_pre_ico %}
+                    <div class="col-xs-12">
+                        <a class="btn" href="{{ contribute_url }}">Contribute Now</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-5">
+                <div class="client__img"><img src="{% static 'landing/img/client.png' %}" alt=""></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="roadmap" id="roadmap">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>Roadmap</h2><span>Roadmap</span>
+                </div>
+                <div class="demo-wrap">
+                    <div class="slide-wrap__block"></div>
+                    <div class="demo" id="demo">
+                        <ul class="slide-wrap" id="example">
+                            <li class="pos1">
+                                <div class="inner">
+                                    <h4>May
+                                        <p>'17</p>
+                                    </h4>
+                                    <ul>
+                                        <li>Unilot is formalized</li>
+                                        <li>Initial investment is required</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos2">
+                                <div class="inner">
+                                    <h4>June
+                                        <p>'17</p>
+                                    </h4>
+                                    <ul>
+                                        <li>Seed fund is received</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos3">
+                                <div class="inner">
+                                    <h4>October - December
+                                        <p>'17</p>
+                                    </h4>
+                                    <ul>
+                                        <li>MVP Ready</li>
+                                        <li>Pre-ICO preparations</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos4">
+                                <div class="inner">
+                                    <h4>January
+                                        <p>'18</p>
+                                    </h4>
+                                    <ul>
+                                        <li>11 - Pre-ICO Active</li>
+                                        <li>18 - Closed System Testing</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos5">
+                                <div class="inner">
+                                    <h4>February to March
+                                        <p>'18</p>
+                                    </h4>
+                                    <ul>
+                                        <li>ICO #1 (50% of total ICO investment is offered)</li>
+                                        <li>1st more system tests and bug fixing</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos6">
+                                <div class="inner">
+                                    <h4>March 30
+                                        <p>'18</p>
+                                    </h4>
+                                    <ul>
+                                        <li>Unilot launch will include licensing from Malta Remote Gaming Licence http://www.mga.org.mt/gaming-sectors/remote-gaming/</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos7">
+                                <div class="inner">
+                                    <h4>April
+                                        <p>'18</p>
+                                    </h4>
+                                    <ul>
+                                        <li>1st Unilot is released with fully functional & tested Lottery game</li>
+                                        <li>15th - ICO #2 (the remaining 50% is offered to the public)</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos8">
+                                <div class="inner">
+                                    <h4>May to June
+                                        <p>'18</p>
+                                    </h4>
+                                    <ul>
+                                        <li>Launch of new game “BTC Auction</li>
+                                        <li>Add Lottery variants</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos9">
+                                <div class="inner">
+                                    <h4>July - September
+                                        <p>'18</p>
+                                    </h4>
+                                    <ul>
+                                        <li>Launch of decentralized platform hosted games, white label</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos10">
+                                <div class="inner">
+                                    <h4>November
+                                        <p>'18</p>
+                                    </h4>
+                                    <ul>
+                                        <li>Launch “Host your own game” / White label platform</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pos11">
+                                <div class="inner">
+                                    <h4>January to March
+                                        <p>'19</p>
+                                    </h4>
+                                    <ul>
+                                        <li>Launch of Poker game</li>
+                                        <li>Launch Bingo</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <i class="arrow prev" id="jprev"></i><i class="arrow next" id="jnext"></i>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-container" id="swiper-1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <h4>May
+                                <p>'17</p>
+                            </h4>
+                            <ul>
+                                <li>Unilot is formalized</li>
+                                <li>Initial investment is required</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>June
+                                <p>'17</p>
+                            </h4>
+                            <ul>
+                                <li>Seed fund is received</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>October - December
+                                <p>'17</p>
+                            </h4>
+                            <ul>
+                                <li>MVP Ready</li>
+                                <li>Pre-ICO preparations</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>January
+                                <p>'18</p>
+                            </h4>
+                            <ul>
+                                <li>11 - Pre-ICO Active</li>
+                                <li>18 - Closed System Testing</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>February to March
+                                <p>'18</p>
+                            </h4>
+                            <ul>
+                                <li>ICO #1 (50% of total ICO investment is offered)</li>
+                                <li>1st more system tests and bug fixing</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>March 30
+                                <p>'18</p>
+                            </h4>
+                            <ul>
+                                <li>Unilot launch will include licensing from Malta Remote Gaming Licence
+                                    http://www.mga.org.mt/gaming-sectors/remote-gaming/
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>April
+                                <p>'18</p>
+                            </h4>
+                            <ul>
+                                <li>1st Unilot is released with fully functional & tested Lottery game</li>
+                                <li>15th - ICO #2 (the remaining 50% is offered to the public)</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>May to June
+                                <p>'18</p>
+                            </h4>
+                            <ul>
+                                <li>Launch of new game “BTC Auction</li>
+                                <li>Add Lottery variants</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>July - September
+                                <p>'18</p>
+                            </h4>
+                            <ul>
+                                <li>Launch of decentralized platform hosted games, white label</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>November
+                                <p>'18</p>
+                            </h4>
+                            <ul>
+                                <li>Launch “Host your own game” / White label platform</li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <h4>January to March
+                                <p>'19</p>
+                            </h4>
+                            <ul>
+                                <li>Launch of Poker game</li>
+                                <li>Launch Bingo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev" id="prev1"><i class="icon-chevron-thin-left"></i></div>
+                <div class="swiper-button-next" id="next1"><i class="icon-chevron-thin-right"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="function" id="tokenomics">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-xs-12">
+                <div class="heading">
+                    <h2>Token Distribution</h2><span>Tokens</span>
+                </div>
+                <img src="{% static 'landing/img/function-1.png' %}" alt="">
+                <p>78% Purchasers <span class="purple"></span></p>
+                <p>12% Team <span class="green"></span></p>
+                <p>10% Early Adopters & Founders <span class="blue"></span></p>
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <div class="heading h2">
+                    <h2>Use of Funds</h2><span>Flow</span>
+                </div>
+                <img src="{% static 'landing/img/function-2.png' %}" alt="">
+                <p>40% Marketing<span class="purple"></span></p>
+                <p>30% Platform Development and expansion<span class="green"></span></p>
+                <p>15% Business Development and Partnerships<span class="lilac"></span></p>
+                <p>10% Legal and Misc Operations<span class="blue"></span></p>
+                <p>5% Consultants<span class="yellow"></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="whitepaper" id="whitePaper">
+    <div class="container">
+        <div class="scene2">
+            <div data-depth="0.5"><img src="{% static 'landing/img/whitepaper-bg.png' %}" alt=""></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>Whitepaper</h2><span>Whitepaper </span>
+                </div>
+            </div>
+            <div class="col-sm-5 col-xs-12">
+                <p>Read our whitepaper in order to know more about the Unilot® platform, the token, the team and ICO
+                    round details.</p>
+            </div>
+            <div class="col-xs-12">
+                <a class="btn" href="#">View White Paper<i class="icon-file-text2"></i></a>
+                <span>English</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% if show_roadshow %}
+    <section class="roadshow" id="roadshow">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="heading">
+                        <h2>Roadshow</h2><span>Roadshow</span>
+                    </div>
+                    <div class="swiper-container" id="swiper-2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <h4>1-5</h4>
+                                <p>November 2017</p>
+                                <div class="swiper-slide__block"><img
+                                        src="{% static 'landing/img/swiper-slide-1.png' %}" alt="">
+                                    <p>Blockchain & Bitcoin Conference</p>
+                                    <div class="row">
+                                        <div class="col-xs-6"><span>Moscow</span></div>
+                                        <div class="col-xs-6 end-xs"><a href="#"><img
+                                                src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <h4>20-23</h4>
+                                <p>November 2017</p>
+                                <div class="swiper-slide__block"><img
+                                        src="{% static 'landing/img/swiper-slide-2.png' %}" alt="">
+                                    <p>GCC Blockchain Conference</p>
+                                    <div class="row">
+                                        <div class="col-xs-6"><span>Dubai</span></div>
+                                        <div class="col-xs-6 end-xs"><a href="#"><img
+                                                src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <h4>15-20</h4>
+                                <p>December 2017</p>
+                                <div class="swiper-slide__block"><img
+                                        src="{% static 'landing/img/swiper-slide-3.png' %}" alt="">
+                                    <p>Blockchain & Bitcoin Conference</p>
+                                    <div class="row">
+                                        <div class="col-xs-6"><span>London</span></div>
+                                        <div class="col-xs-6 end-xs"><a href="#"><img
+                                                src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <h4>1-5</h4>
+                                <p>November 2017</p>
+                                <div class="swiper-slide__block"><img
+                                        src="{% static 'landing/img/swiper-slide-1.png' %}" alt="">
+                                    <p>Blockchain & Bitcoin Conference</p>
+                                    <div class="row">
+                                        <div class="col-xs-6"><span>Moscow</span></div>
+                                        <div class="col-xs-6 end-xs"><a href="#"><img
+                                                src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <h4>20-23</h4>
+                                <p>November 2017</p>
+                                <div class="swiper-slide__block"><img
+                                        src="{% static 'landing/img/swiper-slide-2.png' %}" alt="">
+                                    <p>GCC Blockchain Conference</p>
+                                    <div class="row">
+                                        <div class="col-xs-6"><span>Dubai</span></div>
+                                        <div class="col-xs-6 end-xs"><a href="#"><img
+                                                src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <h4>15-20</h4>
+                                <p>December 2017</p>
+                                <div class="swiper-slide__block"><img
+                                        src="{% static 'landing/img/swiper-slide-3.png' %}" alt="">
+                                    <p>Blockchain & Bitcoin Conference</p>
+                                    <div class="row">
+                                        <div class="col-xs-6"><span>London</span></div>
+                                        <div class="col-xs-6 end-xs"><a href="#"><img
+                                                src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="swiper-button-prev" id="prev"><i class="icon-chevron-thin-left"></i></div>
+                    <div class="swiper-button-next" id="next"><i class="icon-chevron-thin-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+<section class="advisors" id="advisors">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>Advisors</h2><span>Our Advisors</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Timur-Mukminov.png' %}" alt="Unilot {% trans 'Timur Mukminov' %} {% trans 'International Relations and Business Intelligence Advisor' %}">
+                        </div>
+                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/threintm/">{% trans 'Timur Mukminov' %}<i class="icon-linkedin"></i></a><b>{% trans 'International Relations and Business Intelligence Advisor' %}</b><span></span>
+                            {% blocktrans %}
+                                <p>International Relations and Business Intelligence Advisor
+                                Business Process Advisor: Program Portfolio & Tech. Project
+                                Management, Infrastructure, Agile, Global Eng. Management;
+                                ex-Program Manager Network Operations at Google Inc.</p>
+                                <p>Over 10 years of technical project management, and business
+                                intelligence, and applied research & analytical expertise, backed
+                                by solid background in IT and infrastructure, and knowledge of
+                                multiple foreign languages.</p>
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Sergey-Skabelkin.png' %}" alt="Unilot {% trans 'Sergey Skabelkin' %} {% trans 'Strategic Product Development Advisor' %}">
+                        </div>
+                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/sergeyskabelkin/" target="_blank">{% trans 'Sergey Skabelkin' %}<i class="icon-linkedin"></i></a><b>{% trans 'Strategic Product Development Advisor' %}</b><span></span>
+                            {% blocktrans %}
+                                <p>Blockchain Evangelist, Co-founder of FinTechCluster, Mobile wallet and online
+                                    service enterprise architect. Sergey has deep expertise in Banking and Financial
+                                    Markets and has demonstrated success in engagement delivery taking managing
+                                    positions at Russian Standard Bank, Swedbank, PrivatBank.</p>
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Azamat-Kurbanov.png' %}" alt="Unilot {% trans 'Azamat Kurbanov' %} {% trans 'Marketing Advisor' %}">
+                        </div>
+                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/azamat-kurbanov-27206b10/" target="_blank">{% trans 'Azamat Kurbanov' %}<i class="icon-linkedin"></i></a><b>{% trans 'Marketing Advisor' %}</b><span></span>
+                            {% blocktrans %}
+                                <p>Co-founder of telegraf.money who successfully led preICO worth
+                                <span class="big-amount">$7 000 000</span>. A self-starter and successful entrepreneur, more
+                                than 10 years experience on marketing and creating multimillion
+                                worth companies.</p>
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Bogdan-Bagrinovski.png' %}" alt="Unilot {% trans 'Bogdan Bagrinovski' %} {% trans 'Lottery and Gambling issues Advisor' %}">
+                        </div>
+                        <div class="col-xs-7"><a href="#" target="_blank">{% trans 'Bogdan Bagrinovski' %}<i class="icon-linkedin"></i></a><b>{% trans 'Lottery and Gambling issues Advisor' %}</b><span></span>
+                            {% blocktrans %}
+                                <p>More then 10 year experience in Auction and Lottery business,
+                                creating brands like Intuitsia, Credsberry etc.
+                                Bakhra</p>
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Bakhram-Fayzutdinov.png' %}" alt="Unilot {% trans 'Bakhram Fayzutdinov' %} {% trans 'Mobile Product Development and Promotion Advisor' %}">
+                        </div>
+                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/bakhram-fayzutdinov-97b63b58/" target="_blank">{% trans 'Bakhram Fayzutdinov' %}<i class="icon-linkedin"></i></a><b>{% trans 'Mobile Product Development and Promotion Advisor' %}</b><span></span>
+                            {% blocktrans %}
+                                <p>Founder of Amayasoft company, head of MyBookTools technol-
+                                ogy development. More than 10 years on programming, product
+                                management and business development.</p>
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Aymen-Boughanmi.png' %}" alt="Unilot {% trans 'Aymen Boughanmi' %} {% trans 'Marketing Advisor' %}">
+                        </div>
+                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/aymen-boughanmi-63a1922/" target="_blank">{% trans 'Aymen Boughanmi' %}<i class="icon-linkedin"></i></a><b>{% trans 'Marketing Advisor' %}</b><span></span>
+                            {% blocktrans %}
+                                <p>Serial Entrepreneur and International Deal Maker. Great experience in Marketing,
+                                Scaling and Fintech. Investment and advisory roles in a wide range of symbiotic
+                                fields: Renewable Energy, Technology Platforms and MarketPlaces, Blockchain and
+                                Fintech.</p>
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Mario-Fiorini.png' %}" alt="Unilot {% trans 'Mario Fiorini' %} {% trans 'Legal and Gambling issues Advisor' %}">
+                        </div>
+                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/mariofiorini/" target="_blank">{% trans 'Mario Fiorini' %}<i class="icon-linkedin"></i></a><b>{% trans 'Legal and Gambling issues Advisor' %}</b><span></span>
+                            {% blocktrans %}
+                                <p>Co-Founder of iGamingAdvisors that offers senior international gaming consultancy
+                                    to all sectors of the gaming industry; CEO of ArenaCube, a software development
+                                    company offering software services to the iGaming industry.</p>
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Sergey-Khegay.png' %}" alt="Unilot {% trans 'Sergey Khegay' %} {% trans 'Technical Development Advisor' %}">
+                        </div>
+                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/sergeykhegay/" target="_blank">{% trans 'Sergey Khegay' %}<i class="icon-linkedin"></i></a><b>{% trans 'Technical Development Advisor' %}</b><span></span>
+                            {% blocktrans %}
+                                <p>The member of Monitoring team as Software Engineer at Tech
+                                Yahoo with a significant experience in the computer software
+                                industry.</p>
+                            {% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="team" id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>Team</h2><span>Unilot Team</span>
+                </div>
+            </div>
+        </div>
+        <div class="row center-xs">
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/ilya-son-a0474b53/" target="_blank"><img
+                    src="{% static 'landing/img/team/Ilya-Son.png' %}" alt="Unilot {% trans 'Ilya Son' %} {% trans 'Founder' %}">
+                <p>{% trans 'Ilya Son' %}<i class="icon-linkedin"></i></p><b>{% trans 'Founder' %}</b><span></span></a></div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/alegz/" target="_blank"><img
+                    src="{% static 'landing/img/team/Alexander-Lushnikov.png' %}" alt="Unilot {% trans 'Alexander Lushnikov' %} {% trans 'Smart contracts developer' %}">
+                <p>{% trans 'Alexander Lushnikov' %}<i class="icon-linkedin"></i></p><b>{% trans 'Smart contracts developer' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href=" https://www.linkedin.com/in/%D0%B0%D1%80%D1%81%D0%B5%D0%BD%D0%B8%D0%B9-%D0%B0%D0%B3%D0%B0%D0%BD%D0%BE%D0%B2-145474a2/" target="_blank"><img
+                    src="{% static 'landing/img/team/Arseniy-Aganov.png' %}" alt="Unilot {% trans 'Arseniy Aganov' %} {% trans 'Senior Android developer' %}">
+                <p>{% trans 'Arseniy Aganov' %}<i class="icon-linkedin"></i></p><b>{% trans 'Senior Android developer' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/shovkat/" target="_blank"><img
+                    src="{% static 'landing/img/team/Shovkat-Kukanbaev.png' %}" alt="Unilot {% trans 'Shovkat Kukanbaev' %} {% trans 'UI/UX Designer' %}">
+                <p>{% trans 'Shovkat Kukanbaev' %}<i class="icon-linkedin"></i></p><b>{% trans 'UI/UX Designer' %}</b><span></span></a></div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/darya-kadirova-62280b53/" target="_blank"><img
+                    src="{% static 'landing/img/team/Darya-Kadirova.png' %}" alt="Unilot {% trans 'Darya Kadirova' %} {% trans 'Marketing manager' %}">
+                <p>{% trans 'Darya Kadirova' %}<i class="icon-linkedin"></i></p><b>{% trans 'Marketing manager' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/bakhodir-ashirmatov-6604688b/" target="_blank"><img
+                    src="{% static 'landing/img/team/Bakhodir-Ashirmatov.png' %}" alt="Unilot {% trans 'Bakhodir Ashirmatov' %} {% trans 'Senior iOS developer' %}">
+                <p>{% trans 'Bakhodir Ashirmatov' %}<i class="icon-linkedin"></i></p><b>{% trans 'Senior iOS developer' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/daniil-khalupskiy-4966b76b/" target="_blank"><img
+                    src="{% static 'landing/img/team/Daniel-Khalupskiy.png' %}" alt="Unilot {% trans 'Daniel Khalupskiy' %} {% trans 'PR' %}">
+                <p>{% trans 'Daniel Khalupskiy' %}<i class="icon-linkedin"></i></p><b>{% trans 'PR' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/alyona-din/" target="_blank"><img
+                    src="{% static 'landing/img/team/Alyona-Din.png' %}" alt="Unilot {% trans 'Alyona Din' %} {% trans 'Backend developer' %}">
+                <p>{% trans 'Alyona Din' %}<i class="icon-linkedin"></i></p><b>{% trans 'Backend developer' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/denisbetsi/" target="_blank"><img
+                    src="{% static 'landing/img/team/Denis-Betsi.png' %}" alt="Unilot {% trans 'Denis Betsi' %} {% trans 'Chief strategist' %}">
+                <p>{% trans 'Denis Betsi' %}<i class="icon-linkedin"></i></p><b>{% trans 'Chief strategist' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/dmitrypshenin/" target="_blank"><img
+                    src="{% static 'landing/img/team/Dmitriy-Pshenin.png' %}" alt="Unilot {% trans 'Dmitriy Pshenin' %} {% trans 'ICO expert' %}">
+                <p>{% trans 'Dmitriy Pshenin' %}<i class="icon-linkedin"></i></p><b>{% trans 'ICO expert' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/paulo-carneiro-34bb9612/" target="_blank"><img
+                    src="{% static 'landing/img/team/Paulo-Carneiro.png' %}" alt="Unilot {% trans 'Paulo Carneiro' %} {% trans 'Marketing strategist' %}">
+                <p>{% trans 'Paulo Carneiro' %}<i class="icon-linkedin"></i></p><b>{% trans 'Marketing strategist' %}</b><span></span></a>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/micheal-ifeanyi-13a0b213a" target="_blank"><img
+                    src="{% static 'landing/img/team/Michael-Ifeanyi.png' %}" alt="Unilot {% trans 'Michael Ifeanyi' %} {% trans 'Community manager in Africa Imantas' %}">
+                <p>{% trans 'Michael Ifeanyi' %}<i class="icon-linkedin"></i></p><b>{% trans 'Community manager in Africa Imantas' %}</b><span></span></a>
+            </div>
+        </div>
+    </div>
+</section>
+{% if faqs_total > 0 %}
+<section class="faq" id="faq">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>FAQ's</h2><span>FAQ's</span>
+                </div>
+            </div>
+            <div class="col-md-5">
+                {% for faq in faqs|slice:":6" %}
+                <div class="faq__block faq__block">
+                    <a class="closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
+                    <div class="name">{{ faq.answer|safe_markdown }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                {% for faq in faqs|slice:"6:6" %}
+                <div class="faq__block faq__block">
+                    <a class="closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
+                    <div class="name">{{ faq.answer|safe_markdown }}</div>
+                </div>
+                {% endfor %}
+                {% if faqs_total > 12 %}
+                    <a class="btn">Show all FAQ topics</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+<section class="gray" id="publications">
+    <div class="container">
+        <div class="row heading">
+            <div class="col-xs-12">
+                <h2>Publications</h2><span>Publications</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 flex-wrap">
+                <div class="thumbnail"><img src="{% static 'landing/img/publications/ibm.png' %}" alt="IBM">
+                    <div class="caption">
+                        <h3>IBM</h3>
+                        <p>The company works in a partnership agreement with a number of leading legal companies of
+                            Russia, Europe, the USA, and South Korea.</p>
+                        <p><a class="btn btn-default" href="#" role="button">Read full</a></p>
+                    </div>
+                </div>
+                <div class="thumbnail"><img src="{% static 'landing/img/publications/carlsberg.png' %}" alt="Carlsberg">
+                    <div class="caption">
+                        <h3>Carlsberg</h3>
+                        <p>The company works in a partnership agreement with a number of leading legal companies of
+                            Russia, Europe, the USA, and South Korea.</p>
+                        <p><a class="btn btn-default" href="#" role="button">Read full</a></p>
+                    </div>
+                </div>
+                <div class="thumbnail"><img src="{% static 'landing/img/publications/cisco.png' %}" alt="Cisco">
+                    <div class="caption">
+                        <h3>Cisco</h3>
+                        <p>The company works in a partnership agreement with a number of leading legal companies of
+                            Russia, Europe, the USA, and South Korea.</p>
+                        <p><a class="btn btn-default" href="#" role="button">Read full</a></p>
+                    </div>
+                </div>
+                <div class="thumbnail"><img src="{% static 'landing/img/publications/tele2.png' %}" alt="Tele2">
+                    <div class="caption">
+                        <h3>Tele2</h3>
+                        <p>The company works in a partnership agreement with a number of leading legal companies of
+                            Russia, Europe, the USA, and South Korea.</p>
+                        <p><a class="btn btn-default" href="#" role="button">Read full</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="white" id="partners">
+    <div class="container">
+        <div class="row heading">
+            <div class="col-xs-12">
+                <h2>Partners</h2><span>Partners</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 flex-wrap">
+                <div class="thumbnail">
+                    <img src="{% static 'landing/img/partners/ico-board.png' %}" alt="ICO Board">
+                </div>
+                <div class="thumbnail">
+                    <img src="{% static 'landing/img/partners/tokenup.png' %}" alt="TokenUp">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
