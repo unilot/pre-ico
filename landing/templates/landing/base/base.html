@@ -1,0 +1,199 @@
+{% load static %}
+{% load i18n %}
+{% load social_links %}
+{% load martortags %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <title>Unilot | {% block title %}Initial Coin Offering Pre-sale on the way{% endblock %}</title>
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-ec1f863b93180eb8ddd61acb675c4d51.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'landing/img/favicons/manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'landing/img/favicons/safari-pinned-tab.svg' %}" color="#ed9935">
+    <meta name="apple-mobile-web-app-title" content="Unilot">
+    <meta name="application-name" content="Unilot">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="row middle-xs">
+            <div class="col-md-2 col-sm-12 col-xs-6 start-md center-xs">
+                <div class="header__logo">
+                    <div class="top-line-anchor">
+                        <div class="sticky-element" id="sticky">
+                            <div class="sticky-anchor"></div>
+                            <div class="sticky-content">
+                                <div class="menu-open"><a id="btn" href="#menu"><span></span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#main"><img src="{% static 'landing/img/logo-header.svg' %}" alt="Unilot logo"></a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="flex around-xs" id="link">
+                    <li><a href="#whatIsUnilot">What is Unilot</a></li>
+                    <li><a href="#whitePaper">White Paper</a></li>
+                    <li><a href="#unilotBenefits">Unilot Benefits</a></li>
+                    {% if faqs_total > 0 %}
+                        <li><a href="#faq">FAQ</a></li>{% endif %}
+                    {% if show_roadshow %}
+                        <li><a href="#roadshow">Upcoming Events</a></li>{% endif %}
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-6">
+                <div class="header__left">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="header__left__lng">
+                                {% include 'landing/includes/language_menu.html' %}
+                            </div>
+                        </div>
+                        {% if is_pre_ico %}
+                            <div class="col-md-8 col-xs-12 start-md center-xs">
+                                <div class="header__left__btn">
+                                    <a class="btn" href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a>
+                                    <a class="btn none" href="{{ contribute_url }}">{% trans 'Contribute' %}</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="sentence__social">
+    <p>Contact Us</p>
+    <div class="sentence__social__block">
+        <a href="{% github_organization %}"><i class="icon-github"></i></a>
+        <a href="{% telegram_channel %}"><i class="icon-telegram"></i></a>
+        <a href="{% medium_blog %}"><i class="icon-medium"></i></a>
+        <a href="{% reddit_url %}"><i class="icon-reddit"></i></a>
+        <a href="{% twitter_channel %}"><i class="icon-twitter"></i></a></div>
+</div>
+<div class="slideout-menu slideout-menu-right" id="menu">
+    <div class="menu-close"><span></span></div>
+    <div class="row">
+        <div class="col-xs-12" id="link-1">
+            <ul>
+                <li><a href="#whatIsUnilot" class="font-roboto-light-18-px">What is Unilot</a></li>
+                <li><a href="#unilotBenefits" class="font-roboto-light-18-px">Unilot Benefits</a></li>
+                <li><a href="#mobileClient" class="font-roboto-light-18-px">Mobile Client</a></li>
+                <li><a href="#roadmap" class="font-roboto-light-18-px">Roadmap</a></li>
+                <li><a href="#tokenomics" class="font-roboto-light-18-px">Use of funds</a></li>
+                <li><a href="#whitePaper" class="font-roboto-light-18-px">White Paper</a></li>
+                <li><a href="#advisors" class="font-roboto-light-18-px">Advisors</a></li>
+                <li><a href="#team" class="font-roboto-light-18-px">Team</a></li>
+                <li><a href="#publications" class="font-roboto-light-18-px">Publications</a></li>
+                <li><a href="#partners" class="font-roboto-light-18-px">Partners</a></li>
+                <li><a href="#newsletter" class="font-roboto-light-18-px">Newsletter</a></li>
+                {% if faqs_total > 0 %}<li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
+                {% if show_roadshow %}<li><a href="#roadshow" class="font-roboto-light-18-px">Upcoming Events</a></li>{% endif %}
+                {% if is_pre_ico %}
+                    <li><a href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a></li>
+                {% endif %}
+                <li>
+                    {% include 'landing/includes/language_menu.html' %}
+                </li>
+            </ul>
+            <div class="unilot">
+                <div class="row">
+                    <div class="col-xs-5"><img src="{% static 'landing/img/logo.svg' %}" alt="">
+                        <p>Скачайте приложение Unilot App и будьте всегда в курсе новых лотерей</p>
+                        {% if is_app_public %}
+                            <a href="#">App Store<img src="{% static 'landing/img/apple.svg' %}" alt=""></a>
+                            <a href="#">Google Play<img src="{% static 'landing/img/google-play.svg' %}" alt=""></a>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-7"><img src="{% static 'landing/img/sentence.png' %}" alt=""></div>
+                </div>
+            </div>
+            <div class="social"><i class="icon-github"></i><i class="icon-telegram"></i><i class="icon-medium"></i><i
+                    class="icon-reddit"></i><i class="icon-twitter"></i></div>
+        </div>
+    </div>
+</div>
+<div class="slideout-panel slideout-panel-right" id="panel">
+    {% block content %}{% endblock %}
+    <footer class="footer" id="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="heading">
+                        <h2>Newsletter</h2><span>Newsletter</span>
+                    </div>
+                    <form class="form">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-1">
+                                <p>{% trans 'To join our Mailing List, please enter your email address below' %}</p>
+                                <input type="email" name="email">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-block g-recaptcha"
+                                        data-sitekey="6LcJyDwUAAAAAOHyF7J80mQFTYwXDLusskM8b-_d"
+                                        data-size="invisible"
+                                        style="border: none; padding-left: 1em; padding-right: 1em;">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__top">
+                <div class="row center-xs">
+                    <div class="col-sm-4 col-xs-12"><a href="{% github_organization %}"><i class="icon-github"></i>
+                        <p class="git">GitHub</p></a></div>
+                    <div class="col-sm-4 col-xs-12"><a href="{% telegram_channel %}"><i class="icon-telegram"></i>
+                        <p>Telegram</p></a></div>
+                    <div class="col-sm-4 col-xs-12"><a href="{% medium_blog %}"><i class="icon-medium"></i>
+                        <p>Medium</p></a></div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="row start-sm center-xs">
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% reddit_url %}"><i
+                            class="icon-reddit"></i>
+                        <p>Reddit</p></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% twitter_channel %}"><i
+                            class="icon-twitter"></i>
+                        <p>Twitter</p></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% facebook_page %}"><i
+                            class="icon-facebook"></i>
+                        <p>Facebook</p></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% linkedin_company %}"><i
+                            class="icon-linkedin2"></i>
+                        <p>Linkedin</p></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% slack_channel %}"><i
+                            class="medium"></i>
+                        <p class="slack">Slack</p></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% youtube_channel %}"><i
+                            class="icon-YouTube-2"></i>
+                        <p>YouTube</p></a></div>
+                </div>
+            </div>
+            <div class="footer__logo">
+                <div class="row center-xs">
+                    <div class="col-xs-12"><img src="{% static 'landing/img/logo.svg' %}" alt="">
+                        {% now 'Y' as current_year %}
+                        <p>Unilot® {% if current_year != '2017' %}2017 - {% endif %}{% now 'Y' %} {% trans 'All Rights Reserved' %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="{% static 'landing/js/main.min-89bb2f26273b3d1bb9d348b7b94f4356.js' %}"></script>
+{% include 'landing/includes/analytics.html' %}
+{% include 'landing/includes/chartra.html' %}
+</body>
+</html>
