@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}Initial Coin Offering Pre-sale on the way{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-c927b4f1d98cd5b9b2a66b9b57a3ee38.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-5e4b431af0e0de28c62860da0951c75c.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -158,7 +158,7 @@
                         <p>Medium</p></a></div>
                 </div>
             </div>
-            <div class="footer__bottom">
+            <div class="footer__social">
                 <div class="row start-sm center-xs">
                     <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% reddit_url %}"><i
                             class="icon-reddit"></i>
@@ -180,11 +180,22 @@
                         <p>YouTube</p></a></div>
                 </div>
             </div>
-            <div class="footer__logo">
-                <div class="row center-xs">
-                    <div class="col-xs-12"><img src="{% static 'landing/img/logo.svg' %}" alt="">
-                        {% now 'Y' as current_year %}
-                        <p>Unilot® {% if current_year != '2017' %}2017 - {% endif %}{% now 'Y' %} {% trans 'All Rights Reserved' %}</p>
+            <div class="footer__bottom">
+                <div class="row middle-md">
+                    <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
+                            src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
+                        <p>Unilot&reg; 2017 All Rights Reserved</p>
+                    </div>
+                    <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
+                            href="https://www.ethereum.org" target="_blank"><img
+                            src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
+                    <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
+                        <ul>
+                            <li><a href="#">Terms and Conditions</a></li>
+                            <li><a href="#">Affiliate Program</a></li>
+                            <li><a href="#">Bounty Program</a></li>
+                            <li><a href="mailto:info@unilot.io">info@unilot.io</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
