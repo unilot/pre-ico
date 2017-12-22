@@ -1,8 +1,13 @@
 {% load i18n %}
+{% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <div class="js-lng-selector">
-    <p class="js-lng-label">{{ LANGUAGE_CODE|language_name_local|slice:":3"|upper }}</p><i class="icon-arrow_drop_down"></i>
+    <p class="js-lng-label">
+        <img src="{% get_static_prefix %}/landing/img/{{ LANGUAGE_CODE }}.svg"
+             alt="{{ LANGUAGE_CODE|language_name_local }}">
+        {{ LANGUAGE_CODE|language_name_local|slice:":3"|upper }}
+    </p><i class="icon-arrow_drop_down"></i>
     <form method="post" action="{% url 'set_language' %}">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ redirect_to }}"/>
