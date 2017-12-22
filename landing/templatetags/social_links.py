@@ -54,7 +54,7 @@ def github_organization():
 
 @register.simple_tag()
 def share_facebook(url):
-    return 'https://www.facebook.com/sharer/sharer.php?u={0}' % urlquote(url)
+    return 'https://www.facebook.com/sharer/sharer.php?u=%s' % urlquote(url)
 
 
 @register.simple_tag()
