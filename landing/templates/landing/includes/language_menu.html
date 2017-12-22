@@ -3,12 +3,13 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <div class="js-lng-selector">
-    <p class="js-lng-label">
+    <form method="post" class="lng" action="{% url 'set_language' %}">
         <img src="{% get_static_prefix %}/landing/img/{{ LANGUAGE_CODE }}.svg"
              alt="{{ LANGUAGE_CODE|language_name_local }}">
-        {{ LANGUAGE_CODE|language_name_local|slice:":3"|upper }}
-    </p><i class="icon-arrow_drop_down"></i>
-    <form method="post" action="{% url 'set_language' %}">
+        <p class="js-lng-label">
+            {{ LANGUAGE_CODE|language_name_local|slice:":3"|upper }}
+        </p>
+        <i class="icon-arrow_drop_down"></i>
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ redirect_to }}"/>
         <select name="language" class="js-submit-on-change">
