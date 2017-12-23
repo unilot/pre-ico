@@ -38,12 +38,15 @@ class SignUpSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         data = validated_data
         data[django_models.User.USERNAME_FIELD] = data[django_models.User.EMAIL_FIELD]
+        password = data.pop('password')
 
         ModelClass = self.Meta.model
         profile_data = validated_data.pop('profile') if validated_data.get('profile') else None
 
         with transaction.atomic():
-            instance = ModelClass.objects.create(**validated_data)
+            instance = ModelClass(**validated_data)
+            instance.set_password(password)
+            instance.save()
 
             profile_data['user'] = instance
 

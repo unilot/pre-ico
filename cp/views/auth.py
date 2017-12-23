@@ -21,12 +21,17 @@ class ShowAuthPageView(APIView):
     template_name='auth.html'
 
     def get(self, request, *args, **kwargs):
-        data = {}
+        data = {
+            'sign_up_url': reverse('cp:sign-up', kwargs={'format': 'html'})
+        }
 
         if kwargs.get('referrer_code'):
             referrer_profile = get_object_or_404(
                 models.Profile.objects, wallet=kwargs.pop('referrer_code'))
             data['referrer_code'] = referrer_profile.wallet
+            data['sign_up_url'] = reverse('cp:sign-up-referred',
+                                          kwargs={'format': 'html', 'referrer_code': referrer_profile.wallet})
+
 
         return response.Response(data)
 
