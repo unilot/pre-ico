@@ -12,7 +12,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Unilot | {% block title %}{% trans 'Control Panel' %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static '/css/main.min-a4a48045daeb05f5d8ea894b74df3cc8.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.min-bf6f4776d861b8a242e6a4a105caa10d.css' %}">
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://webnextbd.net/demo/js/respond.min.js"></script><![endif]-->
@@ -322,6 +322,7 @@
         </div>
     </div>
 </div>
-<script type="application/javascript" src="{% static 'js/main.min-3f75172565c30cc1554ba73b0ef22a26.js' %}"></script>
+<script type="application/javascript" src="{% url 'cp:js_config' 'js' %}"></script>
+<script type="application/javascript" src="{% static 'js/main.min-06904c7166e676661831489ad9ebed89.js' %}"></script>
 </body>
 </html>

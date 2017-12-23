@@ -8,6 +8,8 @@ from django.urls import reverse
 from django.contrib.auth import logout, models as auth_models, authenticate, login
 from django.db import transaction
 from django.core.mail import EmailMessage
+
+from preico.document import TermsAndConditions
 from .. import models
 from ..serializers import auth
 from preico.rest_framework import permissions as p_permissions
@@ -42,50 +44,60 @@ class SignOutView(APIView):
 class SignUpView(generics.CreateAPIView):
     permission_classes = [ p_permissions.isGuest ]
     serializer_class = auth.SignUpSerializer
+    template_name = 'sign-up-wizard.html'
+
+    def get(self, request, *args, **kwargs):
+        data = {
+            'terms_and_conditions': TermsAndConditions.get_content(),
+        }
+
+        submit_url = reverse('cp:sign-up', kwargs={'format': 'json'})
+
+        referrer_code = kwargs.get('referrer_code')
+
+        if referrer_code:
+            submit_url = reverse('cp:sign-up-referred',
+                                 kwargs={'format': 'json', 'referrer_code': referrer_code})
+
+        data['submit_url'] = submit_url
+
+        return response.Response(data=data)
 
     def create(self, request, *args, **kwargs):
         referrer_code = kwargs.get('referrer_code')
-        referrer_profile = None
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        data = request.data
 
         if referrer_code:
             referrer_profile = get_object_or_404(models.Profile.objects, wallet=referrer_code)
 
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
         with transaction.atomic():
             user = serializer.save()
-            verification_key = auth_models.User.objects \
-                .make_random_password(length=32, allowed_chars='abcdefghjkmnpqrstuvwxyz'
-                                                               'ABCDEFGHJKLMNPQRSTUVWXYZ'
-                                                               '23456789'
-                                                               '@.,;:\|{}!@#$%^&*)(+=_-')
-            user.set_unusable_password()
-            user.save()
 
-            profile_create_data = {
-                'user': user,
-                'verification_key': verification_key
-            }
+            if referrer_code:
+                user.profile.referrer = referrer_profile
+                user.profile.referal_level = referrer_profile.referal_level + 1
 
-            if referrer_profile:
-                profile_create_data['referal_level'] = referrer_profile.referal_level + 1
-                profile_create_data['referrer'] = referrer_profile
+                user.profile.save()
 
-            profile = models.Profile.objects.create(**profile_create_data)
+            login(request, user)
 
+            # TODO send greeting pre-order mail
             # Sending email
-            msg = EmailMessage(to=[user.email])
-            msg.template_name = Templates.get_template_key(Templates.USER_VERIFY_EMAIL)
-            msg.merge_vars = {
-                user.email: {
-                    'email': user.email,
-                    'verify_url': request.build_absolute_uri(
-                        reverse('cp:verify',
-                                kwargs={'verification_key': verification_key, 'format': 'html'}))
-                }
-            }
-
-            msg.send()
+            # msg = EmailMessage(to=[user.email])
+            # msg.template_name = Templates.get_template_key(Templates.USER_VERIFY_EMAIL)
+            # msg.merge_vars = {
+            #     user.email: {
+            #         'email': user.email,
+            #         'verify_url': request.build_absolute_uri(
+            #             reverse('cp:verify',
+            #                     kwargs={'verification_key': verification_key, 'format': 'html'}))
+            #     }
+            # }
+            #
+            # msg.send()
 
         headers = self.get_success_headers(serializer.data)
 

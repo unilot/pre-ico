@@ -1,7 +1,9 @@
 from django.conf.urls import url
 from django.core.urlresolvers import reverse_lazy
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import auth, faq, profile, dashboard
+
+from cp.views import validator
+from .views import auth, faq, profile, dashboard, js
 
 
 LOGIN_REDIRECT_URL=reverse_lazy('dashboard', 'html')
@@ -25,8 +27,17 @@ urlpatterns = format_suffix_patterns([
     url('^dashboard', dashboard.DashboardView.as_view(), name='dashboard'),
 ], True, ('html',))
 
+urlpatterns += format_suffix_patterns([
+    url(r'^validate/user/email', validator.UserEmailValidator.as_view(), name='validate_email'),
+    url(r'^validate/user/wallet', validator.UserProfileWalletValidator.as_view(), name='validate_wallet')
+], True, ('json',))
+
+urlpatterns += format_suffix_patterns([
+    url(r'^js/config', js.ConfigJsView.as_view(), name='js_config'),
+], True, ('js',))
+
 urlpatterns += [
-    url('^(|/)$', dashboard.DashboardView.as_view(), name='index')
+    url('^(|/)$', js.ConfigJsView.as_view(), name='index')
 ]
 
 urlpatterns += adoptive_urls

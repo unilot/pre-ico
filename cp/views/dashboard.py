@@ -1,4 +1,3 @@
-from django.utils.http import urlquote
 from rest_framework import views, response, permissions
 
 

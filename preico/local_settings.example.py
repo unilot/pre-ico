@@ -40,3 +40,9 @@ COINBASE_CONFIG = {
 MANDRILL_API_KEY='mandrill-api-key'
 
 TOKEN_ADDRESS='token-address'
+
+TOKEN_SETTINGS = {
+    'PRICE': 0.000092,
+    'BONUS': 0.4,
+    'CAP': 25000000
+}

@@ -35,52 +35,7 @@
             laoreet ipsum eu, ornare magna. Phasellus rhoncus iaculis orci, ac varius erat. Aliquam eget
             commodo tortor. Ut ac consectetur justo. Etiam vel nunc id justo ultrices efficitur sed eu
             tortor. Fusce ultrices a lectus in sollicitudin.</p>
-        <div class="token-calculator">
-            <div class="well"><h3 class="text-center"><strong>Calculator</strong></h3>
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group"><label class="control-label" for="UNTAmount"># of UNT
-                            tokens</label>
-                            <div class="input-group"><span class="input-group-addon js-value-down"><i
-                                    class="glyphicon glyphicon-minus"></i></span><input
-                                    class="form-control js-calculator-token-amount-input" id="UNTAmount"
-                                    name="UNTAmount" placeholder="UNT" value="200" type="number"
-                                    min="200" max="13332"><span class="input-group-addon js-value-up"><i
-                                    class="glyphicon glyphicon-plus"></i></span></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-xs-4 text-2x text-center calculator-exchange-icon-container">
-                        <i class="glyphicon glyphicon-retweet"></i></div>
-                    <div class="col-md-5 col-xs-8">
-                        <div class="form-group"><label class="control-label" for="etherAmount">Amount of
-                            ETH</label>
-                            <div class="input-group"><input
-                                    class="form-control js-calculator-eth-amount-input" id="etherAmount"
-                                    name="etherAmount" placeholder="ETH" type="text" step="0.0025"><span
-                                    class="input-group-addon"><strong>ETH</strong></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-body bg-primary">
-                    <div class="row text-center">
-                        <div class="col-md-3"><p>Your<span class="text-uppercase"> Bonus:</span></p>
-                            <p class="text-1-5x"><strong><span
-                                    class="js-token-total-bonus">40</span>%</strong></p></div>
-                        <div class="col-md-3"><p>You'll recieve:</p>
-                            <p class="text-1-5x"><strong class="text-uppercase"><span
-                                    class="js-token-total-amount">140</span>UNT</strong></p></div>
-                        <div class="col-md-3"><p>For amount of ETH:</p>
-                            <p class="text-1-5x"><strong><span
-                                    class="js-eth-total-amount"></span>ETH</strong></p></div>
-                        <div class="col-md-3"><p>Aproximate $ amount</p>
-                            <p class="text-1-5x"><strong><i class="glyphicon glyphicon-usd"></i><span
-                                    class="js-fiat-total-amount"></span></strong></p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include 'includes/token-calculator.html' %}
         <hr>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">

@@ -38,13 +38,21 @@ INSTALLED_APPS = [
     'hvad',
     'martor',
     'rest_framework',
-    'djrill'
+    'djrill',
+    'django_countries',
+    'corsheaders'
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    '0.0.0.0:8030',
+)
+CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -186,3 +194,8 @@ SOCIAL_LINKS = {
     'YOUTUBE': 'https://www.youtube.com/channel/UCNdn2maOQEbYwpNK4Yaoxqw',
     'GITHUB': 'https://github.com/unilot',
 }
+
+COUNTRIES_EXCLUDED = (
+    'US',
+    'CA',
+)

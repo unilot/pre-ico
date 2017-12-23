@@ -2,6 +2,7 @@ from rest_framework import generics, permissions, response
 from rest_framework.reverse import reverse
 
 from cp import models as cp_models
+from preico.settings import TOKEN_SETTINGS
 
 
 class LandingView(generics.GenericAPIView):
@@ -28,12 +29,9 @@ class LandingView(generics.GenericAPIView):
         if request.user.is_authenticated:
             contribute_url = reverse('cp:dashboard', format='html')
         elif referrer_code:
-            contribute_url = reverse('cp:auth-referrer', args=referrer_code, format='html')
+            contribute_url = reverse('cp:sign-up-referrer', args=referrer_code, format='html')
         else:
-            contribute_url = reverse('cp:auth', format='html')
-
-        #TODO remove when action will be ready to go
-        contribute_url = '#'
+            contribute_url = reverse('cp:sign-up', format='html')
 
         data['contribute_url'] = contribute_url
 

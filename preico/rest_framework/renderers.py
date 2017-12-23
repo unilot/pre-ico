@@ -12,3 +12,9 @@ class TemplateHTMLRenderer(OrigTemplateHTMLRenderer):
             return {'object_list': data}
 
         return data
+
+# Note, subclass TemplateHTMLRenderer simply for the exception behavior
+class JSRenderer(TemplateHTMLRenderer):
+    media_type = 'application/javascript'
+    format = 'js'
+
