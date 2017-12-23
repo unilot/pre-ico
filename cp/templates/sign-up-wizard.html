@@ -8,6 +8,7 @@
 <hr />
 <form class="js-generic-form js-has-overlay" action="{{ submit_url }}" method="post"
       data-url="{% url 'cp:dashboard' 'html' %}">
+    {% csrf_token %}
     <div class="block-overlay hidden">
         <div class="overlay-wrapper">
             <div class="row overlay-centered full-width">
@@ -90,7 +91,7 @@
                                     class="form-control" id="email" type="email"
                                     placeholder="example@example.org" aria-describedby="email-help"
                                     name="email" required
-                                    data-online="http://pre-ico.unilot.loc:8180/en-us/cp/validate/user/email.json"><span
+                                    data-online="{% url 'cp:validate-email' 'json' %}"><span
                                     class="help-block" id="email-help">You will be notified when your tokens are available. We won't disclose your email to third parties.</span>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -186,7 +187,7 @@
                                                                             name="wallet" required
                                                                             aria-describedby="walletHelp"
                                                                             data-wallet
-                                                                            data-online="http://pre-ico.unilot.loc:8180/en-us/cp/validate/user/wallet.json"><span
+                                                                            data-online="{% url 'cp:validate-wallet' 'json' %}"><span
                                     class="help-block has-warning bg-warning" id="walletHelp">This is wallet that will be used for investment. See warnings above and check carefully before submit.</span>
                                 <div class="help-block with-errors"></div>
                             </div>
