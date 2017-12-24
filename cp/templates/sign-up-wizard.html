@@ -1,0 +1,214 @@
+{% extends 'base/base.html' %}
+{% load martortags %}
+{% load i18n %}
+{% load config %}
+
+{% block content %}
+<h1>{% block title %}Register your interest{% endblock %}</h1>
+<hr />
+<form class="js-generic-form js-has-overlay" action="{{ submit_url }}" method="post"
+      data-url="{% url 'cp:dashboard' 'html' %}">
+    {% csrf_token %}
+    <div class="block-overlay hidden">
+        <div class="overlay-wrapper">
+            <div class="row overlay-centered full-width">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <div class="overlay-center progress">
+                        <div class="progress-bar progress-bar-striped active full-width"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 tabbable tabs-left" id="signupWizard">
+            <ul class="nav nav-tabs">
+                <li><a href="#citizenshipInquery" data-toggle="tab">Citizenship enquiry</a></li>
+                <li class="disabled"><a href="#termsAndConditions" data-toggle="tab">Terms</a></li>
+                <li class="disabled"><a href="#userData" data-toggle="tab">Notification email</a></li>
+                <li class="disabled"><a href="#profileData" data-toggle="tab">Buyer information</a></li>
+                <li class="disabled"><a href="#deposit" data-toggle="tab">Deposit</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane" id="citizenshipInquery" tabindex="0">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2"><h2 class="text-uppercase">Citizenship
+                            enquiry</h2>
+                            <hr>
+                            <p class="lead">Are you a resident in or are you holding a passport issued
+                                by any of the following countries?</p>
+                            <ul class="lead">
+                                {% get_excluded_countries as excluded_countries %}
+                                {% for key,name in excluded_countries.items %}
+                                <li>{{ name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row row-controls">
+                        <div class="col-md-4 col-md-offset-2"><a
+                                class="btn btn-default btn-lg btn-block text-uppercase"
+                                href="{% url 'landing:index-html' %}" role="button">Yes</a></div>
+                        <div class="col-md-4"><a
+                                class="btn btn-primary btn-lg btn-block js-wizard-next-step text-uppercase"
+                                href="#" role="button">No</a></div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="termsAndConditions" tabindex="1">
+                    <div class="row">
+                        <div class="col-md-12"><h2 class="text-uppercase">Terms and conditions</h2>
+                            <hr>
+                            <pre class="terms pre-scrollable">
+                                {{ terms_and_conditions|safe_markdown }}
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="row row-controls">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <div class="checkbox"><label><input type="checkbox"
+                                                                    name="agreed_to_terms" required>I
+                                    agree and accept these terms and conditions</label></div>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-controls">
+                        <div class="col-md-2 col-md-offset-2"><a
+                                class="btn btn-default btn-lg btn-block text-uppercase js-wizard-back" href="#"
+                                role="button">Back</a></div>
+                        <div class="col-md-6"><a
+                                class="btn btn-primary btn-lg btn-block text-uppercase js-wizard-next-step"
+                                href="#" role="button">Accept and continue</a></div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="userData" tabindex="2">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2"><h2 class="text-uppercase">Notification
+                            email</h2>
+                            <hr>
+                            <div class="form-group"><label for="email">Your email address</label><input
+                                    class="form-control" id="email" type="email"
+                                    placeholder="example@example.org" aria-describedby="email-help"
+                                    name="email" required
+                                    data-online="{% url 'cp:validate-email' 'json' %}"><span
+                                    class="help-block" id="email-help">You will be notified when your tokens are available. We won't disclose your email to third parties.</span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group"><label for="password">Password</label><input
+                                    class="form-control" id="password" type="password"
+                                    aria-describedby="password-help" name="password" required
+                                    data-minlength="8"><span class="help-block" id="password-help">Password length should be at least 8 symbols</span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group"><label for="password">Repeate Password</label><input
+                                    class="form-control" id="passwordConfirm" type="password"
+                                    aria-describedby="password-help" name="passwordConfirm" required
+                                    data-match="#password"><span class="help-block"
+                                                                 id="passwordConfirm-help">Repeate password</span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-controls">
+                        <div class="col-md-2 col-md-offset-2"><a
+                                class="btn btn-default btn-lg btn-block text-uppercase js-wizard-back" href="#"
+                                role="button">Back</a></div>
+                        <div class="col-md-6"><a
+                                class="btn btn-primary btn-lg btn-block js-wizard-next-step text-uppercase"
+                                href="#" role="button">Submit and continue</a></div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="profileData" tabindex="3">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2"><h2 class="text-uppercase">Buyer
+                            information</h2>
+                            <hr>
+                            <div class="form-group"><label for="firstName">Your First Name</label><input
+                                    class="form-control" id="firstName" type="text" name="first_name"
+                                    required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group"><label for="secondName">Your Last Name</label><input
+                                    class="form-control" id="secondName" type="text" name="last_name"
+                                    required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group"><label for="companyName">Company name</label><input
+                                    class="form-control" id="companyName" type="text"
+                                    aria-describedby="companyNameHelp" name="company_name"><span
+                                    class="help-block" id="companyNameHelp">For incorporated buyers only, otherwise leave empty</span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group"><label for="phone">Phone number</label><input
+                                    class="form-control" id="phone" type="tel" name="phone"
+                                    data-phone="true" required placeholder="+123123123">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group"><label for="country">Country</label><select
+                                    class="form-control" id="country" aria-describedby="countryHelp"
+                                    name="country" required>
+                                <option></option>
+                                {% get_countries as countries %}
+                                {% for code,name in countries.items %}
+                                <option value="{{ code }}">{{ name }}</option>
+                                {% endfor %}
+                            </select><span class="help-block" id="countryHelp">This information is collected for contractual purposes only</span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-controls">
+                        <div class="col-md-2 col-md-offset-2"><a
+                                class="btn btn-default btn-lg btn-block text-uppercase js-wizard-back" href="#"
+                                role="button">Back</a></div>
+                        <div class="col-md-6"><a
+                                class="btn btn-primary btn-lg btn-block js-wizard-next-step text-uppercase"
+                                href="#" role="button">Submit and continue</a></div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="deposit" tabindex="4">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2"><h2 class="text-uppercase">Deposit</h2>
+                            <hr>
+                            <div class="form-group">
+                                <div class="alert alert-warning">
+                                    <ul class="list-unstyled">
+                                        <li>This is wallet that you can use to buy tokens with.<strong>Wallet
+                                            can NOT be changed later.</strong></li>
+                                        <li><strong>DO NOT use wallet that is stored on
+                                            exchange.</strong><a href="#">See</a> details on valid
+                                            wallets for investment
+                                        </li>
+                                    </ul>
+                                </div>
+                                <label for="firstName">Wallet</label><input class="form-control"
+                                                                            id="wallet" type="text"
+                                                                            name="wallet" required
+                                                                            aria-describedby="walletHelp"
+                                                                            data-wallet
+                                                                            data-online="{% url 'cp:validate-wallet' 'json' %}"><span
+                                    class="help-block has-warning bg-warning" id="walletHelp">This is wallet that will be used for investment. See warnings above and check carefully before submit.</span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            {% include 'includes/token-calculator.html' %}
+                        </div>
+                    </div>
+                    <div class="row row-controls">
+                        <div class="col-md-2 col-md-offset-2"><a
+                                class="btn btn-default btn-lg btn-block text-uppercase js-wizard-back" href="#"
+                                role="button">Back</a></div>
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-lg btn-block text-uppercase"
+                                    type="submit" role="button">Go to the Dashboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

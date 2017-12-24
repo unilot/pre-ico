@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load social_links %}
 {% load martortags %}
+{% load config %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
@@ -42,7 +43,7 @@
                     {% endif %}
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block sentence__block--padding">
-                            <p>{% trans 'Upcoming bonus' %}</p><span>40%</span>
+                            <p>{% trans 'Upcoming bonus' %}</p><span>{% token_bonus %}%</span>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 center-xs">
@@ -52,7 +53,7 @@
                     </div>
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block">
-                            <p>{% trans 'Token price' %}</p><span>0.000055 ETH</span>
+                            <p>{% trans 'Token price' %}</p><span>{% token_price %} ETH</span>
                         </div>
                     </div>
                     {% if is_pre_ico %}
@@ -826,51 +827,6 @@
     </div>
 </section>
 {% endif %}
-<section class="gray" id="publications">
-    <div class="container">
-        <div class="row heading">
-            <div class="col-xs-12">
-                <h2>Publications</h2><span>Publications</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 flex-wrap">
-                <div class="thumbnail"><img src="{% static 'landing/img/publications/ibm.png' %}" alt="IBM">
-                    <div class="caption">
-                        <h3>IBM</h3>
-                        <p>The company works in a partnership agreement with a number of leading legal companies of
-                            Russia, Europe, the USA, and South Korea.</p>
-                        <p><a class="btn btn-default" href="#" role="button">Read full</a></p>
-                    </div>
-                </div>
-                <div class="thumbnail"><img src="{% static 'landing/img/publications/carlsberg.png' %}" alt="Carlsberg">
-                    <div class="caption">
-                        <h3>Carlsberg</h3>
-                        <p>The company works in a partnership agreement with a number of leading legal companies of
-                            Russia, Europe, the USA, and South Korea.</p>
-                        <p><a class="btn btn-default" href="#" role="button">Read full</a></p>
-                    </div>
-                </div>
-                <div class="thumbnail"><img src="{% static 'landing/img/publications/cisco.png' %}" alt="Cisco">
-                    <div class="caption">
-                        <h3>Cisco</h3>
-                        <p>The company works in a partnership agreement with a number of leading legal companies of
-                            Russia, Europe, the USA, and South Korea.</p>
-                        <p><a class="btn btn-default" href="#" role="button">Read full</a></p>
-                    </div>
-                </div>
-                <div class="thumbnail"><img src="{% static 'landing/img/publications/tele2.png' %}" alt="Tele2">
-                    <div class="caption">
-                        <h3>Tele2</h3>
-                        <p>The company works in a partnership agreement with a number of leading legal companies of
-                            Russia, Europe, the USA, and South Korea.</p>
-                        <p><a class="btn btn-default" href="#" role="button">Read full</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="white" id="partners">
     <div class="container">
         <div class="row heading">
