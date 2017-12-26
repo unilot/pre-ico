@@ -34,5 +34,6 @@ class LandingView(generics.GenericAPIView):
             contribute_url = reverse('cp:sign-up', format='html')
 
         data['contribute_url'] = contribute_url
+        data['show_roadshow'] = True
 
         return response.Response(data)
