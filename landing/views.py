@@ -3,6 +3,7 @@ from rest_framework.reverse import reverse
 
 from cp import models as cp_models
 from preico.settings import TOKEN_SETTINGS
+from . import models
 
 
 class LandingView(generics.GenericAPIView):
@@ -35,5 +36,6 @@ class LandingView(generics.GenericAPIView):
 
         data['contribute_url'] = contribute_url
         data['show_roadshow'] = True
+        data['publications_list'] = models.Publication.objects.language().filter(published=True).order_by('-id')
 
         return response.Response(data)

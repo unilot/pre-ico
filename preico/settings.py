@@ -183,6 +183,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'landing', 'assets'),
 )
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join( os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) ), '.media')
+
 SOCIAL_LINKS = {
     'FACEBOOK': 'https://www.facebook.com/unilot.io/',
     'TWITTER': 'https://twitter.com/unilot_lottery',

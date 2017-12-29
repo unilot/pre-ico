@@ -8,5 +8,5 @@ class FAQView(generics.ListAPIView):
     permission_classes = [ permissions.AllowAny ]
     model = models.FAQ
     template_name='faq.html'
-    queryset = models.FAQ.objects.language().filter(published=True).order_by('-id')
+    queryset = models.FAQ.objects.language().filter(published=True).order_by('id')
     serializer_class = faq.SimpleFaqSerializer
