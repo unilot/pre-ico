@@ -92,7 +92,7 @@
                 <li><a href="#whitePaper" class="font-roboto-light-18-px">White Paper</a></li>
                 <li><a href="#advisors" class="font-roboto-light-18-px">Advisors</a></li>
                 <li><a href="#team" class="font-roboto-light-18-px">Team</a></li>
-                <li><a href="#publications" class="font-roboto-light-18-px">Publications</a></li>
+                {% if publications_list %}<li><a href="#publications" class="font-roboto-light-18-px">Publications</a></li>{% endif %}
                 <li><a href="#partners" class="font-roboto-light-18-px">Partners</a></li>
                 <li><a href="#newsletter" class="font-roboto-light-18-px">Newsletter</a></li>
                 {% if faqs_total > 0 %}<li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
