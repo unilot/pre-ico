@@ -35,7 +35,7 @@ class LandingView(generics.GenericAPIView):
             contribute_url = reverse('cp:sign-up', format='html')
 
         data['contribute_url'] = contribute_url
-        data['show_roadshow'] = True
         data['publications_list'] = models.Publication.objects.language().filter(published=True).order_by('-id')
+        data['roadshow_list'] = models.Roadshow.objects.language().filter(published=True).order_by('id')
 
         return response.Response(data)

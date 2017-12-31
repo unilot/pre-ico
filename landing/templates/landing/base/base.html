@@ -44,7 +44,7 @@
                     <li><a href="#unilotBenefits">Unilot Benefits</a></li>
                     {% if faqs_total > 0 %}
                         <li><a href="#faq">FAQ</a></li>{% endif %}
-                    {% if show_roadshow %}
+                    {% if roadshow_list %}
                         <li><a href="#roadshow">Upcoming Events</a></li>{% endif %}
                 </ul>
             </div>
@@ -96,7 +96,7 @@
                 <li><a href="#partners" class="font-roboto-light-18-px">Partners</a></li>
                 <li><a href="#newsletter" class="font-roboto-light-18-px">Newsletter</a></li>
                 {% if faqs_total > 0 %}<li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
-                {% if show_roadshow %}<li><a href="#roadshow" class="font-roboto-light-18-px">Upcoming Events</a></li>{% endif %}
+                {% if roadshow_list %}<li><a href="#roadshow" class="font-roboto-light-18-px">Upcoming Events</a></li>{% endif %}
                 {% if is_pre_ico %}
                     <li><a href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a></li>
                 {% endif %}
