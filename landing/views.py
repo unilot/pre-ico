@@ -38,5 +38,6 @@ class LandingView(generics.GenericAPIView):
         data['publications_list'] = models.Publication.objects.language().filter(published=True).order_by('-id')
         data['roadshow_list'] = models.Roadshow.objects.language().filter(published=True).order_by('id')
         data['advisors_list'] = models.Adviser.objects.language().filter(published=True).order_by('id')
+        data['team_members_list'] = models.TeamMember.objects.language().filter(published=True).order_by('id')
 
         return response.Response(data)
