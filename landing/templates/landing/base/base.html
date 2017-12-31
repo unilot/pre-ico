@@ -90,9 +90,9 @@
                 <li><a href="#roadmap" class="font-roboto-light-18-px">Roadmap</a></li>
                 <li><a href="#tokenomics" class="font-roboto-light-18-px">Use of funds</a></li>
                 <li><a href="#whitePaper" class="font-roboto-light-18-px">White Paper</a></li>
-                <li><a href="#advisors" class="font-roboto-light-18-px">Advisors</a></li>
-                <li><a href="#team" class="font-roboto-light-18-px">Team</a></li>
-                {% if publications_list %}<li><a href="#publications" class="font-roboto-light-18-px">Publications</a></li>{% endif %}
+                {% if advisors_list %}<li><a href="#advisors" class="font-roboto-light-18-px">{% trans 'Advisors' %}</a></li>{% endif %}
+                {% if team_members_list %}<li><a href="#team" class="font-roboto-light-18-px">Team</a></li>{% endif %}
+                {% if publications_list %}<li><a href="#publications" class="font-roboto-light-18-px">{% trans 'Publications' %}</a></li>{% endif %}
                 <li><a href="#partners" class="font-roboto-light-18-px">Partners</a></li>
                 <li><a href="#newsletter" class="font-roboto-light-18-px">Newsletter</a></li>
                 {% if faqs_total > 0 %}<li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
