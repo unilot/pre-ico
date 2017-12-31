@@ -552,17 +552,31 @@
         </div>
     </section>
 {% endif %}
+{% if advisors_list %}
 <section class="advisors" id="advisors">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="heading">
-                    <h2>Advisors</h2><span>Our Advisors</span>
+                    <h2>{% trans 'Advisors' %}</h2><span>{% trans 'Our Advisors' %}</span>
                 </div>
             </div>
         </div>
         <div class="row">
+            {% for advisor in advisors_list %}
             <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="advisors__block">
+                    <div class="row">
+                        <div class="col-xs-5"><img src="{{ advisor.photo.url }}" alt="Unilot {{ advisor.full_name }} {{ advisor.position }}">
+                        </div>
+                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/{{ advisor.linkedin_nickname }}/">{{ advisor.full_name }}<i class="icon-linkedin"></i></a><b>{{ advisor.position }}</b><span></span>
+                            {{ advisor.caption|safe_markdown }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% comment %}<div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="advisors__block">
                     <div class="row">
                         <div class="col-xs-5"><img src="{% static 'landing/img/advisors/Timur-Mukminov.png' %}" alt="Unilot {% trans 'Timur Mukminov' %} {% trans 'International Relations and Business Intelligence Advisor' %}">
@@ -658,10 +672,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>{% endcomment %}
         </div>
     </div>
 </section>
+{% endif %}
 <section class="team" id="team">
     <div class="container">
         <div class="row">

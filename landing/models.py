@@ -245,3 +245,39 @@ class Roadshow(AdvancedImageFieldsProcessingModelMixin, TranslatableModel, Resiz
     @property
     def title_(self):
         return self.title
+
+
+class Adviser(AdvancedImageFieldsProcessingModelMixin, TranslatableModel, ResizableImageFieldMixin):
+    __is_process_extra_save_on_new__ = False
+
+    def __get_photo_path__(self, *args, **kwargs):
+        file_name = '{filename}.png'.format(filename=slugify(self.full_name))
+
+        return os.path.join('landing/adviser', file_name)
+
+    image_field_params = {
+        'photo': {
+            'WIDTH': 350,
+            'HEIGHT': 350,
+            'FORMAT': 'PNG',
+            'PATH': __get_photo_path__,
+        }
+    }
+
+    published = models.BooleanField(default=False)
+    linkedin_nickname = models.SlugField(max_length=64, null=False, blank=False)
+    photo = models.ImageField(upload_to=__get_photo_path__, null=False, blank=False,
+                              validators=(ImageMinSizeValidator(
+                                        min_width=150,
+                                        min_height=150),)
+                              )
+
+    translations = TranslatedFields(
+        full_name=models.CharField(max_length=32, null=False, blank=False),
+        position = models.CharField(max_length=128, null=False, blank=False),
+        caption = models.TextField(max_length=1024, null=False, blank=False)
+    )
+
+    @property
+    def full_name_(self):
+        return self.full_name
