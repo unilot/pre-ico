@@ -144,7 +144,7 @@ MARTOR_MARKDOWN_EXTENSIONS = [
     # Custom markdown extensions.
     'martor.extensions.urlize',
     'martor.extensions.del_ins', # ~~strikethrough~~ and ++underscores++
-    'martor.extensions.emoji',   # require for emoji
+    'landing.martor.extensions.big_amount'
 ]
 
 # Markdown urls
