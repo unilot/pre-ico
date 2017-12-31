@@ -19,9 +19,9 @@ class ImageMinSizeValidator(object):
             self.message = message
 
     def __call__(self, img):
-        (width, height) = images.get_image_dimensions(img)
+        width, height = images.get_image_dimensions(img)
 
-        if width < self.min_width or height < self.min_width:
+        if width < self.min_width or height < self.min_height:
             raise self.__class__.ValidationError(
                 self.message.format(min_width=self.min_width, min_height=self.min_height), code='invalid')
 
