@@ -1,0 +1,12 @@
+{% extends 'landing/base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<section class="sentence" id="main">
+    <div class="container">
+        <h1>{% block title %}{{ document.get_title }}{% endblock %}</h1>
+        {{ document.get_content|safe }}
+    </div>
+</section>
+{% endblock %}

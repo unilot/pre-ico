@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}Initial Coin Offering Pre-sale on the way{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-c88cd4ffcec6f7b98890267d05ace1a9.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-be6ab020c56e8b84705191c16b4a2d8d.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#main"><img src="{% static 'landing/img/logo-header.svg' %}" alt="Unilot logo"></a>
+                    <a href="{% url 'landing:index' %}"><img src="{% static 'landing/img/logo-header.svg' %}" alt="Unilot logo"></a>
                 </div>
             </div>
             <div class="col-md-6">
@@ -191,8 +191,8 @@
                             src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
                     <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
                         <ul>
-                            <li><a href="#">Terms and Conditions</a></li>
-                            <li><a href="#">Affiliate Program</a></li>
+                            <li><a href="{% url 'landing:document' 'terms-and-conditions' %}">{% trans 'Terms and Conditions' %}</a></li>
+                            <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}">Affiliate Program</a></li>
                             <li><a href="#">Bounty Program</a></li>
                             <li><a href="mailto:info@unilot.io">info@unilot.io</a></li>
                         </ul>

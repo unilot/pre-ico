@@ -1,8 +1,9 @@
+from django.http.response import HttpResponseNotFound
 from rest_framework import generics, permissions, response
 from rest_framework.reverse import reverse
 
 from cp import models as cp_models
-from preico.settings import TOKEN_SETTINGS
+from preico.document import TermsAndConditions, AffiliateTermsAndConditions
 from . import models
 
 
@@ -41,3 +42,47 @@ class LandingView(generics.GenericAPIView):
         data['team_members_list'] = models.TeamMember.objects.language().filter(published=True).order_by('id')
 
         return response.Response(data)
+
+
+class DocumentView(generics.GenericAPIView):
+    permission_classes = [ permissions.AllowAny ]
+    documents = {
+        'terms-and-conditions': TermsAndConditions(),
+        'affiliate-terms-and-conditions': AffiliateTermsAndConditions(),
+        'bounty-program': AffiliateTermsAndConditions(),
+    }
+    alias = {
+        'terms': 'terms-and-conditions',
+        'tnc': 'terms-and-conditions',
+        'affiliate': 'affiliate-terms-and-conditions',
+        'bounty': 'bounty-program',
+    }
+    template_name = 'landing/document.html'
+
+    def get(self, request, *args, **kwargs):
+        document_name = kwargs.get('document')
+
+        if document_name:
+            document = self.documents.get(document_name)
+
+            if not document and self.alias.get(document_name):
+                document = self.documents.get(self.alias.get(document_name))
+
+        if not document:
+            raise HttpResponseNotFound()
+
+        data = {
+            'document': document
+        }
+
+        return response.Response(data)
+
+class WhitePaperView(generics.GenericAPIView):
+    permission_classes = [ permissions.AllowAny ]
+    template_name='landing/documents/White-Paper.html'
+
+    def get(self, request, *args, **kwargs):
+        return response.Response({
+            'advisors_list': models.Adviser.objects.language().filter(published=True).order_by('id'),
+            'team_members_list': models.TeamMember.objects.language().filter(published=True).order_by('id')
+        })
