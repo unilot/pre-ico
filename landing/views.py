@@ -3,7 +3,7 @@ from rest_framework import generics, permissions, response
 from rest_framework.reverse import reverse
 
 from cp import models as cp_models
-from preico.document import TermsAndConditions, AffiliateTermsAndConditions
+from preico.document import TermsAndConditions, AffiliateTermsAndConditions, BountyProgram
 from . import models
 
 
@@ -49,7 +49,7 @@ class DocumentView(generics.GenericAPIView):
     documents = {
         'terms-and-conditions': TermsAndConditions(),
         'affiliate-terms-and-conditions': AffiliateTermsAndConditions(),
-        'bounty-program': AffiliateTermsAndConditions(),
+        'bounty-program': BountyProgram(),
     }
     alias = {
         'terms': 'terms-and-conditions',

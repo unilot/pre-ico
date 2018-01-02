@@ -28,3 +28,9 @@ class AffiliateTermsAndConditions(Document):
     title = 'Affiliate Terms and Conditions'
 
     path = os.path.join(settings.BASE_DIR, 'Affiliate-terms-and-conditions_v1.html')
+
+
+class BountyProgram(Document):
+    title = 'Boundy Program'
+
+    path = os.path.join(settings.BASE_DIR, 'Bounty-Program.html')
