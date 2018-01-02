@@ -1,5 +1,6 @@
 from django import template
 from django.utils.http import urlquote
+from django.utils.translation import get_language
 
 from preico import settings
 
@@ -29,7 +30,8 @@ def medium_blog():
 
 @register.simple_tag()
 def telegram_channel():
-    return settings.SOCIAL_LINKS.get('TELEGRAM')
+    suffix = str(get_language()).upper().replace('-', '_')
+    return settings.SOCIAL_LINKS.get('TELEGRAM_%s' % suffix, 'TELEGRAM_EN_US')
 
 
 @register.simple_tag()
