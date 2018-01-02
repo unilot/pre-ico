@@ -159,7 +159,7 @@ MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://assets-cdn.github.com/images/icons/emo
 LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = (
-    ('ru-ru', 'Русский'),
+    # ('ru-ru', 'Русский'),
     ('en-us', 'English'),
 )
 

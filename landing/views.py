@@ -31,7 +31,7 @@ class LandingView(generics.GenericAPIView):
         if request.user.is_authenticated:
             contribute_url = reverse('cp:dashboard', format='html')
         elif referrer_code:
-            contribute_url = reverse('cp:sign-up-referrer', args=referrer_code, format='html')
+            contribute_url = reverse('cp:sign-up-referred', kwargs={'referrer_code': referrer_code, 'format': 'html'})
         else:
             contribute_url = reverse('cp:sign-up', format='html')
 

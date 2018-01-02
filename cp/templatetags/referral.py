@@ -38,4 +38,4 @@ def referral_url(context):
     request = context.get('request')
 
     return request.build_absolute_uri(
-        reverse( 'cp:auth-referred', kwargs={'referrer_code': referral_code(context), 'format': 'html'} ) )
+        reverse( 'landing:index-html-referred', kwargs={'referrer_code': referral_code(context)} ) )
