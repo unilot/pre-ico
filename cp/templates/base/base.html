@@ -264,12 +264,14 @@
                     {% if user.is_authenticated %}
                     <div class="row">
                         <div class="col-xs-12">
+                            {% if user.profile %}
                             <div class="panel">
                                 <div class="panel-body"><strong>My UNT Tokens</strong>
-                                    <p class="text-2x"><strong>0</strong></p><a href="#">Set wallet for
-                                        withdrawal</a></div>
+                                    <p class="text-2x"><strong>{{ user.profile.token_amount_reserved|floatformat }}</strong></p>
+                                </div>
                             </div>
                             <hr>
+                            {% endif %}
                             <div class="panel">
                                 <div class="panel-body"><strong>My UNT Referral Tokens</strong>
                                     <p class="text-2x"><strong>0</strong></p><a href="#">Get more tokens for
@@ -278,8 +280,8 @@
                             <hr>
                             <div class="panel">
                                 <div class="panel-body"><strong>UNT Token Price</strong>
-                                    <p class="text-2x"><strong>0.0001 ETH</strong></p>
-                                    <p><span class="label label-primary">40% Bonus</span> for purchase &gt; 75 UNT
+                                    <p class="text-2x"><strong>{% token_price %} ETH</strong></p>
+                                    <p><span class="label label-primary">40% Bonus</span>
                                     </p></div>
                             </div>
                             <hr>
