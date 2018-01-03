@@ -13,7 +13,7 @@ class LandingView(generics.GenericAPIView):
 
     def get(self, request, *args, **kwargs):
         faqs_qs = cp_models.FAQ.objects\
-            .filter(published=True).order_by('-id')
+            .filter(published=True).order_by('id')
 
         faqs_total = faqs_qs.count()
         faqs = faqs_qs[:12]
