@@ -200,12 +200,14 @@
                         </div>
                     {% endif %}
                 </div>
+                {% get_available_languages as LANGUAGES %}
+                {% if LANGUAGES|length > 1 %}
                 <div class="client__lng">
-                    {% get_available_languages as LANGUAGES %}
                     {% for lang_code, lang_name in LANGUAGES %}
                         <a href="#"><img src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"
                                          alt="{{ lang_code|language_name_local }}"></a>
                     {% endfor %}</div>
+                {% endif %}
                 <div class="row">
                     {% if is_pre_ico %}
                     <div class="col-xs-12">
