@@ -50,13 +50,13 @@
                     </div>
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block">
-                            <p>{% trans 'Token price' %}</p><span>{% token_price %} ETH</span>
+                            {% token_cap as token_cap %}
+                            <p>{% trans 'Tokens for sale' %}</p><span>{{ token_cap|intcomma }}</span>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block sentence__block--padding">
-                            {% token_cap as token_cap %}
-                            <p>{% trans 'Tokens For Sale' %}</p><span>{{ token_cap|intcomma }}</span>
+                            <p>{% trans 'Max cap' %}</p><span>1975 ETH</span>
                         </div>
                     </div>
                     {% if is_pre_ico %}

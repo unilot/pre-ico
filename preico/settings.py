@@ -195,9 +195,10 @@ SOCIAL_LINKS = {
     'TELEGRAM_RU_RU': 'https://t.me/unilot',
     'TELEGRAM_EN_US': 'https://t.me/Uniloteng',
     'LINKEDIN': 'https://www.linkedin.com/company/18284068/',
-    'SLACK': 'https://unilot.herokuapp.com',
+    'SLACK': 'https://join.slack.com/t/unilot/shared_invite/enQtMjkzMjc5NTE0NjczLTU2ODlmOGE1YjkwMzBlOTM4ZTg2MTAxMTUwZTdhYjRiZGUxYmFlMjc1YjQ5YzM2N2JhYzQ0MWNlZmZkMDQxNWU',
     'YOUTUBE': 'https://www.youtube.com/channel/UCNdn2maOQEbYwpNK4Yaoxqw',
     'GITHUB': 'https://github.com/unilot',
+    'STEEMIT': 'https://steemit.com/@unilot',
 }
 
 COUNTRIES_EXCLUDED = (
