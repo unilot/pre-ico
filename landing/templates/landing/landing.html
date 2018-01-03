@@ -4,6 +4,7 @@
 {% load social_links %}
 {% load martortags %}
 {% load config %}
+{% load humanize %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
@@ -43,17 +44,19 @@
                     {% endif %}
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block sentence__block--padding">
-                            <p>{% trans 'Upcoming bonus' %}</p><span>{% token_bonus %}%</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 center-xs">
-                        <div class="sentence__block sentence__block--padding">
-                            <p>{% trans 'Min commitment' %}</p><span>0 ETH</span>
+                            {% token_bonus as token_bonus %}
+                            <p>{% trans 'Upcoming bonus' %}</p><span>{{ token_bonus|floatformat }}%</span>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block">
-                            <p>{% trans 'Token price' %}</p><span>{% token_price %} ETH</span>
+                            {% token_cap as token_cap %}
+                            <p>{% trans 'Tokens for sale' %}</p><span>{{ token_cap|intcomma }}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 center-xs">
+                        <div class="sentence__block sentence__block--padding">
+                            <p>{% trans 'Max cap' %}</p><span>1975 ETH</span>
                         </div>
                     </div>
                     {% if is_pre_ico %}
@@ -66,7 +69,7 @@
         </div>
     </div>
 </section>
-<section class="about" id="whatIsUnilot">
+<section class="about white" id="whatIsUnilot">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -84,7 +87,7 @@
         </div>
     </div>
 </section>
-<section class="advantages" id="unilotBenefits">
+<section class="advantages light" id="unilotBenefits">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -155,347 +158,75 @@
         </div>
     </div>
 </section>
-<section class="client" id="mobileClient">
+<section class="client dark" id="mobileClient">
     <div class="container">
         <div class="scene1">
             <div data-depth="0.5"><img src="{% static 'landing/img/client-bg.png' %}" alt=""></div>
         </div>
-        <div class="row">
+        <div class="row heading">
             <div class="col-xs-12">
-                <div class="heading">
-                    <h2>Mobile Client</h2><span>Mobile App</span>
-                </div>
+                <h2>Mobile Client</h2><span>Mobile App</span>
             </div>
+        </div>
+        <div class="row content">
             <div class="col-sm-7 col-xs-12">
                 <p>Unilot Mobile Client will be available on iOS and Android platforms. Unilot mobile will support
-                    multiple regions, languages offered English, Russian and German</p>
-            </div>
-        </div>
-        <div class="row start-sm center-xs">
-            <div class="col-md-5 col-sm-7 col-xs-12">
-                <div class="client__app">
-                    {% if is_app_public %}
-                        <div class="row">
-                            <div class="col-sm-6 col-xs-12"><a href="#">
-                                <div class="row">
-                                    <div class="col-xs-3"><img src="{% static 'landing/img/google-play.svg' %}"
-                                                               alt=""></div>
-                                    <div class="col-xs-9">
-                                        <p>Download on the</p><span>Google Play</span>
-                                    </div>
-                                </div>
-                            </a></div>
-                            <div class="col-sm-6 col-xs-12"><a href="#">
-                                <div class="row">
-                                    <div class="col-xs-3"><img src="{% static 'landing/img/apple.svg' %}" alt="">
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <p>Download on the</p><span>App Store</span>
-                                    </div>
-                                </div>
-                            </a></div>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="client__lng">
-                    {% get_available_languages as LANGUAGES %}
-                    {% for lang_code, lang_name in LANGUAGES %}
-                        <a href="#"><img src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"
-                                         alt="{{ lang_code|language_name_local }}"></a>
-                    {% endfor %}</div>
-                <div class="row">
-                    {% if is_pre_ico %}
+                    multiple regions, languages offered English and Russian</p>
+
+                <div class="row start-sm center-xs">
                     <div class="col-xs-12">
-                        <a class="btn" href="{{ contribute_url }}">Contribute Now</a>
+                        <div class="client__app">
+                            {% if is_app_public %}
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-12"><a href="#">
+                                        <div class="row">
+                                            <div class="col-xs-3"><img src="{% static 'landing/img/google-play.svg' %}"
+                                                                       alt=""></div>
+                                            <div class="col-xs-9">
+                                                <p>Download on the</p><span>Google Play</span>
+                                            </div>
+                                        </div>
+                                    </a></div>
+                                    <div class="col-sm-6 col-xs-12"><a href="#">
+                                        <div class="row">
+                                            <div class="col-xs-3"><img src="{% static 'landing/img/apple.svg' %}" alt="">
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <p>Download on the</p><span>App Store</span>
+                                            </div>
+                                        </div>
+                                    </a></div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% get_available_languages as LANGUAGES %}
+                        {% if LANGUAGES|length > 1 %}
+                        <div class="client__lng">
+                            {% for lang_code, lang_name in LANGUAGES %}
+                                <a href="#"><img src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"
+                                                 alt="{{ lang_code|language_name_local }}"></a>
+                            {% endfor %}</div>
+                        {% endif %}
+                        <div class="row">
+                            {% if is_pre_ico %}
+                            <div class="col-xs-12">
+                                <a class="btn" href="{{ contribute_url }}">{% trans 'Participate' %}</a>
+                            </div>
+                            {% endif %}
+                        </div>
                     </div>
-                    {% endif %}
                 </div>
             </div>
-            <div class="col-md-7 col-sm-5">
-                <div class="client__img"><img src="{% static 'landing/img/client.png' %}" alt=""></div>
+            <div class="col-sm-5 col-xs-12">
+                <iframe width="100%" height="70%" src="https://www.youtube.com/embed/pFknkJfj9kM?rel=0&amp;showinfo=0"
+                        frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 </section>
-<section class="roadmap" id="roadmap">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="heading">
-                    <h2>Roadmap</h2><span>Roadmap</span>
-                </div>
-                <div class="demo-wrap">
-                    <div class="slide-wrap__block"></div>
-                    <div class="demo" id="demo">
-                        <ul class="slide-wrap" id="example">
-                            <li class="pos1">
-                                <div class="inner">
-                                    <h4>May
-                                        <p>'17</p>
-                                    </h4>
-                                    <ul>
-                                        <li>Unilot is formalized</li>
-                                        <li>Initial investment is required</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos2">
-                                <div class="inner">
-                                    <h4>June
-                                        <p>'17</p>
-                                    </h4>
-                                    <ul>
-                                        <li>Seed fund is received</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos3">
-                                <div class="inner">
-                                    <h4>October - December
-                                        <p>'17</p>
-                                    </h4>
-                                    <ul>
-                                        <li>MVP Ready</li>
-                                        <li>Pre-ICO preparations</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos4">
-                                <div class="inner">
-                                    <h4>January
-                                        <p>'18</p>
-                                    </h4>
-                                    <ul>
-                                        <li>11 - Pre-ICO Active</li>
-                                        <li>18 - Closed System Testing</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos5">
-                                <div class="inner">
-                                    <h4>February to March
-                                        <p>'18</p>
-                                    </h4>
-                                    <ul>
-                                        <li>ICO #1 (50% of total ICO investment is offered)</li>
-                                        <li>1st more system tests and bug fixing</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos6">
-                                <div class="inner">
-                                    <h4>March 30
-                                        <p>'18</p>
-                                    </h4>
-                                    <ul>
-                                        <li>Unilot launch will include licensing from Malta Remote Gaming Licence http://www.mga.org.mt/gaming-sectors/remote-gaming/</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos7">
-                                <div class="inner">
-                                    <h4>April
-                                        <p>'18</p>
-                                    </h4>
-                                    <ul>
-                                        <li>1st Unilot is released with fully functional & tested Lottery game</li>
-                                        <li>15th - ICO #2 (the remaining 50% is offered to the public)</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos8">
-                                <div class="inner">
-                                    <h4>May to June
-                                        <p>'18</p>
-                                    </h4>
-                                    <ul>
-                                        <li>Launch of new game “BTC Auction</li>
-                                        <li>Add Lottery variants</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos9">
-                                <div class="inner">
-                                    <h4>July - September
-                                        <p>'18</p>
-                                    </h4>
-                                    <ul>
-                                        <li>Launch of decentralized platform hosted games, white label</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos10">
-                                <div class="inner">
-                                    <h4>November
-                                        <p>'18</p>
-                                    </h4>
-                                    <ul>
-                                        <li>Launch “Host your own game” / White label platform</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="pos11">
-                                <div class="inner">
-                                    <h4>January to March
-                                        <p>'19</p>
-                                    </h4>
-                                    <ul>
-                                        <li>Launch of Poker game</li>
-                                        <li>Launch Bingo</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <i class="arrow prev" id="jprev"></i><i class="arrow next" id="jnext"></i>
-                        </ul>
-                    </div>
-                </div>
-                <div class="swiper-container" id="swiper-1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <h4>May
-                                <p>'17</p>
-                            </h4>
-                            <ul>
-                                <li>Unilot is formalized</li>
-                                <li>Initial investment is required</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>June
-                                <p>'17</p>
-                            </h4>
-                            <ul>
-                                <li>Seed fund is received</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>October - December
-                                <p>'17</p>
-                            </h4>
-                            <ul>
-                                <li>MVP Ready</li>
-                                <li>Pre-ICO preparations</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>January
-                                <p>'18</p>
-                            </h4>
-                            <ul>
-                                <li>11 - Pre-ICO Active</li>
-                                <li>18 - Closed System Testing</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>February to March
-                                <p>'18</p>
-                            </h4>
-                            <ul>
-                                <li>ICO #1 (50% of total ICO investment is offered)</li>
-                                <li>1st more system tests and bug fixing</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>March 30
-                                <p>'18</p>
-                            </h4>
-                            <ul>
-                                <li>Unilot launch will include licensing from Malta Remote Gaming Licence
-                                    http://www.mga.org.mt/gaming-sectors/remote-gaming/
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>April
-                                <p>'18</p>
-                            </h4>
-                            <ul>
-                                <li>1st Unilot is released with fully functional & tested Lottery game</li>
-                                <li>15th - ICO #2 (the remaining 50% is offered to the public)</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>May to June
-                                <p>'18</p>
-                            </h4>
-                            <ul>
-                                <li>Launch of new game “BTC Auction</li>
-                                <li>Add Lottery variants</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>July - September
-                                <p>'18</p>
-                            </h4>
-                            <ul>
-                                <li>Launch of decentralized platform hosted games, white label</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>November
-                                <p>'18</p>
-                            </h4>
-                            <ul>
-                                <li>Launch “Host your own game” / White label platform</li>
-                            </ul>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <h4>January to March
-                                <p>'19</p>
-                            </h4>
-                            <ul>
-                                <li>Launch of Poker game</li>
-                                <li>Launch Bingo</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-prev" id="prev1"><i class="icon-chevron-thin-left"></i></div>
-                <div class="swiper-button-next" id="next1"><i class="icon-chevron-thin-right"></i></div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="function" id="tokenomics">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 col-xs-12">
-                <div class="heading">
-                    <h2>Token Distribution</h2><span>Tokens</span>
-                </div>
-                <img src="{% static 'landing/img/function-1.png' %}" alt="">
-                <p>62% Purchasers <span class="purple"></span></p>
-                <p>10% Reserve <span class="blue"></span></p>
-                <p>3% Bounty <span class="green"></span></p>
-                <p>10% Referral and Bonus Program <span class="lilac"></span></p>
-                <p>5% Advisers <span class="yellow"></span></p>
-                <p>10% Team <span class="blue"></span></p>
-            </div>
-            <div class="col-md-5 col-xs-12">
-                <div class="heading h2">
-                    <h2>Use of Funds</h2><span>Flow</span>
-                </div>
-                <img src="{% static 'landing/img/function-2.png' %}" alt="">
-                <p>40% Marketing<span class="purple"></span></p>
-                <p>30% Platform Development and expansion<span class="green"></span></p>
-                <p>15% Business Development and Partnerships<span class="lilac"></span></p>
-                <p>10% Legal and Misc Operations<span class="blue"></span></p>
-                <p>5% Consultants<span class="yellow"></span></p>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="whitepaper" id="whitePaper">
+{% include 'landing/includes/roadmap.html' %}
+{% include 'landing/includes/token-distribution.html' %}
+<section class="whitepaper white" id="whitePaper">
     <div class="container">
         <div class="scene2">
             <div data-depth="0.5"><img src="{% static 'landing/img/whitepaper-bg.png' %}" alt=""></div>
@@ -511,14 +242,14 @@
                     round details.</p>
             </div>
             <div class="col-xs-12">
-                <a class="btn" href="#">View White Paper<i class="icon-file-text2"></i></a>
+                <a class="btn" href="{% static 'landing/docs/Unilot-White-Paper-en-us.pdf' %}" target="_blank">View White Paper<i class="icon-file-text2"></i></a>
                 <span>English</span>
             </div>
         </div>
     </div>
 </section>
 {% if roadshow_list %}
-    <section class="roadshow" id="roadshow">
+    <section class="roadshow dark" id="roadshow">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -552,56 +283,10 @@
         </div>
     </section>
 {% endif %}
-{% if advisors_list %}
-<section class="advisors" id="advisors">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="heading">
-                    <h2>{% trans 'Advisors' %}</h2><span>{% trans 'Our Advisors' %}</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            {% for advisor in advisors_list %}
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="advisors__block">
-                    <div class="row">
-                        <div class="col-xs-5"><img src="{{ advisor.photo.url }}" alt="Unilot {{ advisor.full_name }} {{ advisor.position }}">
-                        </div>
-                        <div class="col-xs-7"><a href="https://www.linkedin.com/in/{{ advisor.linkedin_nickname }}/">{{ advisor.full_name }}<i class="icon-linkedin"></i></a><b>{{ advisor.position }}</b><span></span>
-                            {{ advisor.caption|safe_markdown }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
-{% if team_members_list %}
-<section class="team" id="team">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="heading">
-                    <h2>{% trans 'Team' %}</h2><span>{% trans 'Unilot Team' %}</span>
-                </div>
-            </div>
-        </div>
-        <div class="row center-xs">
-            {% for team_member in team_members_list %}
-            <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/{{ team_member.linkedin_nickname }}/" target="_blank"><img
-                    src="{{ team_member.photo.url }}" alt="Unilot {{ team_member.full_name }} {{ team_member.position }}">
-                <p>{{ team_member.full_name }}<i class="icon-linkedin"></i></p><b>{{ team_member.position }}</b><span></span></a></div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
+{% include 'landing/includes/advisors.html' %}
+{% include 'landing/includes/team_members.html' %}
 {% if faqs_total > 0 %}
-<section class="faq" id="faq">
+<section class="faq white" id="faq">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -633,7 +318,7 @@
 </section>
 {% endif %}
 {% if publications_list %}
-    <section class="gray" id="publications">
+    <section class="publications gray light" id="publications">
         <div class="container">
             <div class="row heading">
                 <div class="col-xs-12">
@@ -657,7 +342,7 @@
         </div>
     </section>
 {% endif %}
-<section class="white" id="partners">
+<section class="partners white" id="partners">
     <div class="container">
         <div class="row heading">
             <div class="col-xs-12">
@@ -676,4 +361,82 @@
         </div>
     </div>
 </section>
+<footer class="footer" id="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>Newsletter</h2><span>Newsletter</span>
+                </div>
+                <form class="form">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-1">
+                            <p>{% trans 'To join our Mailing List, please enter your email address below' %}</p>
+                            <input type="email" name="email">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-block g-recaptcha"
+                                    data-sitekey="6LcJyDwUAAAAAOHyF7J80mQFTYwXDLusskM8b-_d"
+                                    data-size="invisible"
+                                    style="border: none; padding-left: 1em; padding-right: 1em;">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer__top">
+            <div class="row center-xs">
+                <div class="col-sm-4 col-xs-12"><a href="{% github_organization %}"><i class="icon-github"></i>
+                    <p class="git">GitHub</p></a></div>
+                <div class="col-sm-4 col-xs-12"><a href="{% telegram_channel %}"><i class="icon-telegram"></i>
+                    <p>Telegram</p></a></div>
+                <div class="col-sm-4 col-xs-12"><a href="{% medium_blog %}"><i class="icon-medium"></i>
+                    <p>Medium</p></a></div>
+            </div>
+        </div>
+        <div class="footer__social">
+            <div class="row start-sm center-xs">
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% reddit_url %}"><i
+                        class="icon-reddit"></i>
+                    <p>Reddit</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% twitter_channel %}"><i
+                        class="icon-twitter"></i>
+                    <p>Twitter</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% facebook_page %}"><i
+                        class="icon-facebook"></i>
+                    <p>Facebook</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% linkedin_company %}"><i
+                        class="icon-linkedin2"></i>
+                    <p>Linkedin</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% slack_channel %}"><i
+                        class="medium"></i>
+                    <p class="slack">Slack</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% youtube_channel %}"><i
+                        class="icon-YouTube-2"></i>
+                    <p>YouTube</p></a></div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="row middle-md">
+                <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
+                        src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
+                    <p>Unilot&reg; 2017 All Rights Reserved</p>
+                </div>
+                <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
+                        href="https://www.ethereum.org" target="_blank"><img
+                        src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
+                <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
+                    <ul>
+                        <li><a href="{% url 'landing:document' 'terms-and-conditions' %}">{% trans 'Terms and Conditions' %}</a></li>
+                        <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}">Affiliate Program</a></li>
+                        <li><a href="{% url 'landing:document' 'bounty-program' %}">Bounty Program</a></li>
+                        <li><a href="mailto:info@unilot.io">info@unilot.io</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock %}

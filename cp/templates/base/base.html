@@ -264,12 +264,14 @@
                     {% if user.is_authenticated %}
                     <div class="row">
                         <div class="col-xs-12">
+                            {% if user.profile %}
                             <div class="panel">
                                 <div class="panel-body"><strong>My UNT Tokens</strong>
-                                    <p class="text-2x"><strong>0</strong></p><a href="#">Set wallet for
-                                        withdrawal</a></div>
+                                    <p class="text-2x"><strong>{{ user.profile.token_amount_reserved|floatformat }}</strong></p>
+                                </div>
                             </div>
                             <hr>
+                            {% endif %}
                             <div class="panel">
                                 <div class="panel-body"><strong>My UNT Referral Tokens</strong>
                                     <p class="text-2x"><strong>0</strong></p><a href="#">Get more tokens for
@@ -278,8 +280,8 @@
                             <hr>
                             <div class="panel">
                                 <div class="panel-body"><strong>UNT Token Price</strong>
-                                    <p class="text-2x"><strong>0.0001 ETH</strong></p>
-                                    <p><span class="label label-primary">40% Bonus</span> for purchase &gt; 75 UNT
+                                    <p class="text-2x"><strong>{% token_price %} ETH</strong></p>
+                                    <p><span class="label label-primary">40% Bonus</span>
                                     </p></div>
                             </div>
                             <hr>
@@ -299,7 +301,7 @@
                             </div>
                             <hr>
                         </div>
-                    </div>
+                    </div>{% comment %}
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="panel">
@@ -316,13 +318,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>{% endcomment %}
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script type="application/javascript" src="{% url 'cp:js_config' 'js' %}"></script>
-<script type="application/javascript" src="{% static 'js/main.min-06904c7166e676661831489ad9ebed89.js' %}"></script>
+<script type="application/javascript" src="{% static 'js/main.min-6c7e4edb84acc04576a152132f7e580a.js' %}"></script>
 </body>
 </html>

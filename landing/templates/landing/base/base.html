@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}Initial Coin Offering Pre-sale on the way{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-c88cd4ffcec6f7b98890267d05ace1a9.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-328d7b72bcae9d586570368087fd6048.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#main"><img src="{% static 'landing/img/logo-header.svg' %}" alt="Unilot logo"></a>
+                    <a href="{% url 'landing:index' %}"><img src="{% static 'landing/img/logo-header.svg' %}" alt="Unilot logo"></a>
                 </div>
             </div>
             <div class="col-md-6">
@@ -123,84 +123,6 @@
 </div>
 <div class="slideout-panel slideout-panel-right" id="panel">
     {% block content %}{% endblock %}
-    <footer class="footer" id="newsletter">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="heading">
-                        <h2>Newsletter</h2><span>Newsletter</span>
-                    </div>
-                    <form class="form">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-1">
-                                <p>{% trans 'To join our Mailing List, please enter your email address below' %}</p>
-                                <input type="email" name="email">
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-block g-recaptcha"
-                                        data-sitekey="6LcJyDwUAAAAAOHyF7J80mQFTYwXDLusskM8b-_d"
-                                        data-size="invisible"
-                                        style="border: none; padding-left: 1em; padding-right: 1em;">
-                                    Subscribe
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="footer__top">
-                <div class="row center-xs">
-                    <div class="col-sm-4 col-xs-12"><a href="{% github_organization %}"><i class="icon-github"></i>
-                        <p class="git">GitHub</p></a></div>
-                    <div class="col-sm-4 col-xs-12"><a href="{% telegram_channel %}"><i class="icon-telegram"></i>
-                        <p>Telegram</p></a></div>
-                    <div class="col-sm-4 col-xs-12"><a href="{% medium_blog %}"><i class="icon-medium"></i>
-                        <p>Medium</p></a></div>
-                </div>
-            </div>
-            <div class="footer__social">
-                <div class="row start-sm center-xs">
-                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% reddit_url %}"><i
-                            class="icon-reddit"></i>
-                        <p>Reddit</p></a></div>
-                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% twitter_channel %}"><i
-                            class="icon-twitter"></i>
-                        <p>Twitter</p></a></div>
-                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% facebook_page %}"><i
-                            class="icon-facebook"></i>
-                        <p>Facebook</p></a></div>
-                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% linkedin_company %}"><i
-                            class="icon-linkedin2"></i>
-                        <p>Linkedin</p></a></div>
-                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% slack_channel %}"><i
-                            class="medium"></i>
-                        <p class="slack">Slack</p></a></div>
-                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% youtube_channel %}"><i
-                            class="icon-YouTube-2"></i>
-                        <p>YouTube</p></a></div>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <div class="row middle-md">
-                    <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
-                            src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
-                        <p>Unilot&reg; 2017 All Rights Reserved</p>
-                    </div>
-                    <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
-                            href="https://www.ethereum.org" target="_blank"><img
-                            src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
-                    <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
-                        <ul>
-                            <li><a href="#">Terms and Conditions</a></li>
-                            <li><a href="#">Affiliate Program</a></li>
-                            <li><a href="#">Bounty Program</a></li>
-                            <li><a href="mailto:info@unilot.io">info@unilot.io</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="{% static 'landing/js/main.min-89bb2f26273b3d1bb9d348b7b94f4356.js' %}"></script>
