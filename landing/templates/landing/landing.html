@@ -4,6 +4,7 @@
 {% load social_links %}
 {% load martortags %}
 {% load config %}
+{% load humanize %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
@@ -43,17 +44,19 @@
                     {% endif %}
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block sentence__block--padding">
-                            <p>{% trans 'Upcoming bonus' %}</p><span>{% token_bonus %}%</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 center-xs">
-                        <div class="sentence__block sentence__block--padding">
-                            <p>{% trans 'Min commitment' %}</p><span>0 ETH</span>
+                            {% token_bonus as token_bonus %}
+                            <p>{% trans 'Upcoming bonus' %}</p><span>{{ token_bonus|floatformat }}%</span>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block">
                             <p>{% trans 'Token price' %}</p><span>{% token_price %} ETH</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 center-xs">
+                        <div class="sentence__block sentence__block--padding">
+                            {% token_cap as token_cap %}
+                            <p>{% trans 'Tokens For Sale' %}</p><span>{{ token_cap|intcomma }}</span>
                         </div>
                     </div>
                     {% if is_pre_ico %}
@@ -66,7 +69,7 @@
         </div>
     </div>
 </section>
-<section class="about" id="whatIsUnilot">
+<section class="about white" id="whatIsUnilot">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -84,7 +87,7 @@
         </div>
     </div>
 </section>
-<section class="advantages" id="unilotBenefits">
+<section class="advantages light" id="unilotBenefits">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -155,7 +158,7 @@
         </div>
     </div>
 </section>
-<section class="client" id="mobileClient">
+<section class="client dark" id="mobileClient">
     <div class="container">
         <div class="scene1">
             <div data-depth="0.5"><img src="{% static 'landing/img/client-bg.png' %}" alt=""></div>
@@ -219,7 +222,7 @@
 </section>
 {% include 'landing/includes/roadmap.html' %}
 {% include 'landing/includes/token-distribution.html' %}
-<section class="whitepaper" id="whitePaper">
+<section class="whitepaper white" id="whitePaper">
     <div class="container">
         <div class="scene2">
             <div data-depth="0.5"><img src="{% static 'landing/img/whitepaper-bg.png' %}" alt=""></div>
@@ -242,7 +245,7 @@
     </div>
 </section>
 {% if roadshow_list %}
-    <section class="roadshow" id="roadshow">
+    <section class="roadshow dark" id="roadshow">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -279,7 +282,7 @@
 {% include 'landing/includes/advisors.html' %}
 {% include 'landing/includes/team_members.html' %}
 {% if faqs_total > 0 %}
-<section class="faq" id="faq">
+<section class="faq white" id="faq">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -311,7 +314,7 @@
 </section>
 {% endif %}
 {% if publications_list %}
-    <section class="gray" id="publications">
+    <section class="publications gray light" id="publications">
         <div class="container">
             <div class="row heading">
                 <div class="col-xs-12">
@@ -335,7 +338,7 @@
         </div>
     </section>
 {% endif %}
-<section class="white" id="partners">
+<section class="partners white" id="partners">
     <div class="container">
         <div class="row heading">
             <div class="col-xs-12">
@@ -354,4 +357,82 @@
         </div>
     </div>
 </section>
+<footer class="footer" id="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="heading">
+                    <h2>Newsletter</h2><span>Newsletter</span>
+                </div>
+                <form class="form">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-1">
+                            <p>{% trans 'To join our Mailing List, please enter your email address below' %}</p>
+                            <input type="email" name="email">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-block g-recaptcha"
+                                    data-sitekey="6LcJyDwUAAAAAOHyF7J80mQFTYwXDLusskM8b-_d"
+                                    data-size="invisible"
+                                    style="border: none; padding-left: 1em; padding-right: 1em;">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer__top">
+            <div class="row center-xs">
+                <div class="col-sm-4 col-xs-12"><a href="{% github_organization %}"><i class="icon-github"></i>
+                    <p class="git">GitHub</p></a></div>
+                <div class="col-sm-4 col-xs-12"><a href="{% telegram_channel %}"><i class="icon-telegram"></i>
+                    <p>Telegram</p></a></div>
+                <div class="col-sm-4 col-xs-12"><a href="{% medium_blog %}"><i class="icon-medium"></i>
+                    <p>Medium</p></a></div>
+            </div>
+        </div>
+        <div class="footer__social">
+            <div class="row start-sm center-xs">
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% reddit_url %}"><i
+                        class="icon-reddit"></i>
+                    <p>Reddit</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% twitter_channel %}"><i
+                        class="icon-twitter"></i>
+                    <p>Twitter</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% facebook_page %}"><i
+                        class="icon-facebook"></i>
+                    <p>Facebook</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% linkedin_company %}"><i
+                        class="icon-linkedin2"></i>
+                    <p>Linkedin</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% slack_channel %}"><i
+                        class="medium"></i>
+                    <p class="slack">Slack</p></a></div>
+                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% youtube_channel %}"><i
+                        class="icon-YouTube-2"></i>
+                    <p>YouTube</p></a></div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="row middle-md">
+                <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
+                        src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
+                    <p>Unilot&reg; 2017 All Rights Reserved</p>
+                </div>
+                <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
+                        href="https://www.ethereum.org" target="_blank"><img
+                        src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
+                <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
+                    <ul>
+                        <li><a href="{% url 'landing:document' 'terms-and-conditions' %}">{% trans 'Terms and Conditions' %}</a></li>
+                        <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}">Affiliate Program</a></li>
+                        <li><a href="{% url 'landing:document' 'bounty-program' %}">Bounty Program</a></li>
+                        <li><a href="mailto:info@unilot.io">info@unilot.io</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock %}

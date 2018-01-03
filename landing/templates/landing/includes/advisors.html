@@ -1,16 +1,15 @@
 {% load i18n %}
 {% load martortags %}
 {% if advisors_list %}
-<section class="advisors" id="advisors">
+<section class="advisors white" id="advisors">
     <div class="container">
-        <div class="row">
+        <div class="heading row">
             <div class="col-xs-12">
-                <div class="heading">
-                    <h2>{% trans 'Advisors' %}</h2><span>{% trans 'Advisors' %}</span>
-                </div>
+                <h2>{% if advisors_title %}{{ advisors_title }}{% else %}{% trans 'Advisors' %}{% endif %}</h2>
+                <span>{% if advisors_title %}{{ advisors_title }}{% else %}{% trans 'Advisors' %}{% endif %}</span>
             </div>
         </div>
-        <div class="row">
+        <div class="row content">
             {% for advisor in advisors_list %}
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="advisors__block">
