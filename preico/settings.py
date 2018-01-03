@@ -189,7 +189,7 @@ MEDIA_ROOT = os.path.join( os.path.dirname( os.path.dirname( os.path.abspath(__f
 
 SOCIAL_LINKS = {
     'FACEBOOK': 'https://www.facebook.com/unilot.io/',
-    'TWITTER': 'https://twitter.com/unilot_lottery',
+    'TWITTER': 'https://twitter.com/unilot_platform',
     'REDDIT': 'https://www.reddit.com/user/unilot_lottery/',
     'MEDIUM': 'https://medium.com/@unilot',
     'TELEGRAM_RU_RU': 'https://t.me/unilot',
