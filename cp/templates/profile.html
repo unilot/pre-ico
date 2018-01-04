@@ -9,17 +9,7 @@
         <div class="panel panel-default">
             <div class="panel-body js-has-overlay">
                 <h2>{% trans 'Edit your profile' %}</h2>
-                <div class="block-overlay hidden">
-                    <div class="overlay-wrapper">
-                        <div class="row overlay-centered full-width">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="overlay-center progress">
-                                    <div class="progress-bar progress-bar-striped active full-width"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% include 'includes/form-overlay.html' %}
                 <form class="js-generic-form" id="editProfile" role="form" data-toggle="validator"
                       action="{% url 'cp:profile' 'json' %}" method="patch" data-success-message="{% trans 'Profile updated' %}">
                     {% csrf_token %}
@@ -52,13 +42,71 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
+                            <div class="form-group">
+                                <button class="btn btn-primary pull-right" type="submit">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group"><label class="control-label"
+                                                       for="editProfileWallet">Wallet
+                                                </label><input class="form-control"
+                                                  id="editProfileWallet" type="text"
+                                                  placeholder="Wallet" required
+                                                  value="{{ wallet|default:'' }}"
+                                                    data-wallet disabled>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body js-has-overlay">
+                {% include 'includes/form-overlay.html' %}
+                <form class="js-generic-form" id="changePassword" role="form" data-toggle="validator"
+                      action="{% url 'cp:password-change' 'json' %}" method="patch"
+                      data-url="{% url 'cp:auth' 'html' %}">
+                    {% csrf_token %}
+                    <h3>Change Password</h3>
+                    <div class="row">
+                        <div class="col-xs-12">
                             <div class="form-group"><label class="control-label"
-                                                           for="editProfileWallet">Wallet
+                                                           for="currentPassword">Current Password
                                                     </label><input class="form-control"
-                                                      id="editProfileWallet" type="text"
-                                                      placeholder="Wallet" required
-                                                      name="wallet" value="{{ wallet|default:'' }}"
-                                                        data-wallet>
+                                                      id="currentPassword" type="password"
+                                                      placeholder="Current Password" required
+                                                      name="current_password">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group"><label class="control-label"
+                                                           for="newPassword">New Password
+                                                    </label><input class="form-control"
+                                                      id="newPassword" type="password"
+                                                      placeholder="New Password" required
+                                                      name="password">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group"><label class="control-label"
+                                                           for="newPasswordRepeate">Repeate New Password
+                                                    </label><input class="form-control"
+                                                      id="newPasswordRepeate" type="password"
+                                                      placeholder="Repeate New Password" required
+                                                      name="password_repeate" data-match="#newPassword">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>

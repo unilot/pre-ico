@@ -29,7 +29,9 @@ urlpatterns = format_suffix_patterns([
 
 urlpatterns += format_suffix_patterns([
     url(r'^validate/user/email', validator.UserEmailValidator.as_view(), name='validate-email'),
-    url(r'^validate/user/wallet', validator.UserProfileWalletValidator.as_view(), name='validate-wallet')
+    url(r'^validate/user/wallet', validator.UserProfileWalletValidator.as_view(), name='validate-wallet'),
+    url(r'^user/password/change', auth.ChangePasswordView.as_view(), name='password-change'),
+    url(r'^user/recover', auth.RecoverPassword.as_view(), name='recover-access')
 ], True, ('json',))
 
 urlpatterns += format_suffix_patterns([
