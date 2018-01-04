@@ -1,7 +1,7 @@
-from django.contrib import admin, messages
+from django.contrib import admin
 from hvad.admin import TranslatableAdmin
 from martor.widgets import AdminMartorWidget
-from django.db import models as django_models, IntegrityError, DatabaseError
+from django.db import models as django_models
 
 from . import models
 
@@ -22,3 +22,12 @@ class ProfileAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Profile, ProfileAdmin)
+
+
+class TextAdmin(TranslatableAdmin):
+    list_display = ('key',)
+    formfield_overrides = {
+        django_models.TextField: {'widget': AdminMartorWidget}
+    }
+
+admin.site.register(models.Text, TextAdmin)

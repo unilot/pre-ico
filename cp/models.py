@@ -38,3 +38,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.username
+
+class Text(TranslatableModel):
+    key = models.CharField(max_length=64, null=False, blank=False)
+    translations = TranslatedFields(
+        text = MartorField(null=False, blank=False)
+    )
