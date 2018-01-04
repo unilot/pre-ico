@@ -19,17 +19,7 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active js-has-overlay" id="auth-sign-in" role="tabpanel">
-                    <div class="block-overlay hidden">
-                        <div class="overlay-wrapper">
-                            <div class="row overlay-centered full-width">
-                                <div class="col-xs-8 col-xs-offset-2">
-                                    <div class="overlay-center progress">
-                                        <div class="progress-bar progress-bar-striped active full-width"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'includes/form-overlay.html' %}
                     <form id="signInForm" class="js-generic-form" role="form"
                           data-toggle="validator" action="{% url 'cp:sign-in' 'json' %}"
                           method="POST" data-url="{% url 'cp:dashboard' 'html' %}">
@@ -78,7 +68,35 @@
                         </div>
                     </form>
                 </div>
-                <div class="tab-pane" id="auth-recover-access" role="tabpanel"></div>
+                <div class="tab-pane" id="auth-recover-access" role="tabpanel">
+                    <form id="recoverAccessForm" class="js-generic-form" role="form"
+                          data-toggle="validator" action="{% url 'cp:recover-access' 'json' %}"
+                          method="POST" data-success-message="{% trans 'Check your email' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="alert js-form-alert hidden text-center"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group"><label class="control-label"
+                                                               for="recoverEmail">Email</label><input
+                                        class="form-control" id="recoverEmail" type="email"
+                                        placeholder="Email" required name="email">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% include 'includes/form-overlay.html' %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn btn-primary pull-right" role="submit">Recover
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

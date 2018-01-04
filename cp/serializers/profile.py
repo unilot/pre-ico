@@ -7,7 +7,7 @@ from .. import models
 class ProfileSerializer(serializers.ModelSerializer):
     wallet = serializers.CharField(source='profile.wallet', validators=[
         p_validators.EthWalletValidator()
-    ], required=True)
+    ], required=False, read_only=True)
 
     def update(self, instance, validated_data):
         """

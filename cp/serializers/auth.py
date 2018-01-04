@@ -1,9 +1,15 @@
+from django.contrib.auth.password_validation import get_default_password_validators
 from rest_framework import serializers, validators
 from django.contrib.auth import models as django_models
 from django.core import validators as django_validators
 from django.db import transaction
 from preico.rest_framework import validators as p_validators
 from .. import models
+
+
+def validate_password(password):
+    for validator in get_default_password_validators():
+        validator.validate(password)
 
 
 class SignUpSerializer(serializers.ModelSerializer):
@@ -13,7 +19,8 @@ class SignUpSerializer(serializers.ModelSerializer):
         django_validators.EmailValidator()
     ])
 
-    password = serializers.ModelField(django_models.User._meta.get_field('password'), required=True)
+    password = serializers.ModelField(django_models.User._meta.get_field('password'), required=True,
+                                      validators=(validate_password, ))
 
     first_name = serializers.ModelField(django_models.User._meta.get_field('first_name'), required=True)
     last_name = serializers.ModelField(django_models.User._meta.get_field('last_name'), required=True)
@@ -65,3 +72,35 @@ class SignInSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True}
         }
+
+
+class PasswordChangeSerializer(serializers.ModelSerializer):
+    current_password = serializers.CharField(required=True)
+    password = serializers.ModelField(django_models.User._meta.get_field('password'), required=True,
+                                      validators=(validate_password, ))
+
+    def create(self, validated_data):
+        raise NotImplementedError()
+
+    class Meta:
+        model = django_models.User
+        fields = ('current_password', 'password')
+        extra_kwargs = {
+            'current_password': {'write_only': True},
+            'password': {'write_only': True}
+        }
+
+
+class RecoverPasswordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = django_models.User
+        fields = (django_models.User.EMAIL_FIELD,)
+
+
+class ResetPasswordSerializer(serializers.ModelSerializer):
+    password = serializers.ModelField(django_models.User._meta.get_field('password'), required=True,
+                                      validators=(validate_password,))
+
+    class Meta:
+        model = django_models.User
+        fields = ('password',)

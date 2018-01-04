@@ -1,3 +1,5 @@
+import json
+
 from rest_framework import generics
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
@@ -89,21 +91,6 @@ class SignUpView(generics.CreateAPIView):
 
             login(request, user)
 
-            # TODO send greeting pre-order mail
-            # Sending email
-            # msg = EmailMessage(to=[user.email])
-            # msg.template_name = Templates.get_template_key(Templates.USER_VERIFY_EMAIL)
-            # msg.merge_vars = {
-            #     user.email: {
-            #         'email': user.email,
-            #         'verify_url': request.build_absolute_uri(
-            #             reverse('cp:verify',
-            #                     kwargs={'verification_key': verification_key, 'format': 'html'}))
-            #     }
-            # }
-            #
-            # msg.send()
-
         headers = self.get_success_headers(serializer.data)
 
         return response.Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
@@ -132,7 +119,7 @@ class SignInView(generics.GenericAPIView):
 
 class VerifyEmailView(generics.GenericAPIView):
     permission_classes = [ p_permissions.isGuest ]
-    serializer_class = auth.SignUpSerializer
+    serializer_class = auth.ResetPasswordSerializer
 
     def get(self, request, *args, **kwargs):
         verification_key = kwargs.pop('verification_key', '')
@@ -160,10 +147,12 @@ class VerifyEmailView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         verification_key = kwargs.pop('verification_key', '')
         request_format = kwargs.get('format', 'html')
-        data = {}
 
         user = get_object_or_404(auth_models.User.objects, profile__verification_key=verification_key)
         profile = user.profile
+
+        serializer = self.get_serializer(user, data=request.data)
+        serializer.is_valid(raise_exception=True)
 
         with transaction.atomic():
             user.set_password(request.data.get('password'))
@@ -183,3 +172,70 @@ class VerifyEmailView(generics.GenericAPIView):
             return http_response.HttpResponseRedirect(reverse('cp:profile', kwargs={'format': 'html'}))
 
         return http_response.HttpResponseRedirect(reverse('cp:dashboard', kwargs={'format': 'html'}))
+
+
+class ChangePasswordView(generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = auth.PasswordChangeSerializer
+
+    def get_object(self):
+        return self.request.user
+
+    def change_password(self, request, *args, **kwargs):
+        user = self.get_object()
+        serializer = self.get_serializer(user, data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        if not user.check_password(serializer.validated_data.get('current_password')):
+            return http_response.HttpResponseBadRequest(
+                json.dumps({'current_password': [_('Invalid password')]}))
+
+        user.set_password(serializer.validated_data.get('password'))
+        user.save()
+
+        return response.Response(data={})
+
+    def post(self, request, *args, **kwargs):
+        return self.change_password(request, *args, **kwargs)
+
+    def patch(self, request, *args, **kwargs):
+        return self.change_password(request, *args, **kwargs)
+
+
+class RecoverPassword(generics.GenericAPIView):
+    permission_classes = ( p_permissions.isGuest, )
+    serializer_class = auth.RecoverPasswordSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        serializer.is_valid(raise_exception=True)
+
+        try:
+            user = serializer.Meta.model.objects.get(username=serializer.validated_data.get('email'))
+            verification_key = serializer.Meta.model.objects \
+                .make_random_password(length=32, allowed_chars='abcdefghjkmnpqrstuvwxyz'
+                                                               'ABCDEFGHJKLMNPQRSTUVWXYZ'
+                                                               '23456789'
+                                                               '@.,;:\|{}!@#$%^&*)(+=_-')
+            user.profile.verification_key = verification_key
+            user.profile.save()
+
+            # TODO send greeting pre-order mail
+            # Sending email
+            msg = EmailMessage(to=[user.email])
+            msg.template_name = Templates.get_template_key(Templates.USER_VERIFY_EMAIL)
+            msg.merge_vars = {
+                user.email: {
+                    'email': user.email,
+                    'verify_url': request.build_absolute_uri(
+                        reverse('cp:verify',
+                                kwargs={'verification_key': verification_key, 'format': 'html'}))
+                }
+            }
+
+            msg.send()
+        except:
+            pass
+
+        return response.Response(data=serializer.data)

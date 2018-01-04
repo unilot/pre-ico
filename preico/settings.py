@@ -86,6 +86,7 @@ WSGI_APPLICATION = 'preico.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+MIN_PWD_LENGTH = 8
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -94,7 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_length': 8
+            'min_length': MIN_PWD_LENGTH
         }
     },
     {
