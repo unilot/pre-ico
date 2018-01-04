@@ -44,6 +44,7 @@
                     <li><a href="{% telegram_channel %}" target="_blank">
                         <i class="icon-telegram"></i></a></li>
                 </ul>
+                {% if LANGUAGES|length > 1 %}
                 <ul class="nav nav-pills navbar-nav navbar-right">
                     <li class="dropdown" role="presentation"><a class="dropdown-toggle" id="locale" href="#"
                                                                 type="button" data-toggle="dropdown"
@@ -70,6 +71,7 @@
                         </ul>
                     </li>
                 </ul>
+                {% endif %}
             </div>
         </nav>
         <nav class="navbar">
