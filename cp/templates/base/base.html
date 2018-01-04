@@ -3,6 +3,7 @@
 {% load referral %}
 {% load config %}
 {% load social_links %}
+{% load dynamic_content %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <!DOCTYPE html>
@@ -175,21 +176,8 @@
                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title">Buy UNITs</h4></div>
-                                <div class="modal-body"><h3>How to buy</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <ul>
-                                        <li>Aliquam sit amet lorem non felis consectetur pellentesque sagittis ut
-                                            neque.
-                                        </li>
-                                        <li>Nunc eu lacus fermentum, luctus lectus non, viverra nisi.</li>
-                                        <li>Curabitur risus orci, ultrices id pellentesque at, elementum a sapien.
-                                        </li>
-                                        <li>Etiam sem purus, efficitur eu lectus ut, consequat gravida risus.</li>
-                                    </ul>
-                                    <p>Integer aliquet et mi a pellentesque. In volutpat tristique nulla luctus
-                                        mattis. Maecenas pellentesque ligula mauris, ut eleifend lectus vehicula at.
-                                        Nullam at lacus eget sapien placerat iaculis eu in augue. Maecenas tempor
-                                        sapien fringilla eleifend malesuada.</p>
+                                <div class="modal-body">
+                                    {% content_text 'modal-buy-token' %}
                                     <div class="token-calculator">
                                         <div class="well"><h3 class="text-center"><strong>Calculator</strong></h3>
                                             <div class="row">

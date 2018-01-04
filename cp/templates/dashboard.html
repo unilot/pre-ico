@@ -1,7 +1,9 @@
-{% extends 'base/base.html' %}
+    {% extends 'base/base.html' %}
 {% load i18n %}
+{% load dynamic_content %}
 
 {% block title %}Sing (in|up) to access dashboard{% endblock %}
+
 
 {% block content %}
 <div class="panel panel panel-default">
@@ -10,31 +12,8 @@
             sale.</p></div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-body"><h3 class="text-center"><strong>UNT tokens instruction</strong></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet lorem non felis
-            consectetur pellentesque sagittis ut neque. Nunc eu lacus fermentum, luctus lectus non,
-            viverra nisi. Curabitur risus orci, ultrices id pellentesque at, elementum a sapien. Etiam
-            sem purus, efficitur eu lectus ut, consequat gravida risus. Integer aliquet et mi a
-            pellentesque. In volutpat tristique nulla luctus mattis. Maecenas pellentesque ligula
-            mauris, ut eleifend lectus vehicula at. Nullam at lacus eget sapien placerat iaculis eu in
-            augue. Maecenas tempor sapien fringilla eleifend malesuada.</p>
-        <p>Praesent venenatis, justo vel efficitur malesuada, erat urna scelerisque lectus, a placerat
-            nisi est in nisi. Phasellus vel consequat purus, a porta tellus. Class aptent taciti
-            sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nibh augue,
-            ornare vitae molestie a, vestibulum scelerisque quam. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Proin a faucibus lacus, vel viverra libero. Morbi eget
-            malesuada tellus. Suspendisse sed porta erat. Donec ut pretium odio. In a erat ante. Morbi
-            libero sapien, commodo ac dui ac, lobortis porttitor eros. Vivamus ac libero auctor, varius
-            turpis et, feugiat lectus. Curabitur ac tellus ac risus efficitur pellentesque eget a dui.
-            Nulla imperdiet, justo sed lobortis molestie, nulla purus condimentum eros, vel bibendum dui
-            turpis id erat. Vivamus sollicitudin congue libero vel tincidunt.</p>
-        <p>Fusce porta quis orci ut tristique. Sed porttitor, sapien et fermentum vulputate, risus nisl
-            imperdiet justo, nec posuere felis lectus quis sem. Integer faucibus molestie aliquet. Nam
-            id velit velit. Donec ligula nisl, hendrerit a enim vel, porta blandit ex. Pellentesque
-            ipsum nisl, tincidunt vitae feugiat commodo, rutrum in velit. Nulla a lorem sollicitudin,
-            laoreet ipsum eu, ornare magna. Phasellus rhoncus iaculis orci, ac varius erat. Aliquam eget
-            commodo tortor. Ut ac consectetur justo. Etiam vel nunc id justo ultrices efficitur sed eu
-            tortor. Fusce ultrices a lectus in sollicitudin.</p>
+    <div class="panel-body">
+        {% content_text 'dashboard-main' %}
         {% include 'includes/token-calculator.html' %}
         <hr>
         <div class="row">
