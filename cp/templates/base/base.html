@@ -161,7 +161,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    {% if user.is_authenticated %}
+                    {% if can_buy %}
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="btn-group-lg">
@@ -171,96 +171,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="buyTokens" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Buy UNITs</h4></div>
-                                <div class="modal-body">
-                                    {% content_text 'modal-buy-token' %}
-                                    <div class="token-calculator">
-                                        <div class="well"><h3 class="text-center"><strong>Calculator</strong></h3>
-                                            <div class="row">
-                                                <div class="col-md-5">
-                                                    <div class="form-group"><label class="control-label"
-                                                                                   for="UNTAmount"># of UNT
-                                                        tokens</label>
-                                                        <div class="input-group"><span
-                                                                class="input-group-addon js-value-down"><i
-                                                                class="glyphicon glyphicon-minus"></i></span><input
-                                                                class="form-control js-calculator-token-amount-input"
-                                                                id="UNTAmount" name="UNTAmount" placeholder="UNT"
-                                                                value="200" type="number" min="200"
-                                                                max="13332"><span
-                                                                class="input-group-addon js-value-up"><i
-                                                                class="glyphicon glyphicon-plus"></i></span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 col-xs-4 text-2x text-center calculator-exchange-icon-container">
-                                                    <i class="glyphicon glyphicon-retweet"></i></div>
-                                                <div class="col-md-5 col-xs-8">
-                                                    <div class="form-group"><label class="control-label"
-                                                                                   for="etherAmount">Amount of
-                                                        ETH</label>
-                                                        <div class="input-group"><input
-                                                                class="form-control js-calculator-eth-amount-input"
-                                                                id="etherAmount" name="etherAmount"
-                                                                placeholder="ETH" type="text" step="0.0025"><span
-                                                                class="input-group-addon"><strong>ETH</strong></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel">
-                                            <div class="panel-body bg-primary">
-                                                <div class="row text-center">
-                                                    <div class="col-md-3"><p>Your<span class="text-uppercase"> Bonus:</span>
-                                                    </p>
-                                                        <p class="text-1-5x"><strong><span
-                                                                class="js-token-total-bonus">40</span>%</strong></p>
-                                                    </div>
-                                                    <div class="col-md-3"><p>You'll recieve:</p>
-                                                        <p class="text-1-5x"><strong class="text-uppercase"><span
-                                                                class="js-token-total-amount">140</span>UNT</strong>
-                                                        </p></div>
-                                                    <div class="col-md-3"><p>For amount of ETH:</p>
-                                                        <p class="text-1-5x"><strong><span
-                                                                class="js-eth-total-amount"></span>ETH</strong></p>
-                                                    </div>
-                                                    <div class="col-md-3"><p>Aproximate $ amount</p>
-                                                        <p class="text-1-5x"><strong><i
-                                                                class="glyphicon glyphicon-usd"></i><span
-                                                                class="js-fiat-total-amount"></span></strong></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="row">
-                                        <div class="col-md-8 col-md-offset-2">
-                                            <div class="form-group"><input class="form-control"
-                                                                           id="tokenBuyContractNumber" type="text"
-                                                                           readonly
-                                                                           value="{% token_address %}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 text-center"><a
-                                                class="btn btn-lg btn-primary js-buy-tokens-copy-contract-number"
-                                                role="button" tabindex="0" data-toggle="focus" data-trigger="focus"
-                                                data-placement="top" data-content="Contract number copied">Copy
-                                            contract number</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'includes/modal-buy-token.html' %}
                     {% endif %}
                     {% if user.is_authenticated %}
                     <div class="row">
