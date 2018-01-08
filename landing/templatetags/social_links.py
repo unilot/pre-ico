@@ -53,6 +53,9 @@ def youtube_channel():
 def github_organization():
     return settings.SOCIAL_LINKS.get('GITHUB')
 
+@register.simple_tag()
+def steemit_blog():
+    return settings.SOCIAL_LINKS.get('STEEMIT')
 
 @register.simple_tag()
 def share_facebook(url):

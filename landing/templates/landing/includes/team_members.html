@@ -1,9 +1,9 @@
 {% load i18n %}
 {% load martortags %}
 {% if team_members_list %}
-<section class="team light" id="team">
+<section class="{% if is_team_numbered %}numbered {% endif %}team light" id="s10-team">
     <div class="container">
-        <div class="row heading">
+        <div class="row heading text-bg">
             <div class="col-xs-12">
                 <h2>{% if team_title %}{{ team_title }}{% else %}{% trans 'Team' %}{% endif %}</h2>
                 <span>{% if team_title %}{{ team_title }}{% else %}{% trans 'Team' %}{% endif %}</span>

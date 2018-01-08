@@ -1,30 +1,45 @@
 {% load i18n %}
 {% load static %}
-<section class="function light" id="tokenomics">
+<section class="{% if is_tokenomics_numbered %}numbered {% endif %}light" id="s9-distribution">
     <div class="container">
-        <div class="row">
-            <div class="col-md-7 col-xs-12">
-                <div class="heading">
-                    <h2>Token Distribution</h2><span>Tokens</span>
-                </div>
-                <img src="{% static 'landing/img/function-1.png' %}" alt="">
-                <p>62% Purchasers <span class="purple"></span></p>
-                <p>10% Reserve <span class="blue"></span></p>
-                <p>3% Bounty <span class="green"></span></p>
-                <p>10% Referral and Bonus Program <span class="lilac"></span></p>
-                <p>5% Advisers <span class="yellow"></span></p>
-                <p>10% Team <span class="blue"></span></p>
+        <div class="row heading text-bg">
+            <div class="col-md-12">
+                <h2>Token Distribution and Use of Funds</h2><span>Token Distribution and Use of Funds</span>
             </div>
-            <div class="col-md-5 col-xs-12">
-                <div class="heading h2">
-                    <h2>Use of Funds</h2><span>Flow</span>
+        </div>
+        <div class="row pull-up">
+            <div class="col-md-6 function" id="s9-1">
+                <div class="row sub heading">
+                    <div class="col-md-12">
+                        <h3>Token Distribution</h3>
+                    </div>
                 </div>
-                <img src="{% static 'landing/img/function-2.png' %}" alt="">
-                <p>40% Marketing<span class="purple"></span></p>
-                <p>30% Platform Development and expansion<span class="green"></span></p>
-                <p>15% Business Development and Partnerships<span class="lilac"></span></p>
-                <p>10% Legal and Misc Operations<span class="blue"></span></p>
-                <p>5% Consultants<span class="yellow"></span></p>
+                <div class="row content">
+                    <div class="col-md-12"><img src="{% static 'landing/img/function-1.png' %}" alt="">
+                        <p class="legend purple">62% Purchasers</p>
+                        <p class="legend lightblue">10% Reserve</p>
+                        <p class="legend lightgreen">3% Bounty</p>
+                        <p class="legend lilac">10% Referral and Bonus Program</p>
+                        <p class="legend coral">5% Advisors</p>
+                        <p class="legend blue">10% Team</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 function" id="s9-2">
+                <div class="row sub heading">
+                    <div class="col-md-12">
+                        <h3>Use of Funds</h3>
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-md-12"><img src="{% static 'landing/img/function-2.png' %}" alt="">
+                        <p class="legend purple">40% Marketing</p>
+                        <p class="legend mint">30% Platform Development and expansion</p>
+                        <p class="legend lilac">15% Business Development and Partnerships</p>
+                        <p class="legend lightblue">10% Legal and Misc Operations</p>
+                        <p class="legend pink">5% Consultants</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

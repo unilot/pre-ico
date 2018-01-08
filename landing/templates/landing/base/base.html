@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}Initial Coin Offering Pre-sale on the way{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-328d7b72bcae9d586570368087fd6048.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-c28df90df73bee487fa77535222016d8.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -116,8 +116,13 @@
                     <div class="col-xs-7"><img src="{% static 'landing/img/sentence.png' %}" alt=""></div>
                 </div>
             </div>
-            <div class="social"><i class="icon-github"></i><i class="icon-telegram"></i><i class="icon-medium"></i><i
-                    class="icon-reddit"></i><i class="icon-twitter"></i></div>
+            <div class="social">
+                <a href="{% github_organization %}" target="_blank"><i class="icon-github"></i></a>
+                <a href="{% telegram_channel %}" target="_blank"><i class="icon-telegram"></i></a>
+                <a href="{% medium_blog %}" target="_blank"><i class="icon-medium"></i></a>
+                <a href="{% reddit_url %}" target="_blank"><i class="icon-reddit"></i></a>
+                <a href="{% twitter_channel %}" target="_blank"><i class="icon-twitter"></i></a>
+            </div>
         </div>
     </div>
 </div>
