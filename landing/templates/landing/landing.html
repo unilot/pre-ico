@@ -378,10 +378,8 @@
                             <p>{% trans 'To join our Mailing List, please enter your email address below' %}</p>
                             <input type="email" name="email">
                         </div>
-                        <div class="col-md-2">
-                            <button type="submit" class="btn btn-block g-recaptcha"
-                                    data-sitekey="6LcJyDwUAAAAAOHyF7J80mQFTYwXDLusskM8b-_d"
-                                    data-size="invisible"
+                        <div class="col-md-2 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-block"
                                     style="border: none; padding-left: 1em; padding-right: 1em;">
                                 Subscribe
                             </button>
@@ -416,10 +414,10 @@
                         src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
                 <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
                     <ul>
-                        <li><a href="{% url 'landing:document' 'terms-and-conditions' %}">{% trans 'Terms and Conditions' %}</a></li>
-                        <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}">Affiliate Program</a></li>
-                        <li><a href="{% url 'landing:document' 'bounty-program' %}">Bounty Program</a></li>
-                        <li><a href="mailto:info@unilot.io">info@unilot.io</a></li>
+                        <li><a href="{% url 'landing:document' 'terms-and-conditions' %}" target="_blank">{% trans 'Terms and Conditions' %}</a></li>
+                        <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">Affiliate Program</a></li>
+                        <li><a href="{% url 'landing:document' 'bounty-program' %}" target="_blank">Bounty Program</a></li>
+                        <li><a href="mailto:info@unilot.io" target="_blank">info@unilot.io</a></li>
                     </ul>
                 </div>
             </div>
