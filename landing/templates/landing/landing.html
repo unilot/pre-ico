@@ -26,22 +26,18 @@
                             <b>{% trans 'Minutes' %}</b>
                             <b>{% trans 'Seсs' %}</b>
                         </div>
-                        {% if is_show_progress %}
-                            <div class="col-xs-12 end-xs">
-                                <p>Goal $1,000,000 (1,5 Million UNT)</p>
-                            </div>
-                        {% endif %}
+                        <div class="col-xs-12 end-xs">
+                            <p>Goal 1 975 ETH (2,5 Million UNT)</p>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    {% if is_show_progress %}
-                        <div class="col-xs-12">
-                            <div class="sentence__scale">
-                                <p>$834,343 Raised</p>
-                                <div class="sentence__scale_block"><span>49%</span></div>
-                            </div>
+                <div class="row">                    
+                    <div class="col-xs-12">
+                        <div class="sentence__scale">
+                            <p>ETH 0 Raised</p>
+                            <div class="sentence__scale_block"><span>0%</span></div>
                         </div>
-                    {% endif %}
+                    </div>
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block sentence__block--padding">
                             {% token_bonus as token_bonus %}
