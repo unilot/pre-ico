@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}Initial Coin Offering Pre-sale on the way{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-3d9c206bd5153e7e99e36926917f34bf.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-411210979cc19bb5e8d1b44a5026dd70.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -21,10 +21,6 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<div class="alert" id="alert">
-  <p>The Ethereum Network might be experiencing some delays and slow response due to high volume of transactions. Please, be patient.</p>
-  <p><a href="#" onclick="hideAlert()">&times;</a></p>
-</div>
 <header class="header">
     <div class="container">
         <div class="row middle-xs">
@@ -38,7 +34,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{% url 'landing:index' %}"><img src="{% static 'landing/img/logo-header.svg' %}" alt="Unilot logo"></a>
+                    <a href="{% url 'landing:index' %}"><img src="{% static 'landing/img/logo-header.svg' %}"
+                                                             alt="Unilot logo"></a>
                 </div>
             </div>
             <div class="col-md-6">
@@ -73,6 +70,11 @@
             </div>
         </div>
     </div>
+    <div class="alert" id="alert">
+        <p>The Ethereum Network might be experiencing some delays and slow response due to high volume of transactions.
+            Please, be patient.</p>
+        <p><a href="#" onclick="hideAlert()">&times;</a></p>
+    </div>
 </header>
 <div class="sentence__social">
     <p>Contact Us</p>
@@ -94,13 +96,19 @@
                 <li><a href="#roadmap" class="font-roboto-light-18-px">Roadmap</a></li>
                 <li><a href="#tokenomics" class="font-roboto-light-18-px">Use of funds</a></li>
                 <li><a href="#whitePaper" class="font-roboto-light-18-px">White Paper</a></li>
-                {% if advisors_list %}<li><a href="#advisors" class="font-roboto-light-18-px">{% trans 'Advisors' %}</a></li>{% endif %}
-                {% if team_members_list %}<li><a href="#team" class="font-roboto-light-18-px">Team</a></li>{% endif %}
-                {% if publications_list %}<li><a href="#publications" class="font-roboto-light-18-px">{% trans 'Publications' %}</a></li>{% endif %}
+                {% if advisors_list %}
+                    <li><a href="#advisors" class="font-roboto-light-18-px">{% trans 'Advisors' %}</a></li>{% endif %}
+                {% if team_members_list %}
+                    <li><a href="#team" class="font-roboto-light-18-px">Team</a></li>{% endif %}
+                {% if publications_list %}
+                    <li><a href="#publications" class="font-roboto-light-18-px">{% trans 'Publications' %}</a>
+                    </li>{% endif %}
                 <li><a href="#partners" class="font-roboto-light-18-px">Partners</a></li>
                 <li><a href="#newsletter" class="font-roboto-light-18-px">Newsletter</a></li>
-                {% if faqs_total > 0 %}<li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
-                {% if roadshow_list %}<li><a href="#roadshow" class="font-roboto-light-18-px">Upcoming Events</a></li>{% endif %}
+                {% if faqs_total > 0 %}
+                    <li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
+                {% if roadshow_list %}
+                    <li><a href="#roadshow" class="font-roboto-light-18-px">Upcoming Events</a></li>{% endif %}
                 {% if is_pre_ico %}
                     <li><a href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a></li>
                 {% endif %}
@@ -111,7 +119,8 @@
             <div class="unilot">
                 <div class="row">
                     <div class="col-xs-5"><img src="{% static 'landing/img/logo.svg' %}" alt="">
-                        <p>Become an investor and take part in a closed testing of MVP (Unilot app for Android and iOS).</p>
+                        <p>Become an investor and take part in a closed testing of MVP (Unilot app for Android and
+                            iOS).</p>
                         {% if is_app_public %}
                             <a href="#">App Store<img src="{% static 'landing/img/apple.svg' %}" alt=""></a>
                             <a href="#">Google Play<img src="{% static 'landing/img/google-play.svg' %}" alt=""></a>
