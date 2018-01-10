@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}Initial Coin Offering Pre-sale on the way{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-66f16d3be3eb005e27f5530af34b73e9.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-3d9c206bd5153e7e99e36926917f34bf.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -21,6 +21,10 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
+<div class="alert" id="alert">
+  <p>The Ethereum Network might be experiencing some delays and slow response due to high volume of transactions. Please, be patient.</p>
+  <p><a href="#" onclick="hideAlert()">&times;</a></p>
+</div>
 <header class="header">
     <div class="container">
         <div class="row middle-xs">
@@ -129,7 +133,7 @@
 <div class="slideout-panel slideout-panel-right" id="panel">
     {% block content %}{% endblock %}
 </div>
-<script src="{% static 'landing/js/main.min-4e5ee953038164fd13195ae145d08bec.js' %}"></script>
+<script src="{% static 'landing/js/main.min-7b97158efaf397a70c9a86d89974d385.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
 </body>
