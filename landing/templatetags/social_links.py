@@ -58,6 +58,10 @@ def steemit_blog():
     return settings.SOCIAL_LINKS.get('STEEMIT')
 
 @register.simple_tag()
+def bitcointalk_thread():
+    return settings.SOCIAL_LINKS.get('BITCOINTALK')
+
+@register.simple_tag()
 def share_facebook(url):
     return 'https://www.facebook.com/sharer/sharer.php?u=%s' % urlquote(url)
 

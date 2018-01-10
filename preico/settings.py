@@ -203,6 +203,7 @@ SOCIAL_LINKS = {
     'YOUTUBE': 'https://www.youtube.com/channel/UCNdn2maOQEbYwpNK4Yaoxqw',
     'GITHUB': 'https://github.com/unilot',
     'STEEMIT': 'https://steemit.com/@unilot',
+    'BITCOINTALK': 'https://bitcointalk.org/index.php?topic=2695196.msg27539646#msg27539646'
 }
 
 COUNTRIES_EXCLUDED = (
