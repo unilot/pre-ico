@@ -181,6 +181,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
+                    {% if user.is_authenticated %}
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="btn-group-lg">
@@ -191,7 +192,6 @@
                         </div>
                     </div>
                     {% include 'includes/modal-buy-token.html' %}
-                    {% if user.is_authenticated %}
                     <div class="row">
                         <div class="col-xs-12">
                             {% if user.profile %}
