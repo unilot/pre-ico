@@ -48,12 +48,14 @@
                     <div class="row row-controls">
                         <div class="col-md-4 col-md-offset-2"><a
                                 class="btn btn-default btn-lg btn-block text-uppercase"
-                                href="{% url 'landing:index-html' %}" role="button">Yes</a></div>
+                                data-toggle="modal" data-target="#invalidCitizenship"
+                                href="#invalidCitizenship" role="button">Yes</a></div>
                         <div class="col-md-4"><a
                                 class="btn btn-primary btn-lg btn-block js-wizard-next-step text-uppercase"
                                 href="#" role="button">No</a></div>
                     </div>
                 </div>
+                {% include 'includes/invalid-citizenship.html' with excluded_countries=excluded_countries %}
                 <div class="tab-pane" id="termsAndConditions" tabindex="1">
                     <div class="row">
                         <div class="col-md-12"><h2 class="text-uppercase">Terms and conditions</h2>
