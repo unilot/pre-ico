@@ -20,7 +20,8 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row js-has-overlay">
+        {% include 'includes/form-overlay.html' %}
         <div class="col-md-12 tabbable tabs-left" id="signupWizard">
             <ul class="nav nav-tabs">
                 <li><a href="#citizenshipInquery" data-toggle="tab">Citizenship enquiry</a></li>
@@ -55,7 +56,7 @@
                                 href="#" role="button">No</a></div>
                     </div>
                 </div>
-                {% include 'includes/invalid-citizenship.html' with excluded_countries=excluded_countries %}
+                {% include 'includes/invalid-citizenship-modal.html' with excluded_countries=excluded_countries %}
                 <div class="tab-pane" id="termsAndConditions" tabindex="1">
                     <div class="row">
                         <div class="col-md-12"><h2 class="text-uppercase">Terms and conditions</h2>
@@ -179,11 +180,14 @@
                                         <li>This is wallet that you can use to buy tokens with.<strong>Wallet
                                             can NOT be changed later.</strong></li>
                                         <li><strong>DO NOT use wallet that is stored on
-                                            exchange.</strong><a href="#">See</a> details on valid
+                                            exchange.</strong><a data-toggle="modal"
+                                                                 data-target="#validWallets"
+                                                                href="#validWallets">See</a> details on valid
                                             wallets for investment
                                         </li>
                                     </ul>
                                 </div>
+                                {% include 'includes/valid-wallets-modal.html' %}
                                 <label for="firstName">Wallet</label><input class="form-control"
                                                                             id="wallet" type="text"
                                                                             name="wallet" required

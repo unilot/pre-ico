@@ -89,6 +89,21 @@ class SignUpView(generics.CreateAPIView):
 
                 user.profile.save()
 
+            # Sending email
+            msg = EmailMessage(to=[user.email])
+            msg.template_name = Templates.get_template_key(Templates.USER_READY_TO_BUY)
+            msg.merge_vars = {
+                user.email: {
+                    'email': user.email,
+                    'first_name': user.first_name,
+                    'last_name': user.last_name,
+                    'dashboard_url': request.build_absolute_uri(
+                        reverse('cp:dashboard', kwargs={'format': 'html'}))
+                }
+            }
+
+            msg.send()
+
             login(request, user)
 
         headers = self.get_success_headers(serializer.data)
@@ -221,13 +236,14 @@ class RecoverPassword(generics.GenericAPIView):
             user.profile.verification_key = verification_key
             user.profile.save()
 
-            # TODO send greeting pre-order mail
             # Sending email
             msg = EmailMessage(to=[user.email])
-            msg.template_name = Templates.get_template_key(Templates.USER_VERIFY_EMAIL)
+            msg.template_name = Templates.get_template_key(Templates.USER_RESET_PASSWORD)
             msg.merge_vars = {
                 user.email: {
                     'email': user.email,
+                    'first_name': user.first_name,
+                    'last_name': user.last_name,
                     'verify_url': request.build_absolute_uri(
                         reverse('cp:verify',
                                 kwargs={'verification_key': verification_key, 'format': 'html'}))
