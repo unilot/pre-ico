@@ -40,17 +40,13 @@ class LandingView(generics.GenericAPIView):
 
         data['contribute_url'] = contribute_url
 
-        data['publications_list'] = model_serializers.PublictionModelSerializer(
-            models.Publication.objects.language().filter(published=True).order_by('-id'), many=True).data
+        data['publications_list'] = models.Publication.objects.language().filter(published=True).order_by('-id')
 
-        data['roadshow_list'] = model_serializers.RoadshowModelSerializer(
-            models.Roadshow.objects.language().filter(published=True).order_by('id'), many=True).data
+        data['roadshow_list'] = models.Roadshow.objects.language().filter(published=True).order_by('id')
 
-        data['advisors_list'] = model_serializers.AdvisorModelSerializer(
-            models.Adviser.objects.language().filter(published=True).order_by('id'), many=True).data
+        data['advisors_list'] = models.Adviser.objects.language().filter(published=True).order_by('id')
 
-        data['team_members_list'] = model_serializers.TeamMemberModelSerializer(
-            models.TeamMember.objects.language().filter(published=True).order_by('id'), many=True).data
+        data['team_members_list'] = models.TeamMember.objects.language().filter(published=True).order_by('id')
 
         return response.Response(data)
 
