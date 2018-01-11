@@ -1,0 +1,25 @@
+{% load dynamic_content %}
+{% load config %}
+<div class="modal fade" id="validWallets" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Wallets for investment</h4></div>
+            <div class="modal-body">
+                {% content_text 'modal-valid-wallets' %}
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a
+                                class="btn btn-lg btn-primary"
+                                data-dismiss="modal" aria-label="Close"
+                                role="button" tabindex="0">Got it</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

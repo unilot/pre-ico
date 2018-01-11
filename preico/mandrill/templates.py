@@ -2,7 +2,9 @@ from django.utils.translation import get_language
 
 
 class Templates:
-    USER_VERIFY_EMAIL='user-veryfy-email-{locale}'
+    USER_VERIFY_EMAIL = 'user-veryfy-email-{locale}'
+    USER_READY_TO_BUY = 'user-ready-to-buy-{locale}'
+    USER_RESET_PASSWORD = 'user-reset-password-{locale}'
 
     @classmethod
     def get_template_key(cls, template_name, locale=None):
