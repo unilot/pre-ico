@@ -35,10 +35,10 @@
     <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="{{ LANGUAGE_CODE }}" />
+    <meta property="og:locale" content="{{ LANGUAGE_CODE|slice:":2"|lower }}_{{ LANGUAGE_CODE|slice:"-2:"|upper }}" />
     {% for lang_code,lang_name in LANGUAGES %}
     {% if lang_code != LANGUAGE_CODE %}
-    <meta property="og:locale:alternate" content="{{ lang_code }}" />
+    <meta property="og:locale:alternate" content="{{ lang_code|slice:":2"|lower }}_{{ lang_code|slice:"-2:"|upper }}" />
     {% endif %}
     {% endfor %}
     <meta property="og:video" content="https://www.youtube.com/v/pFknkJfj9kM" />
