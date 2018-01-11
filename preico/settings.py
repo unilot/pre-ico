@@ -209,4 +209,6 @@ SOCIAL_LINKS = {
 COUNTRIES_EXCLUDED = (
     'US',
     'CA',
+    'CN',
+    'SG'
 )
