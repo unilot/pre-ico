@@ -22,6 +22,32 @@
     <meta name="apple-mobile-web-app-title" content="Unilot">
     <meta name="application-name" content="Unilot">
     <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:site_name" content="Unilot" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}" />
+    <meta property="og:description" content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency." />
+    <meta property="og:url" content="https://unilot.io" />
+    <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
+    <meta property="article:publisher" content="https://www.facebook.com/unilot.io/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale" />
+    <meta name="twitter:description" content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency." />
+    <meta name="twitter:url" content="https://unilot.io" />
+    <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="{{ LANGUAGE_CODE }}" />
+    {% for lang_code,lang_name in LANGUAGES %}
+    {% if lang_code != LANGUAGE_CODE %}
+    <meta property="og:locale:alternate" content="{{ lang_code }}" />
+    {% endif %}
+    {% endfor %}
+    <meta property="og:video" content="https://www.youtube.com/v/pFknkJfj9kM" />
+    <meta property="og:video:secure_url" content="https://www.youtube.com/v/pFknkJfj9kM" />
+    <meta property="og:video:type" content="application/x-shockwave-flash" />
+    <meta property="og:video:width" content="1920" />
+    <meta property="og:video:height" content="1080" />
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://webnextbd.net/demo/js/respond.min.js"></script><![endif]-->
