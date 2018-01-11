@@ -5,11 +5,14 @@ from rest_framework.reverse import reverse
 from cp import models as cp_models
 from preico.document import TermsAndConditions, AffiliateTermsAndConditions, BountyProgram
 from . import models
+from .serializers import model as model_serializers
+from preico.rest_framework import renderers
 
 
 class LandingView(generics.GenericAPIView):
     permission_classes = [ permissions.AllowAny ]
     template_name = 'landing/landing.html'
+    renderer_classes = (renderers.TemplateHTMLRenderer, )
 
     def get(self, request, *args, **kwargs):
         faqs_qs = cp_models.FAQ.objects\
@@ -36,16 +39,25 @@ class LandingView(generics.GenericAPIView):
             contribute_url = reverse('cp:sign-up', format='html')
 
         data['contribute_url'] = contribute_url
-        data['publications_list'] = models.Publication.objects.language().filter(published=True).order_by('-id')
-        data['roadshow_list'] = models.Roadshow.objects.language().filter(published=True).order_by('id')
-        data['advisors_list'] = models.Adviser.objects.language().filter(published=True).order_by('id')
-        data['team_members_list'] = models.TeamMember.objects.language().filter(published=True).order_by('id')
+
+        data['publications_list'] = model_serializers.PublictionModelSerializer(
+            models.Publication.objects.language().filter(published=True).order_by('-id'), many=True).data
+
+        data['roadshow_list'] = model_serializers.RoadshowModelSerializer(
+            models.Roadshow.objects.language().filter(published=True).order_by('id'), many=True).data
+
+        data['advisors_list'] = model_serializers.AdvisorModelSerializer(
+            models.Adviser.objects.language().filter(published=True).order_by('id'), many=True).data
+
+        data['team_members_list'] = model_serializers.TeamMemberModelSerializer(
+            models.TeamMember.objects.language().filter(published=True).order_by('id'), many=True).data
 
         return response.Response(data)
 
 
 class DocumentView(generics.GenericAPIView):
     permission_classes = [ permissions.AllowAny ]
+    renderer_classes = (renderers.TemplateHTMLRenderer,)
     documents = {
         'terms-and-conditions': TermsAndConditions(),
         'affiliate-terms-and-conditions': AffiliateTermsAndConditions(),

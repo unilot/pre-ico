@@ -22,6 +22,32 @@
     <meta name="apple-mobile-web-app-title" content="Unilot">
     <meta name="application-name" content="Unilot">
     <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:site_name" content="Unilot" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}" />
+    <meta property="og:description" content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency." />
+    <meta property="og:url" content="https://unilot.io/en-us/" />
+    <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
+    <meta property="article:publisher" content="{% facebook_page %}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale" />
+    <meta name="twitter:description" content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency." />
+    <meta name="twitter:url" content="https://unilot.io/en-us/" />
+    <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="{{ LANGUAGE_CODE }}" />
+    {% for lang_code,lang_name in LANGUAGES %}
+    {% if lang_code != LANGUAGE_CODE %}
+    <meta property="og:locale:alternate" content="{{ lang_code }}" />
+    {% endif %}
+    {% endfor %}
+    <meta property="og:video" content="https://www.youtube.com/v/pFknkJfj9kM" />
+    <meta property="og:video:secure_url" content="https://www.youtube.com/v/pFknkJfj9kM" />
+    <meta property="og:video:type" content="application/x-shockwave-flash" />
+    <meta property="og:video:width" content="1920" />
+    <meta property="og:video:height" content="1080" />
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://webnextbd.net/demo/js/respond.min.js"></script><![endif]-->
@@ -32,9 +58,8 @@
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header"><a class="navbar-brand" href="{% url 'landing:index' %}"><img id="logo" src="{% static 'images/unilot-logo.png' %}"
-                                                                                 alt="Logo" height="100%"></a><a
-                        class="navbar-brand" href="{% url 'landing:index' %}">Unilot</a><!-- Social links--></div>
+                <div class="navbar-header"><a class="navbar-brand" href="{% url 'landing:index' %}"><img id="logo" src="{% static 'landing/img/logo-header.svg' %}"
+                                                                                 alt="Logo" height="100%"></a><!-- Social links--></div>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% facebook_page %}" target="_blank">
                         <i class="icon-facebook-squared"></i></a></li>
@@ -161,7 +186,6 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    {% if can_buy %}
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="btn-group-lg">
@@ -172,7 +196,6 @@
                         </div>
                     </div>
                     {% include 'includes/modal-buy-token.html' %}
-                    {% endif %}
                     {% if user.is_authenticated %}
                     <div class="row">
                         <div class="col-xs-12">
@@ -213,24 +236,24 @@
                             </div>
                             <hr>
                         </div>
-                    </div>{% comment %}
+                    </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="panel">
                                 <div class="panel-body"><strong class="text-uppercase">ETH Raised</strong>
-                                    <h3><strong>1000.2342 ETH</strong></h3>
+                                    <h3><strong>0 ETH</strong></h3>
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-striped active"
-                                                     style="width:35%;"></div>
+                                                     style="width:0%;"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>{% endcomment %}
+                    </div>
                 </div>
             </div>
         </div>

@@ -19,8 +19,7 @@ class SignUpSerializer(serializers.ModelSerializer):
         django_validators.EmailValidator()
     ])
 
-    password = serializers.ModelField(django_models.User._meta.get_field('password'), required=True,
-                                      validators=(validate_password, ))
+    password = serializers.ModelField(django_models.User._meta.get_field('password'), required=True)
 
     first_name = serializers.ModelField(django_models.User._meta.get_field('first_name'), required=True)
     last_name = serializers.ModelField(django_models.User._meta.get_field('last_name'), required=True)

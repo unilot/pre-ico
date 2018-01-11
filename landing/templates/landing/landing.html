@@ -11,12 +11,12 @@
 <section class="sentence" id="main">
     <div class="container">
         <div class="scene">
-            <div data-depth="0.6"><img src="{% static 'landing/img/sentence-bg.png' %}" alt=""></div>
+            <div data-depth="0.0"><img src="{% static 'landing/img/sentence-bg.png' %}" alt=""></div>
         </div>
         <div class="row">
             <div class="col-sm-8 col-xs-12">
-                <h1>{% block title %}{% trans 'Initial Coin Offering Pre-sale on the way' %}{% endblock %}</h1>
-                <p>{% trans 'Pre-ICO starts in' %}:</p>
+                <h1>{% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
+                <p>{% trans 'Pre ICO ends in' %}:</p>
                 <div class="sentence__timer">
                     <div class="row">
                         <div class="col-xs-12"><span class="js-countdown"></span></div>
@@ -26,22 +26,18 @@
                             <b>{% trans 'Minutes' %}</b>
                             <b>{% trans 'Seсs' %}</b>
                         </div>
-                        {% if is_show_progress %}
-                            <div class="col-xs-12 end-xs">
-                                <p>Goal $1,000,000 (1,5 Million UNT)</p>
-                            </div>
-                        {% endif %}
+                        <div class="col-xs-12 end-xs">
+                            <p>Goal 1 975 ETH (25 Million UNT)</p>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    {% if is_show_progress %}
-                        <div class="col-xs-12">
-                            <div class="sentence__scale">
-                                <p>$834,343 Raised</p>
-                                <div class="sentence__scale_block"><span>49%</span></div>
-                            </div>
+                <div class="row">                    
+                    <div class="col-xs-12">
+                        <div class="sentence__scale">
+                            <!-- <p>ETH 0 Raised</p> -->
+                            <div class="sentence__scale_block"><span>0%</span></div>
                         </div>
-                    {% endif %}
+                    </div>
                     <div class="col-sm-4 col-xs-12 center-xs">
                         <div class="sentence__block sentence__block--padding">
                             {% token_bonus as token_bonus %}
@@ -80,7 +76,7 @@
             <div class="col-md-5 col-sm-7 col-xs-12">
                 <p><strong>Unilot</strong> is a decentralized gambling platform which allows players to play and
                     host online games like poker tournaments, lottery and many other games. Unilot will be available
-                    through mobile apps on OSx and Android platforms and transact using Unilots as it’s main
+                    through mobile apps on OS and Android platforms and transact using Unilots as it’s main
                     currency.</p>
             </div>
             <div class="col-md-7 col-sm-5"><img src="{% static 'landing/img/about.png' %}" alt=""></div>
@@ -243,7 +239,7 @@
                     round details.</p>
             </div>
             <div class="col-xs-12">
-                <a class="btn" href="{% static 'landing/docs/Unilot-White-Paper-en-us.pdf' %}" target="_blank">View White Paper<i class="icon-file-text2"></i></a>
+                <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}" target="_blank">View White Paper<i class="icon-file-text2"></i></a>
                 <span>English</span>
             </div>
         </div>
@@ -358,6 +354,15 @@
                 <div class="thumbnail">
                     <img src="{% static 'landing/img/partners/tokenup.png' %}" alt="TokenUp">
                 </div>
+                <div class="thumbnail">
+                    <img src="{% static 'landing/img/partners/igamingadvisors.png' %}" alt="iGamingAdvisors">
+                </div>
+                <div class="thumbnail">
+                    <img src="{% static 'landing/img/partners/credsberry.png' %}" alt="Credsberry">
+                </div>
+                <div class="thumbnail">
+                    <img src="{% static 'landing/img/partners/zeroone.png' %}" alt="ZeroOne">
+                </div>
             </div>
         </div>
     </div>
@@ -375,10 +380,8 @@
                             <p>{% trans 'To join our Mailing List, please enter your email address below' %}</p>
                             <input type="email" name="email">
                         </div>
-                        <div class="col-md-2">
-                            <button type="submit" class="btn btn-block g-recaptcha"
-                                    data-sitekey="6LcJyDwUAAAAAOHyF7J80mQFTYwXDLusskM8b-_d"
-                                    data-size="invisible"
+                        <div class="col-md-2 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-block"
                                     style="border: none; padding-left: 1em; padding-right: 1em;">
                                 Subscribe
                             </button>
@@ -389,34 +392,18 @@
         </div>
         <div class="footer__top">
             <div class="row center-xs">
-                <div class="col-sm-4 col-xs-12"><a href="{% github_organization %}"><i class="icon-github"></i>
-                    <p class="git">GitHub</p></a></div>
-                <div class="col-sm-4 col-xs-12"><a href="{% telegram_channel %}"><i class="icon-telegram"></i>
-                    <p>Telegram</p></a></div>
-                <div class="col-sm-4 col-xs-12"><a href="{% medium_blog %}"><i class="icon-medium"></i>
-                    <p>Medium</p></a></div>
+              <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% github_organization %}" target="_blank"><i class="icon-github"></i><span class="git">GitHub</span></a></div>
+              <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% telegram_channel %}" target="_blank"><i class="icon-telegram"></i><span>Telegram</span></a></div>
+              <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% medium_blog %}" target="_blank"><i class="icon-medium"></i><span>Medium</span></a></div>
+              <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% bitcointalk_thread %}" target="_blank"><i class="icon-bitcointalk"></i><span>Bitcointalk</span></a></div>
             </div>
-        </div>
-        <div class="footer__social">
             <div class="row start-sm center-xs">
-                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% reddit_url %}"><i
-                        class="icon-reddit"></i>
-                    <p>Reddit</p></a></div>
-                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% twitter_channel %}"><i
-                        class="icon-twitter"></i>
-                    <p>Twitter</p></a></div>
-                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% facebook_page %}"><i
-                        class="icon-facebook"></i>
-                    <p>Facebook</p></a></div>
-                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% linkedin_company %}"><i
-                        class="icon-linkedin2"></i>
-                    <p>Linkedin</p></a></div>
-                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% slack_channel %}"><i
-                        class="medium"></i>
-                    <p class="slack">Slack</p></a></div>
-                <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a href="{% youtube_channel %}"><i
-                        class="icon-YouTube-2"></i>
-                    <p>YouTube</p></a></div>
+              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% reddit_url %}" target="_blank"><i class="icon-reddit"></i><span>Reddit</span></a></div>
+              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% twitter_channel %}" target="_blank"><i class="icon-twitter"></i><span>Twitter</span></a></div>
+              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% facebook_page %}" target="_blank"><i class="icon-facebook"></i><span>Facebook</span></a></div>
+              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% linkedin_company %}" target="_blank"><i class="icon-linkedin"></i><span>Linkedin</span></a></div>
+              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% steemit_blog %}" target="_blank"><i class="icon-steemit"></i><span>Steemit</span></a></div>
+              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% youtube_channel %}" target="_blank"><i class="icon-YouTube-2 icon-youtube"></i><span>YouTube</span></a></div>
             </div>
         </div>
         <div class="footer__bottom">
@@ -430,10 +417,10 @@
                         src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
                 <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
                     <ul>
-                        <li><a href="{% url 'landing:document' 'terms-and-conditions' %}">{% trans 'Terms and Conditions' %}</a></li>
-                        <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}">Affiliate Program</a></li>
-                        <li><a href="{% url 'landing:document' 'bounty-program' %}">Bounty Program</a></li>
-                        <li><a href="mailto:info@unilot.io">info@unilot.io</a></li>
+                        <li><a href="{% url 'landing:document' 'terms-and-conditions' %}" target="_blank">{% trans 'Terms and Conditions' %}</a></li>
+                        <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">Affiliate Program</a></li>
+                        <li><a href="{% url 'landing:document' 'bounty-program' %}" target="_blank">Bounty Program</a></li>
+                        <li><a href="mailto:info@unilot.io" target="_blank">info@unilot.io</a></li>
                     </ul>
                 </div>
             </div>
