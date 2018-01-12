@@ -6,8 +6,10 @@ var config = {
     token: {
         price: {{ token.price }},
         bonus: {{ token.bonus }},
-        minTokenAmount:0,
-        maxTokenAmount:{{ token.cap }}
+        minTokenAmount:1,
+        maxTokenAmount:0,
+        saleProgress: {{sale_progress}},
+        saleAmount: {{sale_amount}}
     },
     messages: {
         errors: {

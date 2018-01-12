@@ -17,6 +17,9 @@ class ExchangeRate(models.Model):
     rate = models.FloatField(null=False)
     source = models.CharField(null=False, choices=SOURCE_LIST, max_length=8)
     created_at = models.DateTimeField(auto_now_add=True)
+    tokens_left = models.CharField(null=True, blank=True, max_length=27)
+    total_tokens = models.CharField(null=True, blank=True, max_length=27)
+    eth_raised = models.CharField(null=True, blank=True, max_length=27)
 
     def __str__(self):
         return '%s: %s > %s : %f' % (
