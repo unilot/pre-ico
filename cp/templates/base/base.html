@@ -205,7 +205,7 @@
                             {% endif %}
                             <div class="panel">
                                 <div class="panel-body"><strong>My UNIT Referral Tokens</strong>
-                                    <p class="text-2x"><strong>0</strong></p><a href="#">Get more tokens for
+                                    <p class="text-2x"><strong>0</strong></p><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">Get more tokens for
                                         free</a></div>
                             </div>
                             <hr>
@@ -254,7 +254,7 @@
         </div>
     </div>
 </div>
-<script type="application/javascript" src="{% url 'cp:js_config' 'js' %}"></script>
+<script type="application/javascript" src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>
 <script type="application/javascript" src="{% static 'js/main.min-1ed854afe454a5b98f14d55ab03808fe.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
