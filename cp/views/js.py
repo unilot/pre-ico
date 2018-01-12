@@ -21,10 +21,11 @@ class ConfigJsView(views.APIView):
             'token': {
                 'price': '{:f}'.format(TOKEN_SETTINGS.get('PRICE')),
                 'bonus': '{:f}'.format(TOKEN_SETTINGS.get('BONUS', 0)),
-                'cap': '%d' % (int(TOKEN_SETTINGS.get('CAP', 0)/1.5))
+                'cap': '%d' % (int(TOKEN_SETTINGS.get('CAP', 0)/1.5)),
+                'sale_progress': '{:f}'.format(amount_raised / int(exchange_rate.total_tokens)),
+                'sale_amount': '{:f}'.format(int(exchange_rate.eth_raised) / (10 ** 18)),
+                'available': '{:f}'.format( ( int(exchange_rate.tokens_left) / (1 + TOKEN_SETTINGS.get('BONUS'))) / (10**18))
             },
-            'sale_progress': '{:f}'.format(amount_raised / int(exchange_rate.total_tokens)),
-            'sale_amount': '{:f}'.format(int(exchange_rate.eth_raised) / (10**18))
         }
 
         return response.Response(data=data, content_type='application/javascript')
