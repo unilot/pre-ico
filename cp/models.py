@@ -31,6 +31,9 @@ class Profile(models.Model):
     referrer = models.ForeignKey('Profile', to_field='user', null=True, blank=True, related_name='referral',
                                  unique=False, on_delete=models.deletion.DO_NOTHING)
     referal_level = models.IntegerField(default=0)
+    token_balance = models.CharField(max_length=27, null=True, blank=True)
+    token_balance_last_update = models.DateTimeField(null=True, blank=True,
+                                                     auto_now=False, auto_created=False, auto_now_add=False)
 
     @property
     def username(self):

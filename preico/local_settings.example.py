@@ -42,7 +42,18 @@ MANDRILL_API_KEY='mandrill-api-key'
 TOKEN_ADDRESS='token-address'
 
 TOKEN_SETTINGS = {
-    'PRICE': 0.000092,
+    'NAME': 'UNIT',
+    'CONTRACT_NAME': 'UnilotToken',
+    'PRICE': 0.000079,
     'BONUS': 0.4,
     'CAP': 25000000
+}
+
+WEB3_CONFIG = {
+    'MODE': 'IPC',
+    'PATH': '~/.ethereum/geth.ipc',
+    'IS_TESTNET': True,
+    'ETHBASE': '0x0000000000000000000000000000000000000000',
+    'ETHBASE_PWD': 'MY_WALLET_SECRETPASSWORD',
+    'GAS_PRICE': (8, 'gwei'),
 }
