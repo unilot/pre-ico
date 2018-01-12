@@ -14,7 +14,7 @@
             <div class="col-md-6">
                 {% for question in object_list %}
                 <div class="question">
-                    <h4>1. {{ question.question }}</h4>
+                    <h4>{{ forloop.counter }}. {{ question.question }}</h4>
                     {{ question.answer|safe_markdown }}
                 </div>
                 {% endfor %}
