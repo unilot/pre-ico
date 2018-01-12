@@ -34,12 +34,10 @@ class SignUpSerializer(serializers.ModelSerializer):
         p_validators.EthWalletValidator()
     ], required=True)
 
-    ether_amount = serializers.FloatField(source='profile.token_amount_reserved', required=True)
-
     class Meta:
         model = django_models.User
         fields = ('email', 'password', 'first_name', 'last_name', 'company_name', 'phone',
-                  'country', 'wallet', 'ether_amount')
+                  'country', 'wallet',)
 
     def create(self, validated_data):
         data = validated_data
