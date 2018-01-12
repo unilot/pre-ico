@@ -3,9 +3,9 @@ from rest_framework import generics, permissions, response
 from rest_framework.reverse import reverse
 
 from cp import models as cp_models
+from cp.serializers import faq
 from preico.document import TermsAndConditions, AffiliateTermsAndConditions, BountyProgram
 from . import models
-from .serializers import model as model_serializers
 from preico.rest_framework import renderers
 
 
@@ -86,7 +86,8 @@ class DocumentView(generics.GenericAPIView):
         return response.Response(data)
 
 class WhitePaperView(generics.GenericAPIView):
-    permission_classes = [ permissions.AllowAny ]
+    permission_classes = ( permissions.AllowAny, )
+    renderer_classes = (renderers.TemplateHTMLRenderer,)
     template_name='landing/documents/White-Paper.html'
 
     def get(self, request, *args, **kwargs):
@@ -94,3 +95,11 @@ class WhitePaperView(generics.GenericAPIView):
             'advisors_list': models.Adviser.objects.language().filter(published=True).order_by('id'),
             'team_members_list': models.TeamMember.objects.language().filter(published=True).order_by('id')
         })
+
+
+class FAQView(generics.ListAPIView):
+    permission_classes = (permissions.AllowAny,)
+    renderer_classes = (renderers.TemplateHTMLRenderer,)
+    template_name='landing/faq.html'
+    queryset = cp_models.FAQ.objects.language().filter(published=True).order_by('id')
+    serializer_class = faq.SimpleFaqSerializer
