@@ -2,6 +2,7 @@
 {% load martortags %}
 {% load i18n %}
 {% load config %}
+{% load dynamic_content %}
 
 {% block content %}
     <h1>{% block title %}Unilot Contribution Sign up{% endblock %}</h1>
@@ -176,18 +177,8 @@
                                 <hr>
                                 <div class="form-group">
                                     <div class="alert alert-warning">
-                                        <p>Please specify address of the wallet that will be used to buy UNIT tokens.</p>
-
-                                        <p>Please note:</p>
-                                        <ul>
-                                            <li>Please double check address, it can not be changed after you sign up</li>
-                                            <li>Wallets stored on exchanges are NOT ACCEPTED</li>
-                                            <li><a data-toggle="modal"
-                                                       data-target="#validWallets"
-                                                       href="#validWallets">See details</a> on valid wallets for investment</li>
-                                        </ul>
+                                        {% content_text 'modal-valid-wallets' %}
                                     </div>
-                                    {% include 'includes/valid-wallets-modal.html' %}
                                     <label for="firstName">Contribution Source Wallet Address</label><input
                                         class="form-control"
                                         id="wallet" type="text"
