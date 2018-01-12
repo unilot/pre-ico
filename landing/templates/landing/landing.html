@@ -307,7 +307,7 @@
                 </div>
                 {% endfor %}
                 {% if faqs_total > 12 %}
-                    <a class="btn">Show all FAQ topics</a>
+                    <a class="btn" href="{% url 'landing:faq-html' %}">Show all FAQ topics</a>
                 {% endif %}
             </div>
         </div>

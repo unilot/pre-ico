@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    url(r'^faq.html', views.FAQView.as_view(), name='faq-html'),
     url(r'^(?P<document>%s)\.html' %
         ('|'.join(
             list(
