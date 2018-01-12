@@ -23,25 +23,28 @@
     <meta name="application-name" content="Unilot">
     <meta name="theme-color" content="#ffffff">
 
-    <meta property="og:site_name" content="Unilot" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}" />
-    <meta property="og:description" content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency." />
-    <meta property="og:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/" />
-    <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
-    <meta property="article:publisher" content="{% facebook_page %}" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale" />
-    <meta name="twitter:description" content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency." />
-    <meta name="twitter:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/" />
-    <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="{{ LANGUAGE_CODE|slice:":2"|lower }}_{{ LANGUAGE_CODE|slice:"-2:"|upper }}" />
+    <meta property="og:site_name" content="Unilot"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}"/>
+    <meta property="og:description"
+          content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency."/>
+    <meta property="og:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/"/>
+    <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
+    <meta property="article:publisher" content="{% facebook_page %}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale"/>
+    <meta name="twitter:description"
+          content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency."/>
+    <meta name="twitter:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/"/>
+    <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:locale" content="{{ LANGUAGE_CODE|slice:":2"|lower }}_{{ LANGUAGE_CODE|slice:"-2:"|upper }}"/>
     {% for lang_code,lang_name in LANGUAGES %}
-    {% if lang_code != LANGUAGE_CODE %}
-    <meta property="og:locale:alternate" content="{{ lang_code|slice:":2"|lower }}_{{ lang_code|slice:"-2:"|upper }}" />
-    {% endif %}
+        {% if lang_code != LANGUAGE_CODE %}
+            <meta property="og:locale:alternate"
+                  content="{{ lang_code|slice:":2"|lower }}_{{ lang_code|slice:"-2:"|upper }}"/>
+        {% endif %}
     {% endfor %}
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -53,8 +56,11 @@
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header"><a class="navbar-brand" href="{% url 'landing:index' %}"><img id="logo" src="{% static 'landing/img/logo-header.svg' %}"
-                                                                                 alt="Logo" height="100%"></a><!-- Social links--></div>
+                <div class="navbar-header"><a class="navbar-brand" href="{% url 'landing:index' %}"><img id="logo"
+                                                                                                         src="{% static 'landing/img/logo-header.svg' %}"
+                                                                                                         alt="Logo"
+                                                                                                         height="100%"></a>
+                    <!-- Social links--></div>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% facebook_page %}" target="_blank">
                         <i class="icon-facebook-squared"></i></a></li>
@@ -66,32 +72,33 @@
                         <i class="icon-telegram"></i></a></li>
                 </ul>
                 {% if LANGUAGES|length > 1 %}
-                <ul class="nav nav-pills navbar-nav navbar-right">
-                    <li class="dropdown" role="presentation"><a class="dropdown-toggle" id="locale" href="#"
-                                                                type="button" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
-                        {{ LANGUAGE_CODE|language_name_local }}
-                        <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="locale">
-                            {% for lang_code, lang_name in LANGUAGES %}
-                                {% if lang_code == LANGUAGE_CODE %}
-                                <li class="active">
-                                    <a href="#">{{ lang_code|language_name_local }}</a>
-                                </li>
-                                {% else %}
-                                <li>
-                                    <form method="post" action="{% url 'set_language' %}">
-                                        {% csrf_token %}
-                                        <input type="hidden" value="{{ redirect_to }}" name="next" />
-                                        <input type="hidden" value="{{ lang_code }}" name="language" />
-                                        <a href="#" role="submit" class="js-submit">{{ lang_code|language_name_local }}</a>
-                                    </form>
-                                </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
+                    <ul class="nav nav-pills navbar-nav navbar-right">
+                        <li class="dropdown" role="presentation"><a class="dropdown-toggle" id="locale" href="#"
+                                                                    type="button" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false">
+                            {{ LANGUAGE_CODE|language_name_local }}
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="locale">
+                                {% for lang_code, lang_name in LANGUAGES %}
+                                    {% if lang_code == LANGUAGE_CODE %}
+                                        <li class="active">
+                                            <a href="#">{{ lang_code|language_name_local }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <form method="post" action="{% url 'set_language' %}">
+                                                {% csrf_token %}
+                                                <input type="hidden" value="{{ redirect_to }}" name="next"/>
+                                                <input type="hidden" value="{{ lang_code }}" name="language"/>
+                                                <a href="#" role="submit"
+                                                   class="js-submit">{{ lang_code|language_name_local }}</a>
+                                            </form>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
                 {% endif %}
             </div>
         </nav>
@@ -110,12 +117,14 @@
                 <li><a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}<li><a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}</a></li>{% endif %}
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}</a></li>{% endif %}
                 <li>
                     {% if user.is_authenticated %}
-                    <form action="{% url 'cp:sign-out' 'html' %}" method="post">
-                        {% csrf_token %}
-                        <a href="{% url 'cp:sign-out' 'html' %}" role="submit" class="js-submit">{% trans 'Sign out' %}</a></form>
+                        <form action="{% url 'cp:sign-out' 'html' %}" method="post">
+                            {% csrf_token %}
+                            <a href="{% url 'cp:sign-out' 'html' %}" role="submit"
+                               class="js-submit">{% trans 'Sign out' %}</a></form>
                     {% else %}
                         <a href="{% url 'cp:auth' 'html' %}">{% trans 'Sign (in|up)' %}</a>
                     {% endif %}
@@ -129,52 +138,55 @@
             <footer>
                 {% can_refer as can_refer %}
                 {% if can_refer %}
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-12"><h2 class="text-uppercase"><strong>Your referral link</strong></h2>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12"><h2 class="text-uppercase"><strong>Your referral link</strong>
+                                </h2>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <form class="form-inline">
-                                    <div class="form-group"><input class="form-control js-referral-link-container"
-                                                                   type="url" id="referralLink" name="referralLink"
-                                                                   value="{% referral_url %}"
-                                                                   readonly></div>
-                                    <a class="btn btn-default js-copy-referral-link" role="button" tabindex="0"
-                                       data-toggle="focus" data-trigger="focus" data-content="Link copied">Copy Link</a>
-                                </form>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <form class="form-inline">
+                                        <div class="form-group"><input class="form-control js-referral-link-container"
+                                                                       type="url" id="referralLink" name="referralLink"
+                                                                       value="{% referral_url %}"
+                                                                       readonly></div>
+                                        <a class="btn btn-default js-copy-referral-link" role="button" tabindex="0"
+                                           data-toggle="focus" data-trigger="focus" data-content="Link copied">Copy
+                                            Link</a>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12"><p>This is your unilot referral link. Share it with your contacts to
-                                get free UNIT coint for every purchased one by your referrer.</p></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 text-2x">
-                                {% referral_url as referral_url %}
-                                <ul class="list-inline">
-                                    <li><a
-                                           href="{% share_facebook referral_url %}"
-                                           target="_blank">
-                                        <i class="icon-facebook-squared"></i></a></li>
-                                    <li><a href="{% share_twitter referral_url %}"
-                                           target="_blank">
-                                        <i class="icon-twitter"></i></a></li>
-                                    <li>
-                                        {% trans 'Unilot Token Sale' as reddit_title %}
-                                        <a href="{% share_reddit_post reddit_title referral_url %}"
-                                           target="_blank"><i class="icon-reddit-alien"></i>
-                                        </a>
-                                    </li>
-                                    <li><a href="{% share_telegram referral_url %}" target="_blank">
-                                        <i class="icon-telegram"></i></a></li>
-                                </ul>
+                            <div class="row">
+                                <div class="col-xs-12"><p>This is your unilot referral link. Share it with your contacts
+                                    to
+                                    get free UNIT coint for every purchased one by your referrer.</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 text-2x">
+                                    {% referral_url as referral_url %}
+                                    <ul class="list-inline">
+                                        <li><a
+                                                href="{% share_facebook referral_url %}"
+                                                target="_blank">
+                                            <i class="icon-facebook-squared"></i></a></li>
+                                        <li><a href="{% share_twitter referral_url %}"
+                                               target="_blank">
+                                            <i class="icon-twitter"></i></a></li>
+                                        <li>
+                                            {% trans 'Unilot Token Sale' as reddit_title %}
+                                            <a href="{% share_reddit_post reddit_title referral_url %}"
+                                               target="_blank"><i class="icon-reddit-alien"></i>
+                                            </a>
+                                        </li>
+                                        <li><a href="{% share_telegram referral_url %}" target="_blank">
+                                            <i class="icon-telegram"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 {% endif %}
             </footer>
         </div>
@@ -182,42 +194,51 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     {% if user.is_authenticated %}
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="btn-group-lg">
-                                <button class="btn btn-primary btn-lg btn-block pull-right" type="button"
-                                        data-toggle="modal" data-target="#buyTokens">Buy
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    {% include 'includes/modal-buy-token.html' %}
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {% if user.profile %}
-                            <div class="panel">
-                                <div class="panel-body"><strong>My UNIT Tokens</strong>
-                                    {% widthratio user.profile.token_balance 1000000000000000000 1 as num_tokens %}
-                                    <p class="text-2x"><strong>{{ num_tokens|floatformat:6 }}</strong></p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="btn-group-lg">
+                                    <button class="btn btn-primary btn-lg btn-block pull-right" type="button"
+                                            data-toggle="modal" data-target="#buyTokens">Buy
+                                    </button>
                                 </div>
                             </div>
-                            <hr>
-                            {% endif %}
-                            <div class="panel">
-                                <div class="panel-body"><strong>My UNIT Referral Tokens</strong>
-                                    <p class="text-2x"><strong>0</strong></p><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">Get more tokens for
-                                        free</a></div>
-                            </div>
-                            <hr>
-                            <div class="panel">
-                                <div class="panel-body"><strong>UNIT Token Price</strong>
-                                    <p class="text-2x"><strong>{% token_price %} ETH</strong></p>
-                                    <p><span class="label label-primary">40% Bonus</span>
-                                    </p></div>
-                            </div>
-                            <hr>
                         </div>
-                    </div>
+                        {% include 'includes/modal-buy-token.html' %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {% if user.profile %}
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <a tabindex="0" class="popover-trigger" role="button"
+                                               data-toggle="popover" data-trigger="toggle" title="Are your tokens not displayed?"
+                                               data-placement="bottom"
+                                               data-html="true"
+                                               data-content="<ul><li>Updating tokens amount may take a while due to Ethereum Network load.</li><li>Check tokens amount at your wallet.</li></ul><br /> <a href='{% url 'cp:faq' 'html' %}#answer8' class='btn btn-md btn-default'>How to display tokens?</a>"><i
+                                                    class="glyphicon glyphicon-question-sign"></i></a>
+                                            <strong>My UNIT Tokens</strong>
+                                            {% widthratio user.profile.token_balance 1000000000000000000 1 as num_tokens %}
+                                            <p class="text-2x"><strong>{% if num_tokens %}{{ num_tokens|floatformat:6 }}{% else %}0{% endif %}</strong></p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                {% endif %}
+                                <div class="panel">
+                                    <div class="panel-body"><strong>My UNIT Referral Tokens</strong>
+                                        <p class="text-2x"><strong>0</strong></p><a
+                                                href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}"
+                                                target="_blank">Get more tokens for
+                                            free</a></div>
+                                </div>
+                                <hr>
+                                <div class="panel">
+                                    <div class="panel-body"><strong>UNIT Token Price</strong>
+                                        <p class="text-2x"><strong>{% token_price %} ETH</strong></p>
+                                        <p><span class="label label-primary">40% Bonus</span>
+                                        </p></div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
                     {% endif %}
                     <div class="row">
                         <div class="col-xs-12">
@@ -227,6 +248,7 @@
                                     <script id="timeCounterTemplate" type="text/x-jsrender">
                                         <div
                                          class="row"><div class="col-md-2 col-xs-3"><div class="row"><div class="col-xs-12"><p class="text-center text-2x"><strong>%D</strong></p></div></div><div class="row"><div class="col-xs-12"><p class="text-center text-0-85x">Days</p></div></div></div><div class="col-md-2 col-xs-3"><div class="row"><div class="col-xs-12"><p class="text-center text-2x"><strong>%H</strong></p></div></div><div class="row"><div class="col-xs-12"><p class="text-center text-0-85x">Hours</p></div></div></div><div class="col-md-2 col-xs-3"><div class="row"><div class="col-xs-12"><p class="text-center text-2x"><strong>%M</strong></p></div></div><div class="row"><div class="col-xs-12"><p class="text-center text-0-85x">Minutes</p></div></div></div><div class="col-md-2 col-xs-3"><div class="row"><div class="col-xs-12"><p class="text-center text-2x"><strong>%S</strong></p></div></div><div class="row"><div class="col-xs-12"><p class="text-center text-0-85x">Seconds</p></div></div></div></div>
+
                                     </script>
                                 </div>
                             </div>
@@ -254,10 +276,12 @@
         </div>
     </div>
 </div>
-<script type="application/javascript" src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>
-<script type="application/javascript" src="{% static 'js/main.min-1ed854afe454a5b98f14d55ab03808fe.js' %}"></script>
+<script type="application/javascript"
+        src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>
+<script type="application/javascript" src="{% static 'js/main.min-315b7fd0c660686191218b1bdc555fa2.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
-<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a56b52d56f967df"></script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a56b52d56f967df"></script>
 </body>
 </html>
