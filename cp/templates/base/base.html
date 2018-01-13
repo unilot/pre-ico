@@ -281,6 +281,13 @@
 <script type="application/javascript" src="{% static 'js/main.min-387d15d79554d8e62e708cd3a6924375.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
+{% if can_refer %}
+<script type="text/javascript">
+var addthis_share = {
+    url: '{% referral_url %}'
+};
+</script>
+{% endif %}
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a56b52d56f967df"></script>
 </body>
