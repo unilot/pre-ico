@@ -60,11 +60,10 @@
                     {% include 'includes/invalid-citizenship-modal.html' with excluded_countries=excluded_countries %}
                     <div class="tab-pane" id="termsAndConditions" tabindex="1">
                         <div class="row">
-                            <div class="col-md-12"><h2 class="text-uppercase">Terms and conditions</h2>
-                                <hr>
-                                <pre class="terms pre-scrollable">
-                                {{ terms_and_conditions|safe }}
-                            </pre>
+                            <div class="col-md-12">
+                                <div class="pre-scrollable document">
+                                    {{ terms_and_conditions|safe }}
+                                </div>
                             </div>
                         </div>
                         <div class="row row-controls">

@@ -28,12 +28,13 @@ class ShowAuthPageView(APIView):
         }
 
         if kwargs.get('referrer_code'):
-            referrer_profile = get_object_or_404(
-                models.Profile.objects, wallet=kwargs.pop('referrer_code'))
-            data['referrer_code'] = referrer_profile.wallet
-            data['sign_up_url'] = reverse('cp:sign-up-referred',
-                                          kwargs={'format': 'html', 'referrer_code': referrer_profile.wallet})
-
+            try:
+                referrer_profile = models.Profile.objects.get(wallet=kwargs.pop('referrer_code'))
+                data['referrer_code'] = referrer_profile.wallet
+                data['sign_up_url'] = reverse('cp:sign-up-referred',
+                                              kwargs={'format': 'html', 'referrer_code': referrer_profile.wallet})
+            except models.Profile.DoesNotExist:
+                pass
 
         return response.Response(data)
 
@@ -62,7 +63,13 @@ class SignUpView(generics.CreateAPIView):
 
         referrer_code = kwargs.get('referrer_code')
 
-        if referrer_code:
+        try:
+            if not referrer_code:
+                referrer_code = request.COOKIES['referrer_code']
+        except KeyError:
+            pass
+
+        if referrer_code and len(referrer_code) >= 32:
             submit_url = reverse('cp:sign-up-referred',
                                  kwargs={'format': 'json', 'referrer_code': referrer_code})
 
@@ -71,11 +78,19 @@ class SignUpView(generics.CreateAPIView):
         return response.Response(data=data)
 
     def create(self, request, *args, **kwargs):
-        referrer_code = kwargs.get('referrer_code')
-        data = request.data
+        referrer_code = kwargs.get('referrer_code', request.COOKIES.get('referrer_code'))
 
-        if referrer_code:
-            referrer_profile = get_object_or_404(models.Profile.objects, wallet=referrer_code)
+        try:
+            if not referrer_code:
+                referrer_code = request.COOKIES['referrer_code']
+        except KeyError:
+            pass
+
+        if referrer_code and len(referrer_code) >= 32:
+            try:
+                referrer_profile = models.Profile.objects.get(wallet=referrer_code)
+            except models.Profile.DoesNotExist:
+                pass
 
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
