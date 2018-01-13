@@ -120,7 +120,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'preico.rest_framework.authentication.SessionAuthentication',
-    )
+    ),
+    'EXCEPTION_HANDLER': 'preico.rest_framework.views.exception_handler'
 }
 
 # Global martor settings
