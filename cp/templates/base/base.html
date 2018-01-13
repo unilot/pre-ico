@@ -6,6 +6,7 @@
 {% load dynamic_content %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
+{% can_refer as can_refer %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
@@ -28,14 +29,14 @@
     <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}"/>
     <meta property="og:description"
           content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency."/>
-    <meta property="og:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/"/>
+    <meta property="og:url" content="{% if can_refer %}{% referral_url %}{% else %}https://unilot.io/{{ LANGUAGE_CODE }}/{% endif %}" />
     <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
     <meta property="article:publisher" content="{% facebook_page %}"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale"/>
     <meta name="twitter:description"
           content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on OS and Android platforms and transact using Unilots as it’s main currency."/>
-    <meta name="twitter:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/"/>
+    <meta name="twitter:url" content="{% if can_refer %}{% referral_url %}{% else %}https://unilot.io/{{ LANGUAGE_CODE }}/{% endif %}"/>
     <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="630"/>
@@ -136,7 +137,6 @@
         <div class="col-md-8">
             {% block content %}{% endblock %}
             <footer>
-                {% can_refer as can_refer %}
                 {% if can_refer %}
                     <div class="panel panel-default">
                         <div class="panel-body">
