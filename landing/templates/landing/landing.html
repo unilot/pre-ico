@@ -285,16 +285,16 @@
 {% if faqs_total > 0 %}
 <section class="faq white" id="faq">
     <div class="container">
-        <div class="row">
+        <div class="row heading">
             <div class="col-xs-12">
-                <div class="heading">
-                    <h2>FAQ's</h2><span>FAQ's</span>
-                </div>
+                <h2>FAQ's</h2><span>FAQ's</span>
             </div>
+        </div>
+        <div class="row content">
             <div class="col-md-5">
                 {% for faq in faqs|slice:":6" %}
                 <div class="faq__block faq__block">
-                    <a class="closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
+                    <a class="faq-question closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
                     <div class="name">{{ faq.answer|safe_markdown }}</div>
                 </div>
                 {% endfor %}
