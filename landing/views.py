@@ -48,7 +48,12 @@ class LandingView(generics.GenericAPIView):
 
         data['team_members_list'] = models.TeamMember.objects.language().filter(published=True).order_by('id')
 
-        return response.Response(data)
+        result = response.Response(data)
+
+        if referrer_code:
+            result.set_cookie('referrer_code', referrer_code)
+
+        return result
 
 
 class DocumentView(generics.GenericAPIView):
