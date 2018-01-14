@@ -7,22 +7,17 @@
 {% block content %}
     <h1>{% block title %}Unilot Contribution Sign up{% endblock %}</h1>
     <hr/>
-    <form class="js-generic-form js-has-overlay" action="{{ submit_url }}" method="post"
+    <div class="js-has-overlay">
+        <form class="js-generic-form" action="{{ submit_url }}" method="post"
           data-url="{% url 'cp:dashboard' 'html' %}">
         {% csrf_token %}
-        <div class="block-overlay hidden">
-            <div class="overlay-wrapper">
-                <div class="row overlay-centered full-width">
-                    <div class="col-xs-8 col-xs-offset-2">
-                        <div class="overlay-center progress">
-                            <div class="progress-bar progress-bar-striped active full-width"></div>
-                        </div>
-                    </div>
-                </div>
+        {% include 'includes/form-overlay.html' %}
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert js-form-alert hidden text-center"></div>
             </div>
         </div>
-        <div class="row js-has-overlay">
-            {% include 'includes/form-overlay.html' %}
+        <div class="row">
             <div class="col-md-12 tabbable tabs-left" id="signupWizard">
                 <ul class="nav nav-tabs">
                     <li><a href="#citizenshipInquery" data-toggle="tab">Citizenship enquiry</a></li>
@@ -204,4 +199,5 @@
             </div>
         </div>
     </form>
+    </div>
 {% endblock %}
