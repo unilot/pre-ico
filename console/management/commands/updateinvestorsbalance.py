@@ -26,7 +26,7 @@ class Command(BaseCommand):
 
         profiles = models.Profile.objects\
             .filter(
-            Q(token_balance_last_update__range=(earlier, now))
+            Q(token_balance_last_update__lte=earlier)
             | Q(token_balance_last_update=None)).all()
 
         for profile in profiles:
