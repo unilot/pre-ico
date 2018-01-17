@@ -39,3 +39,9 @@ def referral_url(context):
 
     return request.build_absolute_uri(
         reverse( 'landing:index-html-referred', kwargs={'referrer_code': referral_code(context)} ) )
+
+
+#TODO Not sure it should be here
+@register.simple_tag(takes_context=True)
+def main_page_url(context):
+    return reverse('landing:index-html')

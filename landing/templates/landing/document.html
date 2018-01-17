@@ -1,6 +1,21 @@
 {% extends 'landing/base/base.html' %}
 {% load i18n %}
 {% load static %}
+{% load referral %}
+
+{% block topmenu %}
+{% main_page_url as main_page_url %}
+<li><a href="{{ main_page_url }}#whatIsUnilot">What is Unilot</a></li>
+<li><a href="{{ main_page_url }}#whitePaper">White Paper</a></li>
+<li><a href="{{ main_page_url }}#unilotBenefits">Unilot Features</a></li>
+<li><a href="{{ main_page_url }}#faq">FAQ</a></li>
+{% endblock %}
+
+{% block sidemenu %}
+{% for key, item in document.table_of_content %}
+<li><a class="font-roboto-light-18-px" href="#{{ key }}">{{ item }}</a></li>
+{% endfor %}
+{% endblock %}
 
 {% block content %}
     <section class="document">
