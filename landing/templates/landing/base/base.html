@@ -62,13 +62,17 @@
             </div>
             <div class="col-md-6">
                 <ul class="flex around-xs" id="link">
+                    {% block topmenu %}
                     <li><a href="#whatIsUnilot">What is Unilot</a></li>
                     <li><a href="#whitePaper">White Paper</a></li>
                     <li><a href="#unilotBenefits">Unilot Features</a></li>
                     {% if faqs_total > 0 %}
-                        <li><a href="#faq">FAQ</a></li>{% endif %}
+                        <li><a href="#faq">FAQ</a></li>
+                    {% endif %}
                     {% if roadshow_list %}
-                        <li><a href="#roadshow">Upcoming Events</a></li>{% endif %}
+                        <li><a href="#roadshow">Upcoming Events</a></li>
+                    {% endif %}
+                    {% endblock %}
                 </ul>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-6">
@@ -98,16 +102,17 @@
     <div class="row">
         <div class="col-xs-12" id="link-1">
             <ul>
+                {% block sidemenu %}
                 <li><a href="#whatIsUnilot" class="font-roboto-light-18-px">What is Unilot</a></li>
                 <li><a href="#unilotBenefits" class="font-roboto-light-18-px">Unilot Features</a></li>
                 <li><a href="#mobileClient" class="font-roboto-light-18-px">Mobile Client</a></li>
                 <li><a href="#roadmap" class="font-roboto-light-18-px">Roadmap</a></li>
-                <li><a href="#tokenomics" class="font-roboto-light-18-px">Use of funds</a></li>
+                <li><a href="#s9-distribution" class="font-roboto-light-18-px">Use of funds</a></li>
                 <li><a href="#whitePaper" class="font-roboto-light-18-px">White Paper</a></li>
                 {% if advisors_list %}
-                    <li><a href="#advisors" class="font-roboto-light-18-px">{% trans 'Advisors' %}</a></li>{% endif %}
+                    <li><a href="#s11-advisors" class="font-roboto-light-18-px">{% trans 'Advisors' %}</a></li>{% endif %}
                 {% if team_members_list %}
-                    <li><a href="#team" class="font-roboto-light-18-px">Team</a></li>{% endif %}
+                    <li><a href="#s10-team" class="font-roboto-light-18-px">Team</a></li>{% endif %}
                 {% if publications_list %}
                     <li><a href="#publications" class="font-roboto-light-18-px">{% trans 'Publications' %}</a>
                     </li>{% endif %}
@@ -120,6 +125,7 @@
                 {% if is_pre_ico %}
                     <li><a href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a></li>
                 {% endif %}
+                {% endblock %}
                 <li>
                     {% include 'landing/includes/language_menu.html' %}
                 </li>

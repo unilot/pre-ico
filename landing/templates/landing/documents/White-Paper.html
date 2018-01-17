@@ -3,6 +3,31 @@
 {% load static %}
 {% load config %}
 {% load social_links %}
+{% load referral %}
+
+{% block topmenu %}
+{% main_page_url as main_page_url %}
+<li><a href="{{ main_page_url }}#whatIsUnilot">What is Unilot</a></li>
+<li><a href="{{ main_page_url }}#unilotBenefits">Unilot Features</a></li>
+<li><a href="{{ main_page_url }}#faq">FAQ</a></li>
+{% endblock %}
+
+{% block sidemenu %}
+<li><a class="font-roboto-light-18-px" href="#whitepaper">Unilot White Paper</a></li>
+<li><a class="font-roboto-light-18-px" href="#toc">Table of Contents</a></li>
+<li><a class="font-roboto-light-18-px" href="#s1-introduction">1. Introduction</a></li>
+<li><a class="font-roboto-light-18-px" href="#s2-market">2. Market &amp; Industry</a></li>
+<li><a class="font-roboto-light-18-px" href="#s3-product">3. Product Details</a></li>
+<li><a class="font-roboto-light-18-px" href="#s4-business-model">4. Unilot Business Model</a></li>
+<li><a class="font-roboto-light-18-px" href="#s5-technology">5. Technology &amp; Transparency</a></li>
+<li><a class="font-roboto-light-18-px" href="#s6-client">6. Unilot Mobile Wallet &amp; Gaming Client</a></li>
+<li><a class="font-roboto-light-18-px" href="#s7-roadmap">7. Product Roadmap</a></li>
+<li><a class="font-roboto-light-18-px" href="#s8-sale">8. Token Sale</a></li>
+<li><a class="font-roboto-light-18-px" href="#s9-distribution">9. Token Distribution and Use of Funds</a></li>
+<li><a class="font-roboto-light-18-px" href="#s10-team">10. The Project Team</a></li>
+<li><a class="font-roboto-light-18-px" href="#s11-advisors">11. Advisory Board</a></li>
+<li><a class="font-roboto-light-18-px" href="#s12-contact">12. Contact Us</a></li>
+{% endblock %}
 
 {% block content %}
     <div id="whitepaper">
