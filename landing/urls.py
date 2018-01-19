@@ -5,6 +5,7 @@ from . import views
 
 json_urlpatterns = format_suffix_patterns([
     url(r'^subscribe', views.Subscribe.as_view(), name='subscribe'),
+    url(r'^contact/add', views.Contact.as_view(), name='contact-add'),
 ], True, ('json', ))
 
 urlpatterns = json_urlpatterns + [

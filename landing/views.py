@@ -4,7 +4,7 @@ from rest_framework.reverse import reverse
 
 from cp import models as cp_models
 from cp.serializers import faq
-from landing.serializers.subscribe import SubscribeSerializer
+from landing.serializers import subscribe
 from preico.document import TermsAndConditions, AffiliateTermsAndConditions, BountyProgram
 from . import models
 from preico.rest_framework import renderers, permissions as p_permissions
@@ -113,4 +113,9 @@ class FAQView(generics.ListAPIView):
 
 class Subscribe(generics.CreateAPIView):
     permission_classes = (p_permissions.isGuest,)
-    serializer_class = SubscribeSerializer
+    serializer_class = subscribe.SubscribeSerializer
+
+
+class Contact(generics.CreateAPIView):
+    permission_classes = (p_permissions.isGuest,)
+    serializer_class = subscribe.ContactSerializer

@@ -315,6 +315,7 @@ class TeamMember(AdvancedImageFieldsProcessingModelMixin, TranslatableModel, Res
 
 
 class Lead(models.Model):
+    name = models.CharField(max_length=64, null=True, blank=True)
     email = models.EmailField(null=False, blank=False, unique=True)
     phone_number = models.CharField(max_length=24, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
