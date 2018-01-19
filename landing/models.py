@@ -312,3 +312,9 @@ class TeamMember(AdvancedImageFieldsProcessingModelMixin, TranslatableModel, Res
     @property
     def full_name_(self):
         return self.full_name
+
+
+class Lead(models.Model):
+    email = models.EmailField(null=False, blank=False, unique=True)
+    phone_number = models.CharField(max_length=24, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)

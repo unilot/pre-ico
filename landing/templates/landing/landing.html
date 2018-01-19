@@ -374,20 +374,27 @@
                 <div class="heading">
                     <h2>Newsletter</h2><span>Newsletter</span>
                 </div>
-                <form class="form">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-1">
-                            <p>{% trans 'To join our Mailing List, please enter your email address below' %}</p>
-                            <input type="email" name="email">
+                <div class="has-overlay ">
+                    <form class="form js-generic-form" method="post" action="{% url 'landing:subscribe' 'json' %}"
+                    data-success-message="You mail was successfully submitted" >
+                        {% include 'landing/includes/overlay.html' with is_bg_black=True %}
+                        <div class="row">
+                            {% include 'landing/includes/form-alert.html' %}
                         </div>
-                        <div class="col-md-2 col-sm-12 col-xs-12">
-                            <button type="submit" class="btn btn-block"
-                                    style="border: none; padding-left: 1em; padding-right: 1em;">
-                                Subscribe
-                            </button>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-1 col-xs-12">
+                                <div class="form-group">
+                                    <label for="subscribeEmail">{% trans 'To join our Mailing List, please enter your email address below' %}</label>
+                                    <input id="subscribeEmail" type="email" name="email" required />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <button type="submit" class="btn btn-block">Subscribe</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="footer__top">

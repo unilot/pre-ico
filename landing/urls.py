@@ -1,7 +1,13 @@
 from django.conf.urls import url
+from rest_framework.urlpatterns import format_suffix_patterns
+
 from . import views
 
-urlpatterns = [
+json_urlpatterns = format_suffix_patterns([
+    url(r'^subscribe', views.Subscribe.as_view(), name='subscribe'),
+], True, ('json', ))
+
+urlpatterns = json_urlpatterns + [
     url(r'^faq.html', views.FAQView.as_view(), name='faq-html'),
     url(r'^(?P<document>%s)\.html' %
         ('|'.join(

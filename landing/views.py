@@ -4,9 +4,10 @@ from rest_framework.reverse import reverse
 
 from cp import models as cp_models
 from cp.serializers import faq
+from landing.serializers.subscribe import SubscribeSerializer
 from preico.document import TermsAndConditions, AffiliateTermsAndConditions, BountyProgram
 from . import models
-from preico.rest_framework import renderers
+from preico.rest_framework import renderers, permissions as p_permissions
 
 
 class LandingView(generics.GenericAPIView):
@@ -108,3 +109,8 @@ class FAQView(generics.ListAPIView):
     template_name='landing/faq.html'
     queryset = cp_models.FAQ.objects.language().filter(published=True).order_by('id')
     serializer_class = faq.SimpleFaqSerializer
+
+
+class Subscribe(generics.CreateAPIView):
+    permission_classes = (p_permissions.isGuest,)
+    serializer_class = SubscribeSerializer
