@@ -11,7 +11,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}{% trans 'Initial Coin Offering Pre-sale' %}{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-ed1ca5b6a4499a972daad1397dc86e81.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-7c8d3ca82a4dda46b7c5887a8e1de719.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -21,25 +21,28 @@
     <meta name="application-name" content="Unilot">
     <meta name="theme-color" content="#ffffff">
 
-    <meta property="og:site_name" content="Unilot" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}" />
-    <meta property="og:description" content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency." />
-    <meta property="og:url" content="https://unilot.io" />
-    <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
-    <meta property="article:publisher" content="https://www.facebook.com/unilot.io/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale" />
-    <meta name="twitter:description" content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency." />
-    <meta name="twitter:url" content="https://unilot.io" />
-    <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="{{ LANGUAGE_CODE|slice:":2"|lower }}_{{ LANGUAGE_CODE|slice:"-2:"|upper }}" />
+    <meta property="og:site_name" content="Unilot"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}"/>
+    <meta property="og:description"
+          content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency."/>
+    <meta property="og:url" content="https://unilot.io"/>
+    <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
+    <meta property="article:publisher" content="https://www.facebook.com/unilot.io/"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale"/>
+    <meta name="twitter:description"
+          content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency."/>
+    <meta name="twitter:url" content="https://unilot.io"/>
+    <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:locale" content="{{ LANGUAGE_CODE|slice:":2"|lower }}_{{ LANGUAGE_CODE|slice:"-2:"|upper }}"/>
     {% for lang_code,lang_name in LANGUAGES %}
-    {% if lang_code != LANGUAGE_CODE %}
-    <meta property="og:locale:alternate" content="{{ lang_code|slice:":2"|lower }}_{{ lang_code|slice:"-2:"|upper }}" />
-    {% endif %}
+        {% if lang_code != LANGUAGE_CODE %}
+            <meta property="og:locale:alternate"
+                  content="{{ lang_code|slice:":2"|lower }}_{{ lang_code|slice:"-2:"|upper }}"/>
+        {% endif %}
     {% endfor %}
 </head>
 <body>
@@ -63,15 +66,15 @@
             <div class="col-md-6">
                 <ul class="flex around-xs" id="link">
                     {% block topmenu %}
-                    <li><a href="#whatIsUnilot">What is Unilot</a></li>
-                    <li><a href="#whitePaper">White Paper</a></li>
-                    <li><a href="#unilotBenefits">Unilot Features</a></li>
-                    {% if faqs_total > 0 %}
-                        <li><a href="#faq">FAQ</a></li>
-                    {% endif %}
-                    {% if roadshow_list %}
-                        <li><a href="#roadshow">Upcoming Events</a></li>
-                    {% endif %}
+                        <li><a href="#whatIsUnilot">What is Unilot</a></li>
+                        <li><a href="#whitePaper">White Paper</a></li>
+                        <li><a href="#unilotBenefits">Unilot Features</a></li>
+                        {% if faqs_total > 0 %}
+                            <li><a href="#faq">FAQ</a></li>
+                        {% endif %}
+                        {% if roadshow_list %}
+                            <li><a href="#roadshow">Upcoming Events</a></li>
+                        {% endif %}
                     {% endblock %}
                 </ul>
             </div>
@@ -103,28 +106,29 @@
         <div class="col-xs-12" id="link-1">
             <ul>
                 {% block sidemenu %}
-                <li><a href="#whatIsUnilot" class="font-roboto-light-18-px">What is Unilot</a></li>
-                <li><a href="#unilotBenefits" class="font-roboto-light-18-px">Unilot Features</a></li>
-                <li><a href="#mobileClient" class="font-roboto-light-18-px">Mobile Client</a></li>
-                <li><a href="#roadmap" class="font-roboto-light-18-px">Roadmap</a></li>
-                <li><a href="#s9-distribution" class="font-roboto-light-18-px">Use of funds</a></li>
-                <li><a href="#whitePaper" class="font-roboto-light-18-px">White Paper</a></li>
-                {% if advisors_list %}
-                    <li><a href="#s11-advisors" class="font-roboto-light-18-px">{% trans 'Advisors' %}</a></li>{% endif %}
-                {% if team_members_list %}
-                    <li><a href="#s10-team" class="font-roboto-light-18-px">Team</a></li>{% endif %}
-                {% if publications_list %}
-                    <li><a href="#publications" class="font-roboto-light-18-px">{% trans 'Publications' %}</a>
-                    </li>{% endif %}
-                <li><a href="#partners" class="font-roboto-light-18-px">Partners</a></li>
-                <li><a href="#newsletter" class="font-roboto-light-18-px">Newsletter</a></li>
-                {% if faqs_total > 0 %}
-                    <li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
-                {% if roadshow_list %}
-                    <li><a href="#roadshow" class="font-roboto-light-18-px">Upcoming Events</a></li>{% endif %}
-                {% if is_pre_ico %}
-                    <li><a href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a></li>
-                {% endif %}
+                    <li><a href="#whatIsUnilot" class="font-roboto-light-18-px">What is Unilot</a></li>
+                    <li><a href="#unilotBenefits" class="font-roboto-light-18-px">Unilot Features</a></li>
+                    <li><a href="#mobileClient" class="font-roboto-light-18-px">Mobile Client</a></li>
+                    <li><a href="#roadmap" class="font-roboto-light-18-px">Roadmap</a></li>
+                    <li><a href="#s9-distribution" class="font-roboto-light-18-px">Use of funds</a></li>
+                    <li><a href="#whitePaper" class="font-roboto-light-18-px">White Paper</a></li>
+                    {% if advisors_list %}
+                        <li><a href="#s11-advisors" class="font-roboto-light-18-px">{% trans 'Advisors' %}</a></li>
+                    {% endif %}
+                    {% if team_members_list %}
+                        <li><a href="#s10-team" class="font-roboto-light-18-px">Team</a></li>{% endif %}
+                    {% if publications_list %}
+                        <li><a href="#publications" class="font-roboto-light-18-px">{% trans 'Publications' %}</a>
+                        </li>{% endif %}
+                    <li><a href="#partners" class="font-roboto-light-18-px">Partners</a></li>
+                    <li><a href="#newsletter" class="font-roboto-light-18-px">Newsletter</a></li>
+                    {% if faqs_total > 0 %}
+                        <li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
+                    {% if roadshow_list %}
+                        <li><a href="#roadshow" class="font-roboto-light-18-px">Upcoming Events</a></li>{% endif %}
+                    {% if is_pre_ico %}
+                        <li><a href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a></li>
+                    {% endif %}
                 {% endblock %}
                 <li>
                     {% include 'landing/includes/language_menu.html' %}
@@ -156,7 +160,47 @@
 <div class="slideout-panel slideout-panel-right" id="panel">
     {% block content %}{% endblock %}
 </div>
-<script src="{% static 'landing/js/main.min-82aebb288272a4c17bea29ce6c2e1dc9.js' %}"></script>
+<div id="bio_ep">
+    <div id="bio_ep_close">Close</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12"></div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="has-overlay">
+                    <form class="form" method="post" action="{% url 'landing:contact-add' 'json' %}"
+                          data-success-message="Contact saved">
+                        {% include 'landing/includes/overlay.html' %}
+                        <div>
+                            <div class="alert js-form-alert hidden text-center"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exitPopupName">Yout Name</label>
+                            <input id="exitPopupName" type="text" name="name" required placeholder="Your Name"
+                                   data-minlength="3">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exitPopupEmail">Email</label>
+                            <input id="exitPopupEmail" type="email" name="email" required placeholder="Email">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exitPopupPhone">Phone</label>
+                            <input id="exitPopupPhone" type="number" name="phone" required
+                                   placeholder="Phone (123123123)" data-error="Phone format is: 123123123"
+                                   data-minlength="12">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-control">
+                            <button class="btn" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'landing/js/main.min-d00d77fd16620802b16644daed19d288.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
 <!-- Go to www.addthis.com/dashboard to customize your tools -->

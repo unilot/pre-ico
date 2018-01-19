@@ -13,3 +13,15 @@ class SubscribeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Lead
         fields = ('email',)
+
+class ContactSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(required=True)
+    email = serializers.EmailField(required=True, validators=[
+        validators.UniqueValidator(queryset=models.Lead.objects.all()),
+        validators.UniqueValidator(queryset=django_models.User.objects.all())
+    ])
+    phone = serializers.CharField(source='phone_number', required=True)
+
+    class Meta:
+        model = models.Lead
+        fields = ('name', 'email', 'phone',)
