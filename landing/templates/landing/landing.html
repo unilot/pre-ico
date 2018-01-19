@@ -374,6 +374,7 @@
                 <div class="heading">
                     <h2>Newsletter</h2><span>Newsletter</span>
                 </div>
+                {% if not user.is_authenticated %}
                 <div class="has-overlay ">
                     <form class="form js-generic-form" method="post" action="{% url 'landing:subscribe' 'json' %}"
                     data-success-message="You mail was successfully submitted" >
@@ -395,6 +396,7 @@
                         </div>
                     </form>
                 </div>
+                {% endif %}
             </div>
         </div>
         <div class="footer__top">
