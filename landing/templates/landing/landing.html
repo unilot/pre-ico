@@ -8,432 +8,524 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
-<section class="sentence" id="main">
-    <div class="container">
-        <div class="scene">
-            <div data-depth="0.03"><img src="{% static 'landing/img/sentence-bg.png' %}" alt=""></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 col-xs-12">
-                <h1>{% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
-                <p>{% trans 'Pre ICO ends in' %}:</p>
-                <div class="sentence__timer">
-                    <div class="row">
-                        <div class="col-xs-12"><span class="js-countdown"></span></div>
-                        <div class="col-xs-12 flex">
-                            <b>{% trans 'Days' %}</b>
-                            <b>{% trans 'Hours' %}</b>
-                            <b>{% trans 'Minutes' %}</b>
-                            <b>{% trans 'Seсs' %}</b>
-                        </div>
-                        <div class="col-xs-12 end-xs">
-                            <p>Goal 1 975 ETH (25 Million UNIT)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">                    
-                    <div class="col-xs-12">
-                        <div class="sentence__scale">
-                            <!-- <p>ETH 0 Raised</p> -->
-                            <div class="sentence__scale_block" style="width: 8%;"><span>3%</span></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 center-xs">
-                        <div class="sentence__block sentence__block--padding">
-                            {% token_bonus as token_bonus %}
-                            <p>{% trans 'Upcoming bonus' %}</p><span>{{ token_bonus|floatformat }}%</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 center-xs">
-                        <div class="sentence__block">
-                            {% token_cap as token_cap %}
-                            <p>{% trans 'Tokens for sale' %}</p><span>{{ token_cap|intcomma }}</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 center-xs">
-                        <div class="sentence__block sentence__block--padding">
-                            <p>{% trans 'Max cap' %}</p><span>{{ 1975|intcomma }} ETH</span>
-                        </div>
-                    </div>
-                    {% if is_pre_ico %}
-                        <div class="col-xs-12 start-sm center-xs"><a class="btn" href="{{ contribute_url }}">
-                            {% trans 'Contribute Now' %}</a></div>
-                    {% endif %}
-                </div>
+    <section class="sentence" id="main">
+        <div class="container">
+            <div class="scene">
+                <div data-depth="0.03"><img src="{% static 'landing/img/sentence-bg.png' %}" alt=""></div>
             </div>
-            <div class="col-sm-4 end-xs"><img src="{% static 'landing/img/sentence-platform.png' %}" alt=""></div>
-        </div>
-    </div>
-</section>
-<section class="about white" id="whatIsUnilot">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="heading">
-                    <h2>{% trans 'What is Unilot' %}</h2><span>{% trans 'Who we are' %}</span>
-                </div>
-            </div>
-            <div class="col-md-5 col-sm-7 col-xs-12">
-                <p><strong>Unilot</strong> is a decentralized gambling platform which allows players to play and
-                    host online games like poker tournaments, lottery and many other games. Unilot will be available
-                    through mobile apps on iOS and Android platforms and transact using Unilots as it’s main
-                    currency.</p>
-            </div>
-            <div class="col-md-7 col-sm-5"><img src="{% static 'landing/img/about.png' %}" alt=""></div>
-        </div>
-    </div>
-</section>
-<section class="advantages light" id="unilotBenefits">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="heading">
-                    <h2>Unilot Features</h2><span>Features</span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="advantages__block advantages__block--margin">
-                    <div class="row middle-xs">
-                        <div class="col-xs-3"><img src="{% static 'landing/img/01.svg' %}" alt=""></div>
-                        <div class="col-xs-9">
-                            <p>Unilot will not access or hold any Player Funds</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="advantages__block">
-                    <div class="row middle-xs">
-                        <div class="col-xs-3"><img src="{% static 'landing/img/02.svg' %}" alt=""></div>
-                        <div class="col-xs-9">
-                            <p>Consensus of game state is reached between players with encrypted P2P messaging</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="advantages__block advantages__block--margin">
-                    <div class="row middle-xs">
-                        <div class="col-xs-3"><img src="{% static 'landing/img/03.svg' %}" alt=""></div>
-                        <div class="col-xs-9">
-                            <p>Play games globally or make money by hosting your own game tournaments</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="advantages__block">
-                    <div class="row middle-xs">
-                        <div class="col-xs-3"><img src="{% static 'landing/img/04.svg' %}" alt=""></div>
-                        <div class="col-xs-9">
-                            <p>Feature Single player RNG & Multiplayer games</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="advantages__block advantages__block--margin">
-                    <div class="row middle-xs">
-                        <div class="col-xs-3"><img src="{% static 'landing/img/05.svg' %}" alt=""></div>
-                        <div class="col-xs-9">
-                            <p>Decentralized and isolated to prevent God Mode</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="advantages__block">
-                    <div class="row middle-xs">
-                        <div class="col-xs-3"><img src="{% static 'landing/img/06.svg' %}" alt=""></div>
-                        <div class="col-xs-9">
-                            <p>Unilot is white label platform</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="client dark" id="mobileClient">
-    <div class="container">
-        <div class="scene1">
-            <div data-depth="0.5"><img src="{% static 'landing/img/client-bg.png' %}" alt=""></div>
-        </div>
-        <div class="row heading">
-            <div class="col-xs-12">
-                <h2>Mobile Client</h2><span>Mobile App</span>
-            </div>
-        </div>
-        <div class="row content">
-            <div class="col-sm-7 col-xs-12">
-                <p>All Unilot global and hosted games will be run on Unilot mobile client, designed to handle p2p communication and perform blockchain action.</p>
-                <p>Now there is a closed beta-testing round of mobile client that is currently represented by Unilot lottery based on iOS and Android platform.</p>
-                <p>Become first investors to take part in testing and improving Unilot app.</p>
-
-                <div class="row start-sm center-xs">
-                    <div class="col-xs-12">
-                        <div class="client__app">
-                            {% if is_app_public %}
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-12"><a href="#">
-                                        <div class="row">
-                                            <div class="col-xs-3"><img src="{% static 'landing/img/google-play.svg' %}"
-                                                                       alt=""></div>
-                                            <div class="col-xs-9">
-                                                <p>Download on the</p><span>Google Play</span>
-                                            </div>
-                                        </div>
-                                    </a></div>
-                                    <div class="col-sm-6 col-xs-12"><a href="#">
-                                        <div class="row">
-                                            <div class="col-xs-3"><img src="{% static 'landing/img/apple.svg' %}" alt="">
-                                            </div>
-                                            <div class="col-xs-9">
-                                                <p>Download on the</p><span>App Store</span>
-                                            </div>
-                                        </div>
-                                    </a></div>
-                                </div>
-                            {% endif %}
-                        </div>
-                        {% get_available_languages as LANGUAGES %}
-                        {% if LANGUAGES|length > 1 %}
-                        <div class="client__lng">
-                            {% for lang_code, lang_name in LANGUAGES %}
-                                <a href="#"><img src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"
-                                                 alt="{{ lang_code|language_name_local }}"></a>
-                            {% endfor %}</div>
-                        {% endif %}
+            <div class="row">
+                <div class="col-sm-8 col-xs-12">
+                    <h1>{% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
+                    <p>{% trans 'Pre ICO ends in' %}:</p>
+                    <div class="sentence__timer">
                         <div class="row">
-                            {% if is_pre_ico %}
-                            <div class="col-xs-12">
-                                <a class="btn" href="{{ contribute_url }}">{% trans 'Participate' %}</a>
+                            <div class="col-xs-12"><span class="js-countdown"></span></div>
+                            <div class="col-xs-12 flex">
+                                <b>{% trans 'Days' %}</b>
+                                <b>{% trans 'Hours' %}</b>
+                                <b>{% trans 'Minutes' %}</b>
+                                <b>{% trans 'Seсs' %}</b>
                             </div>
-                            {% endif %}
+                            <div class="col-xs-12 end-xs">
+                                <p>Goal 1 975 ETH (25 Million UNIT)</p>
+                            </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="sentence__scale">
+                                <!-- <p>ETH 0 Raised</p> -->
+                                <div class="sentence__scale_block" style="width: 8%;"><span>3%</span></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 center-xs">
+                            <div class="sentence__block sentence__block--padding">
+                                {% token_bonus as token_bonus %}
+                                <p>{% trans 'Upcoming bonus' %}</p><span>{{ token_bonus|floatformat }}%</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 center-xs">
+                            <div class="sentence__block">
+                                {% token_cap as token_cap %}
+                                <p>{% trans 'Tokens for sale' %}</p><span>{{ token_cap|intcomma }}</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 center-xs">
+                            <div class="sentence__block sentence__block--padding">
+                                <p>{% trans 'Max cap' %}</p><span>{{ 1975|intcomma }} ETH</span>
+                            </div>
+                        </div>
+                        {% if is_pre_ico %}
+                            <div class="col-xs-12 start-sm center-xs"><a class="btn" href="{{ contribute_url }}">
+                                {% trans 'Contribute Now' %}</a></div>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-5 col-xs-12">
-                <iframe width="100%" height="70%" src="https://www.youtube.com/embed/pFknkJfj9kM?rel=0&amp;showinfo=0"
-                        frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                <div class="col-sm-4 end-xs"><img src="{% static 'landing/img/sentence-platform.png' %}" alt=""></div>
             </div>
         </div>
-    </div>
-</section>
-{% include 'landing/includes/roadmap.html' %}
-{% include 'landing/includes/token-distribution.html' %}
-<section class="whitepaper white" id="whitePaper">
-    <div class="container">
-        <div class="scene2">
-            <div data-depth="0.5"><img src="{% static 'landing/img/whitepaper-bg.png' %}" alt=""></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="heading">
-                    <h2>Whitepaper</h2><span>Whitepaper </span>
-                </div>
-            </div>
-            <div class="col-sm-5 col-xs-12">
-                <p>Read our whitepaper in order to know more about the Unilot® platform, the token, the team and ICO
-                    round details.</p>
-            </div>
-            <div class="col-xs-12">
-                <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}" target="_blank">View White Paper<i class="icon-file-text2"></i></a>
-                <span>English</span>
-            </div>
-        </div>
-    </div>
-</section>
-{% if roadshow_list %}
-    <section class="roadshow dark" id="roadshow">
+    </section>
+    <section class="about white" id="whatIsUnilot">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="heading">
-                        <h2>{% trans 'Roadshow' %}</h2><span>{% trans 'Roadshow' %}</span>
+                        <h2>{% trans 'What is Unilot' %}</h2><span>{% trans 'Who we are' %}</span>
                     </div>
-                    <div class="swiper-container" id="swiper-2">
-                        <div class="swiper-wrapper">
-                            {% for slide in roadshow_list %}
-                            <div class="swiper-slide">
-                                <h4>{% if slide.end_date.day and slide.end_date.day != slide.start_date.day %}{{ slide.start_date.day }} - {{ slide.end_date.day }}{% else %}{{ slide.start_date.day }}{% endif %}</h4>
-                                <p>{% if slide.end_date.month and slide.end_date.month != slide.start_date.month %}{{ slide.start_date|date:'F' }} - {{ slide.end_date|date:'F' }}{% else %}{{ slide.start_date|date:'F' }}{% endif %} {{ slide.start_date.year }}</p>
-                                <div class="swiper-slide__block"><img src="{{ slide.cover_image.url }}"
-                                        alt="Unilot {% trans 'Roadshow' %} {{ slide.title }}">
-                                    <p>{{ slide.title }}</p>
-                                    <div class="row">
-                                        <div class="col-xs-6"><span>{{ slide.location }}</span></div>
-                                        <div class="col-xs-6 end-xs"><a href="{{ slide.info_url }}" target="_blank"><img
-                                                src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
-                                    </div>
-                                </div>
+                </div>
+                <div class="col-md-5 col-sm-7 col-xs-12">
+                    <p><strong>Unilot</strong> is a decentralized gambling platform which allows players to play and
+                        host online games like poker tournaments, lottery and many other games. Unilot will be available
+                        through mobile apps on iOS and Android platforms and transact using Unilots as it’s main
+                        currency.</p>
+                </div>
+                <div class="col-md-7 col-sm-5"><img src="{% static 'landing/img/about.png' %}" alt=""></div>
+            </div>
+        </div>
+    </section>
+    <section class="advantages light" id="unilotBenefits">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="heading">
+                        <h2>Unilot Features</h2><span>Features</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="advantages__block advantages__block--margin">
+                        <div class="row middle-xs">
+                            <div class="col-xs-3"><img src="{% static 'landing/img/01.svg' %}" alt=""></div>
+                            <div class="col-xs-9">
+                                <p>Unilot will not access or hold any Player Funds</p>
                             </div>
-                            {% endfor %}
                         </div>
-                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-button-prev" id="prev"><i class="icon-chevron-thin-left"></i></div>
-                    <div class="swiper-button-next" id="next"><i class="icon-chevron-thin-right"></i></div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="advantages__block">
+                        <div class="row middle-xs">
+                            <div class="col-xs-3"><img src="{% static 'landing/img/02.svg' %}" alt=""></div>
+                            <div class="col-xs-9">
+                                <p>Consensus of game state is reached between players with encrypted P2P messaging</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="advantages__block advantages__block--margin">
+                        <div class="row middle-xs">
+                            <div class="col-xs-3"><img src="{% static 'landing/img/03.svg' %}" alt=""></div>
+                            <div class="col-xs-9">
+                                <p>Play games globally or make money by hosting your own game tournaments</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="advantages__block">
+                        <div class="row middle-xs">
+                            <div class="col-xs-3"><img src="{% static 'landing/img/04.svg' %}" alt=""></div>
+                            <div class="col-xs-9">
+                                <p>Feature Single player RNG & Multiplayer games</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="advantages__block advantages__block--margin">
+                        <div class="row middle-xs">
+                            <div class="col-xs-3"><img src="{% static 'landing/img/05.svg' %}" alt=""></div>
+                            <div class="col-xs-9">
+                                <p>Decentralized and isolated to prevent God Mode</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="advantages__block">
+                        <div class="row middle-xs">
+                            <div class="col-xs-3"><img src="{% static 'landing/img/06.svg' %}" alt=""></div>
+                            <div class="col-xs-9">
+                                <p>Unilot is white label platform</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-{% endif %}
-{% include 'landing/includes/advisors.html' %}
-{% include 'landing/includes/team_members.html' %}
-{% if faqs_total > 0 %}
-<section class="faq white" id="faq">
-    <div class="container">
-        <div class="row heading">
-            <div class="col-xs-12">
-                <h2>FAQ</h2><span>FAQ</span>
+    <section class="client dark" id="mobileClient">
+        <div class="container">
+            <div class="scene1">
+                <div data-depth="0.5"><img src="{% static 'landing/img/client-bg.png' %}" alt=""></div>
+            </div>
+            <div class="row heading">
+                <div class="col-xs-12">
+                    <h2>Mobile Client</h2><span>Mobile App</span>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-sm-7 col-xs-12">
+                    <p>All Unilot global and hosted games will be run on Unilot mobile client, designed to handle p2p
+                        communication and perform blockchain action.</p>
+                    <p>Now there is a closed beta-testing round of mobile client that is currently represented by Unilot
+                        lottery based on iOS and Android platform.</p>
+                    <p>Become first investors to take part in testing and improving Unilot app.</p>
+
+                    <div class="row start-sm center-xs">
+                        <div class="col-xs-12">
+                            <div class="client__app">
+                                {% if is_app_public %}
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-12"><a href="#">
+                                            <div class="row">
+                                                <div class="col-xs-3"><img
+                                                        src="{% static 'landing/img/google-play.svg' %}"
+                                                        alt=""></div>
+                                                <div class="col-xs-9">
+                                                    <p>Download on the</p><span>Google Play</span>
+                                                </div>
+                                            </div>
+                                        </a></div>
+                                        <div class="col-sm-6 col-xs-12"><a href="#">
+                                            <div class="row">
+                                                <div class="col-xs-3"><img src="{% static 'landing/img/apple.svg' %}"
+                                                                           alt="">
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <p>Download on the</p><span>App Store</span>
+                                                </div>
+                                            </div>
+                                        </a></div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {% get_available_languages as LANGUAGES %}
+                            {% if LANGUAGES|length > 1 %}
+                                <div class="client__lng">
+                                    {% for lang_code, lang_name in LANGUAGES %}
+                                        <a href="#"><img src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"
+                                                         alt="{{ lang_code|language_name_local }}"></a>
+                                    {% endfor %}</div>
+                            {% endif %}
+                            <div class="row">
+                                {% if is_pre_ico %}
+                                    <div class="col-xs-12">
+                                        <a class="btn" href="{{ contribute_url }}">{% trans 'Participate' %}</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-xs-12">
+                    <iframe width="100%" height="70%"
+                            src="https://www.youtube.com/embed/pFknkJfj9kM?rel=0&amp;showinfo=0"
+                            frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
-        <div class="row content">
-            <div class="col-md-5">
-                {% for faq in faqs|slice:":6" %}
-                <div class="faq__block faq__block">
-                    <a class="faq-question closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
-                    <div class="name">{{ faq.answer|safe_markdown }}</div>
-                </div>
-                {% endfor %}
+    </section>
+    {% include 'landing/includes/roadmap.html' %}
+    {% include 'landing/includes/token-distribution.html' %}
+    <section class="whitepaper white" id="whitePaper">
+        <div class="container">
+            <div class="scene2" style="z-index:0;">
+                <div data-depth="0.5"><img src="{% static 'landing/img/whitepaper-bg.png' %}" alt=""></div>
             </div>
-            <div class="col-md-5 col-md-offset-1">
-                {% for faq in faqs|slice:"6:12" %}
-                <div class="faq__block faq__block">
-                    <a class="closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
-                    <div class="name">{{ faq.answer|safe_markdown }}</div>
+            <div class="row heading">
+                <div class="col-xs-12">
+                    <h2>Whitepaper</h2><span>Whitepaper </span>
                 </div>
-                {% endfor %}
-                {% if faqs_total > 12 %}
-                    <a class="btn" href="{% url 'landing:faq-html' %}">Show all FAQ topics</a>
-                {% endif %}
+            </div>
+            <div class="row content">
+                <div class="col-sm-5 col-xs-12">
+                    <p>Read our whitepaper in order to know more about the Unilot® platform, the token, the team and ICO
+                        round details.</p>
+                    <div>
+                        <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}" target="_blank">View White
+                            Paper<i class="icon-file-text2"></i></a>
+                        <span>English</span>
+                    </div>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Start Date</th>
+                            <td>January 10th, 2018, at 19:00 UTC (GMT) / 14:00 New York / 19:00 London / 22:00 Moscow /
+                                04:00 Tokyo (January 11)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>End Date</th>
+                            <td>February 17th, 2018, at 19:00 UTC (GMT) / 14:00 New York / 19:00 London / 22:00 Moscow /
+                                04:00 Tokyo (February 18)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Token Sale Cap</th>
+                            <td><strong><span class="big-amount"
+                                              style="padding-left: 0; color: inherit;">25 000 000</span></strong> UNIT
+                                tokens
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Currency Accepted</th>
+                            <td>ETH</td>
+                        </tr>
+                        <tr>
+                            <th>Bonus</th>
+                            <td>40%</td>
+                        </tr>
+                        <tr>
+                            <th>Exchange Rate <a href="#footnote-sale" title="See footnote"><sup
+                                    class="footnote-ref footnote-star"></sup></a></th>
+                            <td>1 ETH = <span class="big-amount" style="padding-left: 0; color: inherit;">12 658</span>
+                                UNIT Tokens + (<strong>40% bonus</strong>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Minimum Transaction</th>
+                            <td>1 UNIT Tokens (0.000079 ETH)</td>
+                        </tr>
+                        <tr>
+                            <th>Maximum Transaction <a href="#footnote-sale" title="See footnote"><sup
+                                    class="footnote-ref footnote-star"></sup></a></th>
+                            <td><span class="big-amount" style="padding-left: 0; color: inherit;">379 746</span> Tokens (30 ETH)</td>
+                        </tr>
+                    </table>
+                    <p class="footnote footnote-star" id="footnote-sale"><sup></sup>
+                        <small>- was rounded to the whole number. The calculations in contract will be carried out
+                            to 18 decimal places
+                        </small>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-{% endif %}
-{% if publications_list %}
-    <section class="publications gray light" id="publications">
+    </section>
+    {% if roadshow_list %}
+        <section class="roadshow dark" id="roadshow">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="heading">
+                            <h2>{% trans 'Roadshow' %}</h2><span>{% trans 'Roadshow' %}</span>
+                        </div>
+                        <div class="swiper-container" id="swiper-2">
+                            <div class="swiper-wrapper">
+                                {% for slide in roadshow_list %}
+                                    <div class="swiper-slide">
+                                        <h4>{% if slide.end_date.day and slide.end_date.day != slide.start_date.day %}
+                                            {{ slide.start_date.day }} - {{ slide.end_date.day }}{% else %}
+                                            {{ slide.start_date.day }}{% endif %}</h4>
+                                        <p>
+                                            {% if slide.end_date.month and slide.end_date.month != slide.start_date.month %}
+                                                {{ slide.start_date|date:'F' }} -
+                                                {{ slide.end_date|date:'F' }}{% else %}
+                                                {{ slide.start_date|date:'F' }}{% endif %} {{ slide.start_date.year }}</p>
+                                        <div class="swiper-slide__block"><img src="{{ slide.cover_image.url }}"
+                                                                              alt="Unilot {% trans 'Roadshow' %} {{ slide.title }}">
+                                            <p>{{ slide.title }}</p>
+                                            <div class="row">
+                                                <div class="col-xs-6"><span>{{ slide.location }}</span></div>
+                                                <div class="col-xs-6 end-xs"><a href="{{ slide.info_url }}"
+                                                                                target="_blank"><img
+                                                        src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper-button-prev" id="prev"><i class="icon-chevron-thin-left"></i></div>
+                        <div class="swiper-button-next" id="next"><i class="icon-chevron-thin-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% include 'landing/includes/advisors.html' %}
+    {% include 'landing/includes/team_members.html' %}
+    {% if faqs_total > 0 %}
+        <section class="faq white" id="faq">
+            <div class="container">
+                <div class="row heading">
+                    <div class="col-xs-12">
+                        <h2>FAQ</h2><span>FAQ</span>
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-md-5">
+                        {% for faq in faqs|slice:":6" %}
+                            <div class="faq__block faq__block">
+                                <a class="faq-question closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
+                                <div class="name">{{ faq.answer|safe_markdown }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-5 col-md-offset-1">
+                        {% for faq in faqs|slice:"6:12" %}
+                            <div class="faq__block faq__block">
+                                <a class="closed">{{ faq.question }}<i class="icon-chevron-thin-down"></i></a>
+                                <div class="name">{{ faq.answer|safe_markdown }}</div>
+                            </div>
+                        {% endfor %}
+                        {% if faqs_total > 12 %}
+                            <a class="btn" href="{% url 'landing:faq-html' %}">Show all FAQ topics</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% if publications_list %}
+        <section class="publications gray light" id="publications">
+            <div class="container">
+                <div class="row heading">
+                    <div class="col-xs-12">
+                        <h2>{% trans 'Publications' %}</h2><span>{% trans 'Publications' %}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 flex-wrap">
+                        {% for publication in publications_list %}
+                            <div class="thumbnail"><img src="{{ publication.cover_image.url }}"
+                                                        alt="{{ publication.title }}">
+                                <div class="caption">
+                                    <h3>{{ publication.title }}</h3>
+                                    <p>{{ publication.caption|safe_markdown }}</p>
+                                    <p><a class="btn btn-default" href="{{ publication.full_url }}" role="button"
+                                          target="_blank">Read full</a></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    <section class="partners white" id="partners">
         <div class="container">
             <div class="row heading">
                 <div class="col-xs-12">
-                    <h2>{% trans 'Publications' %}</h2><span>{% trans 'Publications' %}</span>
+                    <h2>Partners</h2><span>Partners</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 flex-wrap">
-                    {% for publication in publications_list %}
-                    <div class="thumbnail"><img src="{{ publication.cover_image.url }}" alt="{{ publication.title }}">
-                        <div class="caption">
-                            <h3>{{ publication.title }}</h3>
-                            <p>{{ publication.caption|safe_markdown }}</p>
-                            <p><a class="btn btn-default" href="{{ publication.full_url }}" role="button"
-                                  target="_blank">Read full</a></p>
-                        </div>
+                    <div class="thumbnail">
+                        <img src="{% static 'landing/img/partners/ico-board.png' %}" alt="ICO Board">
                     </div>
-                    {% endfor %}
+                    <div class="thumbnail">
+                        <img src="{% static 'landing/img/partners/tokenup.png' %}" alt="TokenUp">
+                    </div>
+                    <div class="thumbnail">
+                        <img src="{% static 'landing/img/partners/igamingadvisors.png' %}" alt="iGamingAdvisors">
+                    </div>
+                    <div class="thumbnail">
+                        <img src="{% static 'landing/img/partners/credsberry.png' %}" alt="Credsberry">
+                    </div>
+                    <div class="thumbnail">
+                        <img src="{% static 'landing/img/partners/zeroone.png' %}" alt="ZeroOne">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-{% endif %}
-<section class="partners white" id="partners">
-    <div class="container">
-        <div class="row heading">
-            <div class="col-xs-12">
-                <h2>Partners</h2><span>Partners</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 flex-wrap">
-                <div class="thumbnail">
-                    <img src="{% static 'landing/img/partners/ico-board.png' %}" alt="ICO Board">
-                </div>
-                <div class="thumbnail">
-                    <img src="{% static 'landing/img/partners/tokenup.png' %}" alt="TokenUp">
-                </div>
-                <div class="thumbnail">
-                    <img src="{% static 'landing/img/partners/igamingadvisors.png' %}" alt="iGamingAdvisors">
-                </div>
-                <div class="thumbnail">
-                    <img src="{% static 'landing/img/partners/credsberry.png' %}" alt="Credsberry">
-                </div>
-                <div class="thumbnail">
-                    <img src="{% static 'landing/img/partners/zeroone.png' %}" alt="ZeroOne">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<footer class="footer" id="newsletter">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="heading">
-                    <h2>Newsletter</h2><span>Newsletter</span>
-                </div>
-                {% if not user.is_authenticated %}
-                <div class="has-overlay ">
-                    <form class="form js-generic-form" method="post" action="{% url 'landing:subscribe' 'json' %}"
-                    data-success-message="You mail was successfully submitted" >
-                        {% include 'landing/includes/overlay.html' with is_bg_black=True %}
-                        <div class="row">
-                            {% include 'landing/includes/form-alert.html' %}
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-1 col-xs-12">
-                                <div class="form-group">
-                                    <label for="subscribeEmail">{% trans 'To join our Mailing List, please enter your email address below' %}</label>
-                                    <input id="subscribeEmail" type="email" name="email" required />
-                                    <div class="help-block with-errors"></div>
+    <footer class="footer" id="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="heading">
+                        <h2>Newsletter</h2><span>Newsletter</span>
+                    </div>
+                    {% if not user.is_authenticated %}
+                        <div class="has-overlay ">
+                            <form class="form js-generic-form" method="post"
+                                  action="{% url 'landing:subscribe' 'json' %}"
+                                  data-success-message="You mail was successfully submitted">
+                                {% include 'landing/includes/overlay.html' with is_bg_black=True %}
+                                <div class="row">
+                                    {% include 'landing/includes/form-alert.html' %}
                                 </div>
-                            </div>
-                            <div class="col-md-2 col-sm-12 col-xs-12">
-                                <button type="submit" class="btn btn-block">Subscribe</button>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-1 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="subscribeEmail">{% trans 'To join our Mailing List, please enter your email address below' %}</label>
+                                            <input id="subscribeEmail" type="email" name="email" required/>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-12 col-xs-12">
+                                        <button type="submit" class="btn btn-block">Subscribe</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-        <div class="footer__top">
-            <div class="row center-xs">
-              <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% github_organization %}" target="_blank"><i class="icon-github"></i><span class="git">GitHub</span></a></div>
-              <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% telegram_channel %}" target="_blank"><i class="icon-telegram"></i><span>Telegram</span></a></div>
-              <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% medium_blog %}" target="_blank"><i class="icon-medium"></i><span>Medium</span></a></div>
-              <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% bitcointalk_thread %}" target="_blank"><i class="icon-bitcointalk"></i><span>Bitcointalk</span></a></div>
-            </div>
-            <div class="row start-sm center-xs">
-              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% reddit_url %}" target="_blank"><i class="icon-reddit"></i><span>Reddit</span></a></div>
-              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% twitter_channel %}" target="_blank"><i class="icon-twitter"></i><span>Twitter</span></a></div>
-              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% facebook_page %}" target="_blank"><i class="icon-facebook"></i><span>Facebook</span></a></div>
-              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% linkedin_company %}" target="_blank"><i class="icon-linkedin"></i><span>Linkedin</span></a></div>
-              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% steemit_blog %}" target="_blank"><i class="icon-steemit"></i><span>Steemit</span></a></div>
-              <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% youtube_channel %}" target="_blank"><i class="icon-YouTube-2 icon-youtube"></i><span>YouTube</span></a></div>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <div class="row middle-md">
-                <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
-                        src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
-                    <p>Unilot&reg; 2017 - {% now 'Y' %} All Rights Reserved</p>
-                </div>
-                <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
-                        href="https://www.ethereum.org" target="_blank"><img
-                        src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
-                <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
-                    <ul>
-                        <li><a href="{% url 'landing:document' 'terms-and-conditions' %}" target="_blank">{% trans 'Terms and Conditions' %}</a></li>
-                        <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">Affiliate Program</a></li>
-                        <li><a href="{% url 'landing:document' 'bounty-program' %}" target="_blank">Bounty Program</a></li>
-                        <li><a href="mailto:info@unilot.io" target="_blank">info@unilot.io</a></li>
-                    </ul>
+                    {% endif %}
                 </div>
             </div>
+            <div class="footer__top">
+                <div class="row center-xs">
+                    <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% github_organization %}"
+                                                       target="_blank"><i class="icon-github"></i><span class="git">GitHub</span></a>
+                    </div>
+                    <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% telegram_channel %}"
+                                                       target="_blank"><i
+                            class="icon-telegram"></i><span>Telegram</span></a></div>
+                    <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% medium_blog %}"
+                                                       target="_blank"><i
+                            class="icon-medium"></i><span>Medium</span></a></div>
+                    <div class="col-sm-3 col-xs-10"><a class="card network larger" href="{% bitcointalk_thread %}"
+                                                       target="_blank"><i
+                            class="icon-bitcointalk"></i><span>Bitcointalk</span></a></div>
+                </div>
+                <div class="row start-sm center-xs">
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% reddit_url %}"
+                                                                          target="_blank"><i
+                            class="icon-reddit"></i><span>Reddit</span></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network"
+                                                                          href="{% twitter_channel %}"
+                                                                          target="_blank"><i
+                            class="icon-twitter"></i><span>Twitter</span></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network"
+                                                                          href="{% facebook_page %}" target="_blank"><i
+                            class="icon-facebook"></i><span>Facebook</span></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network"
+                                                                          href="{% linkedin_company %}" target="_blank"><i
+                            class="icon-linkedin"></i><span>Linkedin</span></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network" href="{% steemit_blog %}"
+                                                                          target="_blank"><i
+                            class="icon-steemit"></i><span>Steemit</span></a></div>
+                    <div class="col-md-2 col-sm-4 col-xs-10 center-xs"><a class="card network"
+                                                                          href="{% youtube_channel %}"
+                                                                          target="_blank"><i
+                            class="icon-YouTube-2 icon-youtube"></i><span>YouTube</span></a></div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="row middle-md">
+                    <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
+                            src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
+                        <p>Unilot&reg; 2017 - {% now 'Y' %} All Rights Reserved</p>
+                    </div>
+                    <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
+                            href="https://www.ethereum.org" target="_blank"><img
+                            src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
+                    <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
+                        <ul>
+                            <li><a href="{% url 'landing:document' 'terms-and-conditions' %}"
+                                   target="_blank">{% trans 'Terms and Conditions' %}</a></li>
+                            <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">Affiliate
+                                Program</a></li>
+                            <li><a href="{% url 'landing:document' 'bounty-program' %}" target="_blank">Bounty
+                                Program</a></li>
+                            <li><a href="mailto:info@unilot.io" target="_blank">info@unilot.io</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 {% endblock %}
