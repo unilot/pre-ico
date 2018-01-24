@@ -1,5 +1,6 @@
 {% load dynamic_content %}
 {% load config %}
+{% load static %}
 <div class="modal fade" id="buyTokens" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -9,25 +10,38 @@
                 <h4 class="modal-title">Buy UNITs</h4></div>
             <div class="modal-body">
                 {% content_text 'modal-buy-token' %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="{% static 'images/qr-0x378356e2391cb.svg' %}" />
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group"><input class="form-control"
+                                                               id="tokenBuyContractNumber" type="text"
+                                                               readonly
+                                                               value="{% token_address %}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-center"><a
+                                    class="btn btn-lg btn-primary js-buy-tokens-copy-contract-number"
+                                    role="button" tabindex="0" data-toggle="focus" data-trigger="focus"
+                                    data-placement="bottom" data-content="Contract number copied">Copy
+                                contract number</a></div>
+                        </div>
+                    </div>
+{#                    <div class="col-md-8">#}
+{#                        <div class="alert alert-success"><strong>{% token_address %}</strong></div>#}
+{#                    </div>#}
+                </div>
                 {% include 'includes/token-calculator.html' %}
             </div>
             <div class="modal-footer">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="form-group"><input class="form-control"
-                                                       id="tokenBuyContractNumber" type="text"
-                                                       readonly
-                                                       value="{% token_address %}">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 text-center"><a
-                            class="btn btn-lg btn-primary js-buy-tokens-copy-contract-number"
-                            role="button" tabindex="0" data-toggle="focus" data-trigger="focus"
-                            data-placement="top" data-content="Contract number copied">Copy
-                        contract number</a></div>
-                </div>
+
             </div>
         </div>
     </div>
