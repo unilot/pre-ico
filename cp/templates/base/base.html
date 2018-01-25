@@ -194,15 +194,6 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     {% if user.is_authenticated %}
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="btn-group-lg">
-                                    <button class="btn btn-primary btn-lg btn-block pull-right" type="button"
-                                            data-toggle="modal" data-target="#buyTokens">Buy
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                         {% include 'includes/modal-buy-token.html' %}
                         <div class="row">
                             <div class="col-xs-12">
@@ -218,9 +209,22 @@
                                             <strong>My UNIT Tokens</strong>
                                             {% widthratio user.profile.token_balance 1000000000000000000 1 as num_tokens %}
                                             <p class="text-2x"><strong>{% if num_tokens %}{{ num_tokens|floatformat:6 }}{% else %}0{% endif %}</strong></p>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="btn-group-lg">
+                                                        <button class="btn btn-primary btn-lg btn-block pull-right" type="button"
+                                                                data-toggle="modal" data-target="#buyTokens">Buy
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <hr>
+                                    <hr />
+                                {% endif %}
+                                {% if not user.beta_tester %}
+                                    {% include 'includes/os-request-form.html' %}
+                                    <hr />
                                 {% endif %}
                                 <div class="panel">
                                     <div class="panel-body"><strong>My UNIT Referral Tokens</strong>
@@ -278,23 +282,14 @@
 </div>
 <script type="application/javascript"
         src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>
-<script type="application/javascript" src="{% static 'js/main.min-387d15d79554d8e62e708cd3a6924375.js' %}"></script>
+<script type="application/javascript" src="{% static 'js/main.min-58351fdbc94f18689590f99555aac60e.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
-{% if user.is_authenticated or can_refer %}
-<script type="text/javascript">
-{% if can_refer %}
-var addthis_share = {
-    url: '{% referral_url %}'
-};
-{% endif %}
 {% if user.is_authenticated %}
+<script type="text/javascript">
 adroll_email = "{{ user.email }}";
-{% endif %}
 </script>
 {% endif %}
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a56b52d56f967df" async></script>
 {% include 'landing/includes/adroll.html' %}
 {% include 'landing/includes/one-signal.html' %}
 </body>

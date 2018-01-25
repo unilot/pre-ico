@@ -31,3 +31,5 @@ class TextAdmin(TranslatableAdmin):
     }
 
 admin.site.register(models.Text, TextAdmin)
+
+admin.site.register((models.BetaTester,))
