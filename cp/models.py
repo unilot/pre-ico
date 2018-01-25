@@ -3,6 +3,7 @@ from django.db import models
 from hvad.models import TranslatableModel, TranslatedFields
 from martor.models import MartorField
 from django_countries import fields as countries_fields
+from landing import models as landing_models
 
 
 class FAQ(TranslatableModel):
@@ -47,3 +48,12 @@ class Text(TranslatableModel):
     translations = TranslatedFields(
         text = MartorField(null=False, blank=False)
     )
+
+class BetaTester(models.Model):
+    is_ios = models.BooleanField(null=False, blank=False)
+    is_android = models.BooleanField(null=False, blank=False)
+    email = models.EmailField(null=False, blank=False)
+    tester = models.OneToOneField(User, null=True, blank=True, related_name='beta_tester',
+                                  on_delete=models.deletion.DO_NOTHING)
+    lead = models.OneToOneField(landing_models.Lead, null=True, blank=False, related_name='contact',
+                                   on_delete=models.deletion.DO_NOTHING)

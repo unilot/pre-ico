@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.core.urlresolvers import reverse_lazy
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from cp.views import validator
+from cp.views import validator, beta_tester
 from .views import auth, faq, profile, dashboard, js
 
 
@@ -31,7 +31,8 @@ urlpatterns += format_suffix_patterns([
     url(r'^validate/user/email', validator.UserEmailValidator.as_view(), name='validate-email'),
     url(r'^validate/user/wallet', validator.UserProfileWalletValidator.as_view(), name='validate-wallet'),
     url(r'^user/password/change', auth.ChangePasswordView.as_view(), name='password-change'),
-    url(r'^user/recover', auth.RecoverPassword.as_view(), name='recover-access')
+    url(r'^user/recover', auth.RecoverPassword.as_view(), name='recover-access'),
+    url(r'^beta-tester/add', beta_tester.AddBetaTester.as_view(), name='beta-tester'),
 ], True, ('json',))
 
 urlpatterns += format_suffix_patterns([

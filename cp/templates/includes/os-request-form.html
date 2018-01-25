@@ -1,0 +1,43 @@
+<div class="panel">
+    <div class="panel-body js-has-overlay">
+        <strong class="text-uppercase">Participate in app beta-testing</strong><br/>
+        <br/>
+        <form id="osRequestForm" class="form js-generic-form" method="post"
+              action="{% url 'cp:beta-tester' 'json' %}"
+              data-success-replace-form-message="Thank you for participation. Application testing will start on 5th of February we will notify you via email.">
+            {% include 'includes/form-overlay.html' %}
+            {% include 'includes/form-alert.html' %}
+            <div class="form-group">
+                <label for="osRequestEmail">Apple ID or Email</label>
+                <input id="osRequestEmail" name="email" value="{{ user.email }}"/>
+                <div class="help-block with-errors"></div>
+            </div>
+            <strong>Choose your mobile OS</strong>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="is_ios"/> IOS
+                            </label>
+                        </div>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="is_android"/> Android
+                            </label>
+                        </div>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-sm btn-primary">Participate</button>
+            </div>
+        </form>
+    </div>
+</div>
