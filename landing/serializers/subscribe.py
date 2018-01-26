@@ -21,7 +21,6 @@ class BetaTesterSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='lead.name', required=True)
     email = serializers.EmailField(required=True, validators=[
         validators.UniqueValidator(queryset=cp_models.BetaTester.objects.all()),
-        validators.UniqueValidator(queryset=models.Lead.objects.all()),
         validators.UniqueValidator(queryset=django_models.User.objects.all())
     ])
     phone = serializers.CharField(source='lead.phone_number', required=True)
@@ -43,7 +42,11 @@ class BetaTesterSerializer(serializers.ModelSerializer):
         lead_data['email'] = beta_tester_data.get('email')
 
         with transaction.atomic():
-            beta_tester_data['lead'] = models.Lead.objects.create(**lead_data)
+            try:
+                beta_tester_data['lead'] = models.Lead.objects.get(
+                    email=beta_tester_data.get('email'))
+            except models.Lead.DoesNotExist:
+                beta_tester_data['lead'] = models.Lead.objects.create(**lead_data)
 
             return super().create(beta_tester_data)
 
