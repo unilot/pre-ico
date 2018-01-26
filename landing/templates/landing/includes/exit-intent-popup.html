@@ -1,18 +1,17 @@
 <div id="bio_ep">
-    <div id="bio_ep_close">Close</div>
+    <div id="bio_ep_close">No, thanks <span class="cross"></span></div>
     <div class="container">
         <section class="wait">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12 text-center">
-                    <p>Wait a second,</p>
+                    <p>Wait a second</p>
                 </div>
             </div>
         </section>
         <section>
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12 text-center">
-                    <h2 class="message">take your chance to <br> Win <span class="big-amount">100,000</span> Unilot
-                        Tokens</h2>
+                    <h2 class="message">Test the app, participate in any drawings of the lottery, win big!</h2>
                 </div>
             </div>
         </section>
@@ -26,20 +25,9 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
                     <div class="has-overlay">
-                        <div class="overlay black-bg hidden">
-                            <div class="overlay-wrapper">
-                                <div class="row centered full-width">
-                                    <div class="material-loader">
-                                        <svg class="circular primary">
-                                            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2"
-                                                    stroke-miterlimit="10"></circle>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <form class="form js-generic-form" method="post" action="/subscribe.js"
-                              data-success-message="Success">
+                        {% include 'landing/includes/overlay.html' %}
+                        <form class="form" method="post" action="{% url 'landing:beta-tester' 'json' %}"
+                              data-success-message="Thank you for participation. Application testing will start on 5th of February we will notify you via email.">
                             <div class="alert js-form-alert hidden text-center"></div>
                             <div class="form-group">
                                 <input id="exitPopupName" type="text" name="name" required data-minlength="3"><span
@@ -48,40 +36,43 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <input class="with-checkbox" id="exitPopupEmail" type="email" name="email" required>
-                                <label for="exitPopupEmail">AppleID or Email <span class="required"></span></label>
-                                <div class="checkbox">
-                                    <label>Exclusive updates, announcements and more
-                                        <input type="checkbox" name="subscribe" checked>
-                                        <div class="checkmark"></div>
-                                    </label>
-                                </div>
+                                <input id="exitPopupEmail" type="email" name="email" required>
+                                <label for="exitPopupEmail">Email <span class="required"></span></label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
+                                <div class="checkbox">
+                                    <label>Exclusive updates, announcements and more
+                                        <input type="checkbox" name="is_receive_updates" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <input id="exitPopupPhone" type="number" name="phone" required
-                                       data-error="Phone format is: 123123123" data-minlength="12">
+                                       data-error="Phone format is: 123123123" data-minlength="9">
                                 <label for="exitPopupPhone">Phone (123123123) <span class="required"></span></label>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                    <div class="form-group">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="checkbox">
                                             <label>Andoid
                                                 <input type="checkbox" name="is_android"><span class="checkmark"></span>
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>IOS
-                                                <input type="checkbox" name="is_ios"><span class="checkmark"></span>
-                                            </label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>IOS
+                                                    <input type="checkbox" name="is_ios"><span class="checkmark"></span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="form-control">
@@ -91,7 +82,20 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 text-center">
+                    <p class="announce">Winners will be announced on March 5<sup>eth</sup>, 2018</p>
+                </div>
+            </div>
         </section>
     </div>
     <div class="fancy-line"></div>
 </div>
+<script type="application/javascript">
+bioEp.init({
+    delay: 3,
+    cookieExp: 0,
+    width: 600,
+    height: 700
+});
+</script>
