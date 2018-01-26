@@ -160,10 +160,20 @@
 <div class="slideout-panel slideout-panel-right" id="panel">
     {% block content %}{% endblock %}
 </div>
-<script src="{% static 'landing/js/main.min-18631d049177ae78b87b34c38d6ce607.js' %}"></script>
-
 {% if not user.is_authenticated %}
 {% include 'landing/includes/exit-intent-popup.html' %}
+{% endif %}
+<script src="{% static 'landing/js/main.min-18631d049177ae78b87b34c38d6ce607.js' %}"></script>
+{% if not user.is_authenticated %}
+<script type="application/javascript">
+bioEp.init({
+    delay: 3,
+    cookieExp: 30,
+    showOncePerSession: true,
+    width: 600,
+    height: 700
+});
+</script>
 {% endif %}
 
 {% include 'landing/includes/analytics.html' %}
