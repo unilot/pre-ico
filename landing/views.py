@@ -116,6 +116,6 @@ class Subscribe(generics.CreateAPIView):
     serializer_class = subscribe.SubscribeSerializer
 
 
-class Contact(generics.CreateAPIView):
+class BetaTester(generics.CreateAPIView):
     permission_classes = (p_permissions.isGuest,)
-    serializer_class = subscribe.ContactSerializer
+    serializer_class = subscribe.BetaTesterSerializer

@@ -11,7 +11,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}{% trans 'Initial Coin Offering Pre-sale' %}{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-2ed67917899261bdb26a497bdb38e23c.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-67e841fe4137c6cd02e58486130cbba5.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -160,7 +160,12 @@
 <div class="slideout-panel slideout-panel-right" id="panel">
     {% block content %}{% endblock %}
 </div>
-<script src="{% static 'landing/js/main.min-d00d77fd16620802b16644daed19d288.js' %}"></script>
+<script src="{% static 'landing/js/main.min-18631d049177ae78b87b34c38d6ce607.js' %}"></script>
+
+{% if not user.is_authenticated %}
+{% include 'landing/includes/exit-intent-popup.html' %}
+{% endif %}
+
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
 {% include 'landing/includes/adroll.html' %}

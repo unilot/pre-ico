@@ -318,6 +318,7 @@ class Lead(models.Model):
     name = models.CharField(max_length=64, null=True, blank=True)
     email = models.EmailField(null=False, blank=False, unique=True)
     phone_number = models.CharField(max_length=24, null=True, blank=True)
+    is_receive_updates = models.BooleanField(default=True, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
