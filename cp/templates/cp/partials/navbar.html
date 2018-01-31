@@ -18,12 +18,14 @@
         </li>
         <li class="item-brand"><a href="#"><img class="logo" src="{% static 'cp/img/unilot-logo-header.png' %}"
                                                 alt="Unilot Investor Account"></a></li>
+        {% if user.is_authenticated %}
         <li class="item-right item-collapsible">
             <a href="{% url 'landing:index-html' %}" target="_blank">Unilot ICO</a>
         </li>
         <li class="item-right item-collapsible-xs">
             <a href="{% url 'cp:profile' 'html' %}">Profile</a>
         </li>
+        {% endif %}
         <li class="item-right item-btn">
             {% if user.is_authenticated %}
                 <form action="{% url 'cp:sign-out' 'html' %}" method="post" style="margin: 0;">
