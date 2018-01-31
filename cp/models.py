@@ -29,8 +29,8 @@ class Profile(models.Model):
     company_name = models.CharField(max_length=128, null=True, blank=True)
     phone_number = models.CharField(max_length=24, null=True,blank=True)
     country = countries_fields.CountryField(null=True, blank=False)
-    wallet = models.CharField(max_length=64, null=True, blank=True)
-    token_amount_reserved = models.FloatField(null=True)
+    wallet = models.CharField(max_length=64, null=True)
+    token_amount_reserved = models.FloatField(null=True, blank=True)
     verification_key = models.CharField(max_length=32, null=True, blank=True)
     referrer = models.ForeignKey('Profile', to_field='user', null=True, blank=True, related_name='referral',
                                  unique=False, on_delete=models.deletion.DO_NOTHING)
