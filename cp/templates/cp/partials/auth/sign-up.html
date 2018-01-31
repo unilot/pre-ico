@@ -9,10 +9,11 @@
             <div class="alert hidden js-form-alert text-center"></div>
             <div class="row no-padding">
                 <div class="col-md-6">
-                    <div class="form-group label-floating"><label class="control-label"
-                                                                  for="signUpCountry">Country
-                        <span class="required"></span></label><span class="caret"></span><select
-                            class="form-control" id="signUpCountry" required name="country">
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="signUpCountry">Country
+                            <span class="required"></span></label>
+                        <span class="caret"></span>
+                        <select class="form-control" id="signUpCountry" required name="country">
                         <option selected disabled></option>
                         {% get_countries as countries %}
                         {% for code,name in countries.items %}
@@ -80,17 +81,20 @@
     <div class="row">
         <div class="col-md-6">
             <div class="row no-padding">
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="form-group"><span class="caret"></span>
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="signUpPhoneCode">Phone code
+                            <span class="required"></span></label>
+                        <span class="caret"></span>
                         <select class="form-control" id="signUpPhoneCode" name="phone_code" required>
-                            <option disabled selected>Code*</option>
+                            <option disabled selected></option>
                             {% get_phone_codes as phone_codes %}
                             {% for value, label in phone_codes %}
                                 <option value="{{ value }}">{{ label }}</option>
                             {% endfor %}
                         </select></div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
+                <div class="col-md-7 col-sm-7 col-xs-7">
                     <div class="form-group label-floating"><label class="control-label"
                                                                   for="signUpPhone">Phone number
                         <span class="required"></span></label>
