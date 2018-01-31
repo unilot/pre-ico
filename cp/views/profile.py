@@ -28,9 +28,12 @@ class ProfileView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
         return self.update(request, *args, **kwargs)
 
 
-class WalletView(generics.RetrieveAPIView, generics.UpdateAPIView):
+class WalletView(generics.RetrieveAPIView, mixins.UpdateModelMixin):
     permission_classes = [ permissions.IsAuthenticated ]
     serializer_class = profile.WalletSerializer
 
     def get_object(self):
         return self.request.user.profile
+
+    def post(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)

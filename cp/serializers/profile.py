@@ -54,4 +54,4 @@ class WalletSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=models.Profile
-        fields = ('wallet')
+        fields = ('wallet',)

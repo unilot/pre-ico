@@ -10,15 +10,20 @@
                                                                                                   aria-hidden="true"></span>
                 </button>
             </div>
-            <div class="modal-body"><p>Please specify address of the wallet that will be used to buy UNIT tokens.</p>
-                <form>
+            <div class="modal-body js-has-overlay">
+                <p>Please specify address of the wallet that will be used to buy UNIT tokens.</p>
+                <form id="addSourceWalletForm" method="post" action="{% url 'cp:user-wallet' 'json' %}">
+                    {% csrf_token %}
+                    {% include 'cp/partials/form-overlay.html' %}
+                    {% include 'includes/form-alert.html' %}
                     <div class="row no-padding">
                         <div class="col-md-10">
-                            <div class="form-group">
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="sourceWalletWalletApp">Wallet <span class="required"></span></label>
                                 <span class="caret"></span>
                                 <select
-                                    class="form-control" id="wallet" required name="wallet">
-                                <option selected disabled>Wallet *</option>
+                                    class="form-control" id="sourceWalletWalletApp" required name="wallet">
+                                <option selected disabled></option>
                                 {% get_wallet_apps as wallet_apps %}
                                 {% for value, app in wallet_apps %}
                                 <option value="{% if value %}1{% else %}0{% endif %}">{{ app }}</option>
@@ -39,18 +44,17 @@
                     <div class="row no-padding">
                         <div class="col-md-10">
                             <div class="form-group disabled label-floating">
-                                <label class="control-label" for="walletNumber">Enter your wallet number
+                                <label class="control-label" for="sourceWalletWallet">Enter your wallet number
                                     <span class="required"></span></label>
-                                <input class="form-control" id="walletNumber" type="text" name="wallet-number"
-                                required disabled>
+                                <input class="form-control" id="sourceWalletWallet" type="text" name="wallet"
+                                       data-wallet="true" required disabled>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                     </div>
                     <div class="row no-padding">
                         <div class="col-md-12">
-                            <button class="btn btn-primary btn-lg center-block" role="button" data-toggle="modal"
-                                    data-target="#buyUnitTokens">Confirm
+                            <button class="btn btn-primary btn-lg center-block" role="button" type="submit">Confirm
                             </button>
                         </div>
                     </div>

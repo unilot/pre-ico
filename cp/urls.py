@@ -34,7 +34,7 @@ urlpatterns += format_suffix_patterns([
     url(r'^user/password/change', auth.ChangePasswordView.as_view(), name='password-change'),
     url(r'^user/recover', auth.RecoverPassword.as_view(), name='recover-access'),
     url(r'^beta-tester/add', beta_tester.AddBetaTester.as_view(), name='beta-tester'),
-    url(r'^user/wallet', profile.WalletView.as_view(), name='beta-tester')
+    url(r'^user/wallet', profile.WalletView.as_view(), name='user-wallet')
 ], True, ('json',))
 
 urlpatterns += format_suffix_patterns([
