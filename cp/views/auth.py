@@ -176,7 +176,7 @@ class VerifyEmailView(generics.GenericAPIView):
                                         #Admins to not have profiles created automatically
                                         and (not isinstance(user.profile, models.Profile) or user.profile.wallet))
 
-        self.template_name = 'set-password.html'
+        self.template_name = 'cp/set-password.html'
 
         return response.Response(data)
 

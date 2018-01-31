@@ -25,7 +25,9 @@
                             {% for question in object_list %}
                                 <div class="question">
                                     <h4>{{ forloop.counter }}. {{ question.question }}</h4>
-                                    {{ question.answer|safe_markdown }}
+                                    <div id="answer{{ question.id }}">
+                                        {{ question.answer|safe_markdown }}
+                                    </div>
                                 </div>
                             {% endfor %}
                         </div>
