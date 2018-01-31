@@ -1,0 +1,95 @@
+{% load i18n %}
+{% load static %}
+{% load social_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unilot | {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cp/css/main.min-f23dd962f8103a881b5327fbcaa293e4.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'landing/img/favicons/manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'landing/img/favicons/safari-pinned-tab.svg' %}" color="#FFFFFF">
+    <meta name="apple-mobile-web-app-title" content="Unilot">
+    <meta name="application-name" content="Unilot">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <meta property="og:site_name" content="Unilot"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}"/>
+    <meta property="og:description"
+          content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency."/>
+    <meta property="og:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/"/>
+    <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
+    <meta property="article:publisher" content="{% facebook_page %}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale"/>
+    <meta name="twitter:description"
+          content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency."/>
+    <meta name="twitter:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/"/>
+    <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:locale" content="{{ LANGUAGE_CODE|slice:":2"|lower }}_{{ LANGUAGE_CODE|slice:"-2:"|upper }}"/>
+    {% for lang_code,lang_name in LANGUAGES %}
+        {% if lang_code != LANGUAGE_CODE %}
+            <meta property="og:locale:alternate"
+                  content="{{ lang_code|slice:":2"|lower }}_{{ lang_code|slice:"-2:"|upper }}"/>
+        {% endif %}
+    {% endfor %}
+</head>
+<body>
+{% include 'cp/partials/modals/network-error.html' %}
+{% block modals %}
+{% endblock %}
+<div id="slideout">
+    <ul class="nav">
+        <li class="active"><a href="new.html">Dashboard <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Affiliate &amp; Bounty programs</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Unilot ICO</a></li>
+        <li><a href="#">Profile</a></li>
+    </ul>
+</div>
+<div id="main-body">
+    {% include 'cp/partials/header.html' %}
+    <div class="container grow">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <ul class="nav nav-pills nav-social">
+            <li class="footer-logo"><a href="{% url 'landing:index-html' %}"><img src="{% static 'cp/img/unilot-logo.png' %}" alt="Unilot"></a></li>
+            <li><a class="btn btn-social" href="{% github_organization %}" title="See our code on GitHub"><span class="icon icon-github"></span></a>
+            </li>
+            <li><a class="btn btn-social" href="{% telegram_channel %}" title="Join our Telegram group"><span
+                    class="icon icon-telegram"></span></a></li>
+            <li><a class="btn btn-social" href="{% reddit_url %}" title="Visit our subreddit"><span
+                    class="icon icon-reddit"></span></a></li>
+            <li><a class="btn btn-social" href="{% twitter_channel %}" title="Follow us on Twitter"><span class="icon icon-twitter"></span></a>
+            </li>
+            <li><a class="btn btn-social" href="{% facebook_page %}" title="Follow us on Facebook"><span
+                    class="icon icon-facebook"></span></a></li>
+        </ul>
+    </footer>
+</div>
+{% include 'cp/partials/timer-template.html' %}
+<script type="application/javascript"
+        src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>
+<script type="application/javascript" src="{% static 'cp/js/main.min-fd140a5c8faea4018edaa2ac0fcc9ec3.js' %}"></script>
+{% include 'landing/includes/analytics.html' %}
+{% include 'landing/includes/chartra.html' %}
+{% if user.is_authenticated %}
+<script type="text/javascript">
+adroll_email = "{{ user.email }}";
+</script>
+{% endif %}
+{% include 'landing/includes/adroll.html' %}
+{% include 'landing/includes/one-signal.html' %}
+</body>
+</html>

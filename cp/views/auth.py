@@ -16,14 +16,16 @@ from .. import models
 from ..serializers import auth
 from preico.rest_framework import permissions as p_permissions
 from preico.mandrill.templates import Templates
+from preico import utils
 
 
 class ShowAuthPageView(APIView):
     permission_classes = [p_permissions.isGuest]
-    template_name='auth.html'
+    template_name='cp/auth.html'
 
     def get(self, request, *args, **kwargs):
         data = {
+            'tab': 'sign-in',
             'sign_up_url': reverse('cp:sign-up', kwargs={'format': 'html'})
         }
 
@@ -52,10 +54,11 @@ class SignOutView(APIView):
 class SignUpView(generics.CreateAPIView):
     permission_classes = [ p_permissions.isGuest ]
     serializer_class = auth.SignUpSerializer
-    template_name = 'sign-up-wizard.html'
+    template_name = 'cp/auth.html'
 
     def get(self, request, *args, **kwargs):
         data = {
+            'tab': 'sign-up',
             'terms_and_conditions': TermsAndConditions.get_content(),
         }
 
@@ -92,7 +95,10 @@ class SignUpView(generics.CreateAPIView):
             except models.Profile.DoesNotExist:
                 pass
 
-        serializer = self.get_serializer(data=request.data)
+        user_password = utils.generate_password(12)
+        input_data = request.data.copy()
+        input_data['password'] = user_password
+        serializer = self.get_serializer(data=input_data)
         serializer.is_valid(raise_exception=True)
 
         with transaction.atomic():
@@ -112,6 +118,7 @@ class SignUpView(generics.CreateAPIView):
                     'email': user.email,
                     'first_name': user.first_name,
                     'last_name': user.last_name,
+                    'password': user_password,
                     'dashboard_url': request.build_absolute_uri(
                         reverse('cp:dashboard', kwargs={'format': 'html'}))
                 }
@@ -243,11 +250,7 @@ class RecoverPassword(generics.GenericAPIView):
 
         try:
             user = serializer.Meta.model.objects.get(username=serializer.validated_data.get('email'))
-            verification_key = serializer.Meta.model.objects \
-                .make_random_password(length=32, allowed_chars='abcdefghjkmnpqrstuvwxyz'
-                                                               'ABCDEFGHJKLMNPQRSTUVWXYZ'
-                                                               '23456789'
-                                                               '@.,;:\|{}!@#$%^&*)(+=_-')
+            verification_key = utils.generate_password(32)
             user.profile.verification_key = verification_key
             user.profile.save()
 

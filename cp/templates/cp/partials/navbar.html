@@ -1,0 +1,44 @@
+{% load static %}
+{% load i18n %}
+<nav class="navbar navbar-unilot" role="navigation">
+    <ul class="nav navbar-nav" id="navbar">
+        <li class="item-toggle"><a class="toggle-menu" href="#"><span
+                class="sr-only">Toggle navigation</span><span
+                class="glyphicon glyphicon-menu-hamburger"></span></a></li>
+        {% if user.is_authenticated %}
+            <li class="item-collapsible"><a href="{% url 'cp:dashboard' 'html' %}">Dashboard</a>
+            </li>
+            <li class="item-collapsible"><a href="{% url 'cp:affiliate' 'html' %}">Affiliate &amp; Bounty programs</a>
+            </li>
+        {% else %}
+            <li class="item-collapsible"><a href="{% url 'landing:index-html' %}" target="_blank">Unilot ICO</a>
+            </li>
+        {% endif %}
+        <li class="item-collapsible"><a href="{% url 'landing:faq-html' %}" target="_blank">FAQ</a>
+        </li>
+        <li class="item-brand"><a href="#"><img class="logo" src="{% static 'cp/img/unilot-logo-header.png' %}"
+                                                alt="Unilot Investor Account"></a></li>
+        <li class="item-right item-collapsible">
+            <a href="{% url 'landing:index-html' %}" target="_blank">Unilot ICO</a>
+        </li>
+        <li class="item-right item-collapsible-xs">
+            <a href="{% url 'cp:profile' 'html' %}">Profile</a>
+        </li>
+        <li class="item-right item-btn">
+            {% if user.is_authenticated %}
+                <form action="{% url 'cp:sign-out' 'html' %}" method="post" style="margin: 0;">
+                    {% csrf_token %}
+                    <button type="submit" role="submit" class="btn btn-default nav-btn">
+                        <span class="btn-action">Sign out</span>
+                        <span class="glyphicon glyphicon-log-out"></span>
+                    </button>
+                </form>
+            {% else %}
+            <a class="btn btn-default nav-btn" role="button" href="new-auth.html">
+                <span class="btn-action">Sign in</span>
+                or <span class="btn-action">Sign up</span>
+            </a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>

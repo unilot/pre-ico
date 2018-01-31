@@ -1,9 +1,12 @@
+import re
+
 from django.contrib.auth.models import User
 from django.db import models
 from hvad.models import TranslatableModel, TranslatedFields
 from martor.models import MartorField
 from django_countries import fields as countries_fields
 from landing import models as landing_models
+from preico import utils
 
 
 class FAQ(TranslatableModel):
@@ -39,6 +42,20 @@ class Profile(models.Model):
     @property
     def username(self):
         return self.user.username
+
+    @property
+    def phone_code(self):
+        phone_codes = utils.get_phone_codes()
+
+        if not self.phone_number:
+            return ''
+
+        for code, label in phone_codes:
+            if re.sub('[^\d]', '', self.phone_number)[:len(str(code))] == str(code):
+                return code
+
+        return ''
+
 
     def __str__(self):
         return self.username

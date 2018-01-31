@@ -1,0 +1,16 @@
+{% load static %}
+{% load i18n %}
+<div class="modal fade" id="networkError" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-error modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><img class="modal-title-img center-block" src="{% static 'cp/img/sending-is-failed.png' %}">
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">Sending is failed<br>
+                    <small>Check your network connection</small>
+                </h4>
+                <button class="btn btn-primary btn-lg center-block" role="button">Try again</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 from rest_framework import serializers, validators
 from django.contrib.auth import models as auth_models
+from django.utils.translation import ugettext as _
 from django_countries import serializer_fields as country_serializer
 from preico.rest_framework import validators as p_validators
 from .. import models
@@ -11,7 +12,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     ], required=False, read_only=True)
     phone_number = serializers.CharField(source='profile.phone_number', required=True)
     country = country_serializer.CountryField(source='profile.country', required=True)
-    company_name = serializers.CharField(source='profile.company_name', required=True)
+    company_name = serializers.CharField(source='profile.company_name', required=False)
 
 
     def update(self, instance, validated_data):
@@ -36,3 +37,21 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=auth_models.User
         fields = ('first_name', 'last_name', 'wallet', 'phone_number', 'country', 'company_name')
+
+
+class WalletSerializer(serializers.ModelSerializer):
+    wallet = serializers.CharField(required=True, validators=[
+        p_validators.EthWalletValidator()
+    ])
+
+    def update(self, instance, validated_data):
+        if instance.wallet:
+            raise serializers.ValidationError({
+                'wallet': [_('Wallet cannot be changed')]
+            })
+
+        return super().update(instance, validated_data)
+
+    class Meta:
+        model=models.Profile
+        fields = ('wallet')

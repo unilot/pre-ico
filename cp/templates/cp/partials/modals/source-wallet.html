@@ -1,0 +1,60 @@
+{% load static %}
+{% load config %}
+<div class="modal fade" id="sourceWallet" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content no-padding">
+            <div class="modal-header img-horizontal"><img class="modal-title-img img-lock" src="{% static 'cp/img/lock.png' %}"><h4
+                    class="modal-title">Source Wallet</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span class="close-icon"
+                                                                                                  aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body"><p>Please specify address of the wallet that will be used to buy UNIT tokens.</p>
+                <form>
+                    <div class="row no-padding">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <span class="caret"></span>
+                                <select
+                                    class="form-control" id="wallet" required name="wallet">
+                                <option selected disabled>Wallet *</option>
+                                {% get_wallet_apps as wallet_apps %}
+                                {% for value, app in wallet_apps %}
+                                <option value="{% if value %}1{% else %}0{% endif %}">{{ app }}</option>
+                                {% endfor %}
+                            </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-padding">
+                        <div class="col-md-12">
+                            <div class="alert alert-warning alert-flex" role="alert"><img class="pull-left"
+                                                                                          src="{% static 'cp/img/attention.png' %}">
+                                <div>{% content_text 'modal-valid-wallets' %}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-padding">
+                        <div class="col-md-10">
+                            <div class="form-group disabled label-floating">
+                                <label class="control-label" for="walletNumber">Enter your wallet number
+                                    <span class="required"></span></label>
+                                <input class="form-control" id="walletNumber" type="text" name="wallet-number"
+                                required disabled>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-padding">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary btn-lg center-block" role="button" data-toggle="modal"
+                                    data-target="#buyUnitTokens">Confirm
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

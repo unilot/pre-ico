@@ -8,7 +8,7 @@ class ProfileView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
                   generics.GenericAPIView):
     permission_classes = [ permissions.IsAuthenticated ]
     serializer_class = profile.ProfileSerializer
-    template_name = 'profile.html'
+    template_name = 'cp/profile.html'
 
     def get_object(self):
         return self.request.user
@@ -26,3 +26,11 @@ class ProfileView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
             return http_response.HttpResponseForbidden()
 
         return self.update(request, *args, **kwargs)
+
+
+class WalletView(generics.RetrieveAPIView, generics.UpdateAPIView):
+    permission_classes = [ permissions.IsAuthenticated ]
+    serializer_class = profile.WalletSerializer
+
+    def get_object(self):
+        return self.request.user.profile

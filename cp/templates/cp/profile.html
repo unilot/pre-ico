@@ -1,0 +1,88 @@
+{% extends 'cp/base/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load config %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <main>
+                <section class="profile">
+                    <div class="row">
+                        <div class="col-md-5 js-has-overlay">
+                            <h3>{% block title %}Edit Profile{% endblock %}</h3>
+                            <form class="js-generic-form" id="editProfile" role="form" data-toggle="validator"
+                      action="{% url 'cp:profile' 'json' %}" method="patch" data-success-message="{% trans 'Profile updated' %}">
+                                {% csrf_token %}
+                                {% include 'cp/partials/form-overlay.html' %}
+                                {% include 'includes/form-alert.html' %}
+                                <div class="form-group label-floating"><label class="control-label" for="firstName">First
+                                    name</label><input class="form-control" id="firstName" type="text"
+                                                       name="first_name" value="{{ first_name }}">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group label-floating"><label class="control-label" for="lastName">Last
+                                    name</label><input class="form-control" id="lastName" type="text"
+                                                       name="last_name" value="{{ last_name }}">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group label-floating"><label class="control-label" for="company">Company
+                                    name</label>
+                                    <input class="form-control" id="company" type="text" name="company_name" value="{{ company_name }}">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group label-floating"><label class="control-label" for="phone">Phone
+                                    number</label>
+                                    <input class="form-control" id="phone" type="tel" name="phone_number" value="{{  phone_number }}">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group label-floating"><label class="control-label" for="country">Country</label><span
+                                        class="caret"></span><select class="form-control" id="country" required
+                                                                     name="country">
+                                    {% get_countries as countries %}
+                                    {% for code,name in countries.items %}
+                                        <option value="{{ code }}" {% if code == country %}selected{% endif %}>{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <button class="btn btn-default btn-lg btn-block" role="submit">Save profile</button>
+                            </form>
+                        </div>
+                        <div class="col-md-6 col-md-offset-1">
+                            <div class="row"><h3>My Wallet</h3>
+                                <form>
+                                    <div class="form-group">
+                                        <div class="input-group"><input class="form-control" id="wallet" type="text"
+                                                                        value="{{ wallet }}"
+                                                                        readonly><span class="input-group-addon"><a
+                                                class="text-uppercase" href="#">Copy address</a></span></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row js-has-overlay">
+                                {% include 'cp/partials/profile/password-change-form.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <div class="col-md-4 hidden-sm hidden-xs">
+            <aside class="pull-right">
+                {% include 'cp/partials/buy-tokens-button.html' %}
+                {% include 'cp/partials/referrals.html' %}
+                <section>
+                    {% include 'cp/partials/timer.html' %}
+                </section>
+            </aside>
+        </div>
+    </div>
+{% endblock %}
+
+{% block modals %}
+{% include 'cp/partials/modals/buy-unit-tokens.html' %}
+{% if not user.profile.wallet %}
+{% include 'cp/partials/modals/source-wallet.html' %}
+{% endif %}
+{% endblock %}

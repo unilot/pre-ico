@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from .local_settings import *
+from django.utils.translation import ugettext_lazy as _
 
 
 VERSION = '0.0.1'
@@ -212,4 +213,14 @@ COUNTRIES_EXCLUDED = (
     'CA',
     'CN',
     'SG'
+)
+
+WALLET_APPS = (
+    ('MyEtherWallet', _('MyEtherWallet')),
+    ('MetaMask', _('MetaMask')),
+    ('Jaxx', _('Jaxx')),
+    ('Im Token', _('Im Token')),
+    ('Mist', _('Mist')),
+    ('Exodus', _('Exodus')),
+    ('Other', _('Other (I can easily export and import my private key with it)')),
 )
