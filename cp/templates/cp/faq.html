@@ -6,14 +6,18 @@
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">
         <main>
-            {% if user.is_authenticated %}
             <div class="hidden-md hidden-lg">
-                {% include 'cp/partials/buy-tokens-button.html' %}
-                {% if not user.beta_tester %}
-                {% include 'cp/partials/beta-invite.html' %}
+                {% if user.is_authenticated %}
+                    {% include 'cp/partials/buy-tokens-button.html' %}
+                    {% if not user.beta_tester %}
+                        {% include 'cp/partials/beta-invite.html' %}
+                    {% endif %}
+                {% else %}
+                    <section>
+                        {% include 'cp/partials/timer.html' %}
+                    </section>
                 {% endif %}
             </div>
-            {% endif %}
             <section class="faq">
                 <div class="container">
                     <div class="row heading">
@@ -38,17 +42,21 @@
             </section>
         </main>
     </div>
-    {% if user.is_authenticated %}
     <div class="col-md-4 hidden-sm hidden-xs">
         <aside class="pull-right">
-            {% include 'cp/partials/buy-tokens-button.html' %}
-            {% if not user.beta_tester %}
-                {% include 'cp/partials/beta-invite.html' %}
+            {% if user.is_authenticated %}
+                {% include 'cp/partials/buy-tokens-button.html' %}
+                {% if not user.beta_tester %}
+                    {% include 'cp/partials/beta-invite.html' %}
+                {% endif %}
+                {% include 'cp/partials/calculator.html' %}
+            {% else %}
+                <section>
+                    {% include 'cp/partials/timer.html' %}
+                </section>
             {% endif %}
-            {% include 'cp/partials/calculator.html' %}
         </aside>
     </div>
-    {% endif %}
 </div>
 {% endblock %}
 

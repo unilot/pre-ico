@@ -34,7 +34,7 @@
                     </button>
                 </form>
             {% else %}
-            <a class="btn btn-default nav-btn" role="button" href="new-auth.html">
+            <a class="btn btn-default nav-btn" role="button" href="{% url 'cp:auth' 'html' %}">
                 <span class="btn-action">Sign in</span>
                 or <span class="btn-action">Sign up</span>
             </a>

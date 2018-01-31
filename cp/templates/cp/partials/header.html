@@ -14,7 +14,7 @@
                        data-toggle="popover" data-trigger="toggle" title="Are your tokens not displayed?"
                        data-placement="bottom"
                        data-html="true"
-                       data-content="<ul><li>Updating tokens amount may take a while due to Ethereum Network load.</li><li>Check tokens amount at your wallet.</li></ul><br /> <a href='{% url 'cp:faq' 'html' %}#answer8' class='btn btn-md btn-default' target='_blank'>How to display tokens?</a>">
+                       data-content="<ul><li>Updating tokens amount may take a while due to Ethereum Network load.</li><li>Check tokens amount at your wallet.</li></ul><br /> <a href='{% url 'cp:faq' 'html' %}#answer8' class='btn btn-md btn-default'>How to display tokens?</a>">
                         <span class="tokens-question"></span></a>My Tokens: <span class="tokens">
                     {% widthratio user.profile.token_balance 1000000000000000000 1 as num_tokens %}
                     <strong class="tokens-amount">{% if num_tokens %}{{ num_tokens|floatformat:6 }}{% else %}
