@@ -1,3 +1,6 @@
 {% load i18n %}
+{% load config %}
 <a class="btn btn-primary btn-block btn-buy btn-extra js-buy-token-btn" href="#" role="button"
-   data-toggle="modal" data-target="#{% if user.profile.wallet %}buyUnitTokens{% else %}sourceWallet{% endif %}">Buy Tokens</a>
+   data-toggle="modal" data-target="#{% if user.profile.wallet %}buyUnitTokens{% else %}sourceWallet{% endif %}">Buy Tokens
+    <span>{% token_bonus %}% Bonus</span>
+</a>

@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load config %}
+
+<h3>{% block title %}Edit Profile{% endblock %}</h3>
+<form class="js-generic-form" id="editProfile" role="form" data-toggle="validator"
+      action="{% url 'cp:profile' 'json' %}" method="patch" data-success-message="{% trans 'Profile updated' %}">
+    {% csrf_token %}
+    {% include 'cp/partials/form-overlay.html' %}
+    {% include 'includes/form-alert.html' %}
+    <div class="form-group label-floating"><label class="control-label" for="firstName">First
+        name</label><input class="form-control" id="firstName" type="text"
+                           name="first_name" value="{{ first_name|default_if_none:'' }}">
+        <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group label-floating"><label class="control-label" for="lastName">Last
+        name</label><input class="form-control" id="lastName" type="text"
+                           name="last_name" value="{{ last_name|default_if_none:'' }}">
+        <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group label-floating"><label class="control-label" for="company">Company
+        name</label>
+        <input class="form-control" id="company" type="text" name="company_name" value="{{ company_name|default_if_none:'' }}">
+        <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group label-floating"><label class="control-label" for="phone">Phone
+        number</label>
+        <input class="form-control" id="phone" type="tel" name="phone_number" value="{{ phone_number|default_if_none:'' }}">
+        <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group label-floating"><label class="control-label" for="country">Country</label><span
+            class="caret"></span><select class="form-control" id="country" required
+                                         name="country">
+        {% get_countries as countries %}
+        {% for code,name in countries.items %}
+            <option value="{{ code }}" {% if code == country %}selected{% endif %}>{{ name }}</option>
+        {% endfor %}
+    </select>
+        <div class="help-block with-errors"></div>
+    </div>
+    <button class="btn btn-default btn-lg btn-block" role="submit">Save profile</button>
+</form>

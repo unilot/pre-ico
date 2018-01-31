@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unilot | {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'cp/css/main.min-40532d55675c91c21aa7fabdf9699266.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cp/css/main.min-88d5e219b78d1cade9961d5e63dc1c63.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -50,11 +50,11 @@
 {% endblock %}
 <div id="slideout">
     <ul class="nav">
-        <li class="active"><a href="new.html">Dashboard <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Affiliate &amp; Bounty programs</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Unilot ICO</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="{% url 'cp:dashboard' 'html' %}">Dashboard</a></li>
+        <li><a href="{% url 'landing:index-html' %}" target="_blank">Unilot ICO</a></li>
+        <li><a href="{% url 'cp:faq' 'html' %}">FAQ</a></li>
+        <li><a href="{% url 'cp:affiliate' 'html' %}">Affiliate &amp; Bounty programs</a></li>
+        <li><a href="{% url 'cp:profile' 'html' %}">Profile</a></li>
     </ul>
 </div>
 <div id="main-body">
