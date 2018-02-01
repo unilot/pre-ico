@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-01 16:57+0000\n"
+"POT-Creation-Date: 2018-02-01 17:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Unilot <info@unilot.io>\n"
 "Language-Team: Unilot <info@unilot.io>\n"
@@ -203,19 +203,19 @@ msgid "ICO first stage kick-off with up to 25%% of ICO equity offered."
 msgstr "Начало этапа PreICO, продажа до 25%% токенов"
 
 #: landing/templates/landing/includes/roadmap.html:7
-#, python-format
-msgid "ICO first stage with up 50%% of ICO equity offered."
-msgstr "Начало первого этапа ICO, продажа до 50%% токенов"
+#, fuzzy, python-format
+msgid "ICO second stage with up to 50%% of ICO equity offered."
+msgstr "Начало второго этапа ICO, продажа до 50%% токенов."
 
 #: landing/templates/landing/includes/roadmap.html:8
 msgid "Unilot beta launch under Malta Remote Gaming Licence."
-msgstr ""
-"Запуск бета-версии Unilot под лицензией \"Malta Remote Gaming Licence\""
+msgstr "Запуск бета-версии Unilot под лицензией \"Malta Remote Gaming Licence\""
 
 #: landing/templates/landing/includes/roadmap.html:9
-#, python-format
-msgid "ICO second stage with up 50%% of ICO equity offered."
-msgstr "Начало второго этапа ICO, продажа до 50%% токенов."
+#, fuzzy, python-format
+#| msgid "ICO first stage with up 50%% of ICO equity offered."
+msgid " ICO third stage with up to 100%% of ICO equity offered."
+msgstr "Начало третьего этапа ICO, продажа до 100%% токенов"
 
 #: landing/templates/landing/includes/roadmap.html:10
 msgid "BTC Auction and reality lotteries next games release."
@@ -527,6 +527,7 @@ msgid "Currency Accepted"
 msgstr "Валюта"
 
 #: landing/templates/landing/landing.html:286
+#: landing/templates/landing/landing.html:293
 msgid "Bonus"
 msgstr "Бонус"
 
@@ -543,11 +544,6 @@ msgstr ""
 #: landing/templates/landing/landing.html:303
 msgid "Tokens"
 msgstr "Токенов"
-
-#: landing/templates/landing/landing.html:293
-#, fuzzy
-msgid "bonus"
-msgstr "бонус"
 
 #: landing/templates/landing/landing.html:297
 msgid "Minimum Transaction"
@@ -609,6 +605,10 @@ msgstr "Партнерская программа"
 #: landing/templates/landing/landing.html:532
 msgid "Bounty Program"
 msgstr "Баунти программа"
+
+#, fuzzy
+#~ msgid "bonus"
+#~ msgstr "бонус"
 
 #~ msgid "Invalid wallet."
 #~ msgstr "Неверный кошелёк"
