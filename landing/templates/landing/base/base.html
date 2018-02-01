@@ -66,14 +66,14 @@
             <div class="col-md-6">
                 <ul class="flex around-xs" id="link">
                     {% block topmenu %}
-                        <li><a href="#whatIsUnilot">What is Unilot</a></li>
-                        <li><a href="#whitePaper">White Paper</a></li>
-                        <li><a href="#unilotBenefits">Unilot Features</a></li>
+                        <li><a href="#whatIsUnilot">{% trans 'What is Unilot' %}</a></li>
+                        <li><a href="#whitePaper">{% trans 'White Paper' %}</a></li>
+                        <li><a href="#unilotBenefits">{% trans 'Unilot Features' %}</a></li>
                         {% if faqs_total > 0 %}
-                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#faq">{% trans 'FAQ' %}</a></li>
                         {% endif %}
                         {% if roadshow_list %}
-                            <li><a href="#roadshow">Upcoming Events</a></li>
+                            <li><a href="#roadshow">{% trans 'Upcoming Events' %}</a></li>
                         {% endif %}
                     {% endblock %}
                 </ul>
@@ -106,26 +106,26 @@
         <div class="col-xs-12" id="link-1">
             <ul>
                 {% block sidemenu %}
-                    <li><a href="#whatIsUnilot" class="font-roboto-light-18-px">What is Unilot</a></li>
-                    <li><a href="#unilotBenefits" class="font-roboto-light-18-px">Unilot Features</a></li>
-                    <li><a href="#mobileClient" class="font-roboto-light-18-px">Mobile Client</a></li>
-                    <li><a href="#roadmap" class="font-roboto-light-18-px">Roadmap</a></li>
-                    <li><a href="#s9-distribution" class="font-roboto-light-18-px">Use of funds</a></li>
-                    <li><a href="#whitePaper" class="font-roboto-light-18-px">White Paper</a></li>
+                    <li><a href="#whatIsUnilot" class="font-roboto-light-18-px">{% trans 'What is Unilot' %}</a></li>
+                    <li><a href="#unilotBenefits" class="font-roboto-light-18-px">{% trans 'Unilot Features' %}</a></li>
+                    <li><a href="#mobileClient" class="font-roboto-light-18-px">{% trans 'Mobile Client' %}</a></li>
+                    <li><a href="#roadmap" class="font-roboto-light-18-px">{% trans 'Roadmap' %}</a></li>
+                    <li><a href="#s9-distribution" class="font-roboto-light-18-px">{% trans 'Use of funds' %}</a></li>
+                    <li><a href="#whitePaper" class="font-roboto-light-18-px">{% trans 'White Paper' %}</a></li>
                     {% if advisors_list %}
                         <li><a href="#s11-advisors" class="font-roboto-light-18-px">{% trans 'Advisors' %}</a></li>
                     {% endif %}
                     {% if team_members_list %}
-                        <li><a href="#s10-team" class="font-roboto-light-18-px">Team</a></li>{% endif %}
+                        <li><a href="#s10-team" class="font-roboto-light-18-px">{% trans 'Team' %}</a></li>{% endif %}
                     {% if publications_list %}
                         <li><a href="#publications" class="font-roboto-light-18-px">{% trans 'Publications' %}</a>
                         </li>{% endif %}
-                    <li><a href="#partners" class="font-roboto-light-18-px">Partners</a></li>
-                    <li><a href="#newsletter" class="font-roboto-light-18-px">Newsletter</a></li>
+                    <li><a href="#partners" class="font-roboto-light-18-px">{% trans 'Partners' %}</a></li>
+                    <li><a href="#newsletter" class="font-roboto-light-18-px">{% trans 'Newsletter' %}</a></li>
                     {% if faqs_total > 0 %}
-                        <li><a href="#faq" class="font-roboto-light-18-px">FAQ</a></li>{% endif %}
+                        <li><a href="#faq" class="font-roboto-light-18-px">{% trans 'FAQ' %}</a></li>{% endif %}
                     {% if roadshow_list %}
-                        <li><a href="#roadshow" class="font-roboto-light-18-px">Upcoming Events</a></li>{% endif %}
+                        <li><a href="#roadshow" class="font-roboto-light-18-px">{% trans 'Upcoming Events' %}</a></li>{% endif %}
                     {% if is_pre_ico %}
                         <li><a href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a></li>
                     {% endif %}
@@ -137,8 +137,7 @@
             <div class="unilot">
                 <div class="row">
                     <div class="col-xs-5"><img src="{% static 'landing/img/logo.svg' %}" alt="">
-                        <p>Become an investor and take part in a closed testing of MVP (Unilot app for Android and
-                            iOS).</p>
+                        <p>{% trans 'Become an investor and take part in a closed testing of MVP (Unilot app for Android and iOS).' %}</p>
                         {% if is_app_public %}
                             <a href="#">App Store<img src="{% static 'landing/img/apple.svg' %}" alt=""></a>
                             <a href="#">Google Play<img src="{% static 'landing/img/google-play.svg' %}" alt=""></a>

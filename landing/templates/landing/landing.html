@@ -17,6 +17,8 @@
                 <div class="col-sm-8 col-xs-12">
                     <h1>{% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
                     <p>{% trans 'Pre ICO ends in' %}:</p>
+                    {% with 1975 as eth_amount %}
+                    {% token_cap as token_cap %}
                     <div class="sentence__timer">
                         <div class="row">
                             <div class="col-xs-12"><span class="js-countdown"></span></div>
@@ -27,7 +29,7 @@
                                 <b>{% trans 'Seсs' %}</b>
                             </div>
                             <div class="col-xs-12 end-xs">
-                                <p>Goal 1 975 ETH (25 Million UNIT)</p>
+                                <p>{% blocktrans with eth_amount=eth_amount|intcomma token_cap=token_cap|intcomma %}Goal {{ eth_amount }} ETH ({{ token_cap }} UNIT){% endblocktrans %}</p>
                             </div>
                         </div>
                     </div>
@@ -46,13 +48,12 @@
                         </div>
                         <div class="col-sm-4 col-xs-12 center-xs">
                             <div class="sentence__block">
-                                {% token_cap as token_cap %}
                                 <p>{% trans 'Tokens for sale' %}</p><span>{{ token_cap|intcomma }}</span>
                             </div>
                         </div>
                         <div class="col-sm-4 col-xs-12 center-xs">
                             <div class="sentence__block sentence__block--padding">
-                                <p>{% trans 'Max cap' %}</p><span>{{ 1975|intcomma }} ETH</span>
+                                <p>{% trans 'Max cap' %}</p><span>{{ eth_amount|intcomma }} ETH</span>
                             </div>
                         </div>
                         {% if is_pre_ico %}
@@ -60,6 +61,7 @@
                                 {% trans 'Contribute Now' %}</a></div>
                         {% endif %}
                     </div>
+                    {% endwith %}
                 </div>
                 <div class="col-sm-4 end-xs"><img src="{% static 'landing/img/sentence-platform.png' %}" alt=""></div>
             </div>
@@ -74,10 +76,14 @@
                     </div>
                 </div>
                 <div class="col-md-5 col-sm-7 col-xs-12">
-                    <p><strong>Unilot</strong> is a decentralized gambling platform which allows players to play and
+                    <p>
+                        {% blocktrans %}
+                        <strong>Unilot</strong> is a decentralized gambling platform which allows players to play and
                         host online games like poker tournaments, lottery and many other games. Unilot will be available
                         through mobile apps on iOS and Android platforms and transact using Unilots as it’s main
-                        currency.</p>
+                        currency.
+                        {% endblocktrans %}
+                    </p>
                 </div>
                 <div class="col-md-7 col-sm-5"><img src="{% static 'landing/img/about.png' %}" alt=""></div>
             </div>
@@ -88,7 +94,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="heading">
-                        <h2>Unilot Features</h2><span>Features</span>
+                        <h2>{% trans 'Unilot Features' %}</h2><span>{% trans 'Features' %}</span>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
@@ -96,7 +102,7 @@
                         <div class="row middle-xs">
                             <div class="col-xs-3"><img src="{% static 'landing/img/01.svg' %}" alt=""></div>
                             <div class="col-xs-9">
-                                <p>Unilot will not access or hold any Player Funds</p>
+                                <p>{% trans 'Unilot will not access or hold any Player Funds' %}</p>
                             </div>
                         </div>
                     </div>
@@ -106,7 +112,7 @@
                         <div class="row middle-xs">
                             <div class="col-xs-3"><img src="{% static 'landing/img/02.svg' %}" alt=""></div>
                             <div class="col-xs-9">
-                                <p>Consensus of game state is reached between players with encrypted P2P messaging</p>
+                                <p>{% trans 'Consensus of game state is reached between players with encrypted P2P messaging' %}</p>
                             </div>
                         </div>
                     </div>
@@ -116,7 +122,7 @@
                         <div class="row middle-xs">
                             <div class="col-xs-3"><img src="{% static 'landing/img/03.svg' %}" alt=""></div>
                             <div class="col-xs-9">
-                                <p>Play games globally or make money by hosting your own game tournaments</p>
+                                <p>{% trans 'Play games globally or make money by hosting your own game tournaments' %}</p>
                             </div>
                         </div>
                     </div>
@@ -126,7 +132,7 @@
                         <div class="row middle-xs">
                             <div class="col-xs-3"><img src="{% static 'landing/img/04.svg' %}" alt=""></div>
                             <div class="col-xs-9">
-                                <p>Feature Single player RNG & Multiplayer games</p>
+                                <p>{% trans 'Feature Single player RNG & Multiplayer games' %}</p>
                             </div>
                         </div>
                     </div>
@@ -136,7 +142,7 @@
                         <div class="row middle-xs">
                             <div class="col-xs-3"><img src="{% static 'landing/img/05.svg' %}" alt=""></div>
                             <div class="col-xs-9">
-                                <p>Decentralized and isolated to prevent God Mode</p>
+                                <p>{% trans 'Decentralized and isolated to prevent God Mode' %}</p>
                             </div>
                         </div>
                     </div>
@@ -146,7 +152,7 @@
                         <div class="row middle-xs">
                             <div class="col-xs-3"><img src="{% static 'landing/img/06.svg' %}" alt=""></div>
                             <div class="col-xs-9">
-                                <p>Unilot is white label platform</p>
+                                <p>{% trans 'Unilot is white label platform' %}</p>
                             </div>
                         </div>
                     </div>
@@ -161,16 +167,18 @@
             </div>
             <div class="row heading">
                 <div class="col-xs-12">
-                    <h2>Mobile Client</h2><span>Mobile App</span>
+                    <h2>{% trans 'Mobile Client' %}</h2><span>{% trans 'Mobile App' %}</span>
                 </div>
             </div>
             <div class="row content">
                 <div class="col-sm-7 col-xs-12">
+                    {% blocktrans %}
                     <p>All Unilot global and hosted games will be run on Unilot mobile client, designed to handle p2p
                         communication and perform blockchain action.</p>
                     <p>Now there is a closed beta-testing round of mobile client that is currently represented by Unilot
                         lottery based on iOS and Android platform.</p>
                     <p>Become first investors to take part in testing and improving Unilot app.</p>
+                    {% endblocktrans %}
 
                     <div class="row start-sm center-xs">
                         <div class="col-xs-12">
@@ -183,7 +191,7 @@
                                                         src="{% static 'landing/img/google-play.svg' %}"
                                                         alt=""></div>
                                                 <div class="col-xs-9">
-                                                    <p>Download on the</p><span>Google Play</span>
+                                                    <p>{% trans 'Download on the' %}</p><span>Google Play</span>
                                                 </div>
                                             </div>
                                         </a></div>
@@ -193,7 +201,7 @@
                                                                            alt="">
                                                 </div>
                                                 <div class="col-xs-9">
-                                                    <p>Download on the</p><span>App Store</span>
+                                                    <p>{% trans 'Download on the' %}</p><span>App Store</span>
                                                 </div>
                                             </div>
                                         </a></div>
@@ -235,69 +243,65 @@
             </div>
             <div class="row heading">
                 <div class="col-xs-12">
-                    <h2>Whitepaper</h2><span>Whitepaper </span>
+                    <h2>{% trans 'Whitepaper' %}</h2><span>{% trans 'Whitepaper' %} </span>
                 </div>
             </div>
             <div class="row content">
                 <div class="col-sm-5 col-xs-12">
-                    <p>Read our whitepaper in order to know more about the Unilot® platform, the token, the team and ICO
-                        round details.</p>
+                    <p>{% trans 'Read our whitepaper in order to know more about the Unilot® platform, the token, the team and ICO round details.' %}</p>
                     <div>
-                        <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}" target="_blank">View White
-                            Paper<i class="icon-file-text2"></i></a>
+                        <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}" target="_blank">{% trans 'View White Paper' %}<i class="icon-file-text2"></i></a>
                         <span>English</span>
                     </div>
                 </div>
                 <div class="col-sm-7 col-xs-12">
                     <table class="table table-bordered">
                         <tr>
-                            <th>Start Date</th>
+                            <th>{% trans 'Start Date' %}</th>
                             <td>January 10th, 2018, at 19:00 UTC (GMT) / 14:00 New York / 19:00 London / 22:00 Moscow /
                                 04:00 Tokyo (January 11)
                             </td>
                         </tr>
                         <tr>
-                            <th>End Date</th>
+                            <th>{% trans 'End Date' %}</th>
                             <td>February 17th, 2018, at 19:00 UTC (GMT) / 14:00 New York / 19:00 London / 22:00 Moscow /
                                 04:00 Tokyo (February 18)
                             </td>
                         </tr>
                         <tr>
-                            <th>Token Sale Cap</th>
+                            <th>{% trans 'Token Sale Cap' %}</th>
                             <td><strong><span class="big-amount"
                                               style="padding-left: 0; color: inherit;">25 000 000</span></strong> UNIT
                                 tokens
                             </td>
                         </tr>
                         <tr>
-                            <th>Currency Accepted</th>
+                            <th>{% trans 'Currency Accepted' %}</th>
                             <td>ETH</td>
                         </tr>
                         <tr>
-                            <th>Bonus</th>
+                            <th>{% trans 'Bonus' %}</th>
                             <td>40%</td>
                         </tr>
                         <tr>
-                            <th>Exchange Rate <a href="#footnote-sale" title="See footnote"><sup
+                            <th>{% trans 'Exchange Rate' %} <a href="#footnote-sale" title="See footnote"><sup
                                     class="footnote-ref footnote-star"></sup></a></th>
                             <td>1 ETH = <span class="big-amount" style="padding-left: 0; color: inherit;">12 658</span>
                                 UNIT Tokens + (<strong>40% bonus</strong>)
                             </td>
                         </tr>
                         <tr>
-                            <th>Minimum Transaction</th>
+                            <th>{% trans 'Minimum Transaction' %}</th>
                             <td>1 UNIT Tokens (0.000079 ETH)</td>
                         </tr>
                         <tr>
-                            <th>Maximum Transaction <a href="#footnote-sale" title="See footnote"><sup
+                            <th>{% trans 'Maximum Transaction' %} <a href="#footnote-sale" title="See footnote"><sup
                                     class="footnote-ref footnote-star"></sup></a></th>
                             <td><span class="big-amount" style="padding-left: 0; color: inherit;">379 746</span> Tokens (30 ETH)</td>
                         </tr>
                     </table>
                     <p class="footnote footnote-star" id="footnote-sale"><sup></sup>
-                        <small>- was rounded to the whole number. The calculations in contract will be carried out
-                            to 18 decimal places
-                        </small>
+                        <small>- {%  trans 'was rounded to the whole number. The calculations in contract will be carried out to 18 decimal places' %}</small>
                     </p>
                 </div>
             </div>
@@ -352,7 +356,7 @@
             <div class="container">
                 <div class="row heading">
                     <div class="col-xs-12">
-                        <h2>FAQ</h2><span>FAQ</span>
+                        <h2>{% trans 'FAQ' %}</h2><span>{% trans 'FAQ' %}</span>
                     </div>
                 </div>
                 <div class="row content">
@@ -372,7 +376,7 @@
                             </div>
                         {% endfor %}
                         {% if faqs_total > 12 %}
-                            <a class="btn" href="{% url 'landing:faq-html' %}">Show all FAQ topics</a>
+                            <a class="btn" href="{% url 'landing:faq-html' %}">{% trans 'Show all FAQ topics' %}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -396,7 +400,7 @@
                                     <h3>{{ publication.title }}</h3>
                                     <p>{{ publication.caption|safe_markdown }}</p>
                                     <p><a class="btn btn-default" href="{{ publication.full_url }}" role="button"
-                                          target="_blank">Read full</a></p>
+                                          target="_blank">{% trans 'Read full' %}</a></p>
                                 </div>
                             </div>
                         {% endfor %}
@@ -409,7 +413,7 @@
         <div class="container">
             <div class="row heading">
                 <div class="col-xs-12">
-                    <h2>Partners</h2><span>Partners</span>
+                    <h2>{% trans 'Partners' %}</h2><span>{% trans 'Partners' %}</span>
                 </div>
             </div>
             <div class="row">
@@ -435,11 +439,13 @@
     </section>
     <footer class="footer" id="newsletter">
         <div class="container">
-            <div class="row">
+            <div class="row heading">
                 <div class="col-xs-12">
-                    <div class="heading">
-                        <h2>Newsletter</h2><span>Newsletter</span>
-                    </div>
+                    <h2>{% trans 'Newsletter' %}</h2><span>{% trans 'Newsletter' %}</span>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-xs-12">
                     {% if not user.is_authenticated %}
                         <div class="has-overlay ">
                             <form class="form js-generic-form" method="post"
@@ -459,7 +465,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2 col-sm-12 col-xs-12">
-                                        <button type="submit" class="btn btn-block">Subscribe</button>
+                                        <button type="submit" class="btn btn-block">{% trans 'Subscribe' %}</button>
                                     </div>
                                 </div>
                             </form>
@@ -509,7 +515,8 @@
                 <div class="row middle-md">
                     <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
                             src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
-                        <p>Unilot&reg; 2017 - {% now 'Y' %} All Rights Reserved</p>
+                        {% now 'Y' as year %}
+                        <p>{% blocktrans %}Unilot&reg; 2017 - {{ year }} All Rights Reserved{% endblocktrans %}</p>
                     </div>
                     <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
                             href="https://www.ethereum.org" target="_blank"><img
@@ -518,10 +525,8 @@
                         <ul>
                             <li><a href="{% url 'landing:document' 'terms-and-conditions' %}"
                                    target="_blank">{% trans 'Terms and Conditions' %}</a></li>
-                            <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">Affiliate
-                                Program</a></li>
-                            <li><a href="{% url 'landing:document' 'bounty-program' %}" target="_blank">Bounty
-                                Program</a></li>
+                            <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">{% trans 'Affiliate Program' %}</a></li>
+                            <li><a href="{% url 'landing:document' 'bounty-program' %}" target="_blank">{% trans 'Bounty Program' %}</a></li>
                             <li><a href="mailto:info@unilot.io" target="_blank">info@unilot.io</a></li>
                         </ul>
                     </div>
