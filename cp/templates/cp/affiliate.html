@@ -1,0 +1,47 @@
+{% extends 'cp/base/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load referral %}
+
+{% block title %}Affiliate & Bounty{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <main>
+            <section class="programs"><h3>Affiliate &amp; Bounty programs</h3>
+                <div class="tab-content">
+                    <div class="tab-pane document active" id="affiliate" role="tabpanel">
+                        {{ affiliate.get_content|safe }}
+                    </div>
+                    <div class="tab-pane document" id="bounty" role="tabpanel">
+                        {{ bounty.get_content|safe }}
+                    </div>
+                </div>
+                <ul class="nav nav-pills">
+                    <li class="active" role="presentation"><a class="btn btn-default btn-lg" href="#affiliate"
+                                                              role="tab" aria-controls="affiliate"
+                                                              data-toggle="tab">Affiliate program</a></li>
+                    <li role="presentation"><a class="btn btn-default btn-lg" href="#bounty" role="tab"
+                                               aria-controls="bounty" data-toggle="tab">Bounty program</a></li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <div class="col-md-4 hidden-sm hidden-xs">
+        <aside class="pull-right"><a class="btn btn-primary btn-block btn-buy btn-extra" href="#" role="button"
+                                     data-toggle="modal" data-target="#sourceWallet">Buy Tokens</a>
+            {% can_refer as is_can_refer %}
+            {% if is_can_refer %}
+            {% include 'cp/partials/referrals.html' %}
+            {% endif %}
+        </aside>
+    </div>
+</div>
+{% endblock %}
+{% block modals %}
+{% include 'cp/partials/modals/buy-unit-tokens.html' %}
+{% if not user.profile.wallet %}
+{% include 'cp/partials/modals/source-wallet.html' %}
+{% endif %}
+{% endblock %}

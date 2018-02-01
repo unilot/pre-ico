@@ -1,9 +1,12 @@
+import re
+
 from django.contrib.auth.models import User
 from django.db import models
 from hvad.models import TranslatableModel, TranslatedFields
 from martor.models import MartorField
 from django_countries import fields as countries_fields
 from landing import models as landing_models
+from preico import utils
 
 
 class FAQ(TranslatableModel):
@@ -20,18 +23,23 @@ class FAQ(TranslatableModel):
     def __unicode__(self):
         return self.question
 
+def generate_referral_code(*args):
+    return utils.generate_password(42, False)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', null=False, on_delete=models.deletion.PROTECT)
     company_name = models.CharField(max_length=128, null=True, blank=True)
     phone_number = models.CharField(max_length=24, null=True,blank=True)
     country = countries_fields.CountryField(null=True, blank=False)
-    wallet = models.CharField(max_length=64, null=True)
+    wallet = models.CharField(max_length=64, null=True, blank=True)
     token_amount_reserved = models.FloatField(null=True, blank=True)
     verification_key = models.CharField(max_length=32, null=True, blank=True)
     referrer = models.ForeignKey('Profile', to_field='user', null=True, blank=True, related_name='referral',
                                  unique=False, on_delete=models.deletion.DO_NOTHING)
     referal_level = models.IntegerField(default=0)
+    referral_code = models.CharField(max_length=42, null=False, blank=False, default=generate_referral_code)
+    referral_token_balance = models.CharField(max_length=27, null=True, blank=True)
+
     token_balance = models.CharField(max_length=27, null=True, blank=True)
     token_balance_last_update = models.DateTimeField(null=True, blank=True,
                                                      auto_now=False, auto_created=False, auto_now_add=False)
@@ -39,6 +47,7 @@ class Profile(models.Model):
     @property
     def username(self):
         return self.user.username
+
 
     def __str__(self):
         return self.username

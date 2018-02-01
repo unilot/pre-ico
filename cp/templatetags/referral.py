@@ -10,9 +10,7 @@ def can_refer(context):
     user = context.get('user')
 
     return ( user.is_authenticated
-             and (user.first_name
-                 and user.last_name
-                 and ( user.profile and user.profile.wallet ) ) )
+             and ( user.profile and user.profile.referral_code ) )
 
 @register.simple_tag(takes_context=True)
 def referral_code(context):
@@ -20,7 +18,7 @@ def referral_code(context):
     result = ''
 
     if user.profile:
-        result = user.profile.wallet
+        result = user.profile.referral_code
 
     return result
 

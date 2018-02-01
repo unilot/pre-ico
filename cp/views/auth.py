@@ -11,28 +11,31 @@ from django.contrib.auth import logout, models as auth_models, authenticate, log
 from django.db import transaction
 from django.core.mail import EmailMessage
 
+from cp.templatetags.referral import referral_code
 from preico.document import TermsAndConditions
 from .. import models
 from ..serializers import auth
 from preico.rest_framework import permissions as p_permissions
 from preico.mandrill.templates import Templates
+from preico import utils
 
 
 class ShowAuthPageView(APIView):
     permission_classes = [p_permissions.isGuest]
-    template_name='auth.html'
+    template_name='cp/auth.html'
 
     def get(self, request, *args, **kwargs):
         data = {
+            'tab': 'sign-in',
             'sign_up_url': reverse('cp:sign-up', kwargs={'format': 'html'})
         }
 
         if kwargs.get('referrer_code'):
             try:
-                referrer_profile = models.Profile.objects.get(wallet=kwargs.pop('referrer_code'))
-                data['referrer_code'] = referrer_profile.wallet
+                referrer_profile = models.Profile.objects.get(referral_code=kwargs.pop('referrer_code'))
+                data['referrer_code'] = referrer_profile.referral_code
                 data['sign_up_url'] = reverse('cp:sign-up-referred',
-                                              kwargs={'format': 'html', 'referrer_code': referrer_profile.wallet})
+                                              kwargs={'format': 'html', 'referrer_code': referrer_profile.referral_code})
             except models.Profile.DoesNotExist:
                 pass
 
@@ -52,10 +55,11 @@ class SignOutView(APIView):
 class SignUpView(generics.CreateAPIView):
     permission_classes = [ p_permissions.isGuest ]
     serializer_class = auth.SignUpSerializer
-    template_name = 'sign-up-wizard.html'
+    template_name = 'cp/auth.html'
 
     def get(self, request, *args, **kwargs):
         data = {
+            'tab': 'sign-up',
             'terms_and_conditions': TermsAndConditions.get_content(),
         }
 
@@ -88,11 +92,14 @@ class SignUpView(generics.CreateAPIView):
 
         if referrer_code and len(referrer_code) >= 32:
             try:
-                referrer_profile = models.Profile.objects.get(wallet=referrer_code)
+                referrer_profile = models.Profile.objects.get(referral_code=referrer_code)
             except models.Profile.DoesNotExist:
                 pass
 
-        serializer = self.get_serializer(data=request.data)
+        user_password = utils.generate_password(12)
+        input_data = request.data.copy()
+        input_data['password'] = user_password
+        serializer = self.get_serializer(data=input_data)
         serializer.is_valid(raise_exception=True)
 
         with transaction.atomic():
@@ -112,6 +119,7 @@ class SignUpView(generics.CreateAPIView):
                     'email': user.email,
                     'first_name': user.first_name,
                     'last_name': user.last_name,
+                    'password': user_password,
                     'dashboard_url': request.build_absolute_uri(
                         reverse('cp:dashboard', kwargs={'format': 'html'}))
                 }
@@ -167,9 +175,9 @@ class VerifyEmailView(generics.GenericAPIView):
                                         and user.last_name
                                         #Check with instance is dirty hash to avoid panel usage by admins
                                         #Admins to not have profiles created automatically
-                                        and (not isinstance(user.profile, models.Profile) or user.profile.wallet))
+                                        and (not isinstance(user.profile, models.Profile) or user.profile.referral_code))
 
-        self.template_name = 'set-password.html'
+        self.template_name = 'cp/set-password.html'
 
         return response.Response(data)
 
@@ -198,7 +206,7 @@ class VerifyEmailView(generics.GenericAPIView):
             data = serializer.data
             return response.Response(data, status=status.HTTP_200_OK)
 
-        if not user.first_name or not user.last_name or not profile.wallet:
+        if not user.first_name or not user.last_name or user.profile.country or user.profile.phone_number:
             return http_response.HttpResponseRedirect(reverse('cp:profile', kwargs={'format': 'html'}))
 
         return http_response.HttpResponseRedirect(reverse('cp:dashboard', kwargs={'format': 'html'}))
@@ -243,11 +251,7 @@ class RecoverPassword(generics.GenericAPIView):
 
         try:
             user = serializer.Meta.model.objects.get(username=serializer.validated_data.get('email'))
-            verification_key = serializer.Meta.model.objects \
-                .make_random_password(length=32, allowed_chars='abcdefghjkmnpqrstuvwxyz'
-                                                               'ABCDEFGHJKLMNPQRSTUVWXYZ'
-                                                               '23456789'
-                                                               '@.,;:\|{}!@#$%^&*)(+=_-')
+            verification_key = utils.generate_password(32)
             user.profile.verification_key = verification_key
             user.profile.save()
 

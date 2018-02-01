@@ -1,9 +1,8 @@
-from collections import OrderedDict
-
 from django import template
 from preico import settings
-from django_countries.data import COUNTRIES
 
+from preico.utils import (get_investing_countries, get_none_investing_countries,
+                          get_phone_codes as u_get_phone_codes, get_wallet_app_choice)
 
 register = template.Library()
 
@@ -29,19 +28,37 @@ def token_cap():
 
 @register.simple_tag()
 def get_countries():
-    return OrderedDict(
-        (
-            (key, COUNTRIES[key])
-            if key not in settings.COUNTRIES_EXCLUDED else None
-            for key in sorted(COUNTRIES, key=COUNTRIES.get) if not key in settings.COUNTRIES_EXCLUDED
-        )
-    )
+    return get_investing_countries()
 
 
 @register.simple_tag()
 def get_excluded_countries():
-    return OrderedDict(
-        (
-            (key, COUNTRIES[key]) for key in sorted(settings.COUNTRIES_EXCLUDED)
-        )
-    )
+    return get_none_investing_countries()
+
+
+@register.simple_tag()
+def get_excluded_countries_as_listed_text():
+    result = ''
+
+    first = True
+
+    for key, country in get_none_investing_countries().items():
+        if first:
+            result = 'and %s' % country
+            first = False
+        else:
+            result = '%s, %s' % (country, result)
+
+    return result
+
+@register.simple_tag()
+def get_wallet_apps():
+    return get_wallet_app_choice()
+
+
+@register.simple_tag()
+def get_humanized_token_amount(token_balance):
+    if not token_balance:
+        return 0
+
+    return float( int( token_balance ) / ( 10**18 ) )

@@ -1,0 +1,35 @@
+<form id="signInForm" class="js-generic-form" role="form"
+                          data-toggle="validator" action="{% url 'cp:sign-in' 'json' %}"
+                          method="POST" data-url="{% url 'cp:dashboard' 'html' %}">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6">
+            {% include 'includes/form-alert.html' %}
+            <div class="form-group label-floating"><label class="control-label"
+                                                          for="signInEmail">Email</label><input
+                    class="form-control" id="signInEmail" type="email" required name="email">
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group label-floating"><label class="control-label"
+                                                          for="signInPassword">Password</label><input
+                    class="form-control" id="signInPassword" type="password" required
+                    name="password">
+                <div class="help-block pull-left with-errors"></div>
+                <div class="help-block pull-right forgot-password"><a href="#" role="button"
+                                                                      data-toggle="modal"
+                                                                      data-target="#forgotPassword">Forgot
+                    password?</a></div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox"><label><input type="checkbox"><span
+                        class="checkbox-material"></span>Remember me</label></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-lg btn-auth" role="submit">Sign in<span
+                    class="glyphicon glyphicon-menu-right"></span></button>
+        </div>
+    </div>
+</form>

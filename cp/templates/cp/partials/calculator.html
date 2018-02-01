@@ -1,0 +1,44 @@
+<section class="calculator"><h3>Calculator</h3>
+    <form>
+        <div class="form-group"><label for="unit-amount"># of UNIT tokens</label>
+            <div class="input-group"><input
+                    class="form-control input-primary js-calculator-token-amount-input"
+                    type="number" placeholder="1" value="1" id="unit-amount"><span
+                    class="input-group-btn"><div class="input-group-increment"><button
+                    class="btn btn-default btn-increment btn-up js-value-up" type="button"><span
+                    class="glyphicon glyphicon-chevron-up"></span></button><button
+                    class="btn btn-default btn-increment btn-down js-value-down" type="button"><span
+                    class="glyphicon glyphicon-chevron-down"></span></button></div></span></div>
+        </div>
+        <div class="form-group"><label for="eth-amount">Amount of ETH</label>
+            <div class="input-group"><input
+                    class="form-control eth-amount js-calculator-eth-amount-input" type="number"
+                    value="0.079" readonly id="eth-amount"><span
+                    class="input-group-addon">ETH</span></div>
+        </div>
+        <div class="form-group">
+            <div class="horizontal"><label for="purchase-amount">You'll receive:</label>
+                <output id="purchase-amount"><span
+                        class="space-after js-token-amount">10</span><span class="unit">UNIT</span>
+                </output>
+            </div>
+            <div class="horizontal"><label for="bonus-amount"><span
+                    class="js-token-total-bonus">40</span>% bonus:</label>
+                <output id="bonus-amount"><span
+                        class="space-after js-token-bonus-amount">4</span><span
+                        class="unit">UNIT</span></output>
+            </div>
+        </div>
+        <div class="form-group output text-center"><label for="total-amount">Total:</label>
+            <output class="total-amount" id="total-amount"><span
+                    class="space-after js-token-total-amount">14</span><span
+                    class="unit">UNIT</span></output>
+        </div>
+        <hr>
+        <div class="form-group output text-center"><label for="usd-amount">Approximate $US
+            amount:</label>
+            <output class="usd-amount" id="usd-amount"><span class="unit">$</span><span
+                    class="js-fiat-total-amount">0.00000952</span></output>
+        </div>
+    </form>
+</section>

@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from cp.views import validator, beta_tester
-from .views import auth, faq, profile, dashboard, js
+from .views import auth, faq, profile, dashboard, js, affiliate
 
 
 LOGIN_REDIRECT_URL=reverse_lazy('dashboard', 'html')
@@ -25,6 +25,7 @@ urlpatterns = format_suffix_patterns([
     url(r'^auth', auth.ShowAuthPageView.as_view(), name='auth'),
     url(r'^(?P<referrer_code>.{32,64})/auth', auth.ShowAuthPageView.as_view(), name='auth-referred'),
     url('^dashboard', dashboard.DashboardView.as_view(), name='dashboard'),
+    url('^affiliate', affiliate.AffiliateView.as_view(), name='affiliate'),
 ], True, ('html',))
 
 urlpatterns += format_suffix_patterns([
@@ -33,6 +34,7 @@ urlpatterns += format_suffix_patterns([
     url(r'^user/password/change', auth.ChangePasswordView.as_view(), name='password-change'),
     url(r'^user/recover', auth.RecoverPassword.as_view(), name='recover-access'),
     url(r'^beta-tester/add', beta_tester.AddBetaTester.as_view(), name='beta-tester'),
+    url(r'^user/wallet', profile.WalletView.as_view(), name='user-wallet')
 ], True, ('json',))
 
 urlpatterns += format_suffix_patterns([

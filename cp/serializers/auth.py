@@ -4,7 +4,9 @@ from django.contrib.auth import models as django_models
 from django.core import validators as django_validators
 from django.db import transaction
 from preico.rest_framework import validators as p_validators
+from preico import utils
 from .. import models
+import re
 
 
 def validate_password(password):
@@ -26,18 +28,12 @@ class SignUpSerializer(serializers.ModelSerializer):
 
     company_name = serializers.CharField(source='profile.company_name', required=False)
 
+    phone_code = serializers.ChoiceField(choices=utils.get_phone_codes(), required=True, write_only=True)
+
     phone = serializers.CharField(source='profile.phone_number', required=True)
 
-    country = serializers.CharField(source='profile.country', required=True)
-
-    wallet = serializers.CharField(source='profile.wallet', validators=[
-        p_validators.EthWalletValidator()
-    ], required=True)
-
-    class Meta:
-        model = django_models.User
-        fields = ('email', 'password', 'first_name', 'last_name', 'company_name', 'phone',
-                  'country', 'wallet',)
+    country = serializers.ChoiceField(choices=utils.get_investing_countries(),
+                                      source='profile.country', required=True)
 
     def create(self, validated_data):
         data = validated_data
@@ -46,6 +42,10 @@ class SignUpSerializer(serializers.ModelSerializer):
 
         ModelClass = self.Meta.model
         profile_data = validated_data.pop('profile') if validated_data.get('profile') else None
+        profile_data['phone_number'] = '+%s%s' % (
+            validated_data.pop('phone_code'),
+            re.sub( '[^\d]', '', profile_data.get('phone_number', '') )
+        )
 
         with transaction.atomic():
             instance = ModelClass(**validated_data)
@@ -57,6 +57,15 @@ class SignUpSerializer(serializers.ModelSerializer):
             models.Profile.objects.create(**profile_data)
 
         return instance
+
+    class Meta:
+        model = django_models.User
+        fields = ('email', 'password', 'first_name', 'last_name', 'company_name', 'phone_code',
+                  'phone', 'country', 'password',)
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'phone_code': {'write_only': True}
+        }
 
 
 class SignInSerializer(serializers.ModelSerializer):

@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load referral %}
+{% load social_links %}
+{% load config %}
+
+{% referral_url as referral_url %}
+{% get_humanized_token_amount user.profile.referral_token_balance as num_ref_tokens %}
+<section class="referrals"><h3 class="no-margin">My UNIT Referral Tokens</h3>
+    <output id="referral-amount"><span class="space-after">{{ num_ref_tokens|floatformat:6 }}</span><span class="unit">UNIT</span>
+    </output>
+    <h3 class="no-margin">Your Affiliate Link</h3>
+    <form>
+        <div class="form-group">
+            <div class="input-group"><input class="form-control js-referral-link-container"
+                                            id="referralLink" name="referralLink"
+                                            type="url" value="{{ referral_url }}"
+                                            readonly><span class="input-group-addon">
+                <a class="text-uppercase js-copy-referral-link" role="button" tabindex="0"
+                   data-toggle="focus" data-trigger="focus"
+                   data-content="Link copied">Copy link </a></span></div>
+        </div>
+    </form>
+    <p class="subtle">This is your Unilot referral link. Share it with your contacts to get free
+        UNIT coin for every purchased one by your referrer.</p>
+    <ul class="nav nav-pills nav-social">
+        <li><a class="btn" href="{% share_telegram referral_url %}" target="_blank" title="Share to Telegram"><span
+                class="icon icon-telegram"></span></a></li>
+        {% trans 'Unilot Token Sale' as reddit_title %}
+        <li><a class="btn" href="{% share_reddit_post reddit_title referral_url %}" target="_blank"
+               title="Share to Reddit"><span
+                class="icon icon-reddit"></span></a></li>
+        <li><a class="btn" href="{% share_twitter referral_url %}" target="_blank" title="Share to Twitter"><span
+                class="icon icon-twitter"></span></a></li>
+        <li><a class="btn" href="{% share_facebook referral_url %}" target="_blank" title="Share to Facebook"><span
+                class="icon icon-facebook"></span></a></li>
+    </ul>
+</section>
