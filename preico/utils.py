@@ -27,13 +27,14 @@ def get_phone_codes():
         ( (code, '+%s' % code) for code in sorted(COUNTRY_CODE_TO_REGION_CODE.keys()) )
     )
 
-def generate_password(length=12):
+def generate_password(length=12, with_special=True):
+    chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ0123456789'
+
+    if with_special:
+        chars += '@.,;:|{}!@#$%^&*)(+=_-'
+
     return django_models.User.objects\
-        .make_random_password(length=length,
-                              allowed_chars='abcdefghjkmnpqrstuvwxyz'
-                                                               'ABCDEFGHJKLMNPQRSTUVWXYZ'
-                                                               '23456789'
-                                                               '@.,;:\|{}!@#$%^&*)(+=_-')
+        .make_random_password(length=length, allowed_chars= chars)
 
 
 def get_wallet_app_choice():

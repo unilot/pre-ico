@@ -11,6 +11,7 @@ from django.contrib.auth import logout, models as auth_models, authenticate, log
 from django.db import transaction
 from django.core.mail import EmailMessage
 
+from cp.templatetags.referral import referral_code
 from preico.document import TermsAndConditions
 from .. import models
 from ..serializers import auth
@@ -31,10 +32,10 @@ class ShowAuthPageView(APIView):
 
         if kwargs.get('referrer_code'):
             try:
-                referrer_profile = models.Profile.objects.get(wallet=kwargs.pop('referrer_code'))
-                data['referrer_code'] = referrer_profile.wallet
+                referrer_profile = models.Profile.objects.get(referral_code=kwargs.pop('referrer_code'))
+                data['referrer_code'] = referrer_profile.referral_code
                 data['sign_up_url'] = reverse('cp:sign-up-referred',
-                                              kwargs={'format': 'html', 'referrer_code': referrer_profile.wallet})
+                                              kwargs={'format': 'html', 'referrer_code': referrer_profile.referral_code})
             except models.Profile.DoesNotExist:
                 pass
 
@@ -91,7 +92,7 @@ class SignUpView(generics.CreateAPIView):
 
         if referrer_code and len(referrer_code) >= 32:
             try:
-                referrer_profile = models.Profile.objects.get(wallet=referrer_code)
+                referrer_profile = models.Profile.objects.get(referral_code=referrer_code)
             except models.Profile.DoesNotExist:
                 pass
 
@@ -174,7 +175,7 @@ class VerifyEmailView(generics.GenericAPIView):
                                         and user.last_name
                                         #Check with instance is dirty hash to avoid panel usage by admins
                                         #Admins to not have profiles created automatically
-                                        and (not isinstance(user.profile, models.Profile) or user.profile.wallet))
+                                        and (not isinstance(user.profile, models.Profile) or user.profile.referral_code))
 
         self.template_name = 'cp/set-password.html'
 
@@ -205,7 +206,7 @@ class VerifyEmailView(generics.GenericAPIView):
             data = serializer.data
             return response.Response(data, status=status.HTTP_200_OK)
 
-        if not user.first_name or not user.last_name or not profile.wallet:
+        if not user.first_name or not user.last_name or user.profile.country or user.profile.phone_number:
             return http_response.HttpResponseRedirect(reverse('cp:profile', kwargs={'format': 'html'}))
 
         return http_response.HttpResponseRedirect(reverse('cp:dashboard', kwargs={'format': 'html'}))

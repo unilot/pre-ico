@@ -23,6 +23,8 @@ class FAQ(TranslatableModel):
     def __unicode__(self):
         return self.question
 
+def generate_referral_code(*args):
+    return utils.generate_password(42, False)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', null=False, on_delete=models.deletion.PROTECT)
@@ -35,8 +37,10 @@ class Profile(models.Model):
     referrer = models.ForeignKey('Profile', to_field='user', null=True, blank=True, related_name='referral',
                                  unique=False, on_delete=models.deletion.DO_NOTHING)
     referal_level = models.IntegerField(default=0)
-    token_balance = models.CharField(max_length=27, null=True, blank=True)
+    referral_code = models.CharField(max_length=42, null=False, blank=False, default=generate_referral_code)
     referral_token_balance = models.CharField(max_length=27, null=True, blank=True)
+
+    token_balance = models.CharField(max_length=27, null=True, blank=True)
     token_balance_last_update = models.DateTimeField(null=True, blank=True,
                                                      auto_now=False, auto_created=False, auto_now_add=False)
 
