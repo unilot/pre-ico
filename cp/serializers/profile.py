@@ -50,7 +50,8 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class WalletSerializer(serializers.ModelSerializer):
     wallet = serializers.CharField(required=True, validators=[
-        p_validators.EthWalletValidator()
+        p_validators.EthWalletValidator(),
+        validators.UniqueValidator(queryset=models.Profile.objects.all())
     ])
 
     def update(self, instance, validated_data):

@@ -24,8 +24,16 @@
                                         <div class="input-group">
                                             <input class="form-control" id="wallet" type="text"
                                                    value="{{ wallet }}"
-                                                   readonly><span class="input-group-addon"><a
-                                                class="text-uppercase" href="#">Copy address</a></span></div>
+                                                   readonly><span class="input-group-addon">
+                                            <a class="text-uppercase js-my-wallet-copy{% if not user.profile.wallet %} hidden{% endif %}" role="button" tabindex="0"
+                                                   data-toggle="focus" data-trigger="focus"
+                                                   data-placement="bottom" data-content="Wallet address copied">
+                                                    Copy address</a>
+                                            {% if not user.profile.wallet %}
+                                                <a class="text-uppercase js-set-wallet-btn" href="#" data-toggle="modal"
+                                                   data-target="#sourceWallet">Set Wallet</a>
+                                            {% endif %}
+                                        </span></div>
                                     </div>
                                 </form>
                             </div>
