@@ -51,8 +51,14 @@ def get_excluded_countries_as_listed_text():
 
     return result
 
-
-
 @register.simple_tag()
 def get_wallet_apps():
     return get_wallet_app_choice()
+
+
+@register.simple_tag()
+def get_humanized_token_amount(token_balance):
+    if not token_balance:
+        return 0
+
+    return float( int( token_balance ) / ( 10**18 ) )

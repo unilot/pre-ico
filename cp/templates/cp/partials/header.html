@@ -1,4 +1,5 @@
 {% load static %}
+{% load config %}
 <header>
     <div class="container">
         <div class="row">
@@ -16,11 +17,12 @@
                        data-html="true"
                        data-content="<ul><li>Updating tokens amount may take a while due to Ethereum Network load.</li><li>Check tokens amount at your wallet.</li></ul><br /> <a href='{% url 'cp:faq' 'html' %}#answer8' class='btn btn-md btn-default'>How to display tokens?</a>">
                         <span class="tokens-question"></span></a>My Tokens: <span class="tokens">
-                    {% widthratio user.profile.token_balance 1000000000000000000 1 as num_tokens %}
+                    {% get_humanized_token_amount user.profile.token_balance as num_tokens %}
+                    {% get_humanized_token_amount user.profile.referral_token_balance as num_ref_tokens %}
                     <strong class="tokens-amount">{% if num_tokens %}{{ num_tokens|floatformat:6 }}{% else %}
                         0{% endif %}</strong> UNIT</span></p>
                     <p class="text-right">Referral Tokens: <span class="tokens"><strong
-                            class="tokens-amount">0.0000</strong> UNIT</span></p>
+                            class="tokens-amount">{{ num_ref_tokens|floatformat:6 }}</strong> UNIT</span></p>
                     <p class="text-right">
                         <small><a href="{% url 'cp:affiliate' 'html' %}">Get more Tokens for free</a></small>
                     </p>
