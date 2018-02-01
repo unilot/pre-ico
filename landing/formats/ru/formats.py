@@ -1,0 +1,2 @@
+DATETIME_FORMAT='j E Y \\г. H:i e'
+MONTH_DAY_FORMAT='j E'

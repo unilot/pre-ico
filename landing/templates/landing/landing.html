@@ -258,21 +258,24 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>{% trans 'Start Date' %}</th>
-                            <td>January 10th, 2018, at 19:00 UTC (GMT) / 14:00 New York / 19:00 London / 22:00 Moscow /
-                                04:00 Tokyo (January 11)
+                            {% get_stage_start_date 0 as preico_start_date %}
+                            <td>
+                                {{ preico_start_date }} / 14:00 {% trans 'New York' %} / 19:00 {% trans 'London' %} / 22:00 {% trans 'Moscow' %} /
+                                04:00 {% trans 'Tokyo' %} ({{ preico_start_date|add_days:1|date:'MONTH_DAY_FORMAT' }})
                             </td>
                         </tr>
                         <tr>
                             <th>{% trans 'End Date' %}</th>
-                            <td>February 17th, 2018, at 19:00 UTC (GMT) / 14:00 New York / 19:00 London / 22:00 Moscow /
-                                04:00 Tokyo (February 18)
+                            {% get_stage_end_date 0 as preico_end_date %}
+                            <td>{{ preico_end_date }} / 14:00 {% trans 'New York' %} / 19:00 {% trans 'London' %} / 22:00 {% trans 'Moscow' %} /
+                                04:00 {% trans 'Tokyo' %} ({{ preico_end_date|add_days:1|date:'MONTH_DAY_FORMAT' }})
                             </td>
                         </tr>
-                        <tr>
+                            <tr>
                             <th>{% trans 'Token Sale Cap' %}</th>
                             <td><strong><span class="big-amount"
                                               style="padding-left: 0; color: inherit;">25 000 000</span></strong> UNIT
-                                tokens
+                                {% trans 'tokens' %}
                             </td>
                         </tr>
                         <tr>
@@ -284,20 +287,20 @@
                             <td>40%</td>
                         </tr>
                         <tr>
-                            <th>{% trans 'Exchange Rate' %} <a href="#footnote-sale" title="See footnote"><sup
+                            <th>{% trans 'Exchange Rate' %} <a href="#footnote-sale" title="{% trans 'See footnote' %}"><sup
                                     class="footnote-ref footnote-star"></sup></a></th>
                             <td>1 ETH = <span class="big-amount" style="padding-left: 0; color: inherit;">12 658</span>
-                                UNIT Tokens + (<strong>40% bonus</strong>)
+                                UNIT {% trans 'Tokens' %} + (<strong>40% {% trans 'Bonus' %}</strong>)
                             </td>
                         </tr>
                         <tr>
                             <th>{% trans 'Minimum Transaction' %}</th>
-                            <td>1 UNIT Tokens (0.000079 ETH)</td>
+                            <td>1 UNIT {% trans 'Token' %} (0.000079 ETH)</td>
                         </tr>
                         <tr>
-                            <th>{% trans 'Maximum Transaction' %} <a href="#footnote-sale" title="See footnote"><sup
+                            <th>{% trans 'Maximum Transaction' %} <a href="#footnote-sale" title="{% trans 'See footnote' %}"><sup
                                     class="footnote-ref footnote-star"></sup></a></th>
-                            <td><span class="big-amount" style="padding-left: 0; color: inherit;">379 746</span> Tokens (30 ETH)</td>
+                            <td><span class="big-amount" style="padding-left: 0; color: inherit;">379 746</span> {% trans 'Tokens' %} (30 ETH)</td>
                         </tr>
                     </table>
                     <p class="footnote footnote-star" id="footnote-sale"><sup></sup>
