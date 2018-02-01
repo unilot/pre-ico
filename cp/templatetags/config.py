@@ -1,6 +1,5 @@
 from django import template
 from preico import settings
-from phonenumbers.phonenumberutil import COUNTRY_CODE_TO_REGION_CODE
 
 from preico.utils import (get_investing_countries, get_none_investing_countries,
                           get_phone_codes as u_get_phone_codes, get_wallet_app_choice)
@@ -52,10 +51,6 @@ def get_excluded_countries_as_listed_text():
 
     return result
 
-
-@register.simple_tag()
-def get_phone_codes():
-    return u_get_phone_codes().items()
 
 
 @register.simple_tag()

@@ -7,6 +7,9 @@
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12">
             <main>
+                <div class="ico">
+                    {% include 'cp/partials/timer.html' %}
+                </div>
                 <section class="profile">
                     <div class="row">
                         <div class="col-md-5 js-has-overlay">
@@ -15,10 +18,13 @@
                         <div class="col-md-6 col-md-offset-1">
                             <div class="row"><h3>My Wallet</h3>
                                 <form>
-                                    <div class="form-group">
-                                        <div class="input-group"><input class="form-control" id="wallet" type="text"
-                                                                        value="{{ wallet }}"
-                                                                        readonly><span class="input-group-addon"><a
+                                    <div class="form-group label-floating">
+                                        <label class="control-label" for="wallet">Wallet
+                                            <span class="required"></span></label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="wallet" type="text"
+                                                   value="{{ wallet }}"
+                                                   readonly><span class="input-group-addon"><a
                                                 class="text-uppercase" href="#">Copy address</a></span></div>
                                     </div>
                                 </form>
@@ -35,17 +41,14 @@
             <aside class="pull-right">
                 {% include 'cp/partials/buy-tokens-button.html' %}
                 {% include 'cp/partials/referrals.html' %}
-                <section>
-                    {% include 'cp/partials/timer.html' %}
-                </section>
             </aside>
         </div>
     </div>
 {% endblock %}
 
 {% block modals %}
-{% include 'cp/partials/modals/buy-unit-tokens.html' %}
-{% if not user.profile.wallet %}
-{% include 'cp/partials/modals/source-wallet.html' %}
-{% endif %}
+    {% include 'cp/partials/modals/buy-unit-tokens.html' %}
+    {% if not user.profile.wallet %}
+        {% include 'cp/partials/modals/source-wallet.html' %}
+    {% endif %}
 {% endblock %}

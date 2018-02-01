@@ -43,19 +43,6 @@ class Profile(models.Model):
     def username(self):
         return self.user.username
 
-    @property
-    def phone_code(self):
-        phone_codes = utils.get_phone_codes()
-
-        if not self.phone_number:
-            return ''
-
-        for code, label in phone_codes:
-            if re.sub('[^\d]', '', self.phone_number)[:len(str(code))] == str(code):
-                return code
-
-        return ''
-
 
     def __str__(self):
         return self.username

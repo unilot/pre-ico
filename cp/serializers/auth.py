@@ -35,9 +35,6 @@ class SignUpSerializer(serializers.ModelSerializer):
     country = serializers.ChoiceField(choices=utils.get_investing_countries(),
                                       source='profile.country', required=True)
 
-    def to_representation(self, instance):
-        return super().to_representation(instance)
-
     def create(self, validated_data):
         data = validated_data
         data[django_models.User.USERNAME_FIELD] = data[django_models.User.EMAIL_FIELD]

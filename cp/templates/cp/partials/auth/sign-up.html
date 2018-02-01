@@ -1,12 +1,13 @@
 {% load static %}
 {% load i18n %}
 {% load config %}
+{% load phone %}
 <form class="js-generic-form" method="post" action="{% url 'cp:sign-up' 'json' %}"
       data-url="{% url 'cp:dashboard' 'html' %}">
-{% csrf_token %}
+    {% csrf_token %}
     <div class="row">
         <div class="col-md-12">
-            <div class="alert hidden js-form-alert text-center"></div>
+            {% include 'includes/form-alert.html' %}
             <div class="row no-padding">
                 <div class="col-md-6">
                     <div class="form-group label-floating">
@@ -118,7 +119,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-primary btn-lg btn-auth pull-right" role="submit">Sign me
+            <button class="btn btn-primary btn-lg btn-auth pull-right" role="button" type="submit">Sign me
                 up<span class="glyphicon glyphicon-menu-right"></span></button>
         </div>
     </div>
