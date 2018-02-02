@@ -305,7 +305,7 @@ class TeamMember(AdvancedImageFieldsProcessingModelMixin, TranslatableModel, Res
                               )
 
     translations = TranslatedFields(
-        full_name=models.CharField(max_length=32, null=False, blank=False),
+        full_name=models.CharField(max_length=64, null=False, blank=False),
         position = models.CharField(max_length=128, null=False, blank=False),
     )
 
