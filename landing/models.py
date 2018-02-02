@@ -271,7 +271,7 @@ class Adviser(AdvancedImageFieldsProcessingModelMixin, TranslatableModel, Resiza
                               )
 
     translations = TranslatedFields(
-        full_name=models.CharField(max_length=32, null=False, blank=False),
+        full_name=models.CharField(max_length=64, null=False, blank=False),
         position = models.CharField(max_length=128, null=False, blank=False),
         caption = models.TextField(max_length=1024, null=False, blank=False)
     )
