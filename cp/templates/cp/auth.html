@@ -1,6 +1,9 @@
 {% extends 'cp/base/base.html' %}
 {% load static %}
 {% load i18n %}
+
+{% block title %}{% trans 'Sign in' %} {% trans 'or' %} {% trans 'Sign up' %}{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12">

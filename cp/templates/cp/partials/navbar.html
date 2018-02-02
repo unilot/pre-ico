@@ -11,7 +11,7 @@
             <li class="item-collapsible"><a href="{% url 'cp:affiliate' 'html' %}">{% trans 'Affiliate &amp; Bounty programs' %}</a>
             </li>
         {% else %}
-            <li class="item-collapsible"><a href="{% url 'landing:index-html' %}" target="_blank">Unilot ICO</a>
+            <li class="item-collapsible"><a href="{% url 'landing:index-html' %}">Unilot ICO</a>
             </li>
         {% endif %}
         <li class="item-collapsible"><a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}</a>
@@ -38,7 +38,7 @@
             {% else %}
             <a class="btn btn-default nav-btn" role="button" href="{% url 'cp:auth' 'html' %}">
                 <span class="btn-action">{% trans 'Sign in' %}</span>
-                or <span class="btn-action">{% trans 'Sign up' %}</span>
+                {% trans 'or' %} <span class="btn-action">{% trans 'Sign up' %}</span>
             </a>
             {% endif %}
         </li>
