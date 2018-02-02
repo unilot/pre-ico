@@ -13,7 +13,7 @@
             </div>
             <div class="modal-body js-has-overlay">
                 <p>{% trans 'Please specify address of the wallet that will be used to buy UNIT tokens.' %}</p>
-                <form id="addSourceWalletForm" method="post" action="{% url 'cp:user-wallet' 'json' %}">
+                <form id="addSourceWalletForm" class="js-form-no-focus" method="post" action="{% url 'cp:user-wallet' 'json' %}">
                     {% csrf_token %}
                     {% include 'cp/partials/form-overlay.html' %}
                     {% include 'includes/form-alert.html' %}

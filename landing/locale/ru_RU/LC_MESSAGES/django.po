@@ -190,8 +190,8 @@ msgid "Email"
 msgstr "Email"
 
 #: landing/templates/landing/includes/exit-intent-popup.html:47
-msgid "Phone"
-msgstr "Телефон"
+msgid "Phone number"
+msgstr "Номер телефона"
 
 #: landing/templates/landing/includes/exit-intent-popup.html:54
 msgid "Android"
@@ -206,7 +206,7 @@ msgid "Enter to Win"
 msgstr ""
 
 #: landing/templates/landing/includes/exit-intent-popup.html:80
-msgid "Winners will be announced on March 5<sup>eth</sup>, 2018"
+msgid "Winners will be announced on March 5<sup>th</sup>, 2018"
 msgstr ""
 
 #: landing/templates/landing/includes/roadmap.html:3
