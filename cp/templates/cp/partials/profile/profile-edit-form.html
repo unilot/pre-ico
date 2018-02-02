@@ -2,7 +2,6 @@
 {% load config %}
 {% load phone %}
 
-<h3>{% block title %}{% trans 'Edit Profile' %}{% endblock %}</h3>
 <form class="js-generic-form" id="editProfile" role="form" data-toggle="validator"
       action="{% url 'cp:profile' 'json' %}" method="patch" data-success-message="{% trans 'Profile updated' %}">
     {% csrf_token %}
