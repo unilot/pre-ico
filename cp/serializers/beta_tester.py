@@ -4,9 +4,7 @@ from django.utils.translation import ugettext as _
 
 
 class SimpleBetaTesterSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField(required=True, validators=[
-        validators.UniqueValidator(models.BetaTester.objects.all()),
-    ])
+    email = serializers.EmailField(required=True)
 
     def validate(self, attrs):
         if attrs['is_ios'] or attrs['is_android']:
