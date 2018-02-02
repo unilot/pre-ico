@@ -25,7 +25,7 @@
                                 <label class="control-label" for="sourceWalletWalletApp">{% trans 'Wallet App' %} <span class="required"></span></label>
                                 <span class="caret"></span>
                                 <select
-                                    class="form-control" id="sourceWalletWalletApp" required name="wallet">
+                                    class="form-control" id="sourceWalletWalletApp" required name="wallet_app">
                                 <option selected disabled></option>
                                 {% get_wallet_apps as wallet_apps %}
                                 {% for value, app in wallet_apps %}
