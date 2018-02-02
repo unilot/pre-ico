@@ -98,9 +98,9 @@ class AdvancedImageFieldsProcessingModelMixin():
         config = cls.image_field_params.get(field_name)
 
         if not config:
-            raise RuntimeError(_('Configuration for image field "%s" is not set.' % field_name))
+            raise RuntimeError('Configuration for image field "%s" is not set.' % field_name)
         elif not config.get('WIDTH') or not config.get('HEIGHT') or not config.get('FORMAT') or not config.get('PATH'):
-            raise RuntimeError(_('Invalid configuration for field "%s". Field configuration should contain at least: PATH, WIDTH, HEIGHT and FORMAT data.' % field_name))
+            raise RuntimeError('Invalid configuration for field "%s". Field configuration should contain at least: PATH, WIDTH, HEIGHT and FORMAT data.' % field_name)
 
         return config
 

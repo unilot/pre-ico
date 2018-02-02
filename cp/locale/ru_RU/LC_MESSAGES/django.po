@@ -1,0 +1,480 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-02 02:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Unilot <info@unilot.io>\n"
+"Language-Team: Unilot <info@unilot.io>\n"
+"Language: ru-RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: cp/serializers/beta_tester.py:15
+msgid "At least one OS must be selected"
+msgstr "Необходимо выбрать хотябы одну платформу"
+
+#: cp/serializers/profile.py:60
+msgid "Wallet cannot be changed"
+msgstr "Кошелёк не может быть изменён"
+
+#: cp/templates/auth.html:63
+#: cp/templates/cp/partials/modals/forgot-password.html:13
+msgid "Check your email"
+msgstr "Проверьте почту"
+
+#: cp/templates/base/base.html:15
+msgid "Control Panel"
+msgstr "Паренль управления"
+
+#: cp/templates/base/base.html:28 cp/templates/cp/base/base.html:22
+msgid "Initial Coin Offering Pre-sale"
+msgstr "Предварительная продажа токенов"
+
+#: cp/templates/base/base.html:109 cp/templates/cp/base/base.html:53
+#: cp/templates/cp/partials/navbar.html:9
+msgid "Dashboard"
+msgstr "Личный кабинет"
+
+#: cp/templates/base/base.html:117 cp/templates/cp/base/base.html:55
+#: cp/templates/cp/partials/navbar.html:17 cp/templates/faq.html:5
+msgid "FAQ"
+msgstr "FAQ"
+
+#: cp/templates/base/base.html:121 cp/templates/cp/base/base.html:57
+#: cp/templates/cp/partials/navbar.html:26
+msgid "Profile"
+msgstr "Профиль"
+
+#: cp/templates/base/base.html:127 cp/templates/cp/partials/navbar.html:34
+msgid "Sign out"
+msgstr "Выйти"
+
+#: cp/templates/base/base.html:129 cp/templates/cp/partials/navbar.html:40
+msgid "Sign in"
+msgstr "Войти"
+
+#: cp/templates/base/base.html:178 cp/templates/cp/partials/referrals.html:28
+msgid "Unilot Token Sale"
+msgstr "Продажа токенов Unilot"
+
+#: cp/templates/cp/base/base.html:23
+msgid ""
+"Unilot is a decentralized gambling platform which allows players to play and "
+"host online games like poker tournaments, lottery and many other games. "
+"Unilot will be available through mobile apps on iOS and Android platforms "
+"and transact using Unilots as it’s main currency."
+msgstr ""
+
+#: cp/templates/cp/base/base.html:56 cp/templates/cp/partials/navbar.html:11
+msgid "Affiliate &amp; Bounty programs"
+msgstr "Партнёрская и Баунти программы"
+
+#: cp/templates/cp/base/base.html:68
+msgid "See our code on GitHub"
+msgstr "Наш код на GitHub"
+
+#: cp/templates/cp/base/base.html:70
+msgid "Join our Telegram group"
+msgstr "Присоединяйтесь к группе в Telegram"
+
+#: cp/templates/cp/base/base.html:72
+msgid "Visit our subreddit"
+msgstr "Посетите наш reddit"
+
+#: cp/templates/cp/base/base.html:74
+msgid "Follow us on Twitter"
+msgstr "Следите за нами в Twitter"
+
+#: cp/templates/cp/base/base.html:77
+msgid "Follow us on Facebook"
+msgstr "Сдедите за ноами в Facebook"
+
+#: cp/templates/cp/faq.html:25
+msgid "Frequently Asked Questions"
+msgstr "Часто задаваемые вопросы"
+
+#: cp/templates/cp/faq.html:26
+msgid "Here are some common questions about Unilot and whole Lottery Platform"
+msgstr ""
+"Ниже приведены самые часто задаваемые вопросы о Unilot и игровой платформе в "
+"целом"
+
+#: cp/templates/cp/partials/beta-invite.html:3
+msgid ""
+"Take your chance to Win <span class=\"text-nowrap\">100 000</span>\n"
+"        Tokens in App Beta-Testing"
+msgstr ""
+"Получите возможность выиграть <span class=\"text-nowrap\">100 000</span> "
+"UNIT токенов в бета-тестировании приложения"
+
+#: cp/templates/cp/partials/beta-invite.html:5
+msgid ""
+"Take part in any drawing and you automatically participate in drawing for "
+"price of <span\n"
+"            class=\"text-nowrap\">100 000</span> UNIT"
+msgstr ""
+"Примите участие в любой из игр и вы автоматически становитесь участником "
+"розыгрыша на <span class=\"text-nowrap\">100 000</span> UNIT токенов"
+
+#: cp/templates/cp/partials/beta-invite.html:15
+msgid "Email"
+msgstr ""
+
+#: cp/templates/cp/partials/beta-invite.html:24
+msgid "Android"
+msgstr ""
+
+#: cp/templates/cp/partials/beta-invite.html:27
+msgid "Apple iOS"
+msgstr ""
+
+#: cp/templates/cp/partials/beta-invite.html:31
+msgid "Participate"
+msgstr ""
+
+#: cp/templates/cp/partials/beta-invite.html:33
+msgid ""
+"<span class=\"text-nowrap\">Winners will be announced</span> <span\n"
+"            class=\"text-nowrap\">on March 5th, 2018</span>"
+msgstr ""
+"<span class=\"text-nowrap\">Победитель будет объявлен</span> <span\n"
+"            class=\"text-nowrap\">5-го марта, 2018-го года</span>"
+
+#: cp/templates/cp/partials/buy-tokens-button.html:5
+msgid "Buy Tokens"
+msgstr "Купить токены"
+
+#: cp/templates/cp/partials/buy-tokens-button.html:6
+msgid "Bonus"
+msgstr "Бонус"
+
+#: cp/templates/cp/partials/calculator.html:2
+msgid "Calculator"
+msgstr "Калькулятор"
+
+#: cp/templates/cp/partials/calculator.html:4
+msgid "# of UNIT tokens"
+msgstr "Количество UNIT токенов"
+
+#: cp/templates/cp/partials/calculator.html:14
+msgid "Amount of ETH"
+msgstr "Количество ETH"
+
+#: cp/templates/cp/partials/calculator.html:21
+msgid "You'll receive"
+msgstr "Вы получите"
+
+#: cp/templates/cp/partials/calculator.html:27
+msgid "bonus"
+msgstr "бонус"
+
+#: cp/templates/cp/partials/calculator.html:33
+msgid "Total"
+msgstr "Всего"
+
+#: cp/templates/cp/partials/calculator.html:40
+msgid "Approximate $US amount"
+msgstr "Примерная стоимость в $США"
+
+#: cp/templates/cp/partials/header.html:11
+#, python-format
+msgid ""
+"<h3>Welcome, %(name)s!</h3>\n"
+"                    <p>Thank you for participation in our project. This area "
+"is your personal account of Unilot token\n"
+"                        sale.</p>"
+msgstr ""
+"<h3>Добро пожаловать, %(name)s!</h3>\n"
+"                    <p>Благодарим вас за участие в проекте. Это ваш личный "
+"кабинет Unilot.</p>"
+
+#: cp/templates/cp/partials/header.html:16
+msgid "Are your tokens not displayed?"
+msgstr "Ваши токены не отображаются в кабинете?"
+
+#: cp/templates/cp/partials/header.html:19
+msgid "Updating tokens amount may take a while due to Ethereum Network load."
+msgstr ""
+"Обновление числа приобретённых токенов может занять некоторое время в "
+"зависимости от нагрузки в сети Ethereum."
+
+#: cp/templates/cp/partials/header.html:19
+msgid "Check tokens amount at your wallet."
+msgstr "Вы так же можете посмотреть ваши токены через приложение-кошелёк."
+
+#: cp/templates/cp/partials/header.html:19
+msgid "How to display tokens?"
+msgstr "Как я могу увидеть свои токены?"
+
+#: cp/templates/cp/partials/header.html:20
+msgid "My Tokens"
+msgstr "Мои токены"
+
+#: cp/templates/cp/partials/header.html:25
+msgid "Referral Tokens"
+msgstr "Реферальные токены"
+
+#: cp/templates/cp/partials/header.html:28
+msgid "Get more Tokens for free"
+msgstr "Получить больше токенов"
+
+#: cp/templates/cp/partials/ico-info.html:8
+msgid "Upcoming bonus"
+msgstr "Бонус"
+
+#: cp/templates/cp/partials/ico-info.html:10
+msgid "Min commitment"
+msgstr "Минимальная покупка"
+
+#: cp/templates/cp/partials/ico-info.html:12
+msgid "Max cap"
+msgstr ""
+
+#: cp/templates/cp/partials/modals/buy-unit-tokens.html:10
+msgid "Buy UNIT Tokens"
+msgstr "Купить UNIT токены"
+
+#: cp/templates/cp/partials/modals/buy-unit-tokens.html:11
+msgid "Close"
+msgstr "Закрыть"
+
+#: cp/templates/cp/partials/modals/buy-unit-tokens.html:20
+msgid ""
+"Be sure that you read all the information about Unilot project and token "
+"sale carefully"
+msgstr ""
+"Убедитесь что вы внимательно ознакомились со всей информацией о проекте Unilot "
+"и продаже токенов"
+
+#: cp/templates/cp/partials/modals/buy-unit-tokens.html:26
+msgid ""
+"Please do not send anything other than ETH to the Unilot smart contract and "
+"do not send ETH from an Exchange."
+msgstr ""
+"Убедительная просьба, не используйте биржевые кошельки для покупки токенов и "
+"не отправляйте на адрес валюту отличную от ETH (ethereum - эфир)"
+
+#: cp/templates/cp/partials/modals/buy-unit-tokens.html:33
+msgid "Contract number"
+msgstr "Кошелёк контракта"
+
+#: cp/templates/cp/partials/modals/buy-unit-tokens.html:38
+msgid "Contract number copied"
+msgstr "Кошелёк контракта скопирован"
+
+#: cp/templates/cp/partials/modals/buy-unit-tokens.html:39
+msgid "Copy contract number"
+msgstr "Скопировать кошелёк контракта"
+
+#: cp/templates/cp/partials/modals/source-wallet.html:9
+#, fuzzy
+#| msgid "Set Wallet"
+msgid "Source Wallet"
+msgstr "Добавить кошелёк"
+
+#: cp/templates/cp/partials/modals/source-wallet.html:15
+msgid ""
+"Please specify address of the wallet that will be used to buy UNIT tokens."
+msgstr "Пожалуйста, укажите кошелёк с которого вы будете покупать UNIT токены"
+
+#: cp/templates/cp/partials/modals/source-wallet.html:23
+msgid "Wallet App"
+msgstr "Приложение-кошелёк"
+
+#: cp/templates/cp/partials/modals/source-wallet.html:48
+msgid "Enter your wallet number"
+msgstr "Укажите ваш кошелёк"
+
+#: cp/templates/cp/partials/modals/source-wallet.html:58
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: cp/templates/cp/partials/navbar.html:6
+msgid "Toggle navigation"
+msgstr "Переключение навигации"
+
+#: cp/templates/cp/partials/navbar.html:20
+msgid "Unilot Investor Dashboard"
+msgstr "Личный кабинет инвестора Unilot"
+
+#: cp/templates/cp/partials/navbar.html:41
+#, fuzzy
+#| msgid "Sign out"
+msgid "Sign up"
+msgstr "Выйти"
+
+#: cp/templates/cp/partials/profile/password-change-form.html:2
+#: cp/templates/cp/partials/profile/password-change-form.html:28
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: cp/templates/cp/partials/profile/password-change-form.html:10
+msgid "Current password"
+msgstr "Текущий пароль"
+
+#: cp/templates/cp/partials/profile/password-change-form.html:16
+msgid "New password"
+msgstr "Новый пароль"
+
+#: cp/templates/cp/partials/profile/password-change-form.html:22
+msgid "Repeat new password"
+msgstr "Повтор нового пароля"
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:5
+msgid "Edit Profile"
+msgstr "Редактирование профиля"
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:7
+#: cp/templates/profile.html:15
+msgid "Profile updated"
+msgstr "Профиль обновлён"
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:11
+msgid "First name"
+msgstr "Имя"
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:16
+msgid "Last name"
+msgstr "Фамилия"
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:21
+#: cp/templates/profile.html:47 cp/templates/profile.html:50
+msgid "Company name"
+msgstr "Компания"
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:29
+msgid "Phone code"
+msgstr "Код"
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:44
+#, fuzzy
+#| msgid "Phone Number"
+msgid "Phone number"
+msgstr "Номер телефона"
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:54
+msgid "Country"
+msgstr ""
+
+#: cp/templates/cp/partials/profile/profile-edit-form.html:65
+msgid "Save profile"
+msgstr "Сохранить"
+
+#: cp/templates/cp/partials/progress.html:9
+#, python-format
+msgid "Goal %(eth_amount)s ETH (%(token_cap)s UNIT)"
+msgstr ""
+
+#: cp/templates/cp/partials/progress.html:11
+#, python-format
+msgid "<span class=\"eth-raised-container\">%(raised_amount)s</span> Raised"
+msgstr "Собрано <span class=\"eth-raised-container\">%(raised_amount)s</span>"
+
+#: cp/templates/cp/partials/referrals.html:8
+msgid "My UNIT Referral Tokens"
+msgstr "Мои реферальные токены"
+
+#: cp/templates/cp/partials/referrals.html:11
+msgid "Your Affiliate Link"
+msgstr "Партнёрская ссылка"
+
+#: cp/templates/cp/partials/referrals.html:20
+msgid "Link copied"
+msgstr "Ссылка скопирована"
+
+#: cp/templates/cp/partials/referrals.html:20
+msgid "Copy link"
+msgstr "Скопировать"
+
+#: cp/templates/cp/partials/referrals.html:23
+msgid ""
+"This is your Unilot referral link. Share it with your contacts to get free\n"
+"        UNIT coin for every purchased one by your referrer."
+msgstr ""
+"Это ваша реферальная ссылка. Поделитесь ею со своими друзьями чтобы получить "
+"токены за каждый преобретённый ими токен."
+
+#: cp/templates/cp/partials/referrals.html:26
+msgid "Share to Telegram"
+msgstr "Поделиться в телеграме"
+
+#: cp/templates/cp/partials/referrals.html:30
+msgid "Share to Reddit"
+msgstr "Поделиться на Reddit"
+
+#: cp/templates/cp/partials/referrals.html:32
+msgid "Share to Twitter"
+msgstr "Поделиться в Twitter"
+
+#: cp/templates/cp/partials/referrals.html:34
+msgid "Share to Facebook"
+msgstr "Поделиться на Facebook"
+
+#: cp/templates/cp/partials/timer-template.html:4
+msgid "Pre ICO ends in"
+msgstr ""
+
+#: cp/templates/cp/partials/timer-template.html:6
+msgid "Days"
+msgstr ""
+
+#: cp/templates/cp/partials/timer-template.html:7
+msgid "Hours"
+msgstr ""
+
+#: cp/templates/cp/partials/timer-template.html:7
+msgid "Minutes"
+msgstr ""
+
+#: cp/templates/cp/partials/timer-template.html:8
+msgid "Secs"
+msgstr ""
+
+#: cp/templates/cp/profile.html:19
+msgid "My Wallet"
+msgstr "Мой кошелёк"
+
+#: cp/templates/cp/profile.html:22
+msgid "Wallet"
+msgstr "Кошелёк"
+
+#: cp/templates/cp/profile.html:30
+msgid "Wallet address copied"
+msgstr "Кошелёк скопирован"
+
+#: cp/templates/cp/profile.html:31
+msgid "Copy address"
+msgstr "Скопировать"
+
+#: cp/templates/cp/profile.html:34
+msgid "Set Wallet"
+msgstr "Добавить кошелёк"
+
+#: cp/templates/cp/set-password.html:10 cp/templates/set-password.html:4
+#: cp/templates/set-password.html:11
+msgid "Setup your account password"
+msgstr "Укажите пароль для учётной записи"
+
+#: cp/templates/profile.html:5 cp/templates/profile.html:12
+msgid "Edit your profile"
+msgstr "Редактирование профиля"
+
+#: cp/templates/profile.html:59 cp/templates/profile.html:62
+msgid "Phone Number"
+msgstr "Номер телефона"
+
+#: cp/views/auth.py:149
+msgid "Invalid username or password"
+msgstr "Неверная комбинация логина и пароля"
+
+#: cp/views/auth.py:229
+msgid "Invalid password"
+msgstr "Пароль неверный"

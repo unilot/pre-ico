@@ -1,6 +1,13 @@
+{% load i18n %}
+{% load humanize %}
+{% load config %}
+
+{% token_eth_cap as eth_cap %}
+{% token_cap as token_cap %}
+
 <div class="progress">
-    <div class="progress-goal">Goal: 1 975 ETH (25 000 000 UNIT)</div>
+    <div class="progress-goal">{% blocktrans with eth_amount=eth_cap|intcomma token_cap=token_cap|intcomma %}Goal {{ eth_amount }} ETH ({{ token_cap }} UNIT){% endblocktrans %}</div>
     <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0"
-         aria-valuemax="100" style="width: 35%;"><span class="progress-amount hidden-xs">592.5 ETH Raised</span><span
+         aria-valuemax="100" style="width: 35%;"><span class="progress-amount hidden-xs">{% blocktrans with raised_amount=0 %}<span class="eth-raised-container">{{ raised_amount }}</span> Raised{% endblocktrans %}</span><span
             class="progress-percentage">30%</span></div>
 </div>

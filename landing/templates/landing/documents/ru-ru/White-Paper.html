@@ -7,9 +7,9 @@
 
 {% block topmenu %}
 {% main_page_url as main_page_url %}
-<li><a href="{{ main_page_url }}#whatIsUnilot">What is Unilot</a></li>
-<li><a href="{{ main_page_url }}#unilotBenefits">Unilot Features</a></li>
-<li><a href="{{ main_page_url }}#faq">FAQ</a></li>
+<li><a href="{{ main_page_url }}#whatIsUnilot">{% trans 'What is Unilot' %}</a></li>
+<li><a href="{{ main_page_url }}#unilotBenefits">{% trans 'Unilot Features' %}</a></li>
+<li><a href="{{ main_page_url }}#faq">{% trans 'FAQ' %}</a></li>
 {% endblock %}
 
 {% block sidemenu %}
@@ -1050,16 +1050,17 @@
                 <div class="row middle-md">
                     <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
                             src="{% static 'landing/img/logo.svg' %}" alt="">
-                        <p>Unilot&reg; 2017 Все права защищены</p>
+                        {% now 'Y' as year %}
+                        <p>{% blocktrans %}Unilot&reg; 2017 - {{ year }} All Rights Reserved{% endblocktrans %}</p>
                     </div>
                     <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
                             href="https://www.ethereum.org" target="_blank"><img src="{% static 'landing/img/ethereum-logo.png' %}"
                                                                                  alt="Ethereum"></a></div>
                     <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
                         <ul>
-                            <li><a href="#">Terms and Conditions</a></li>
-                            <li><a href="#">Affiliate Program</a></li>
-                            <li><a href="#">Bounty Program</a></li>
+                            <li><a href="{% url 'landing:document' 'terms-and-conditions' %}">{% trans 'Terms and Conditions' %}</a></li>
+                            <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}">{% trans 'Affiliate Program' %}</a></li>
+                            <li><a href="{% url 'landing:document' 'bounty-program' %}">{% trans 'Bounty Program' %}</a></li>
                             <li><a href="mailto:info@unilot.io">info@unilot.io</a></li>
                         </ul>
                     </div>

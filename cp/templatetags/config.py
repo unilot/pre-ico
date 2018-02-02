@@ -26,6 +26,9 @@ def token_bonus():
 def token_cap():
     return settings.TOKEN_SETTINGS['CAP']
 
+@register.simple_tag()
+def token_eth_cap():
+    return settings.TOKEN_SETTINGS['ETH_CAP']
 
 @register.simple_tag()
 def get_countries():

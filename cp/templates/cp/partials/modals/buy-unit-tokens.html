@@ -7,10 +7,9 @@
         <div class="modal-content no-padding">
             <div class="modal-header img-horizontal bordered"><img class="modal-title-img img-lock"
                                                                    src="{% static 'cp/img/lock.png' %}"><h4
-                    class="modal-title">Buy
-                UNIT Tokens</h4>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span class="close-icon"
-                                                                                                  aria-hidden="true"></span>
+                    class="modal-title">{% trans 'Buy UNIT Tokens' %}</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="{% trans 'Close' %}">
+                    <span class="close-icon" aria-hidden="true"></span>
                 </button>
             </div>
             <div class="modal-body">
@@ -18,43 +17,26 @@
                     <div class="col-md-8">
                         <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
                                                                                    src="{% static 'cp/img/attention.png' %}">
-                            <p>Be sure that you read all the information about Unilot project and token sale
-                                carefully</p></div>
-                        <div class="alert alert-warning" role="alert"><p><strong>Contribution process:</strong></p>
-                            <ol>
-                                <li>Copy the Unilot wallet address down below.</li>
-                                <li>Go to your wallet application (see example below)
-                                    <ul>
-                                        <li>MyEtherWallet</li>
-                                        <li>Metamask browser extension</li>
-                                    </ul>
-                                </li>
-                                <li>Make transfer to the copied wallet address, input the amount you want to invest and
-                                    set:
-                                </li>
-                            </ol>
-                            <p><strong>Gas Limit: 210 000</strong>, recommended <strong>Gas Price is 30 Gwei</strong>.
-                            </p>
-                            <p>After the transaction is finished you will automatically get your tokens and can check
-                                the amount at your personal account. </p></div>
+                            <p>{% trans 'Be sure that you read all the information about Unilot project and token sale carefully' %}</p></div>
+                        <div class="alert alert-warning" role="alert">
+                            {% content_text 'modal-buy-token' %}
+                        </div>
                         <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
                                                                                    src="{% static 'cp/img/attention.png' %}">
-                            <p>Please do not send anything other than ETH to the Unilot smart contract and do not send
-                                ETH from an Exchange.</p></div>
+                            <p>{% trans 'Please do not send anything other than ETH to the Unilot smart contract and do not send ETH from an Exchange.' %}</p></div>
                         <div class="row no-padding">
                             <div class="col-md-4"><img class="qr" src="{% static 'images/qr-0x378356e2391cb.svg' %}">
                             </div>
                             <div class="col-md-8">
                                 <form class="contract-number">
                                     <div class="form-group"><label class="control-label text-uppercase"
-                                                                   for="contractNumber">Contract number</label><input
+                                                                   for="contractNumber">{% trans 'Contract number' %}</label><input
                                             class="form-control" id="tokenBuyContractNumber" type="text" readonly
                                             name="contract-number" value="{% token_address %}">
                                         <a class="btn btn-lg btn-inverse btn-icon js-buy-tokens-copy-contract-number"
                                            role="button" tabindex="0" data-toggle="focus" data-trigger="focus"
-                                           data-placement="bottom" data-content="Contract number copied">
-                                            <span
-                                                    class="glyphicon glyphicon-duplicate"></span><span>Copy contract number</span>
+                                           data-placement="bottom" data-content="{% trans 'Contract number copied' %}">
+                                            <span class="glyphicon glyphicon-duplicate"></span><span>{% trans 'Copy contract number' %}</span>
                                         </a>
                                     </div>
                                 </form>

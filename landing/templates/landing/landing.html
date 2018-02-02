@@ -17,7 +17,7 @@
                 <div class="col-sm-8 col-xs-12">
                     <h1>{% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
                     <p>{% trans 'Pre ICO ends in' %}:</p>
-                    {% with 1975 as eth_amount %}
+                    {% token_eth_cap as eth_amount %}
                     {% token_cap as token_cap %}
                     <div class="sentence__timer">
                         <div class="row">

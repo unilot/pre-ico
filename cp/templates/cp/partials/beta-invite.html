@@ -1,8 +1,9 @@
+{% load i18n %}
 <section class="beta-invite js-has-overlay">
-    <h3>Take your chance to Win <span class="text-nowrap">100 000</span>
-        Tokens in App Beta-Testing</h3>
-    <p>Take part in any drawing and you automatically participate in drawing for price of <span
-            class="text-nowrap">100 000</span> UNIT</p>
+    <h3>{% blocktrans %}Take your chance to Win <span class="text-nowrap">100 000</span>
+        Tokens in App Beta-Testing{% endblocktrans %}</h3>
+    <p>{% blocktrans %}Take part in any drawing and you automatically participate in drawing for price of <span
+            class="text-nowrap">100 000</span> UNIT{% endblocktrans %}</p>
     <form id="beta-invite" class="js-generic-form" method="post"
               action="{% url 'cp:beta-tester' 'json' %}"
               data-success-replace-form-message="Thank you for participation. Application testing will start on 5th of February we will notify you via email."
@@ -11,7 +12,7 @@
         {% include 'cp/partials/form-overlay.html' %}
         {% include 'includes/form-alert.html' %}
         <div class="form-group label-floating">
-            <label class="control-label" for="beta-id">Email</label>
+            <label class="control-label" for="beta-id">{% trans 'Email' %}</label>
             <input class="form-control" id="beta-id"
                    type="text" required name="email" value="{{ user.email }}">
             <div class="help-block with-errors"></div>
@@ -20,15 +21,15 @@
             <div class="checkbox"><label>
                 <input type="checkbox" name="is_android"><span
                     class="checkbox-material"></span>
-                <small>Android</small>
+                <small>{% trans 'Android' %}</small>
             </label><label>
                 <input type="checkbox" name="is_ios"><span class="checkbox-material"></span>
-                <small>Apple iOS</small>
+                <small>{% trans 'Apple iOS' %}</small>
             </label></div>
             <div class="help-block with-errors"></div>
         </div>
-        <button class="btn btn-default btn-lg btn-block">Participate</button>
+        <button class="btn btn-default btn-lg btn-block">{% trans 'Participate' %}</button>
     </form>
-    <p class="text-center"><span class="text-nowrap">Winners will be announced</span> <span
-            class="text-nowrap">on March 5th, 2018</span></p>
+    <p class="text-center">{% blocktrans %}<span class="text-nowrap">Winners will be announced</span> <span
+            class="text-nowrap">on March 5th, 2018</span>{% endblocktrans %}</p>
 </section>

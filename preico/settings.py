@@ -170,7 +170,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = (
-    # os.path.join(BASE_DIR, 'landing', 'locale'),
+    os.path.join(BASE_DIR, 'landing', 'locale'),
     os.path.join(BASE_DIR, 'cp', 'locale'),
 )
 
@@ -215,11 +215,11 @@ COUNTRIES_EXCLUDED = (
 )
 
 WALLET_APPS = (
-    ('MyEtherWallet', _('MyEtherWallet')),
-    ('MetaMask', _('MetaMask')),
-    ('Jaxx', _('Jaxx')),
-    ('Im Token', _('Im Token')),
-    ('Mist', _('Mist')),
-    ('Exodus', _('Exodus')),
+    ('MyEtherWallet', 'MyEtherWallet'),
+    ('MetaMask', 'MetaMask'),
+    ('Jaxx', 'Jaxx'),
+    ('Im Token', 'Im Token'),
+    ('Mist', 'Mist'),
+    ('Exodus', 'Exodus'),
     ('Other', _('Other (I can easily export and import my private key with it)')),
 )

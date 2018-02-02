@@ -1,9 +1,10 @@
+{% load i18n %}
 <script id="timeCounterTemplate" type="text/x-jsrender">
 <div
-        class="timer"><h4>Pre ICO ends in:</h4>
+        class="timer"><h4>{% trans 'Pre ICO ends in' %}:</h4>
     <time datetime="2018-02-17T19:00:00"><span class="time-value days">%D</span><span class="time-value hours">%H</span><span
-            class="time-value minutes">%M</span><span class="time-value seconds">%S</span><span class="time-label days">Days</span><span
-            class="time-label hours">Hours</span><span class="time-label minutes">Minutes</span><span
-            class="time-label seconds">Seconds</span></time>
+            class="time-value minutes">%M</span><span class="time-value seconds">%S</span><span class="time-label days">{% trans 'Days' %}</span><span
+            class="time-label hours">{% trans 'Hours' %}</span><span class="time-label minutes">{% trans 'Minutes' %}</span><span
+            class="time-label seconds">{% trans 'Secs' %}</span></time>
 </div>
 </script>

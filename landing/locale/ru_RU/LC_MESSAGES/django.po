@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-01 17:08+0000\n"
+"POT-Creation-Date: 2018-02-02 02:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Unilot <info@unilot.io>\n"
 "Language-Team: Unilot <info@unilot.io>\n"
@@ -16,18 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: landing/models.py:101
-#, python-format
-msgid "Configuration for image field \"%s\" is not set."
-msgstr ""
-
-#: landing/models.py:103
-#, python-format
-msgid ""
-"Invalid configuration for field \"%s\". Field configuration should contain "
-"at least: PATH, WIDTH, HEIGHT and FORMAT data."
-msgstr ""
 
 #: landing/serializers/subscribe.py:33
 msgid "At least one OS must be selected"
@@ -40,6 +28,7 @@ msgstr "Предварительная продажа токенов"
 
 #: landing/templates/landing/base/base.html:69
 #: landing/templates/landing/base/base.html:109
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:10
 #: landing/templates/landing/landing.html:75
 msgid "What is Unilot"
 msgstr "Что такое Unilot"
@@ -51,12 +40,14 @@ msgstr "Whitepaper"
 
 #: landing/templates/landing/base/base.html:71
 #: landing/templates/landing/base/base.html:110
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:11
 #: landing/templates/landing/landing.html:97
 msgid "Unilot Features"
 msgstr "Особенности Unilot"
 
 #: landing/templates/landing/base/base.html:73
 #: landing/templates/landing/base/base.html:126
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:12
 #: landing/templates/landing/landing.html:362
 msgid "FAQ"
 msgstr "FAQ"
@@ -127,13 +118,46 @@ msgstr ""
 "Станьте инвестором и примите участие в закрытом тестировании MVP (Unilot "
 "приложении для Android и iOS)."
 
-#: landing/templates/landing/documents/White-Paper.html:971
+#: landing/templates/landing/documents/en-us/White-Paper.html:971
 msgid "The Project Team"
 msgstr "Команда"
 
-#: landing/templates/landing/documents/White-Paper.html:973
+#: landing/templates/landing/documents/en-us/White-Paper.html:973
 msgid "Advisory Board"
 msgstr "Советники"
+
+#: landing/templates/landing/documents/en-us/White-Paper.html:1069
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:1054
+#: landing/templates/landing/landing.html:522
+#, python-format
+msgid "Unilot&reg; 2017 - %(year)s All Rights Reserved"
+msgstr "Unilot&reg; 2017 - %(year)s все права защищены"
+
+#: landing/templates/landing/documents/en-us/White-Paper.html:1076
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:1061
+#: landing/templates/landing/landing.html:530
+msgid "Terms and Conditions"
+msgstr "Правила и условия"
+
+#: landing/templates/landing/documents/en-us/White-Paper.html:1077
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:1062
+#: landing/templates/landing/landing.html:531
+msgid "Affiliate Program"
+msgstr "Партнерская программа"
+
+#: landing/templates/landing/documents/en-us/White-Paper.html:1078
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:1063
+#: landing/templates/landing/landing.html:532
+msgid "Bounty Program"
+msgstr "Баунти программа"
+
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:954
+msgid "Команда проекта"
+msgstr ""
+
+#: landing/templates/landing/documents/ru-ru/White-Paper.html:956
+msgid "Советники"
+msgstr ""
 
 #: landing/templates/landing/faq.html:9
 msgid "Frequently Asked Questions"
@@ -198,18 +222,22 @@ msgid "Pre-Ico arrangements and closed testing"
 msgstr "Подготовка к PreICO и начало закрытого тестирования"
 
 #: landing/templates/landing/includes/roadmap.html:6
+#, python-format
 msgid "ICO first stage kick-off with up to 25%% of ICO equity offered."
 msgstr "Начало этапа PreICO, продажа до 25%% токенов."
 
 #: landing/templates/landing/includes/roadmap.html:7
+#, python-format
 msgid "ICO second stage with up to 50%% of ICO equity offered."
 msgstr "Начало второго этапа ICO, продажа до 50%% токенов."
 
 #: landing/templates/landing/includes/roadmap.html:8
 msgid "Unilot beta launch under Malta Remote Gaming Licence."
-msgstr "Запуск бета-версии Unilot под лицензией \"Malta Remote Gaming Licence\"."
+msgstr ""
+"Запуск бета-версии Unilot под лицензией \"Malta Remote Gaming Licence\"."
 
 #: landing/templates/landing/includes/roadmap.html:9
+#, python-format
 msgid "ICO third stage with up to 100%% of ICO equity offered."
 msgstr "Начало третьего этапа ICO, продажа до 100%% токенов."
 
@@ -585,26 +613,19 @@ msgstr ""
 msgid "Subscribe"
 msgstr "Подписаться"
 
-#: landing/templates/landing/landing.html:522
+#: preico/rest_framework/validators.py:7
+msgid "Invalid wallet."
+msgstr "Неверный кошелёк"
+
+#: preico/settings.py:224
+msgid "Other (I can easily export and import my private key with it)"
+msgstr "Другое (кошелёк можно легко экспортировать и импортировать)"
+
+#: preico/validators.py:12
 #, python-format
-msgid "Unilot&reg; 2017 - %(year)s All Rights Reserved"
-msgstr "Unilot&reg; 2017 - %(year)s все права защищены"
-
-#: landing/templates/landing/landing.html:530
-msgid "Terms and Conditions"
-msgstr "Правила и условия"
-
-#: landing/templates/landing/landing.html:531
-msgid "Affiliate Program"
-msgstr "Партнерская программа"
-
-#: landing/templates/landing/landing.html:532
-msgid "Bounty Program"
-msgstr "Баунти программа"
-
-#, fuzzy
-#~ msgid "bonus"
-#~ msgstr "бонус"
-
-#~ msgid "Invalid wallet."
-#~ msgstr "Неверный кошелёк"
+msgid ""
+"Image is too small. Width should be at least %(min_width)d and height should "
+"be at least %(min_height)d"
+msgstr ""
+"Изображение слишком маленькое. Изображение должно быть шириной не менее "
+"%(min_width)d пикселей и высотой не менее %(min_height)d пикселей"

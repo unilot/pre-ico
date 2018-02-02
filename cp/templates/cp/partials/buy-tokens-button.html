@@ -2,6 +2,6 @@
 {% load config %}
 {% token_bonus as token_bonus %}
 <a class="btn btn-primary btn-block btn-buy btn-extra js-buy-token-btn" href="#" role="button"
-   data-toggle="modal" data-target="#{% if user.profile.wallet %}buyUnitTokens{% else %}sourceWallet{% endif %}">Buy Tokens
-    <span>{{ token_bonus|floatformat }}% Bonus</span>
+   data-toggle="modal" data-target="#{% if user.profile.wallet %}buyUnitTokens{% else %}sourceWallet{% endif %}">{% trans 'Buy Tokens' %}
+    <span>{{ token_bonus|floatformat }}% {% trans 'Bonus' %}</span>
 </a>

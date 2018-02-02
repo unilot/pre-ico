@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 {% load config %}
 {% load dynamic_content %}
@@ -5,13 +6,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content no-padding">
             <div class="modal-header img-horizontal"><img class="modal-title-img img-lock" src="{% static 'cp/img/lock.png' %}"><h4
-                    class="modal-title">Source Wallet</h4>
+                    class="modal-title">{% trans 'Source Wallet' %}</h4>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span class="close-icon"
                                                                                                   aria-hidden="true"></span>
                 </button>
             </div>
             <div class="modal-body js-has-overlay">
-                <p>Please specify address of the wallet that will be used to buy UNIT tokens.</p>
+                <p>{% trans 'Please specify address of the wallet that will be used to buy UNIT tokens.' %}</p>
                 <form id="addSourceWalletForm" method="post" action="{% url 'cp:user-wallet' 'json' %}">
                     {% csrf_token %}
                     {% include 'cp/partials/form-overlay.html' %}
@@ -19,7 +20,7 @@
                     <div class="row no-padding">
                         <div class="col-md-10">
                             <div class="form-group label-floating">
-                                <label class="control-label" for="sourceWalletWalletApp">Wallet <span class="required"></span></label>
+                                <label class="control-label" for="sourceWalletWalletApp">{% trans 'Wallet App' %} <span class="required"></span></label>
                                 <span class="caret"></span>
                                 <select
                                     class="form-control" id="sourceWalletWalletApp" required name="wallet">
@@ -44,7 +45,7 @@
                     <div class="row no-padding">
                         <div class="col-md-10">
                             <div class="form-group disabled label-floating">
-                                <label class="control-label" for="sourceWalletWallet">Enter your wallet number
+                                <label class="control-label" for="sourceWalletWallet">{% trans 'Enter your wallet number' %}
                                     <span class="required"></span></label>
                                 <input class="form-control" id="sourceWalletWallet" type="text" name="wallet"
                                        data-wallet="true" required disabled>
@@ -54,7 +55,7 @@
                     </div>
                     <div class="row no-padding">
                         <div class="col-md-12">
-                            <button class="btn btn-primary btn-lg center-block" role="button" type="submit">Confirm
+                            <button class="btn btn-primary btn-lg center-block" role="button" type="submit">{% trans 'Confirm' %}
                             </button>
                         </div>
                     </div>

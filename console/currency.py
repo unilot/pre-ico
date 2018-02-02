@@ -12,7 +12,7 @@ class CurrencySource():
 
     DETAILS = {
         COINBASE: {
-            'title': _('Coinbase')
+            'title': 'Coinbase'
         }
     }
 

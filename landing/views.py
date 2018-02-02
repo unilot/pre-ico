@@ -1,4 +1,5 @@
 from django.http.response import HttpResponseNotFound
+from django.utils import translation
 from rest_framework import generics, permissions, response
 from rest_framework.reverse import reverse
 
@@ -94,9 +95,10 @@ class DocumentView(generics.GenericAPIView):
 class WhitePaperView(generics.GenericAPIView):
     permission_classes = ( permissions.AllowAny, )
     renderer_classes = (renderers.TemplateHTMLRenderer,)
-    template_name='landing/documents/White-Paper.html'
+    template_name='landing/documents/%(locale)s/White-Paper.html'
 
     def get(self, request, *args, **kwargs):
+        self.template_name = self.template_name % {'locale': translation.get_language()}
         return response.Response({
             'advisors_list': models.Adviser.objects.language().filter(published=True).order_by('id'),
             'team_members_list': models.TeamMember.objects.language().filter(published=True).order_by('id')
