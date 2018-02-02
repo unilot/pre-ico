@@ -41,20 +41,13 @@ INSTALLED_APPS = [
     'martor',
     'rest_framework',
     'djrill',
-    'django_countries',
-    'corsheaders'
+    'django_countries'
 ]
-
-CORS_ORIGIN_WHITELIST = (
-    '0.0.0.0:8030',
-)
-CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -74,6 +67,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.i18n',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -163,7 +157,7 @@ MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://assets-cdn.github.com/images/icons/emo
 LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = (
-    # ('ru-ru', 'Русский'),
+    ('ru-ru', 'Русский'),
     ('en-us', 'English'),
 )
 
@@ -174,6 +168,11 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'landing', 'locale'),
+    os.path.join(BASE_DIR, 'cp', 'locale'),
+)
 
 FORMAT_MODULE_PATH = (
     'landing.formats',
@@ -216,11 +215,11 @@ COUNTRIES_EXCLUDED = (
 )
 
 WALLET_APPS = (
-    ('MyEtherWallet', _('MyEtherWallet')),
-    ('MetaMask', _('MetaMask')),
-    ('Jaxx', _('Jaxx')),
-    ('Im Token', _('Im Token')),
-    ('Mist', _('Mist')),
-    ('Exodus', _('Exodus')),
+    ('MyEtherWallet', 'MyEtherWallet'),
+    ('MetaMask', 'MetaMask'),
+    ('Jaxx', 'Jaxx'),
+    ('Im Token', 'Im Token'),
+    ('Mist', 'Mist'),
+    ('Exodus', 'Exodus'),
     ('Other', _('Other (I can easily export and import my private key with it)')),
 )

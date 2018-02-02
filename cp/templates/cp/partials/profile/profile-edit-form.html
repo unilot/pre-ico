@@ -2,24 +2,22 @@
 {% load config %}
 {% load phone %}
 
-<h3>{% block title %}Edit Profile{% endblock %}</h3>
 <form class="js-generic-form" id="editProfile" role="form" data-toggle="validator"
       action="{% url 'cp:profile' 'json' %}" method="patch" data-success-message="{% trans 'Profile updated' %}">
     {% csrf_token %}
     {% include 'cp/partials/form-overlay.html' %}
     {% include 'includes/form-alert.html' %}
-    <div class="form-group label-floating"><label class="control-label" for="firstName">First
-        name <span class="required"></span></label><input class="form-control" id="firstName" type="text"
+    <div class="form-group label-floating"><label class="control-label" for="firstName">{% trans 'First name' %}
+        <span class="required"></span></label><input class="form-control" id="firstName" type="text"
                                                           name="first_name" value="{{ first_name|default_if_none:'' }}">
         <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group label-floating"><label class="control-label" for="lastName">Last
-        name <span class="required"></span></label><input class="form-control" id="lastName" type="text"
+    <div class="form-group label-floating"><label class="control-label" for="lastName">{% trans 'Last name' %}
+        <span class="required"></span></label><input class="form-control" id="lastName" type="text"
                                                           name="last_name" value="{{ last_name|default_if_none:'' }}">
         <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group label-floating"><label class="control-label" for="company">Company
-        name</label>
+    <div class="form-group label-floating"><label class="control-label" for="company">{% trans 'Company name' %}</label>
         <input class="form-control" id="company" type="text" name="company_name"
                value="{{ company_name|default_if_none:'' }}">
         <div class="help-block with-errors"></div>
@@ -27,7 +25,7 @@
     <div class="row no-padding">
         <div class="col-xs-5">
             <div class="form-group label-floating">
-                <label class="control-label" for="phonce_code">Phone code
+                <label class="control-label" for="phonce_code">{% trans 'Phone code' %}
                     <span class="required"></span></label>
                 <span class="caret"></span>
                 <select class="form-control" id="phonce_code" name="phone_code" required>
@@ -42,8 +40,8 @@
             </div>
         </div>
         <div class="col-xs-7">
-            <div class="form-group label-floating"><label class="control-label" for="phone">Phone
-                number <span class="required"></span></label>
+            <div class="form-group label-floating"><label class="control-label" for="phone">{% trans 'Phone number' %}
+                <span class="required"></span></label>
                 {% get_phone_without_code phone_number as phone_without_code %}
                 <input class="form-control" id="phone" type="tel" name="phone_number"
                        value="{{ phone_without_code|default_if_none:'' }}"
@@ -52,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group label-floating"><label class="control-label" for="country">Country
+    <div class="form-group label-floating"><label class="control-label" for="country">{% trans 'Country' %}
         <span class="required"></span></label><span
             class="caret"></span><select class="form-control" id="country" required
                                          name="country">
@@ -63,5 +61,5 @@
     </select>
         <div class="help-block with-errors"></div>
     </div>
-    <button class="btn btn-default btn-lg btn-block" role="submit">Save profile</button>
+    <button class="btn btn-default btn-lg btn-block" role="submit">{% trans 'Save profile' %}</button>
 </form>

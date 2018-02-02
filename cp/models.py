@@ -66,3 +66,6 @@ class BetaTester(models.Model):
                                   on_delete=models.deletion.DO_NOTHING)
     lead = models.OneToOneField(landing_models.Lead, null=True, blank=False, related_name='contact',
                                    on_delete=models.deletion.DO_NOTHING)
+
+    def __str__(self):
+        return self.email

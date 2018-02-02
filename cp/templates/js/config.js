@@ -15,7 +15,7 @@ var config = {
         errors: {
             validation: {
                 invalidWallet: '{% trans 'Invalid wallet' %}',
-                invalidPhone: '{% trans 'Phone is invalid' %}',
+                invalidPhone: '{% trans 'Phone number is invalid' %}',
                 requestFailed: '{% trans 'Validation failed (Request failed)' %}'
             }
         }

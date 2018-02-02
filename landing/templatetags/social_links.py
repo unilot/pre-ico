@@ -61,6 +61,19 @@ def steemit_blog():
 def bitcointalk_thread():
     return settings.SOCIAL_LINKS.get('BITCOINTALK')
 
+
+@register.simple_tag()
+def youtube_video_code(video_alias):
+    codes = {
+        'unilot-app': {
+            'en-us': 'pFknkJfj9kM',
+            'ru-ru': 'HomW1lTRcSE'
+        }
+    }
+
+    return codes.get(video_alias, {}).get(get_language(), '')
+
+
 @register.simple_tag()
 def share_facebook(url):
     return 'https://www.facebook.com/sharer/sharer.php?u=%s' % urlquote(url)

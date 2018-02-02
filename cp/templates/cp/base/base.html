@@ -19,19 +19,19 @@
     <meta name="application-name" content="Unilot">
     <meta name="theme-color" content="#ffffff">
 
+    {% trans 'Initial Coin Offering Pre-sale' as og_title %}
+    {% trans 'Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency.' as og_desc %}
 
     <meta property="og:site_name" content="Unilot"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}"/>
-    <meta property="og:description"
-          content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency."/>
+    <meta property="og:title" content="Unilot | {{ og_title }}"/>
+    <meta property="og:description" content="{{ og_desc }}"/>
     <meta property="og:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/"/>
     <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
     <meta property="article:publisher" content="{% facebook_page %}"/>
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale"/>
-    <meta name="twitter:description"
-          content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency."/>
+    <meta name="twitter:title" content="Unilot | {{ og_title }}"/>
+    <meta name="twitter:description" content="{{ og_desc }}"/>
     <meta name="twitter:url" content="https://unilot.io/{{ LANGUAGE_CODE }}/"/>
     <meta name="twitter:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
     <meta property="og:image:width" content="1200"/>
@@ -50,11 +50,11 @@
 {% endblock %}
 <div id="slideout">
     <ul class="nav">
-        <li><a href="{% url 'cp:dashboard' 'html' %}">Dashboard</a></li>
+        <li><a href="{% url 'cp:dashboard' 'html' %}">{% trans 'Dashboard' %}</a></li>
         <li><a href="{% url 'landing:index-html' %}" target="_blank">Unilot ICO</a></li>
-        <li><a href="{% url 'cp:faq' 'html' %}">FAQ</a></li>
-        <li><a href="{% url 'cp:affiliate' 'html' %}">Affiliate &amp; Bounty programs</a></li>
-        <li><a href="{% url 'cp:profile' 'html' %}">Profile</a></li>
+        <li><a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}</a></li>
+        <li><a href="{% url 'cp:affiliate' 'html' %}">{% trans 'Affiliate &amp; Bounty programs' %}</a></li>
+        <li><a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}</a></li>
     </ul>
 </div>
 <div id="main-body">
@@ -65,24 +65,25 @@
     <footer>
         <ul class="nav nav-pills nav-social">
             <li class="footer-logo"><a href="{% url 'landing:index-html' %}"><img src="{% static 'cp/img/unilot-logo.png' %}" alt="Unilot"></a></li>
-            <li><a class="btn btn-social" href="{% github_organization %}" title="See our code on GitHub" target="_blank"><span class="icon icon-github"></span></a>
+            <li><a class="btn btn-social" href="{% github_organization %}" title="{% trans 'See our code on GitHub' %}" target="_blank"><span class="icon icon-github"></span></a>
             </li>
-            <li><a class="btn btn-social" href="{% telegram_channel %}" title="Join our Telegram group" target="_blank"><span
+            <li><a class="btn btn-social" href="{% telegram_channel %}" title="{% trans 'Join our Telegram group' %}" target="_blank"><span
                     class="icon icon-telegram"></span></a></li>
-            <li><a class="btn btn-social" href="{% reddit_url %}" title="Visit our subreddit" target="_blank"><span
+            <li><a class="btn btn-social" href="{% reddit_url %}" title="{% trans 'Visit our subreddit' %}" target="_blank"><span
                     class="icon icon-reddit"></span></a></li>
-            <li><a class="btn btn-social" href="{% twitter_channel %}" title="Follow us on Twitter" target="_blank"><span
+            <li><a class="btn btn-social" href="{% twitter_channel %}" title="{% trans 'Follow us on Twitter' %}" target="_blank"><span
                     class="icon icon-twitter"></span></a>
             </li>
-            <li><a class="btn btn-social" href="{% facebook_page %}" title="Follow us on Facebook" target="_blank"><span
+            <li><a class="btn btn-social" href="{% facebook_page %}" title="{% trans 'Follow us on Facebook' %}" target="_blank"><span
                     class="icon icon-facebook"></span></a></li>
         </ul>
     </footer>
 </div>
 {% include 'cp/partials/timer-template.html' %}
+{% include 'cp/partials/beta-invite-submitted-template.html' %}
 <script type="application/javascript"
         src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>
-<script type="application/javascript" src="{% static 'cp/js/main.min-ba05a06c9be916b22a034c6033ba020b.js' %}"></script>
+<script type="application/javascript" src="{% static 'cp/js/main.min-64abe2a9a47d586056944a3ced28647c.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
 {% if user.is_authenticated %}

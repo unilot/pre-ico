@@ -1,23 +1,24 @@
+{% load i18n %}
 <div id="bio_ep">
-    <div id="bio_ep_close">No, thanks <span class="cross"></span></div>
+    <div id="bio_ep_close">{% trans 'No, thanks' %} <span class="cross"></span></div>
     <div class="container">
         <section class="wait">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12 text-center">
-                    <p>Win 100 000 UNIT Tokens</p>
+                    <p>{% trans 'Win 100 000 UNIT Tokens' %}</p>
                 </div>
             </div>
         </section>
         <section>
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12 text-center">
-                    <h2 class="message">To enter simply take part in the lottery drawings and get chance to participate in a special UNIT Tokens drawing for free.</h2>
+                    <h2 class="message">{% trans 'To enter simply take part in the lottery drawings and get chance to participate in a special UNIT Tokens drawing for free.' %}</h2>
                 </div>
             </div>
         </section>
         <section>
             <div class="row">
-                <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 text-center"><span class="details">To download and test the app, please enter the following information:</span>
+                <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 text-center"><span class="details">{% trans 'To download and test the app, please enter the following information' %}:</span>
                 </div>
             </div>
         </section>
@@ -26,31 +27,31 @@
                 <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
                     <div class="has-overlay">
                         {% include 'landing/includes/overlay.html' %}
-                        <form class="form" method="post" action="{% url 'landing:beta-tester' 'json' %}"
+                        <form class="form js-form-no-focus" method="post" action="{% url 'landing:beta-tester' 'json' %}"
                               data-success-message="Thank you for participation. Application testing will start on 5th of February we will notify you via email.">
                             <div class="alert js-form-alert hidden text-center"></div>
                             <div class="form-group">
                                 <input id="exitPopupName" type="text" name="name" required data-minlength="3"><span
                                     class="highlight"></span><span class="bar"></span>
-                                <label for="exitPopupName">Your Name <span class="required"></span></label>
+                                <label for="exitPopupName">{% trans 'Name' %} <span class="required"></span></label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <input id="exitPopupEmail" type="email" name="email" required>
-                                <label for="exitPopupEmail">Email <span class="required"></span></label>
+                                <label for="exitPopupEmail">{% trans 'Email' %} <span class="required"></span></label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <input id="exitPopupPhone" type="tel" name="phone" required
                                        data-error="Invalid phone" data-minlength="9">
-                                <label for="exitPopupPhone">Phone <span class="required"></span></label>
+                                <label for="exitPopupPhone">{% trans 'Phone number' %} <span class="required"></span></label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="checkbox">
-                                            <label>Android
+                                            <label>{% trans 'Android' %}
                                                 <input type="checkbox" name="is_android"><span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -58,7 +59,7 @@
                                     <div class="col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                             <div class="checkbox">
-                                                <label>Apple IOS
+                                                <label>{% trans 'Apple IOS' %}
                                                     <input type="checkbox" name="is_ios"><span class="checkmark"></span>
                                                 </label>
                                             </div>
@@ -68,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="form-control">
-                                <button class="btn" type="submit">Enter to Win</button>
+                                <button class="btn" type="submit">{% trans 'Enter to Win' %}</button>
                             </div>
                         </form>
                     </div>
@@ -76,7 +77,7 @@
             </div>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 text-center">
-                    <p class="announce">Winners will be announced on March 5<sup>eth</sup>, 2018</p>
+                    <p class="announce">{% trans 'Winners will be announced on March 5<sup>th</sup>, 2018' %}</p>
                 </div>
             </div>
         </section>

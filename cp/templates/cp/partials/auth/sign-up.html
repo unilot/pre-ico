@@ -11,7 +11,7 @@
             <div class="row no-padding">
                 <div class="col-md-6">
                     <div class="form-group label-floating">
-                        <label class="control-label" for="signUpCountry">Country
+                        <label class="control-label" for="signUpCountry">{% trans 'Country' %}
                             <span class="required"></span></label>
                         <span class="caret"></span>
                         <select class="form-control" id="signUpCountry" required name="country">
@@ -28,8 +28,8 @@
                     <div class="alert alert-warning alert-flex" role="alert"><img
                             class="pull-left" src="{% static 'cp/img/attention.png' %}">
                         {% get_excluded_countries_as_listed_text as forbidden_countries %}
-                        <p>We're unable to sell Unilots to {{ forbidden_countries }}
-                            residents</p></div>
+                        <p>{% blocktrans %}We're unable to sell Unilots to {{ forbidden_countries }}
+                            residents{% endblocktrans %}</p></div>
                 </div>
             </div>
         </div>
@@ -37,13 +37,13 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group label-floating"><label class="control-label"
-                                                          for="signUpEmail">Email address <span
-                    class="required"></span></label>
+                                                          for="signUpEmail">{% trans 'Email' %}
+                <span class="required"></span></label>
                 <input class="form-control" id="signUpEmail" type="email" required name="email"
                        data-online="{% url 'cp:validate-email' 'json' %}">
                 <div class="help-block with-errors"></div>
-                <div class="help-block">You will be notified when your tokens are available. We
-                    won't disclose your email to third parties.
+                <div class="help-block">
+                    {% trans "You will be notified when your tokens are available. We won't disclose your email to third parties." %}
                 </div>
             </div>
         </div>
@@ -53,25 +53,25 @@
             <div class="row no-padding">
                 <div class="col-md-6">
                     <div class="form-group label-floating">
-                        <label class="control-label" for="signUpFirstName">First Name
+                        <label class="control-label" for="signUpFirstName">{% trans 'First name' %}
                             <span class="required"></span></label>
                         <input class="form-control" id="signUpFirstName" type="text" required name="first_name">
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group label-floating">
-                        <label class="control-label" for="signUpLastName">Last Name
+                        <label class="control-label" for="signUpLastName">{% trans 'Last name' %}
                             <span class="required"></span></label>
                         <input class="form-control" id="signUpLastName" type="text" required name="last_name">
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group label-floating"><label class="control-label"
-                                                                  for="signUpCompany">Company
-                        name</label><input class="form-control" id="signUpCompany" type="text"
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="signUpCompany">{% trans 'Company name' %}</label>
+                        <input class="form-control" id="signUpCompany" type="text"
                                            name="company">
-                        <div class="help-block">For incorporated buyers only, otherwise leave
-                            empty
+                        <div class="help-block">
+                            {% trans 'For incorporated buyers only, otherwise leave empty' %}
                         </div>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -84,7 +84,7 @@
             <div class="row no-padding">
                 <div class="col-md-5 col-sm-5 col-xs-5">
                     <div class="form-group label-floating">
-                        <label class="control-label" for="signUpPhoneCode">Phone code
+                        <label class="control-label" for="signUpPhoneCode">{% trans 'Phone code' %}
                             <span class="required"></span></label>
                         <span class="caret"></span>
                         <select class="form-control" id="signUpPhoneCode" name="phone_code" required>
@@ -93,11 +93,13 @@
                             {% for value, label in phone_codes %}
                                 <option value="{{ value }}">{{ label }}</option>
                             {% endfor %}
-                        </select></div>
+                        </select>
+                        <div class="help-block with-errors"></div>
+                    </div>
                 </div>
                 <div class="col-md-7 col-sm-7 col-xs-7">
                     <div class="form-group label-floating"><label class="control-label"
-                                                                  for="signUpPhone">Phone number
+                                                                  for="signUpPhone">{% trans 'Phone number' %}
                         <span class="required"></span></label>
                         <input class="form-control" id="signUpPhone" type="tel" required name="phone"
                                data-phone="signUpPhoneCode">
@@ -110,17 +112,18 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <div class="checkbox"><label><input type="checkbox" id="signUpAgreedToTerms" name="agreed_to_terms"
-                                                    required><span
-                        class="checkbox-material"></span>I accept these
-                    <a href="{% url 'landing:document' 'terms-and-conditions' %}" target="_blank">Terms &amp;
-                        Conditions</a></label></div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="signUpAgreedToTerms" name="agreed_to_terms" required>
+                        <span class="checkbox-material"></span>
+                        {% url 'landing:document' 'terms-and-conditions' as tnc_url %}
+                        {% blocktrans %}I accept these <a href="{{ tnc_url }}" target="_blank">Terms &amp; Conditions</a>{% endblocktrans %}</label></div>
                 <div class="help-block with-errors"></div>
             </div>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-primary btn-lg btn-auth pull-right" role="button" type="submit">Sign me
-                up<span class="glyphicon glyphicon-menu-right"></span></button>
+            <button class="btn btn-primary btn-lg btn-auth pull-right" role="button" type="submit">
+                {% trans 'Sign me up' %}<span class="glyphicon glyphicon-menu-right"></span></button>
         </div>
     </div>
 </form>

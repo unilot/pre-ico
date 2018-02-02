@@ -52,7 +52,7 @@ class AppWeb3():
         elif config['MODE'] == CONNECTION_MODE_IPC:
             provider = IPCProvider(ipc_path=config['PATH'], testnet=config['IS_TESTNET'])
         else:
-            raise RuntimeError(_('Invalid mode'))
+            raise RuntimeError('Invalid mode')
 
         return provider
 
@@ -76,7 +76,7 @@ class ContractHelper():
             with open(file_path, 'r') as abi_text_stream:
                 abi = json.load(abi_text_stream)
         except IOError:
-            raise RuntimeError(_('Failed to read abi from file "%s"' % (file_path)))
+            raise RuntimeError('Failed to read abi from file "%s"' % (file_path))
 
         return abi
 
@@ -95,7 +95,7 @@ class ContractHelper():
             with open(file_path, 'r') as bytecode_stream:
                 bytecode = bytecode_stream.readline()
         except IOError:
-            raise RuntimeError(_('Failed to read bytecode from file "%s"' % (file_path)))
+            raise RuntimeError('Failed to read bytecode from file "%s"' % (file_path))
 
         return bytecode
 
@@ -122,7 +122,7 @@ class ContractHelper():
     @staticmethod
     def __check_path__(file_path):
         if not path.exists(file_path):
-            raise AttributeError(_('Invalid path. File "%s" doesn\'t exist' % file_path))
+            raise AttributeError('Invalid path. File "%s" doesn\'t exist' % file_path)
 
 
 class AccountHelper:
@@ -141,7 +141,7 @@ class AccountHelper:
         config = get_config()
 
         if not 'ETHBASE_PWD' in config:
-            raise ReferenceError(_('Passphrase for base account is not set int settings WEB3_CONFIG -> ETHBASE_PWD'))
+            raise ReferenceError('Passphrase for base account is not set int settings WEB3_CONFIG -> ETHBASE_PWD')
 
         AppWeb3.get_web3()\
             .personal.unlockAccount(account=AccountHelper.get_base_account(),

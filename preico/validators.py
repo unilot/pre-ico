@@ -9,7 +9,7 @@ class ImageMinSizeValidator(object):
     class ValidationError(ValidationError):
         pass
 
-    message = _('Image is too small. Width should be at least {min_width} and height should be at least {min_height}')
+    message = _('Image is too small. Width should be at least %(min_width)d and height should be at least %(min_height)d')
 
     def __init__(self, min_width, min_height, message = None):
         self.min_width = min_width
@@ -23,7 +23,7 @@ class ImageMinSizeValidator(object):
 
         if width < self.min_width or height < self.min_height:
             raise self.__class__.ValidationError(
-                self.message.format(min_width=self.min_width, min_height=self.min_height), code='invalid')
+                self.message % {'min_width':self.min_width, 'min_height': self.min_height}, code='invalid')
 
     def __eq__(self, o: object) -> bool:
         return ( self.min_width == o.min_width

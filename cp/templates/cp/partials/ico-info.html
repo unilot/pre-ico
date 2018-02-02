@@ -1,8 +1,14 @@
+{% load i18n %}
+{% load config %}
+{% load humanize %}
+
+{% token_bonus as bonus %}
+{% token_eth_cap as eth_cap %}
 <div class="info hidden-sm hidden-xs">
-    <div class="info-block"><span class="info-label">Current bonus</span><span
-            class="info-value">40%</span></div>
-    <div class="info-block"><span class="info-label">Min commitment</span><span
-            class="info-value">0.5 ETH</span></div>
-    <div class="info-block"><span class="info-label">Max cap</span><span class="info-value">1 975 ETH</span>
+    <div class="info-block"><span class="info-label">{% trans 'Upcoming bonus' %}</span><span
+            class="info-value">{{ bonus|floatformat }}%</span></div>
+    <div class="info-block"><span class="info-label">{% trans 'Min commitment' %}</span><span
+            class="info-value">{% token_price %} ETH</span></div>
+    <div class="info-block"><span class="info-label">{% trans 'Max cap' %}</span><span class="info-value">{{ eth_cap|intcomma }} ETH</span>
     </div>
 </div>

@@ -13,13 +13,14 @@
                 <section class="profile">
                     <div class="row">
                         <div class="col-md-5 js-has-overlay">
+                            <h3>{% block title %}{% trans 'Edit Profile' %}{% endblock %}</h3>
                             {% include 'cp/partials/profile/profile-edit-form.html' %}
                         </div>
                         <div class="col-md-6 col-md-offset-1">
-                            <div class="row"><h3>My Wallet</h3>
+                            <div class="row"><h3>{% trans 'My Wallet' %}</h3>
                                 <form>
                                     <div class="form-group label-floating">
-                                        <label class="control-label" for="wallet">Wallet
+                                        <label class="control-label" for="wallet">{% trans 'Wallet' %}
                                             <span class="required"></span></label>
                                         <div class="input-group">
                                             <input class="form-control" id="wallet" type="text"
@@ -27,19 +28,23 @@
                                                    readonly><span class="input-group-addon">
                                             <a class="text-uppercase js-my-wallet-copy{% if not user.profile.wallet %} hidden{% endif %}" role="button" tabindex="0"
                                                    data-toggle="focus" data-trigger="focus"
-                                                   data-placement="bottom" data-content="Wallet address copied">
-                                                    Copy address</a>
+                                                   data-placement="bottom" data-content="{% trans 'Wallet address copied' %}">
+                                                    {% trans 'Copy address' %}</a>
                                             {% if not user.profile.wallet %}
                                                 <a class="text-uppercase js-set-wallet-btn" href="#" data-toggle="modal"
-                                                   data-target="#sourceWallet">Set Wallet</a>
+                                                   data-target="#sourceWallet">{% trans 'Set Wallet' %}</a>
                                             {% endif %}
                                         </span></div>
                                     </div>
                                 </form>
                             </div>
-                            <div class="row js-has-overlay">
-                                {% include 'cp/partials/profile/password-change-form.html' %}
-                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row js-has-overlay">
+                        <div class="col-md-5">
+                            {% include 'cp/partials/profile/password-change-form.html' %}
                         </div>
                     </div>
                 </section>
@@ -56,7 +61,5 @@
 
 {% block modals %}
     {% include 'cp/partials/modals/buy-unit-tokens.html' %}
-    {% if not user.profile.wallet %}
-        {% include 'cp/partials/modals/source-wallet.html' %}
-    {% endif %}
+    {% include 'cp/partials/modals/source-wallet.html' %}
 {% endblock %}
