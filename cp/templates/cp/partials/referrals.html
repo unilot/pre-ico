@@ -20,9 +20,11 @@
                                             id="referralLink" name="referralLink"
                                             type="url" value="{{ referral_url }}"
                                             readonly><span class="input-group-addon">
-                <a class="text-uppercase js-copy-referral-link" role="button" tabindex="0"
+                <a class="js-copy-referral-link" role="button" tabindex="0"
                    data-toggle="focus" data-trigger="focus" data-placement="bottom"
-                   data-content="{% trans 'Link copied' %}">{% trans 'Copy link' %} </a></span></div>
+                   data-content="{% trans 'Link copied' %}">
+                    <span class="icon icon-copy"></span>
+                </a></span></div>
         </div>
     </form>
     <p class="subtle">{% blocktrans %}This is your Unilot referral link. Share it with your contacts to get free
