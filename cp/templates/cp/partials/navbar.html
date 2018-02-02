@@ -20,7 +20,7 @@
                                                 alt="{% trans 'Unilot Investor Dashboard' %}"></a></li>
         {% if user.is_authenticated %}
         <li class="item-right item-collapsible">
-            <a href="{% url 'landing:index-html' %}" target="_blank">Unilot ICO</a>
+            <a href="{% url 'landing:index-html' %}">Unilot ICO</a>
         </li>
         <li class="item-right item-collapsible-xs">
             <a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}</a>
