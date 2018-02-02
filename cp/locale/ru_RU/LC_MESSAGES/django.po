@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-02 14:41+0000\n"
+"POT-Creation-Date: 2018-02-02 14:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Unilot <info@unilot.io>\n"
 "Language-Team: Unilot <info@unilot.io>\n"
@@ -63,9 +63,17 @@ msgstr "Выйти"
 msgid "Sign in"
 msgstr "Войти"
 
-#: cp/templates/base/base.html:178 cp/templates/cp/partials/referrals.html:28
+#: cp/templates/base/base.html:178 cp/templates/cp/partials/referrals.html:33
 msgid "Unilot Token Sale"
 msgstr "Продажа токенов Unilot"
+
+#: cp/templates/cp/affiliate.html:22
+msgid "Affiliate program"
+msgstr "Партнёрская программа"
+
+#: cp/templates/cp/affiliate.html:24
+msgid "Bounty program"
+msgstr "Баунти программа"
 
 #: cp/templates/cp/auth.html:11 cp/templates/cp/partials/navbar.html:41
 msgid "Sign up"
@@ -103,11 +111,11 @@ msgstr "Следите за нами в Twitter"
 msgid "Follow us on Facebook"
 msgstr "Сдедите за ноами в Facebook"
 
-#: cp/templates/cp/faq.html:25
+#: cp/templates/cp/faq.html:23
 msgid "Frequently Asked Questions"
 msgstr "Часто задаваемые вопросы"
 
-#: cp/templates/cp/faq.html:26
+#: cp/templates/cp/faq.html:24
 msgid "Here are some common questions about Unilot and whole Lottery Platform"
 msgstr ""
 "Ниже приведены самые часто задаваемые вопросы о Unilot и игровой платформе в "
@@ -216,8 +224,8 @@ msgid ""
 "span>,\n"
 "    we will notify you via email"
 msgstr ""
-"Тестирование прилоежния начнётся <span class=\"text-nowrap\">5-го Февраля</span>, "
-"мы уведомим вас по email."
+"Тестирование прилоежния начнётся <span class=\"text-nowrap\">5-го Февраля</"
+"span>, мы уведомим вас по email."
 
 #: cp/templates/cp/partials/beta-invite.html:8
 msgid ""
@@ -395,26 +403,26 @@ msgstr "Укажите email"
 msgid "Recover"
 msgstr "Восстановить"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:10
+#: cp/templates/cp/partials/modals/source-wallet.html:11
 #, fuzzy
 #| msgid "Set Wallet"
 msgid "Source Wallet"
 msgstr "Добавить кошелёк"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:16
+#: cp/templates/cp/partials/modals/source-wallet.html:17
 msgid ""
 "Please specify address of the wallet that will be used to buy UNIT tokens."
 msgstr "Пожалуйста, укажите кошелёк с которого вы будете покупать UNIT токены"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:24
+#: cp/templates/cp/partials/modals/source-wallet.html:25
 msgid "Wallet App"
 msgstr "Приложение-кошелёк"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:49
+#: cp/templates/cp/partials/modals/source-wallet.html:50
 msgid "Enter your wallet number"
 msgstr "Укажите ваш кошелёк"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:59
+#: cp/templates/cp/partials/modals/source-wallet.html:60
 msgid "Confirm"
 msgstr "Подтвердить"
 
@@ -466,23 +474,23 @@ msgstr ""
 msgid "<span class=\"eth-raised-container\">%(raised_amount)s</span> Raised"
 msgstr "Собрано <span class=\"eth-raised-container\">%(raised_amount)s</span>"
 
-#: cp/templates/cp/partials/referrals.html:8
+#: cp/templates/cp/partials/referrals.html:13
 msgid "My UNIT Referral Tokens"
 msgstr "Мои реферальные токены"
 
-#: cp/templates/cp/partials/referrals.html:11
+#: cp/templates/cp/partials/referrals.html:16
 msgid "Your Affiliate Link"
 msgstr "Партнёрская ссылка"
 
-#: cp/templates/cp/partials/referrals.html:20
+#: cp/templates/cp/partials/referrals.html:25
 msgid "Link copied"
 msgstr "Ссылка скопирована"
 
-#: cp/templates/cp/partials/referrals.html:20
+#: cp/templates/cp/partials/referrals.html:25
 msgid "Copy link"
 msgstr "Скопировать"
 
-#: cp/templates/cp/partials/referrals.html:23
+#: cp/templates/cp/partials/referrals.html:28
 msgid ""
 "This is your Unilot referral link. Share it with your contacts to get free\n"
 "        UNIT coin for every purchased one by your referrer."
@@ -490,19 +498,19 @@ msgstr ""
 "Это ваша реферальная ссылка. Поделитесь ею со своими друзьями чтобы получить "
 "токены за каждый преобретённый ими токен."
 
-#: cp/templates/cp/partials/referrals.html:26
+#: cp/templates/cp/partials/referrals.html:31
 msgid "Share to Telegram"
 msgstr "Поделиться в телеграме"
 
-#: cp/templates/cp/partials/referrals.html:30
+#: cp/templates/cp/partials/referrals.html:35
 msgid "Share to Reddit"
 msgstr "Поделиться на Reddit"
 
-#: cp/templates/cp/partials/referrals.html:32
+#: cp/templates/cp/partials/referrals.html:37
 msgid "Share to Twitter"
 msgstr "Поделиться в Twitter"
 
-#: cp/templates/cp/partials/referrals.html:34
+#: cp/templates/cp/partials/referrals.html:39
 msgid "Share to Facebook"
 msgstr "Поделиться на Facebook"
 
