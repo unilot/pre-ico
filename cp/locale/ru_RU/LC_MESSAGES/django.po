@@ -409,8 +409,6 @@ msgid "Recover"
 msgstr "Восстановить"
 
 #: templates/cp/partials/modals/source-wallet.html:11
-#, fuzzy
-#| msgid "Set Wallet"
 msgid "Source Wallet"
 msgstr "Добавить кошелёк"
 
