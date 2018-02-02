@@ -33,11 +33,11 @@
                                                                    for="contractNumber">{% trans 'Contract number' %}</label><input
                                             class="form-control" id="tokenBuyContractNumber" type="text" readonly
                                             name="contract-number" value="{% token_address %}">
-                                        <a class="btn btn-lg btn-inverse btn-icon js-buy-tokens-copy-contract-number"
+                                        <button type="button" class="btn btn-lg btn-inverse btn-icon js-buy-tokens-copy-contract-number"
                                            role="button" tabindex="0" data-toggle="focus" data-trigger="focus"
                                            data-placement="bottom" data-content="{% trans 'Contract number copied' %}">
                                             <span class="glyphicon glyphicon-duplicate"></span><span>{% trans 'Copy contract number' %}</span>
-                                        </a>
+                                        </button>
                                     </div>
                                 </form>
                             </div>

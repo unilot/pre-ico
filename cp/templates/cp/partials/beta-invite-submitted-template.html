@@ -4,6 +4,9 @@
 <script id="beta-tester-added" type="text/x-jsrender">
 <h3 class="text-center">{% blocktrans %}<span class="text-nowrap">Thank you</span> <span
         class="text-nowrap">for participation!</span>{% endblocktrans %}</h3>
+        <button class="close js-close-destroy-block" data-target=".beta-invite"
+        type="button" aria-label="{% trans 'Close' %}">
+                            <span class="close-icon" aria-hidden="true"></span></button>
 <div class="alert alert-success text-center">
     {% blocktrans %}Application testing will start on <span class="text-nowrap">5th Feb</span>,
     we will notify you via email{% endblocktrans %}
