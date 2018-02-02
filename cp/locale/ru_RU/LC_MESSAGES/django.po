@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-02 02:43+0000\n"
+"POT-Creation-Date: 2018-02-02 14:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Unilot <info@unilot.io>\n"
 "Language-Team: Unilot <info@unilot.io>\n"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: cp/templates/cp/partials/auth/sign-in.html:10
 #: cp/templates/cp/partials/auth/sign-up.html:40
-#: cp/templates/cp/partials/beta-invite.html:15
+#: cp/templates/cp/partials/beta-invite.html:16
 msgid "Email"
 msgstr ""
 
@@ -183,13 +183,13 @@ msgstr ""
 msgid "Phone code"
 msgstr "Код"
 
-#: cp/templates/cp/partials/auth/sign-up.html:100
+#: cp/templates/cp/partials/auth/sign-up.html:102
 #: cp/templates/cp/partials/profile/profile-edit-form.html:44
 #: cp/templates/profile.html:59 cp/templates/profile.html:62
 msgid "Phone number"
 msgstr "Номер телефона"
 
-#: cp/templates/cp/partials/auth/sign-up.html:118
+#: cp/templates/cp/partials/auth/sign-up.html:120
 #, python-format
 msgid ""
 "I accept these <a href=\"%(tnc_url)s\" target=\"_blank\">Terms &amp; "
@@ -198,11 +198,28 @@ msgstr ""
 "Я принимаю все <a href=\"%(tnc_url)s\" target=\"_blank\">правила и условия</"
 "a>"
 
-#: cp/templates/cp/partials/auth/sign-up.html:124
+#: cp/templates/cp/partials/auth/sign-up.html:126
 msgid "Sign me up"
 msgstr "Зарегистрироваться"
 
-#: cp/templates/cp/partials/beta-invite.html:3
+#: cp/templates/cp/partials/beta-invite-submitted-template.html:5
+msgid ""
+"<span class=\"text-nowrap\">Thank you</span> <span\n"
+"        class=\"text-nowrap\">for participation!</span>"
+msgstr ""
+"<span class=\"text-nowrap\">Благодарим вас</span> <span\n"
+"class=\"text-nowrap\">за участие!</span>"
+
+#: cp/templates/cp/partials/beta-invite-submitted-template.html:8
+msgid ""
+"Application testing will start on <span class=\"text-nowrap\">5th Feb</"
+"span>,\n"
+"    we will notify you via email"
+msgstr ""
+"Тестирование прилоежния начнётся <span class=\"text-nowrap\">5-го Февраля</span>, "
+"мы уведомим вас по email."
+
+#: cp/templates/cp/partials/beta-invite.html:8
 msgid ""
 "Take your chance to Win <span class=\"text-nowrap\">100 000</span>\n"
 "        Tokens in App Beta-Testing"
@@ -210,7 +227,7 @@ msgstr ""
 "Получите возможность выиграть <span class=\"text-nowrap\">100 000</span> "
 "UNIT токенов в бета-тестировании приложения"
 
-#: cp/templates/cp/partials/beta-invite.html:5
+#: cp/templates/cp/partials/beta-invite.html:10
 msgid ""
 "Take part in any drawing and you automatically participate in drawing for "
 "price of <span\n"
@@ -219,19 +236,19 @@ msgstr ""
 "Примите участие в любой из игр и вы автоматически становитесь участником "
 "розыгрыша на <span class=\"text-nowrap\">100 000</span> UNIT токенов"
 
-#: cp/templates/cp/partials/beta-invite.html:24
+#: cp/templates/cp/partials/beta-invite.html:25
 msgid "Android"
 msgstr ""
 
-#: cp/templates/cp/partials/beta-invite.html:27
+#: cp/templates/cp/partials/beta-invite.html:28
 msgid "Apple iOS"
 msgstr ""
 
-#: cp/templates/cp/partials/beta-invite.html:31
+#: cp/templates/cp/partials/beta-invite.html:32
 msgid "Participate"
 msgstr ""
 
-#: cp/templates/cp/partials/beta-invite.html:33
+#: cp/templates/cp/partials/beta-invite.html:34
 msgid ""
 "<span class=\"text-nowrap\">Winners will be announced</span> <span\n"
 "            class=\"text-nowrap\">on March 5th, 2018</span>"
@@ -378,26 +395,26 @@ msgstr "Укажите email"
 msgid "Recover"
 msgstr "Восстановить"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:9
+#: cp/templates/cp/partials/modals/source-wallet.html:10
 #, fuzzy
 #| msgid "Set Wallet"
 msgid "Source Wallet"
 msgstr "Добавить кошелёк"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:15
+#: cp/templates/cp/partials/modals/source-wallet.html:16
 msgid ""
 "Please specify address of the wallet that will be used to buy UNIT tokens."
 msgstr "Пожалуйста, укажите кошелёк с которого вы будете покупать UNIT токены"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:23
+#: cp/templates/cp/partials/modals/source-wallet.html:24
 msgid "Wallet App"
 msgstr "Приложение-кошелёк"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:48
+#: cp/templates/cp/partials/modals/source-wallet.html:49
 msgid "Enter your wallet number"
 msgstr "Укажите ваш кошелёк"
 
-#: cp/templates/cp/partials/modals/source-wallet.html:58
+#: cp/templates/cp/partials/modals/source-wallet.html:59
 msgid "Confirm"
 msgstr "Подтвердить"
 

@@ -9,9 +9,7 @@
             <div class="hidden-md hidden-lg">
                 {% if user.is_authenticated %}
                     {% include 'cp/partials/buy-tokens-button.html' %}
-                    {% if not user.beta_tester %}
-                        {% include 'cp/partials/beta-invite.html' %}
-                    {% endif %}
+                    {% include 'cp/partials/beta-invite.html' %}
                 {% else %}
                     <section>
                         {% include 'cp/partials/timer.html' %}
@@ -46,9 +44,7 @@
         <aside class="pull-right">
             {% if user.is_authenticated %}
                 {% include 'cp/partials/buy-tokens-button.html' %}
-                {% if not user.beta_tester %}
-                    {% include 'cp/partials/beta-invite.html' %}
-                {% endif %}
+                {% include 'cp/partials/beta-invite.html' %}
                 {% include 'cp/partials/calculator.html' %}
             {% else %}
                 <section>
@@ -63,8 +59,6 @@
 {% block modals %}
     {% if user.is_authenticated %}
         {% include 'cp/partials/modals/buy-unit-tokens.html' %}
-        {% if not user.profile.wallet %}
-            {% include 'cp/partials/modals/source-wallet.html' %}
-        {% endif %}
+        {% include 'cp/partials/modals/source-wallet.html' %}
     {% endif %}
 {% endblock %}

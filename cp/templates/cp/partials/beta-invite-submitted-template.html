@@ -1,0 +1,12 @@
+{% load i18n %}
+
+{% if not user.beta_tester %}
+<script id="beta-tester-added" type="text/x-jsrender">
+<h3 class="text-center">{% blocktrans %}<span class="text-nowrap">Thank you</span> <span
+        class="text-nowrap">for participation!</span>{% endblocktrans %}</h3>
+<div class="alert alert-success text-center">
+    {% blocktrans %}Application testing will start on <span class="text-nowrap">5th Feb</span>,
+    we will notify you via email{% endblocktrans %}
+</div>
+</script>
+{% endif %}

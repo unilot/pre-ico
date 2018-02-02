@@ -80,9 +80,10 @@
     </footer>
 </div>
 {% include 'cp/partials/timer-template.html' %}
+{% include 'cp/partials/beta-invite-submitted-template.html' %}
 <script type="application/javascript"
         src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>
-<script type="application/javascript" src="{% static 'cp/js/main.min-ba8832b3a745e6884038501b83eb8dc3.js' %}"></script>
+<script type="application/javascript" src="{% static 'cp/js/main.min-64abe2a9a47d586056944a3ced28647c.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
 {% if user.is_authenticated %}
