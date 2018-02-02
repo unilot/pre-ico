@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-02 15:05+0000\n"
+"POT-Creation-Date: 2018-02-02 16:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Unilot <info@unilot.io>\n"
 "Language-Team: Unilot <info@unilot.io>\n"
@@ -79,7 +79,7 @@ msgstr "Партнёрская программа"
 msgid "Bounty program"
 msgstr "Баунти программа"
 
-#: templates/cp/auth.html:5
+#: templates/cp/auth.html:5 templates/cp/partials/navbar.html:41
 msgid "or"
 msgstr "или"
 
@@ -449,10 +449,12 @@ msgid "Current password"
 msgstr "Текущий пароль"
 
 #: templates/cp/partials/profile/password-change-form.html:16
+#: templates/cp/set-password.html:23
 msgid "New password"
 msgstr "Новый пароль"
 
 #: templates/cp/partials/profile/password-change-form.html:22
+#: templates/cp/set-password.html:34
 msgid "Repeat new password"
 msgstr "Повтор нового пароля"
 
@@ -563,6 +565,10 @@ msgstr "Добавить кошелёк"
 #: templates/set-password.html:11
 msgid "Setup your account password"
 msgstr "Укажите пароль для учётной записи"
+
+#: templates/cp/set-password.html:48
+msgid "Save password"
+msgstr "Сохранить"
 
 #: templates/profile.html:5 templates/profile.html:12
 msgid "Edit your profile"
