@@ -1,6 +1,6 @@
 from rest_framework import generics, mixins, permissions, response, status
-# from django.http import response as http_response
 from ..serializers import beta_tester
+from .. import models
 
 
 class AddBetaTester(generics.GenericAPIView, mixins.CreateModelMixin):
@@ -14,7 +14,15 @@ class AddBetaTester(generics.GenericAPIView, mixins.CreateModelMixin):
 
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
+
+        beta_tester_qs = models.BetaTester.objects\
+            .filter(email=serializer.data.get('email'))
+
+        if beta_tester_qs.exists():
+            beta_tester_qs.update(tester=request.user.pk)
+        else:
+            self.perform_create(serializer)
+
         headers = self.get_success_headers(serializer.data)
 
         return response.Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
