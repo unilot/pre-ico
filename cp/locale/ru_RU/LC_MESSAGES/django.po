@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-02 02:08+0000\n"
+"POT-Creation-Date: 2018-02-02 02:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Unilot <info@unilot.io>\n"
 "Language-Team: Unilot <info@unilot.io>\n"
@@ -57,13 +57,19 @@ msgstr "Профиль"
 msgid "Sign out"
 msgstr "Выйти"
 
-#: cp/templates/base/base.html:129 cp/templates/cp/partials/navbar.html:40
+#: cp/templates/base/base.html:129 cp/templates/cp/auth.html:16
+#: cp/templates/cp/partials/auth/sign-in.html:32
+#: cp/templates/cp/partials/navbar.html:40
 msgid "Sign in"
 msgstr "Войти"
 
 #: cp/templates/base/base.html:178 cp/templates/cp/partials/referrals.html:28
 msgid "Unilot Token Sale"
 msgstr "Продажа токенов Unilot"
+
+#: cp/templates/cp/auth.html:11 cp/templates/cp/partials/navbar.html:41
+msgid "Sign up"
+msgstr "Зарегистрироваться"
 
 #: cp/templates/cp/base/base.html:23
 msgid ""
@@ -107,6 +113,95 @@ msgstr ""
 "Ниже приведены самые часто задаваемые вопросы о Unilot и игровой платформе в "
 "целом"
 
+#: cp/templates/cp/partials/auth/sign-in.html:10
+#: cp/templates/cp/partials/auth/sign-up.html:40
+#: cp/templates/cp/partials/beta-invite.html:15
+msgid "Email"
+msgstr ""
+
+#: cp/templates/cp/partials/auth/sign-in.html:15
+#, fuzzy
+#| msgid "New password"
+msgid "Password"
+msgstr "Новый пароль"
+
+#: cp/templates/cp/partials/auth/sign-in.html:22
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: cp/templates/cp/partials/auth/sign-in.html:26
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: cp/templates/cp/partials/auth/sign-up.html:14
+#: cp/templates/cp/partials/profile/profile-edit-form.html:54
+msgid "Country"
+msgstr ""
+
+#: cp/templates/cp/partials/auth/sign-up.html:31
+#, python-format
+msgid ""
+"We're unable to sell Unilots to %(forbidden_countries)s\n"
+"                            residents"
+msgstr ""
+"Мы не можем продавать токены резидентам следующих стран: "
+"%(forbidden_countries)s"
+
+#: cp/templates/cp/partials/auth/sign-up.html:46
+msgid ""
+"You will be notified when your tokens are available. We won't disclose your "
+"email to third parties."
+msgstr ""
+"Вы получите уведомление когда ваши токены станут доступны. Мы не передаём "
+"ваш email третьим лицам."
+
+#: cp/templates/cp/partials/auth/sign-up.html:56
+#: cp/templates/cp/partials/profile/profile-edit-form.html:11
+#: cp/templates/profile.html:25
+msgid "First name"
+msgstr "Имя"
+
+#: cp/templates/cp/partials/auth/sign-up.html:62
+#: cp/templates/cp/partials/profile/profile-edit-form.html:16
+#: cp/templates/profile.html:35
+msgid "Last name"
+msgstr "Фамилия"
+
+#: cp/templates/cp/partials/auth/sign-up.html:70
+#: cp/templates/cp/partials/profile/profile-edit-form.html:21
+#: cp/templates/profile.html:47 cp/templates/profile.html:50
+msgid "Company name"
+msgstr "Компания"
+
+#: cp/templates/cp/partials/auth/sign-up.html:74
+msgid "For incorporated buyers only, otherwise leave empty"
+msgstr ""
+"Только для корпоративных инвесторов, в противном случае оставьте поле пустым"
+
+#: cp/templates/cp/partials/auth/sign-up.html:87
+#: cp/templates/cp/partials/profile/profile-edit-form.html:29
+msgid "Phone code"
+msgstr "Код"
+
+#: cp/templates/cp/partials/auth/sign-up.html:100
+#: cp/templates/cp/partials/profile/profile-edit-form.html:44
+#: cp/templates/profile.html:59 cp/templates/profile.html:62
+msgid "Phone number"
+msgstr "Номер телефона"
+
+#: cp/templates/cp/partials/auth/sign-up.html:118
+#, python-format
+msgid ""
+"I accept these <a href=\"%(tnc_url)s\" target=\"_blank\">Terms &amp; "
+"Conditions</a>"
+msgstr ""
+"Я принимаю все <a href=\"%(tnc_url)s\" target=\"_blank\">правила и условия</"
+"a>"
+
+#: cp/templates/cp/partials/auth/sign-up.html:124
+msgid "Sign me up"
+msgstr "Зарегистрироваться"
+
 #: cp/templates/cp/partials/beta-invite.html:3
 msgid ""
 "Take your chance to Win <span class=\"text-nowrap\">100 000</span>\n"
@@ -123,10 +218,6 @@ msgid ""
 msgstr ""
 "Примите участие в любой из игр и вы автоматически становитесь участником "
 "розыгрыша на <span class=\"text-nowrap\">100 000</span> UNIT токенов"
-
-#: cp/templates/cp/partials/beta-invite.html:15
-msgid "Email"
-msgstr ""
 
 #: cp/templates/cp/partials/beta-invite.html:24
 msgid "Android"
@@ -243,6 +334,7 @@ msgid "Buy UNIT Tokens"
 msgstr "Купить UNIT токены"
 
 #: cp/templates/cp/partials/modals/buy-unit-tokens.html:11
+#: cp/templates/cp/partials/modals/forgot-password.html:25
 msgid "Close"
 msgstr "Закрыть"
 
@@ -251,8 +343,8 @@ msgid ""
 "Be sure that you read all the information about Unilot project and token "
 "sale carefully"
 msgstr ""
-"Убедитесь что вы внимательно ознакомились со всей информацией о проекте Unilot "
-"и продаже токенов"
+"Убедитесь что вы внимательно ознакомились со всей информацией о проекте "
+"Unilot и продаже токенов"
 
 #: cp/templates/cp/partials/modals/buy-unit-tokens.html:26
 msgid ""
@@ -273,6 +365,18 @@ msgstr "Кошелёк контракта скопирован"
 #: cp/templates/cp/partials/modals/buy-unit-tokens.html:39
 msgid "Copy contract number"
 msgstr "Скопировать кошелёк контракта"
+
+#: cp/templates/cp/partials/modals/forgot-password.html:8
+msgid "Password recover"
+msgstr "Восстановление пароля"
+
+#: cp/templates/cp/partials/modals/forgot-password.html:17
+msgid "Enter your email"
+msgstr "Укажите email"
+
+#: cp/templates/cp/partials/modals/forgot-password.html:21
+msgid "Recover"
+msgstr "Восстановить"
 
 #: cp/templates/cp/partials/modals/source-wallet.html:9
 #, fuzzy
@@ -305,12 +409,6 @@ msgstr "Переключение навигации"
 msgid "Unilot Investor Dashboard"
 msgstr "Личный кабинет инвестора Unilot"
 
-#: cp/templates/cp/partials/navbar.html:41
-#, fuzzy
-#| msgid "Sign out"
-msgid "Sign up"
-msgstr "Выйти"
-
 #: cp/templates/cp/partials/profile/password-change-form.html:2
 #: cp/templates/cp/partials/profile/password-change-form.html:28
 msgid "Change password"
@@ -336,33 +434,6 @@ msgstr "Редактирование профиля"
 #: cp/templates/profile.html:15
 msgid "Profile updated"
 msgstr "Профиль обновлён"
-
-#: cp/templates/cp/partials/profile/profile-edit-form.html:11
-msgid "First name"
-msgstr "Имя"
-
-#: cp/templates/cp/partials/profile/profile-edit-form.html:16
-msgid "Last name"
-msgstr "Фамилия"
-
-#: cp/templates/cp/partials/profile/profile-edit-form.html:21
-#: cp/templates/profile.html:47 cp/templates/profile.html:50
-msgid "Company name"
-msgstr "Компания"
-
-#: cp/templates/cp/partials/profile/profile-edit-form.html:29
-msgid "Phone code"
-msgstr "Код"
-
-#: cp/templates/cp/partials/profile/profile-edit-form.html:44
-#, fuzzy
-#| msgid "Phone Number"
-msgid "Phone number"
-msgstr "Номер телефона"
-
-#: cp/templates/cp/partials/profile/profile-edit-form.html:54
-msgid "Country"
-msgstr ""
 
 #: cp/templates/cp/partials/profile/profile-edit-form.html:65
 msgid "Save profile"
@@ -435,8 +506,8 @@ msgid "Minutes"
 msgstr ""
 
 #: cp/templates/cp/partials/timer-template.html:8
-msgid "Secs"
-msgstr ""
+msgid "Seconds"
+msgstr "Секунд"
 
 #: cp/templates/cp/profile.html:19
 msgid "My Wallet"
@@ -466,10 +537,6 @@ msgstr "Укажите пароль для учётной записи"
 #: cp/templates/profile.html:5 cp/templates/profile.html:12
 msgid "Edit your profile"
 msgstr "Редактирование профиля"
-
-#: cp/templates/profile.html:59 cp/templates/profile.html:62
-msgid "Phone Number"
-msgstr "Номер телефона"
 
 #: cp/views/auth.py:149
 msgid "Invalid username or password"

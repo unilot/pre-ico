@@ -5,18 +5,25 @@
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12">
             <ul class="nav nav-tabs">
-                <li {% if tab == 'sign-up' %}class="active" {% endif %}role="presentation"><a href="#auth-sign-up" role="tab"
-                                                          aria-controls="auth-sign-up" data-toggle="tab">Sign Up</a>
+                <li {% if tab == 'sign-up' %}class="active" {% endif %}role="presentation"><a href="#auth-sign-up"
+                                                                                              role="tab"
+                                                                                              aria-controls="auth-sign-up"
+                                                                                              data-toggle="tab">{% trans 'Sign up' %}</a>
                 </li>
-                <li {% if tab == 'sign-in' %}class="active" {% endif %}role="presentation"><a href="#auth-sign-in" role="tab" aria-controls="auth-sign-in"
-                                           data-toggle="tab">Sign In</a></li>
+                <li {% if tab == 'sign-in' %}class="active" {% endif %}role="presentation"><a href="#auth-sign-in"
+                                                                                              role="tab"
+                                                                                              aria-controls="auth-sign-in"
+                                                                                              data-toggle="tab">{% trans 'Sign in' %}</a>
+                </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane {% if tab == 'sign-up' %}active {% endif %}js-has-overlay" id="auth-sign-up" role="tabpanel">
+                <div class="tab-pane {% if tab == 'sign-up' %}active {% endif %}js-has-overlay" id="auth-sign-up"
+                     role="tabpanel">
                     {% include 'cp/partials/form-overlay.html' %}
                     {% include 'cp/partials/auth/sign-up.html' %}
                 </div>
-                <div class="tab-pane {% if tab == 'sign-in' %}active {% endif %}js-has-overlay" id="auth-sign-in" role="tabpanel">
+                <div class="tab-pane {% if tab == 'sign-in' %}active {% endif %}js-has-overlay" id="auth-sign-in"
+                     role="tabpanel">
                     {% include 'cp/partials/form-overlay.html' %}
                     {% include 'cp/partials/auth/sign-in.html' %}
                 </div>
@@ -32,5 +39,5 @@
     </div>
 {% endblock %}
 {% block modals %}
-{% include 'cp/partials/modals/forgot-password.html' %}
+    {% include 'cp/partials/modals/forgot-password.html' %}
 {% endblock %}
