@@ -16,7 +16,7 @@ class AddBetaTester(generics.GenericAPIView, mixins.CreateModelMixin):
         serializer.is_valid(raise_exception=True)
 
         beta_tester_qs = models.BetaTester.objects\
-            .filter(email=serializer.data.get('email'))
+            .filter(email=data.get('email'))
 
         if beta_tester_qs.exists():
             beta_tester_qs.update(tester=request.user.pk)
