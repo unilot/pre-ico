@@ -26,6 +26,9 @@
             <a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}</a>
         </li>
         {% endif %}
+        <li class="item-right item-btn item-lang">
+            {% include 'cp/partials/navbar-language-select.html' %}
+        </li>
         <li class="item-right item-btn">
             {% if user.is_authenticated %}
                 <form action="{% url 'cp:sign-out' 'html' %}" method="post" style="margin: 0;">

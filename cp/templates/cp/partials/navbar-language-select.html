@@ -1,0 +1,30 @@
+{% load i18n %}
+{% load static %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+
+<a class="btn btn-default nav-btn btn-icon" id="languageSwitcher" role="button" nohref
+   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="flag"> <img src="{% static 'cp/img/flags' %}/{{ LANGUAGE_CODE }}.svg"
+                             alt="{{ LANGUAGE_CODE|language_name_local }}"></span>
+    <span class="btn-action">{{ LANGUAGE_CODE|language_name_local|slice:':3'|upper }}</span>
+    <span class="caret"></span>
+</a>
+<ul class="dropdown-menu" aria-labelledby="languageSwitcher">
+    {% for lng_code, lng_name in LANGUAGES %}
+        <li class="active">
+            {% if lng_code != LANGUAGE_CODE %}
+                <form method="post" action="{% url 'set_language' %}" style="margin-bottom: 0;">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ redirect_to }}"/>
+                    <input type="hidden" name="language" value="{{ lng_code }}"/>
+                    <a class="js-submit" nohref style="cursor: pointer;">
+                        <span class="flag"><img src="{% static 'cp/img/flags' %}/{{ lng_code }}.svg"></span>
+                        <span>{{ lng_code|language_name_local }}</span>
+                    </a>
+                </form>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
