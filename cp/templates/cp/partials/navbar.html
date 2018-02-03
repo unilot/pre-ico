@@ -6,15 +6,15 @@
                 class="sr-only">{% trans 'Toggle navigation' %}</span><span
                 class="glyphicon glyphicon-menu-hamburger"></span></a></li>
         {% if user.is_authenticated %}
-            <li class="item-collapsible"><a href="{% url 'cp:dashboard' 'html' %}">{% trans 'Dashboard' %}</a>
+            <li class="item-collapsible{% if request.resolver_match.url_name == 'dashboard' %} active{% endif %}"><a href="{% url 'cp:dashboard' 'html' %}">{% trans 'Dashboard' %}</a>
             </li>
-            <li class="item-collapsible"><a href="{% url 'cp:affiliate' 'html' %}">{% trans 'Affiliate &amp; Bounty programs' %}</a>
+            <li class="item-collapsible{% if request.resolver_match.url_name == 'affiliate' %} active{% endif %}"><a href="{% url 'cp:affiliate' 'html' %}">{% trans 'Affiliate &amp; Bounty programs' %}</a>
             </li>
         {% else %}
             <li class="item-collapsible"><a href="{% url 'landing:index-html' %}">Unilot ICO</a>
             </li>
         {% endif %}
-        <li class="item-collapsible"><a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}</a>
+        <li class="item-collapsible{% if request.resolver_match.url_name == 'faq' %} active{% endif %}"><a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}</a>
         </li>
         <li class="item-brand"><a href="#"><img class="logo" src="{% static 'cp/img/unilot-logo-header.png' %}"
                                                 alt="{% trans 'Unilot Investor Dashboard' %}"></a></li>
@@ -22,7 +22,7 @@
         <li class="item-right item-collapsible">
             <a href="{% url 'landing:index-html' %}">Unilot ICO</a>
         </li>
-        <li class="item-right item-collapsible-xs">
+            <li class="item-right item-collapsible-xs{% if request.resolver_match.url_name == 'profile' %} active{% endif %}">
             <a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}</a>
         </li>
         {% endif %}

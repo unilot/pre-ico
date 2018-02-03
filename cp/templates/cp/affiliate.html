@@ -7,6 +7,10 @@
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">
         <main>
+            <div class="hidden-md hidden-lg">
+                {% include 'cp/partials/buy-tokens-button.html' %}
+                {% include 'cp/partials/beta-invite.html' %}
+            </div>
             <section class="programs"><h3>{% block title %}{% trans 'Affiliate &amp; Bounty programs' %}{% endblock %}</h3>
                 <div class="tab-content">
                     <div class="tab-pane document active" id="affiliate" role="tabpanel">
@@ -24,6 +28,9 @@
                                                aria-controls="bounty" data-toggle="tab">{% trans 'Bounty program' %}</a></li>
                 </ul>
             </section>
+            <div class="hidden-md hidden-lg">
+                {% include 'cp/partials/referrals.html' %}
+            </div>
         </main>
     </div>
     <div class="col-md-4 hidden-sm hidden-xs">

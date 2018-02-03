@@ -1,0 +1,18 @@
+{% load i18n %}
+<ul class="nav">
+    <li{% if request.resolver_match.url_name == 'dashboard' %} class="active"{% endif %}>
+        <a href="{% url 'cp:dashboard' 'html' %}">{% trans 'Dashboard' %}{% if request.resolver_match.url_name == 'dashboard' %}
+            <span class="sr-only">(current)</span>{% endif %}</a></li>
+    <li><a href="{% url 'landing:index-html' %}">Unilot ICO</a></li>
+    <li{% if request.resolver_match.url_name == 'faq' %} class="active"{% endif %}>
+        <a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}{% if request.resolver_match.url_name == 'faq' %}
+            <span class="sr-only">(current)</span>{% endif %}</a></li>
+    {% if user.is_authenticated %}
+    <li{% if request.resolver_match.url_name == 'affiliate' %} class="active"{% endif %}>
+        <a href="{% url 'cp:affiliate' 'html' %}">{% trans 'Affiliate &amp; Bounty programs' %}{% if request.resolver_match.url_name == 'affiliate' %}
+        <span class="sr-only">(current)</span>{% endif %}</a></li>
+    <li{% if request.resolver_match.url_name == 'profile' %} class="active"{% endif %}>
+        <a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}{% if request.resolver_match.url_name == 'profile' %}
+        <span class="sr-only">(current)</span>{% endif %}</a></li>
+    {% endif %}
+</ul>

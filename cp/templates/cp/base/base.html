@@ -49,13 +49,7 @@
 {% block modals %}
 {% endblock %}
 <div id="slideout">
-    <ul class="nav">
-        <li><a href="{% url 'cp:dashboard' 'html' %}">{% trans 'Dashboard' %}</a></li>
-        <li><a href="{% url 'landing:index-html' %}" target="_blank">Unilot ICO</a></li>
-        <li><a href="{% url 'cp:faq' 'html' %}">{% trans 'FAQ' %}</a></li>
-        <li><a href="{% url 'cp:affiliate' 'html' %}">{% trans 'Affiliate &amp; Bounty programs' %}</a></li>
-        <li><a href="{% url 'cp:profile' 'html' %}">{% trans 'Profile' %}</a></li>
-    </ul>
+    {% include 'cp/partials/slideout-nav.html' %}
 </div>
 <div id="main-body">
     {% include 'cp/partials/header.html' %}
