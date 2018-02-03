@@ -24,7 +24,7 @@
                                             <span class="required"></span></label>
                                         <div class="input-group">
                                             <input class="form-control" id="wallet" type="text"
-                                                   value="{{ wallet }}"
+                                                   value="{{ wallet|default_if_none:'' }}"
                                                    readonly><span class="input-group-addon">
                                             <a class="text-uppercase js-my-wallet-copy{% if not user.profile.wallet %} hidden{% endif %}" role="button" tabindex="0"
                                                    data-toggle="focus" data-trigger="focus"
