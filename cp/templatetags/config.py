@@ -1,8 +1,9 @@
 from django import template
+from django.utils.translation import ugettext as _
 from preico import settings
 
 from preico.utils import (get_investing_countries, get_none_investing_countries,
-                          get_phone_codes as u_get_phone_codes, get_wallet_app_choice)
+                          get_wallet_app_choice)
 from datetime import datetime, timezone, timedelta
 
 register = template.Library()
@@ -48,7 +49,7 @@ def get_excluded_countries_as_listed_text():
 
     for key, country in get_none_investing_countries().items():
         if first:
-            result = 'and %s' % country
+            result = '%s %s' % (_('and'), country)
             first = False
         else:
             result = '%s, %s' % (country, result)
