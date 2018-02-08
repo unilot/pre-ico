@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="has-overlay ">
+<div class="has-overlay">
     <form class="form js-generic-form js-form-no-focus" method="post"
           action="{% url 'landing:subscribe' 'json' %}"
           data-replace-success-message="Your mail was successfully submitted">
@@ -9,7 +9,7 @@
             {% include 'landing/includes/form-alert.html' %}
         </div>
         <div class="row">
-            <div class="col-md-6 col-md-offset-1 hidden-sm hidden-xs">
+            <div class="col-md-6 col-md-offset-1 col-sm-4 col-sm-offset-1">
                 <div class="form-group">
                     <input id="subscribeEmail" type="email" name="email" required/>
                     <label for="subscribeEmail">{% trans 'Enter Your Best Email' %}
@@ -17,7 +17,7 @@
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div class="col-md-2 hidden-sm hidden-xs">
+            <div class="col-md-2 col-sm-3">
                 <button type="submit" class="btn btn-block">{% trans 'Get Me On The List' %}</button>
             </div>
         </div>
