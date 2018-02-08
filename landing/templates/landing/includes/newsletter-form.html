@@ -3,7 +3,7 @@
 <div class="has-overlay">
     <form class="form js-generic-form js-form-no-focus" method="post"
           action="{% url 'landing:subscribe' 'json' %}"
-          data-success-message="{% trans 'Your mail was successfully submitted' %}">
+          data-success-message="{% trans 'Your email was successfully submitted' %}">
         {% include 'landing/includes/overlay.html' with is_bg_red=True %}
         <div class="row">
             {% include 'landing/includes/form-alert.html' %}
