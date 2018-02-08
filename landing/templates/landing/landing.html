@@ -439,7 +439,7 @@
             </div>
         </div>
     </section>
-    <footer class="footer" id="newsletter">
+    <footer class="footer{% if not user.is_authenticated %} footer-push{% endif %}" id="newsletter">
         <div class="container">
             <div class="row heading">
                 <div class="col-xs-12">
