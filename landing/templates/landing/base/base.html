@@ -164,7 +164,7 @@
     {% block content %}{% endblock %}
 </div>
 {% if not user.is_authenticated %}
-<div class="floating-footer hidden-sm">
+<div class="floating-footer">
     {% include 'landing/includes/newsletter-form.html' %}
 </div>
 {% endif %}
