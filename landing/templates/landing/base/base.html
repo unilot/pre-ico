@@ -2,8 +2,14 @@
 {% load i18n %}
 {% load social_links %}
 {% load martortags %}
+{% load referral %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
+
+{% trans 'Join Unilot' as contribute_button_text %}
+{% if not contribute_url %}
+    {% contribute_url as contribute_url %}
+{% endif %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
@@ -11,7 +17,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Unilot | {% block title %}{% trans 'Initial Coin Offering Pre-sale' %}{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'landing/css/main.min-18cf93b6832a24dffe84558b147cac51.css' %}">
+    <link rel="stylesheet" href="{% static 'landing/css/main.min-b15cafcfad401396247ac9c69ba9bf6c.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -86,14 +92,12 @@
                                 {% include 'landing/includes/language_menu.html' %}
                             </div>
                         </div>
-                        {% if is_pre_ico %}
-                            <div class="col-md-8 col-xs-12 start-md center-xs">
-                                <div class="header__left__btn">
-                                    <a class="btn" href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a>
-                                    <a class="btn none" href="{{ contribute_url }}">{% trans 'Contribute' %}</a>
-                                </div>
+                        <div class="col-md-8 col-xs-12 start-md center-xs">
+                            <div class="header__left__btn">
+                                <a class="btn text-center" href="{{ contribute_url }}">{{ contribute_button_text }}</a>
+                                <a class="btn none text-center" href="{{ contribute_url }}">{{ contribute_button_text }}</a>
                             </div>
-                        {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@
                     {% if roadshow_list %}
                         <li><a href="#roadshow" class="font-roboto-light-18-px">{% trans 'Upcoming Events' %}</a></li>{% endif %}
                     {% if is_pre_ico %}
-                        <li><a href="{{ contribute_url }}">{% trans 'Contribute Now' %}</a></li>
+                        <li><a href="{{ contribute_url }}">{{ contribute_button_text }}</a></li>
                     {% endif %}
                 {% endblock %}
                 <li>
@@ -160,6 +164,11 @@
     {% block content %}{% endblock %}
 </div>
 {% if not user.is_authenticated %}
+<div class="floating-footer">
+    {% include 'landing/includes/newsletter-form.html' %}
+</div>
+{% endif %}
+{% if not user.is_authenticated %}
 {% include 'landing/includes/exit-intent-popup.html' %}
 {% endif %}
 <script src="{% static 'landing/js/main.min-4203122f24ce323667b1cdb2896ee77c.js' %}"></script>
@@ -167,7 +176,7 @@
 <script type="application/javascript">
 bioEp.init({
     delay: 3,
-    cookieExp: 30,
+    cookieExp: 1,
     showOncePerSession: true,
     width: 600,
     height: 700

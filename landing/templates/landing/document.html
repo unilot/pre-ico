@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-    <section class="document">
+    <section class="document{% if not user.is_authenticated %} footer-push{% endif %}">
         <div class="container">
             {{ document.get_content|safe }}
         </div>

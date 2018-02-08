@@ -43,3 +43,8 @@ def referral_url(context):
 @register.simple_tag(takes_context=True)
 def main_page_url(context):
     return reverse('landing:index-html')
+
+
+@register.simple_tag()
+def contribute_url():
+    return reverse('cp:sign-up', kwargs={'format': 'html'})
