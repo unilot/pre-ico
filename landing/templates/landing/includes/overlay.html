@@ -1,8 +1,8 @@
-<div class="overlay hidden{% if is_bg_black %} black-bg{% endif %}">
+<div class="overlay hidden{% if is_bg_black %} black-bg{% endif %}{% if is_bg_red %} red-bg{% endif %}">
     <div class="overlay-wrapper">
         <div class="row centered full-width">
             <div class="material-loader">
-                <svg class="circular primary">
+                <svg class="circular {% if is_bg_red %}warning{% else %}primary{% endif %}">
                     <circle class="path" r="20" cx="50" cy="50" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
                 </svg>
             </div>

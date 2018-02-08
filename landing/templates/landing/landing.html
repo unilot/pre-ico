@@ -7,6 +7,8 @@
 {% load humanize %}
 {% get_current_language as LANGUAGE_CODE %}
 
+{% trans 'Join Unilot For Free' as contribute_button_text %}
+
 {% block content %}
     <section class="sentence" id="main">
         <div class="container">
@@ -58,7 +60,7 @@
                         </div>
                         {% if is_pre_ico %}
                             <div class="col-xs-12 start-sm center-xs"><a class="btn" href="{{ contribute_url }}">
-                                {% trans 'Contribute Now' %}</a></div>
+                                {{ contribute_button_text }}</a></div>
                         {% endif %}
                     </div>
                 </div>
@@ -216,7 +218,7 @@
                             <div class="row">
                                 {% if is_pre_ico %}
                                     <div class="col-xs-12">
-                                        <a class="btn" href="{{ contribute_url }}">{% trans 'Participate' %}</a>
+                                        <a class="btn" href="{{ contribute_url }}">{{ contribute_button_text }}</a>
                                     </div>
                                 {% endif %}
                             </div>
@@ -442,35 +444,6 @@
             <div class="row heading">
                 <div class="col-xs-12">
                     <h2>{% trans 'Newsletter' %}</h2><span>{% trans 'Newsletter' %}</span>
-                </div>
-            </div>
-            <div class="row content">
-                <div class="col-xs-12">
-                    {% if not user.is_authenticated %}
-                        <div class="has-overlay ">
-                            <form class="form js-generic-form" method="post"
-                                  action="{% url 'landing:subscribe' 'json' %}"
-                                  data-success-message="You mail was successfully submitted">
-                                {% include 'landing/includes/overlay.html' with is_bg_black=True %}
-                                <div class="row">
-                                    {% include 'landing/includes/form-alert.html' %}
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-1 col-xs-12">
-                                        <div class="form-group">
-                                            <input id="subscribeEmail" type="email" name="email" required/>
-                                            <label for="subscribeEmail">{% trans 'To join our Mailing List, please enter your email address below' %}
-                                            <span class="required"></span></label>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-12 col-xs-12">
-                                        <button type="submit" class="btn btn-block">{% trans 'Subscribe' %}</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    {% endif %}
                 </div>
             </div>
             <div class="footer__top">
