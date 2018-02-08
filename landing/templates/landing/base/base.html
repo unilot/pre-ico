@@ -2,10 +2,14 @@
 {% load i18n %}
 {% load social_links %}
 {% load martortags %}
+{% load referral %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 
 {% trans 'Join Unilot' as contribute_button_text %}
+{% if not contribute_url %}
+    {% contribute_url as contribute_url %}
+{% endif %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
@@ -88,14 +92,12 @@
                                 {% include 'landing/includes/language_menu.html' %}
                             </div>
                         </div>
-                        {% if is_pre_ico %}
-                            <div class="col-md-8 col-xs-12 start-md center-xs">
-                                <div class="header__left__btn">
-                                    <a class="btn text-center" href="{{ contribute_url }}">{{ contribute_button_text }}</a>
-                                    <a class="btn none text-center" href="{{ contribute_url }}">{{ contribute_button_text }}</a>
-                                </div>
+                        <div class="col-md-8 col-xs-12 start-md center-xs">
+                            <div class="header__left__btn">
+                                <a class="btn text-center" href="{{ contribute_url }}">{{ contribute_button_text }}</a>
+                                <a class="btn none text-center" href="{{ contribute_url }}">{{ contribute_button_text }}</a>
                             </div>
-                        {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
