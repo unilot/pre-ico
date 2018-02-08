@@ -267,7 +267,7 @@ msgstr ""
 
 #: cp/templates/cp/partials/beta-invite.html:32
 msgid "Participate"
-msgstr ""
+msgstr "Участвовать"
 
 #: cp/templates/cp/partials/beta-invite.html:34
 msgid ""
