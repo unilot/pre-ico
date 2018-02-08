@@ -16,8 +16,19 @@
                 <div data-depth="0.03"><img src="{% static 'landing/img/sentence-bg.png' %}" alt=""></div>
             </div>
             <div class="row">
-                <div class="col-sm-8 col-xs-12">
+                <div class="col-md-6">
                     <h1>{% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
+                </div>
+                <div class="col-md-6">
+                    <p style="margin-top:40px;">{% blocktrans %}Unilot is a blockchain-powered lottery, gambling, betting and prognostication suite.
+                        In short, it is everything that a casino isn’t. It runs as a Distributed Autonomous
+                        Organization to guarantee a truly transparent lottery and gambling solution. Use Unilot's token
+                        like a casino chip to join and play, create and run your own private gambling rooms, and even
+                        put together global complex betting deals world-wide.{% endblocktrans %}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-xs-12">
                     <p>{% trans 'Pre ICO ends in' %}:</p>
                     {% token_eth_cap as eth_amount %}
                     {% token_cap as token_cap %}
