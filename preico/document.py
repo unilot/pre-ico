@@ -1,5 +1,6 @@
 import os
 from . import settings
+from django.utils.translation import get_language, ugettext as _
 
 class Document():
     path=None
@@ -78,25 +79,24 @@ class AffiliateTermsAndConditions(Document):
 
     path = os.path.join(settings.BASE_DIR, 'Affiliate-terms-and-conditions_v1.html')
 
-
 class BountyProgram(Document):
     title = 'Bounty Program'
 
     table_of_content = (
-        ('bounty', 'Bounty UNILOT'),
-        ('bitcointalk', 'Bitcointalk'),
-        ('translation-community-management', 'Translation & Community Management'),
-        ('facebook', 'Facebook'),
-        ('twitter', 'Twitter'),
-        ('youtube', 'YouTube'),
-        ('reddit', 'Reddit'),
-        ('telegram', 'Telegram'),
-        ('media-blogs', 'Media and blogs'),
-        ('steemit', 'Steemit.com'),
-        ('golos', 'Golos.io'),
-        ('linkedin', 'Linkedin'),
-        ('support', 'Exclusive support'),
-        ('reserve', 'Reserve')
+        ('bounty', _('Bounty UNILOT')),
+        ('bitcointalk', _('Bitcointalk')),
+        ('translation-community-management', _('Translation & Community Management')),
+        ('facebook', _('Facebook')),
+        ('twitter', _('Twitter')),
+        ('youtube', _('YouTube')),
+        ('reddit', _('Reddit')),
+        ('telegram', _('Telegram')),
+        ('media-blogs', _('Media and blogs')),
+        ('steemit', _('Steemit.com')),
+        ('golos', _('Golos.io')),
+        ('linkedin', _('Linkedin')),
+        ('support', _('Exclusive support')),
+        ('reserve', _('Reserve'))
     )
 
-    path = os.path.join(settings.BASE_DIR, 'Bounty-Program.html')
+    path = os.path.join(settings.BASE_DIR, 'Bounty-Program-%s.html' % get_language())
