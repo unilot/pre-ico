@@ -115,7 +115,7 @@ class FAQView(generics.ListAPIView):
 
 
 class Subscribe(generics.CreateAPIView):
-    permission_classes = (p_permissions.isGuest,)
+    permission_classes = (permissions.AllowAny,)
     serializer_class = subscribe.SubscribeSerializer
 
 
