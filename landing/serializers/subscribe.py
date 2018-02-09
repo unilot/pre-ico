@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from rest_framework import validators
+
+from preico.utils import SendLane
 from .. import models
 from cp import models as cp_models
 from django.contrib.auth import models as django_models
@@ -12,6 +14,16 @@ class SubscribeSerializer(serializers.ModelSerializer):
         validators.UniqueValidator(queryset=models.Lead.objects.all()),
         validators.UniqueValidator(queryset=django_models.User.objects.all())
     ])
+
+    def create(self, validated_data):
+        result = super().create(validated_data)
+
+        try:
+            SendLane.add_lead(validated_data.get('email'))
+        except Exception:
+            pass
+
+        return result
 
     class Meta:
         model = models.Lead
@@ -47,6 +59,19 @@ class BetaTesterSerializer(serializers.ModelSerializer):
                     email=beta_tester_data.get('email'))
             except models.Lead.DoesNotExist:
                 beta_tester_data['lead'] = models.Lead.objects.create(**lead_data)
+
+            os_type = []
+
+            if beta_tester_data['is_android']:
+                os_type.append(2403)
+
+            if beta_tester_data['is_ios']:
+                os_type.append(2404)
+
+            SendLane.add_beta_tester(email=beta_tester_data.get('email'),
+                        name=beta_tester_data['lead'].name,
+                        phone_number=beta_tester_data['lead'].phone_number,
+                        os_type=os_type)
 
             return super().create(beta_tester_data)
 

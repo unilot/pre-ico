@@ -26,6 +26,7 @@ class FAQ(TranslatableModel):
 def generate_referral_code(*args):
     return utils.generate_password(42, False)
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', null=False, on_delete=models.deletion.PROTECT)
     company_name = models.CharField(max_length=128, null=True, blank=True)
@@ -52,11 +53,13 @@ class Profile(models.Model):
     def __str__(self):
         return self.username
 
+
 class Text(TranslatableModel):
     key = models.CharField(max_length=64, null=False, blank=False)
     translations = TranslatedFields(
         text = MartorField(null=False, blank=False)
     )
+
 
 class BetaTester(models.Model):
     is_ios = models.BooleanField(null=False, blank=False)
