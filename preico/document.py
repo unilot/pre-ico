@@ -99,4 +99,4 @@ class BountyProgram(Document):
         ('reserve', _('Reserve'))
     )
 
-    path = os.path.join(settings.BASE_DIR, 'Bounty-Program-%s.html' % get_language())
+    path = os.path.join(settings.BASE_DIR, 'Bounty-Program.html')
