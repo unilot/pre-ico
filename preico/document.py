@@ -14,7 +14,7 @@ class Document():
 
     @classmethod
     def get_content(cls):
-        document_file = open(cls.path, 'r')
+        document_file = open(cls.path.format(language=get_language()), 'r')
 
         return document_file.read()
 
@@ -77,7 +77,7 @@ class AffiliateTermsAndConditions(Document):
         ('schedule1', 'Schedule #1'),
     )
 
-    path = os.path.join(settings.BASE_DIR, 'Affiliate-terms-and-conditions_v1.html')
+    path = os.path.join(settings.BASE_DIR, 'Affiliate-terms-and-conditions_v1-{language}.html')
 
 class BountyProgram(Document):
     title = 'Bounty Program'
@@ -99,4 +99,4 @@ class BountyProgram(Document):
         ('reserve', _('Reserve'))
     )
 
-    path = os.path.join(settings.BASE_DIR, 'Bounty-Program.html')
+    path = os.path.join(settings.BASE_DIR, 'Bounty-Program-{language}.html')
