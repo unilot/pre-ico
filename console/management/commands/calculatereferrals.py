@@ -1,9 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.db.models.query_utils import Q
-from django.utils import timezone
 
-from console.utils import AppWeb3, ContractHelper, AccountHelper
-from preico import settings
 from cp import models
 
 

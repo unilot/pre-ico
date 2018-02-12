@@ -5,6 +5,7 @@ from django.core import validators as django_validators
 from django.db import transaction
 from preico.rest_framework import validators as p_validators
 from preico import utils
+from preico.utils import SendLane
 from .. import models
 import re
 
@@ -54,7 +55,12 @@ class SignUpSerializer(serializers.ModelSerializer):
 
             profile_data['user'] = instance
 
-            models.Profile.objects.create(**profile_data)
+            profile = models.Profile.objects.create(**profile_data)
+
+            SendLane.add_beta_tester(email=instance.email,
+                                         name=('%s %s' % (instance.first_name, instance.last_name)),
+                                         phone_number=profile.phone_number,
+                                         os_type=[])
 
         return instance
 

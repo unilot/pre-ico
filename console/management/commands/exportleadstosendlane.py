@@ -1,11 +1,7 @@
-from pprint import pprint
-
 from django.core.management.base import BaseCommand
 
-from preico import settings
 from landing import models as l_models
 from cp import models as c_models
-import requests
 
 from preico.utils import SendLane
 
