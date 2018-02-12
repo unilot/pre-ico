@@ -11,7 +11,6 @@ from django.contrib.auth import logout, models as auth_models, authenticate, log
 from django.db import transaction
 from django.core.mail import EmailMessage
 
-from cp.templatetags.referral import referral_code
 from preico.document import TermsAndConditions
 from .. import models
 from ..serializers import auth
