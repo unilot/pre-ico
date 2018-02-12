@@ -12,7 +12,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         users = django_models.User.objects\
                 .filter(beta_tester__isnull=True) \
-                .exclude(Q(token_balance__isnull=True) | Q(token_balance__exact='') | Q(token_balance__exact='0'))
+                .filter(Q(profile__token_balance__isnull=True)
+                        | Q(profile__token_balance__exact='')
+                        | Q(profile__token_balance__exact='0'))
 
         for user in users:
             os_type = []
