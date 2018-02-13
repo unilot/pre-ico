@@ -6,4 +6,6 @@ class DashboardView(views.APIView):
     template_name = 'cp/dashboard.html'
 
     def get(self, request, *args, **kwargs):
-        return response.Response()
+        thank_you = 'thank-you' in request.GET.keys()
+
+        return response.Response(data={'thank_you': thank_you})
