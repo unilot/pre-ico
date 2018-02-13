@@ -11,16 +11,18 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         users = django_models.User.objects\
-                .filter(beta_tester__isnull=True) \
-                .filter(Q(profile__token_balance__isnull=True)
+                .filter(beta_tester__isnull=True)\
+                .exclude(profile__isnull=True)\
+                .filter(  Q(profile__token_balance__isnull=True)
                         | Q(profile__token_balance__exact='')
-                        | Q(profile__token_balance__exact='0'))
+                        | Q(profile__token_balance__exact='0') )\
+                .exclude(is_staff=True)
 
         for user in users:
             os_type = []
 
             name = '%s %s' % (user.first_name, user.last_name)
-            phone_number = user.beta_tester.profile.phone_number
+            phone_number = user.profile.phone_number
 
             r = SendLane.add_beta_tester(user.email,
                                      name,
