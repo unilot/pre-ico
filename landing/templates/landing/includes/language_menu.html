@@ -2,22 +2,51 @@
 {% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
-<div class="js-lng-selector">
-    <form method="post" class="lng" action="{% url 'set_language' %}">
-        <img src="{% get_static_prefix %}/landing/img/{{ LANGUAGE_CODE }}.svg"
-             alt="{{ LANGUAGE_CODE|language_name_local }}">
-        <p class="js-lng-label">
-            {{ LANGUAGE_CODE|language_name_local|slice:":3"|upper }}
-        </p>
-        <i class="icon-arrow_drop_down"></i>
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ redirect_to }}"/>
-        <select name="language" class="js-submit-on-change">
-            {% for lang_code,lang_name in LANGUAGES %}
-                <option value="{{ lang_code }}"{% if lang_code == LANGUAGE_CODE %} selected{% endif %}>
-                    {{ lang_code|language_name_local|slice:":3"|upper }}
-                </option>
-            {% endfor %}
-        </select>
-    </form>
+<div class="lng">
+    <a class="lng-switcher" id="lng-switcher" role="button" href="#" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false">
+        <span class="flag">
+            <img src="{% get_static_prefix %}/landing/img/{{ LANGUAGE_CODE }}.svg"/>
+        </span>
+        <span>{{ LANGUAGE_CODE|language_name_local|slice:":3"|upper }}</span>
+        <span class="icon-arrow_drop_down"></span>
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="lng-switcher">
+        {% for lang_code,lang_name in LANGUAGES %}
+            {% if lang_code != LANGUAGE_CODE %}
+                <li>
+                    <form method="post" class="lng" action="{% url 'set_language' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ redirect_to }}"/>
+                        <input type="hidden" name="language" value="{{ lang_code }}"/>
+                        <a class="js-submit" nohref style="cursor: pointer;">
+                            <span class="flag"><img
+                                    src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"></span>
+                            <span>{{ lang_code|language_name_local }}</span>
+                        </a>
+                    </form>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </div>
+{#<div class="js-lng-selector">#}
+{#    <form method="post" class="lng" action="{% url 'set_language' %}">#}
+{#        <img src="{% get_static_prefix %}/landing/img/{{ LANGUAGE_CODE }}.svg"#}
+{#             alt="{{ LANGUAGE_CODE|language_name_local }}">#}
+{#        <p class="js-lng-label">#}
+{#            {{ LANGUAGE_CODE|language_name_local|slice:":3"|upper }}#}
+{#        </p>#}
+{#        <i class="icon-arrow_drop_down"></i>#}
+{#        {% csrf_token %}#}
+{#        <input type="hidden" name="next" value="{{ redirect_to }}"/>#}
+{#        <select name="language" class="js-submit-on-change">#}
+{#            {% for lang_code,lang_name in LANGUAGES %}#}
+{#                <option value="{{ lang_code }}"{% if lang_code == LANGUAGE_CODE %} selected{% endif %}>#}
+{#                    {{ lang_code|language_name_local|slice:":3"|upper }}#}
+{#                </option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#    </form>#}
+{#</div>#}
