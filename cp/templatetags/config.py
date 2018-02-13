@@ -74,6 +74,8 @@ def get_stage_start_date(stage):
     index = int(stage)
     stages = (
         datetime(2018, 1, 10, 19, 0, tzinfo=timezone.utc),
+        datetime(2018, 2, 22, 19, 0, tzinfo=timezone.utc),
+        datetime(2018, 4, 20, 19, 0, tzinfo=timezone.utc),
     )
 
     if index >= len(stages):
@@ -87,6 +89,8 @@ def get_stage_end_date(stage):
     index = int(stage)
     stages = (
         datetime(2018, 2, 17, 19, 0, tzinfo=timezone.utc),
+        datetime(2018, 3, 22, 19, 0, tzinfo=timezone.utc),
+        datetime(2018, 5, 20, 19, 0, tzinfo=timezone.utc),
     )
 
     if index >= len(stages):

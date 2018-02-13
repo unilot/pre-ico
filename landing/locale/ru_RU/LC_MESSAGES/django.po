@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-08 09:32+0000\n"
+"POT-Creation-Date: 2018-02-13 22:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Unilot <info@unilot.io>\n"
 "Language-Team: Unilot <info@unilot.io>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: serializers/subscribe.py:33
+#: serializers/subscribe.py:45
 msgid "At least one OS must be selected"
 msgstr "Необходимо выбрать хотябы одну платформу"
 
-#: templates/landing/base/base.html:9
+#: templates/landing/base/base.html:9 templates/landing/landing.html:10
 msgid "Join Unilot"
 msgstr "Участвовать"
 
@@ -31,7 +31,7 @@ msgstr "Предварительная продажа токенов"
 
 #: templates/landing/base/base.html:75 templates/landing/base/base.html:113
 #: templates/landing/documents/ru-ru/White-Paper.html:10
-#: templates/landing/landing.html:87
+#: templates/landing/landing.html:96
 msgid "What is Unilot"
 msgstr "Что такое Unilot"
 
@@ -41,13 +41,13 @@ msgstr "Whitepaper"
 
 #: templates/landing/base/base.html:77 templates/landing/base/base.html:114
 #: templates/landing/documents/ru-ru/White-Paper.html:11
-#: templates/landing/landing.html:107
+#: templates/landing/landing.html:118
 msgid "Unilot Features"
 msgstr "Особенности Unilot"
 
 #: templates/landing/base/base.html:79 templates/landing/base/base.html:130
 #: templates/landing/documents/ru-ru/White-Paper.html:12
-#: templates/landing/landing.html:372
+#: templates/landing/landing.html:540
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -55,12 +55,12 @@ msgstr "FAQ"
 msgid "Upcoming Events"
 msgstr "Ближайшие события"
 
-#: templates/landing/base/base.html:115 templates/landing/landing.html:180
+#: templates/landing/base/base.html:115 templates/landing/landing.html:191
 msgid "Mobile Client"
 msgstr "Мобильный клиент"
 
 #: templates/landing/base/base.html:116
-#: templates/landing/includes/roadmap.html:18
+#: templates/landing/includes/roadmap.html:17
 msgid "Roadmap"
 msgstr "Дорожная карта"
 
@@ -82,15 +82,15 @@ msgstr "Советники"
 msgid "Team"
 msgstr "Команда"
 
-#: templates/landing/base/base.html:125 templates/landing/landing.html:404
+#: templates/landing/base/base.html:125 templates/landing/landing.html:572
 msgid "Publications"
 msgstr "Публикации"
 
-#: templates/landing/base/base.html:127 templates/landing/landing.html:429
+#: templates/landing/base/base.html:127 templates/landing/landing.html:597
 msgid "Partners"
 msgstr "Партнеры"
 
-#: templates/landing/base/base.html:128 templates/landing/landing.html:457
+#: templates/landing/base/base.html:128 templates/landing/landing.html:625
 msgid "Newsletter"
 msgstr "Рассылка"
 
@@ -112,26 +112,26 @@ msgstr "Советники"
 
 #: templates/landing/documents/en-us/White-Paper.html:1069
 #: templates/landing/documents/ru-ru/White-Paper.html:1054
-#: templates/landing/landing.html:503
+#: templates/landing/landing.html:671
 #, python-format
 msgid "Unilot&reg; 2017 - %(year)s All Rights Reserved"
 msgstr "Unilot&reg; 2017 - %(year)s все права защищены"
 
 #: templates/landing/documents/en-us/White-Paper.html:1076
 #: templates/landing/documents/ru-ru/White-Paper.html:1061
-#: templates/landing/landing.html:511
+#: templates/landing/landing.html:679
 msgid "Terms and Conditions"
 msgstr "Правила и условия"
 
 #: templates/landing/documents/en-us/White-Paper.html:1077
 #: templates/landing/documents/ru-ru/White-Paper.html:1062
-#: templates/landing/landing.html:512
+#: templates/landing/landing.html:681
 msgid "Affiliate Program"
 msgstr "Партнерская программа"
 
 #: templates/landing/documents/en-us/White-Paper.html:1078
 #: templates/landing/documents/ru-ru/White-Paper.html:1063
-#: templates/landing/landing.html:513
+#: templates/landing/landing.html:683
 msgid "Bounty Program"
 msgstr "Баунти программа"
 
@@ -257,57 +257,57 @@ msgstr ""
 "Запуск функционала тотализатора с возможностью делать прогнозируемые ставки "
 "в частных играх и на white label платформе"
 
-#: templates/landing/includes/roadmap.html:26
-#: templates/landing/includes/roadmap.html:96
-#: templates/landing/includes/roadmap.html:132
-#: templates/landing/includes/roadmap.html:202
+#: templates/landing/includes/roadmap.html:28
+#: templates/landing/includes/roadmap.html:98
+#: templates/landing/includes/roadmap.html:134
+#: templates/landing/includes/roadmap.html:204
 msgid "June"
 msgstr "Июнь"
 
-#: templates/landing/includes/roadmap.html:36
-#: templates/landing/includes/roadmap.html:106
-#: templates/landing/includes/roadmap.html:142
-#: templates/landing/includes/roadmap.html:212
+#: templates/landing/includes/roadmap.html:38
+#: templates/landing/includes/roadmap.html:108
+#: templates/landing/includes/roadmap.html:144
+#: templates/landing/includes/roadmap.html:214
 msgid "September"
 msgstr "Сентябрь"
 
-#: templates/landing/includes/roadmap.html:36
-#: templates/landing/includes/roadmap.html:142
+#: templates/landing/includes/roadmap.html:38
+#: templates/landing/includes/roadmap.html:144
 msgid "October"
 msgstr "Октябрь"
 
-#: templates/landing/includes/roadmap.html:46
-#: templates/landing/includes/roadmap.html:152
+#: templates/landing/includes/roadmap.html:48
+#: templates/landing/includes/roadmap.html:154
 msgid "December"
 msgstr "Декабрь"
 
-#: templates/landing/includes/roadmap.html:56
-#: templates/landing/includes/roadmap.html:162
+#: templates/landing/includes/roadmap.html:58
+#: templates/landing/includes/roadmap.html:164
 msgid "January"
 msgstr "Январь"
 
-#: templates/landing/includes/roadmap.html:66
-#: templates/landing/includes/roadmap.html:172
+#: templates/landing/includes/roadmap.html:68
+#: templates/landing/includes/roadmap.html:174
 msgid "February"
 msgstr "Февраль"
 
-#: templates/landing/includes/roadmap.html:76
-#: templates/landing/includes/roadmap.html:182
+#: templates/landing/includes/roadmap.html:78
+#: templates/landing/includes/roadmap.html:184
 msgid "March"
 msgstr "Март"
 
-#: templates/landing/includes/roadmap.html:86
-#: templates/landing/includes/roadmap.html:192
+#: templates/landing/includes/roadmap.html:88
+#: templates/landing/includes/roadmap.html:194
 msgid "April"
 msgstr "Апрель"
 
-#: templates/landing/includes/roadmap.html:106
-#: templates/landing/includes/roadmap.html:212
+#: templates/landing/includes/roadmap.html:108
+#: templates/landing/includes/roadmap.html:214
 msgid "August"
 msgstr "Август"
 
-#: templates/landing/includes/roadmap.html:116
-#: templates/landing/includes/roadmap.html:222
+#: templates/landing/includes/roadmap.html:118
+#: templates/landing/includes/roadmap.html:224
 msgid "November"
 msgstr "Ноябрь"
 
@@ -357,18 +357,14 @@ msgstr "Правовые и различные операции"
 msgid "Consultants"
 msgstr "Консультанты"
 
-#: templates/landing/landing.html:10
-msgid "Join Unilot For Free"
-msgstr ""
-
-#: templates/landing/landing.html:20
+#: templates/landing/landing.html:27
 msgid "Initial Coin Offering Presale"
 msgstr "Предварительная продажа токенов"
 
-#: templates/landing/landing.html:23
+#: templates/landing/landing.html:30
 msgid ""
-"Unilot is a blockchain-powered lottery, gambling, betting and "
-"prognostication suite.\n"
+"Unilot is a blockchain-powered lottery, gambling,\n"
+"                        betting and prognostication suite.\n"
 "                        In short, it is everything that a casino isn’t. It "
 "runs as a Distributed Autonomous\n"
 "                        Organization to guarantee a truly transparent "
@@ -384,56 +380,60 @@ msgstr ""
 "можете играть, создавать собственные игры и приватные игровые комнаты, и "
 "даже устроить мировой турнир по ставкам."
 
-#: templates/landing/landing.html:32
+#: templates/landing/landing.html:40
 msgid "Pre ICO ends in"
 msgstr "Предпродажа заканчивается через"
 
-#: templates/landing/landing.html:39
+#: templates/landing/landing.html:47
 msgid "Days"
 msgstr "Дней"
 
-#: templates/landing/landing.html:40
+#: templates/landing/landing.html:48
 msgid "Hours"
 msgstr "Часов"
 
-#: templates/landing/landing.html:41
+#: templates/landing/landing.html:49
 msgid "Minutes"
 msgstr "Минут"
 
-#: templates/landing/landing.html:42
+#: templates/landing/landing.html:50
 msgid "Seсs"
 msgstr "Секунд"
 
-#: templates/landing/landing.html:45
-#, python-format
-msgid "Goal %(eth_amount)s ETH (%(token_cap)s UNIT)"
+#: templates/landing/landing.html:53
+#, fuzzy, python-format
+#| msgid "Goal %(eth_amount)s ETH (%(token_cap)s UNIT)"
+msgid ""
+"Goal\n"
+"                                    %(eth_amount)s ETH (%(token_cap)s UNIT)"
 msgstr "Цель %(eth_amount)s ETH (%(token_cap)s UNIT)"
 
-#: templates/landing/landing.html:59
+#: templates/landing/landing.html:68
 msgid "Upcoming bonus"
 msgstr "Бонус"
 
-#: templates/landing/landing.html:64
+#: templates/landing/landing.html:73
 msgid "Tokens for sale"
 msgstr "Токенов к продаже"
 
-#: templates/landing/landing.html:69
+#: templates/landing/landing.html:78
 msgid "Max cap"
 msgstr "Цель"
 
-#: templates/landing/landing.html:87
+#: templates/landing/landing.html:96
 msgid "Who we are"
 msgstr "Кто мы"
 
-#: templates/landing/landing.html:92
+#: templates/landing/landing.html:101
 msgid ""
-"<strong>Unilot</strong> &mdash; is a decentralized gambling platform which "
-"allows players to play and\n"
-"                        host online games like poker tournaments, lottery "
-"and many other games. Unilot will be available\n"
-"                        through mobile apps on iOS and Android platforms and "
-"transact using UNIT as it’s main\n"
-"                        currency."
+"<strong>Unilot</strong> &mdash; is a decentralized gambling platform which\n"
+"                            allows players to play and\n"
+"                            host online games like poker tournaments, "
+"lottery and many other games. Unilot will be\n"
+"                            available\n"
+"                            through mobile apps on iOS and Android platforms "
+"and transact using UNIT as it’s main\n"
+"                            currency."
 msgstr ""
 "<strong>Unilot</strong> &mdash; децентрализованная игровая платформа, на "
 "которой игроки могут как принимать участие в различных играх - лотерея, "
@@ -441,53 +441,56 @@ msgstr ""
 "них. Платформа Unilot будет представлена веб-сервисом и мобильными "
 "приложениями на базе iOS и Android, а главной валютой станут монеты UNIT"
 
-#: templates/landing/landing.html:107
+#: templates/landing/landing.html:118
 msgid "Features"
 msgstr "Особенности"
 
-#: templates/landing/landing.html:115
+#: templates/landing/landing.html:126
 msgid "Unilot will not access or hold any Player Funds"
 msgstr "Платформа не будет иметь доступ и хранить средства игроков"
 
-#: templates/landing/landing.html:125
+#: templates/landing/landing.html:136
 msgid ""
 "Consensus of game state is reached between players with encrypted P2P "
 "messaging"
 msgstr ""
 "Согласие между игроками достигается благодаря зашифрованным P2P сообщениям"
 
-#: templates/landing/landing.html:135
+#: templates/landing/landing.html:146
 msgid "Play games globally or make money by hosting your own game tournaments"
 msgstr ""
 "Игроки смогут играть в общие игры или зарабатывать размещая свои собственные"
 
-#: templates/landing/landing.html:145
+#: templates/landing/landing.html:156
 msgid "Feature Single player RNG & Multiplayer games"
 msgstr "Режимы одного или нескольких игроков"
 
-#: templates/landing/landing.html:155
+#: templates/landing/landing.html:166
 msgid "Decentralized and isolated to prevent God Mode"
 msgstr "Децентрализованный подход исключает манипуляции в процессе игры"
 
-#: templates/landing/landing.html:165
+#: templates/landing/landing.html:176
 msgid "Unilot is white label platform"
 msgstr "Unilot является white label платформой"
 
-#: templates/landing/landing.html:180
+#: templates/landing/landing.html:191
 msgid "Mobile App"
 msgstr "Мобильное приложение"
 
-#: templates/landing/landing.html:185
+#: templates/landing/landing.html:196
 msgid ""
 "\n"
-"                    <p>All Unilot global and hosted games will be run on "
-"Unilot mobile client, designed to handle p2p\n"
-"                        communication and perform blockchain action.</p>\n"
-"                    <p>Now there is a closed beta-testing round of mobile "
-"client that is currently represented by Unilot\n"
-"                        lottery based on iOS and Android platform.</p>\n"
-"                    <p>Become first investors to take part in testing and "
-"improving Unilot app.</p>\n"
+"                        <p>All Unilot global and hosted games will be run on "
+"Unilot mobile client, designed to handle\n"
+"                            p2p\n"
+"                            communication and perform blockchain action.</"
+"p>\n"
+"                        <p>Now there is a closed beta-testing round of "
+"mobile client that is currently represented by\n"
+"                            Unilot\n"
+"                            lottery based on iOS and Android platform.</p>\n"
+"                        <p>Become first investors to take part in testing "
+"and improving Unilot app.</p>\n"
 "                    "
 msgstr ""
 "\n"
@@ -500,15 +503,118 @@ msgstr ""
 "                    <p>Станьте первыми инвесторами и примите участие в "
 "тестировании и улучшении приложения Unilot.</p>"
 
-#: templates/landing/landing.html:204 templates/landing/landing.html:214
+#: templates/landing/landing.html:217 templates/landing/landing.html:227
 msgid "Download on the"
 msgstr ""
 
-#: templates/landing/landing.html:256
+#: templates/landing/landing.html:265
+msgid "Token Details"
+msgstr "Токен"
+
+#: templates/landing/landing.html:272
+msgid ""
+"A total of <span class=\"nowrap\">500 000 000 UNIT</span> tokens will be "
+"issued without any\n"
+"                                additional tokens. Unsold tokens will be "
+"burned after ICO. We accept only ETH."
+msgstr ""
+"<span class=\"nowrap\">500 000 000 UNIT</span> будут выпущены без "
+"возможности дополнительной эмиссии. Непроданные токены после всех стадий ICO "
+"- сгорят. Мы принимает к оплате только ETH."
+
+#: templates/landing/landing.html:276
+msgid "Token name"
+msgstr "Название токена"
+
+#: templates/landing/landing.html:280
+msgid "Ticker"
+msgstr "Тикер"
+
+#: templates/landing/landing.html:284
+msgid "Project protocol"
+msgstr "Протокол токена"
+
+#: templates/landing/landing.html:288
+msgid "Total tokens supply"
+msgstr "Общее число токенов"
+
+#: templates/landing/landing.html:292
+msgid "Total tokens for sale"
+msgstr "Токенов к продаже"
+
+#: templates/landing/landing.html:296 templates/landing/landing.html:337
+#: templates/landing/landing.html:363 templates/landing/landing.html:398
+msgid "Price"
+msgstr "Цена"
+
+#: templates/landing/landing.html:300
+msgid "MIN transaction"
+msgstr "Минимальная покупка"
+
+#: templates/landing/landing.html:304
+msgid "MAX transaction"
+msgstr "Максимальная покупка"
+
+#: templates/landing/landing.html:313
+msgid "Presale details"
+msgstr "Пред-продажа"
+
+#: templates/landing/landing.html:316
+msgid "ICO Stage I"
+msgstr "ICO 1"
+
+#: templates/landing/landing.html:319
+msgid "ICO Stage II"
+msgstr "ICO 2"
+
+#: templates/landing/landing.html:325 templates/landing/landing.html:351
+#: templates/landing/landing.html:384
+msgid "Start date"
+msgstr "Дата начала"
+
+#: templates/landing/landing.html:329 templates/landing/landing.html:355
+#: templates/landing/landing.html:388
+msgid "End date"
+msgstr "Дата окончания"
+
+#: templates/landing/landing.html:333 templates/landing/landing.html:359
+#: templates/landing/landing.html:392
+msgid "Available tokens"
+msgstr "Доступное число токенов"
+
+#: templates/landing/landing.html:341 templates/landing/landing.html:367
+#: templates/landing/landing.html:459 templates/landing/landing.html:466
+msgid "Bonus"
+msgstr "Бонус"
+
+#: templates/landing/landing.html:342 templates/landing/landing.html:369
+#: templates/landing/landing.html:371 templates/landing/landing.html:373
+#: templates/landing/landing.html:375
+#, python-format
+msgid ""
+"pay for <span class=\"nowrap\">%(you_buy)s UNIT</span>, get <span\n"
+"                                                    class=\"nowrap\">"
+"%(you_get)s UNIT</span>"
+msgstr ""
+"купив <span class=\"nowrap\">%(you_buy)s UNIT</span>, вы получите <span\n"
+"                                                    class=\"nowrap\">"
+"%(you_get)s UNIT</span>"
+
+#: templates/landing/landing.html:369 templates/landing/landing.html:371
+#: templates/landing/landing.html:373 templates/landing/landing.html:375
+#, python-format
+msgid "step %(step_num)s"
+msgstr "шаг %(step_num)s"
+
+#: templates/landing/landing.html:394
+msgid "unsold tokens from Presale and ICO stage 1 (without bonus)"
+msgstr "не проданные токены на стадии пред-продажи и ICO 1 (без бонусов)"
+
+#: templates/landing/landing.html:418
 msgid "Whitepaper"
 msgstr "Whitepaper"
 
-#: templates/landing/landing.html:261
+#: templates/landing/landing.html:423
 msgid ""
 "Read our whitepaper in order to know more about the Unilot® platform, the "
 "token, the team and ICO round details."
@@ -516,77 +622,71 @@ msgstr ""
 "Читайте наш whitepaper, чтобы узнать больше о платформе Unilot®, токене, "
 "команде и подробностях ICO."
 
-#: templates/landing/landing.html:263
+#: templates/landing/landing.html:426
 msgid "View White Paper"
 msgstr "Обзор whitepaper"
 
-#: templates/landing/landing.html:270
+#: templates/landing/landing.html:433
 msgid "Start Date"
 msgstr "Дата начала"
 
-#: templates/landing/landing.html:273 templates/landing/landing.html:280
+#: templates/landing/landing.html:435 templates/landing/landing.html:442
 msgid "New York"
 msgstr "Нью Йорк"
 
-#: templates/landing/landing.html:273 templates/landing/landing.html:280
+#: templates/landing/landing.html:435 templates/landing/landing.html:442
 msgid "London"
 msgstr "Лондон"
 
-#: templates/landing/landing.html:273 templates/landing/landing.html:280
+#: templates/landing/landing.html:436 templates/landing/landing.html:443
 msgid "Moscow"
 msgstr "Москва"
 
-#: templates/landing/landing.html:274 templates/landing/landing.html:281
+#: templates/landing/landing.html:437 templates/landing/landing.html:444
 msgid "Tokyo"
 msgstr "Токио"
 
-#: templates/landing/landing.html:278
+#: templates/landing/landing.html:441
 msgid "End Date"
 msgstr "Дата окончания"
 
-#: templates/landing/landing.html:285
+#: templates/landing/landing.html:448
 msgid "Token Sale Cap"
 msgstr "Доступно токенов"
 
-#: templates/landing/landing.html:288
+#: templates/landing/landing.html:451
 msgid "tokens"
 msgstr "токенов"
 
-#: templates/landing/landing.html:292
+#: templates/landing/landing.html:455
 msgid "Currency Accepted"
 msgstr "Валюта"
 
-#: templates/landing/landing.html:296 templates/landing/landing.html:303
-msgid "Bonus"
-msgstr "Бонус"
-
-#: templates/landing/landing.html:300
+#: templates/landing/landing.html:463
 msgid "Exchange Rate"
 msgstr "Курс"
 
-#: templates/landing/landing.html:300 templates/landing/landing.html:311
+#: templates/landing/landing.html:463 templates/landing/landing.html:475
 msgid "See footnote"
-msgstr ""
+msgstr "Смотрите в заметке ниже"
 
-#: templates/landing/landing.html:303 templates/landing/landing.html:313
+#: templates/landing/landing.html:466 templates/landing/landing.html:478
 msgid "Tokens"
 msgstr "Токенов"
 
-#: templates/landing/landing.html:307
+#: templates/landing/landing.html:470
 msgid "Minimum Transaction"
 msgstr "Минимальная покупка"
 
-#: templates/landing/landing.html:308
-#, fuzzy
-#| msgid "Tokens"
+#: templates/landing/landing.html:471
 msgid "Token"
 msgstr "Токенов"
 
-#: templates/landing/landing.html:311
+#: templates/landing/landing.html:474
 msgid "Maximum Transaction"
 msgstr "Максимальная покупка"
 
-#: templates/landing/landing.html:317
+#: templates/landing/landing.html:485
 msgid ""
 "was rounded to the whole number. The calculations in contract will be "
 "carried out to 18 decimal places"
@@ -594,14 +694,14 @@ msgstr ""
 "значение округлено до целого числа. Расчёт в контракте производится с "
 "точностью в 18 знаков после запятой."
 
-#: templates/landing/landing.html:329 templates/landing/landing.html:344
+#: templates/landing/landing.html:497 templates/landing/landing.html:512
 msgid "Roadshow"
 msgstr "Участие в мероприятиях"
 
-#: templates/landing/landing.html:392
+#: templates/landing/landing.html:560
 msgid "Show all FAQ topics"
 msgstr "Показать весь FAQ"
 
-#: templates/landing/landing.html:416
+#: templates/landing/landing.html:584
 msgid "Read full"
 msgstr "Прочесть всё"
