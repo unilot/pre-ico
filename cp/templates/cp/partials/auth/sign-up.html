@@ -3,7 +3,7 @@
 {% load config %}
 {% load phone %}
 <form class="js-generic-form" method="post" action="{% url 'cp:sign-up' 'json' %}"
-      data-url="{% url 'cp:dashboard' 'html' %}">
+      data-url="{% url 'cp:dashboard' 'html' %}?thank-you">
     {% csrf_token %}
     <div class="row">
         <div class="col-md-12">

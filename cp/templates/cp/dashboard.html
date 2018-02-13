@@ -20,6 +20,9 @@
             </div>
             <section>
                 {% content_text 'dashboard-main' %}
+                {% if thank_you and request.get_host == 'unilot.io' %}
+                    <img style="display:none;" src="//a.mgid.com/1x1.gif?id=142654&type=c&g=x&t=x&tg=lead142654&v=1&r=">
+                {% endif %}
             </section>
         </main>
     </div>
