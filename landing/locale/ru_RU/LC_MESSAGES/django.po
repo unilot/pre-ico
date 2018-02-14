@@ -199,11 +199,11 @@ msgstr "Ваш email сохранён"
 
 #: templates/landing/includes/newsletter-form.html:15
 msgid "Enter Your Best Email"
-msgstr ""
+msgstr "Введите ваш лучший email"
 
 #: templates/landing/includes/newsletter-form.html:21
 msgid "Get Me On The List"
-msgstr ""
+msgstr "Подписаться"
 
 #: templates/landing/includes/roadmap.html:3
 msgid "Unilot successful seed-funding round"
