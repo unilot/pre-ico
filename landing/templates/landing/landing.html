@@ -258,7 +258,7 @@
         </div>
     </section>
     {% include 'landing/includes/roadmap.html' %}
-    <section class="token-details purple-bg">
+    <section class="token-details {{ LANGUAGE_CODE }} purple-bg">
         <div class="container">
             <div class="row heading">
                 <div class="col-xs-12">
@@ -319,7 +319,8 @@
                                     {% trans 'ICO Stage II' %}</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="details-presale" role="tabpanel">
+                                <div class="tab-pane ico-stage-details active" id="details-presale" role="tabpanel">
+                                    <h3>{% trans 'Presale details' %}</h3>
                                     <table class="table">
                                         <tr>
                                             <td>{% trans 'Start date' %}:</td>
@@ -345,7 +346,8 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="tab-pane" id="details-ico-1" role="tabpanel">
+                                <div class="tab-pane ico-stage-details" id="details-ico-1" role="tabpanel">
+                                    <h3>{% trans 'ICO Stage I' %}</h3>
                                     <table class="table">
                                         <tr>
                                             <td>{% trans 'Start date' %}:</td>
@@ -378,7 +380,8 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="tab-pane" id="details-ico-2" role="tabpanel">
+                                <div class="tab-pane ico-stage-details" id="details-ico-2" role="tabpanel">
+                                    <h3>{% trans 'ICO Stage II' %}</h3>
                                     <table class="table">
                                         <tr>
                                             <td>{% trans 'Start date' %}:</td>
