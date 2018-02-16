@@ -10,6 +10,12 @@
 {% trans 'Join Unilot' as contribute_button_text %}
 
 {% block content %}
+    {% get_stage_start_date 0 as preico_start_date %}
+    {% get_stage_start_date 1 as ico_1_start_date %}
+    {% get_stage_start_date 2 as ico_2_start_date %}
+    {% get_stage_end_date 0 as preico_end_date %}
+    {% get_stage_end_date 1 as ico_1_end_date %}
+    {% get_stage_end_date 2 as ico_2_end_date %}
     <section class="sentence" id="main">
         <div class="container">
             <div class="scene">
@@ -17,10 +23,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="{{ LANGUAGE_CODE }}">{% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
+                    <h1 class="{{ LANGUAGE_CODE }}">
+                        {% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
                 </div>
                 <div class="col-md-6">
-                    <p style="margin-top:40px;">{% blocktrans %}Unilot is a blockchain-powered lottery, gambling, betting and prognostication suite.
+                    <p style="margin-top:40px;">{% blocktrans %}Unilot is a blockchain-powered lottery, gambling,
+                        betting and prognostication suite.
                         In short, it is everything that a casino isn’t. It runs as a Distributed Autonomous
                         Organization to guarantee a truly transparent lottery and gambling solution. Use Unilot's token
                         like a casino chip to join and play, create and run your own private gambling rooms, and even
@@ -42,7 +50,8 @@
                                 <b>{% trans 'Seсs' %}</b>
                             </div>
                             <div class="col-xs-12 end-xs">
-                                <p>{% blocktrans with eth_amount=eth_amount|intcomma token_cap=token_cap|intcomma %}Goal {{ eth_amount }} ETH ({{ token_cap }} UNIT){% endblocktrans %}</p>
+                                <p>{% blocktrans with eth_amount=eth_amount|intcomma token_cap=token_cap|intcomma %}Goal
+                                    {{ eth_amount }} ETH ({{ token_cap }} UNIT){% endblocktrans %}</p>
                             </div>
                         </div>
                     </div>
@@ -89,10 +98,12 @@
                 </div>
                 <div class="col-md-5 col-sm-7 col-xs-12">
                     <p>
-                        {% blocktrans %}<strong>Unilot</strong> &mdash; is a decentralized gambling platform which allows players to play and
-                        host online games like poker tournaments, lottery and many other games. Unilot will be available
-                        through mobile apps on iOS and Android platforms and transact using UNIT as it’s main
-                        currency.{% endblocktrans %}
+                        {% blocktrans %}<strong>Unilot</strong> &mdash; is a decentralized gambling platform which
+                            allows players to play and
+                            host online games like poker tournaments, lottery and many other games. Unilot will be
+                            available
+                            through mobile apps on iOS and Android platforms and transact using UNIT as it’s main
+                            currency.{% endblocktrans %}
                     </p>
                 </div>
                 <div class="col-md-7 col-sm-5"><img src="{% static 'landing/img/about.png' %}" alt=""></div>
@@ -183,11 +194,13 @@
             <div class="row content">
                 <div class="col-sm-7 col-xs-12">
                     {% blocktrans %}
-                    <p>All Unilot global and hosted games will be run on Unilot mobile client, designed to handle p2p
-                        communication and perform blockchain action.</p>
-                    <p>Now there is a closed beta-testing round of mobile client that is currently represented by Unilot
-                        lottery based on iOS and Android platform.</p>
-                    <p>Become first investors to take part in testing and improving Unilot app.</p>
+                        <p>All Unilot global and hosted games will be run on Unilot mobile client, designed to handle
+                            p2p
+                            communication and perform blockchain action.</p>
+                        <p>Now there is a closed beta-testing round of mobile client that is currently represented by
+                            Unilot
+                            lottery based on iOS and Android platform.</p>
+                        <p>Become first investors to take part in testing and improving Unilot app.</p>
                     {% endblocktrans %}
 
                     <div class="row start-sm center-xs">
@@ -245,6 +258,158 @@
         </div>
     </section>
     {% include 'landing/includes/roadmap.html' %}
+    <section class="token-details {{ LANGUAGE_CODE }} purple-bg">
+        <div class="container">
+            <div class="row heading">
+                <div class="col-xs-12">
+                    <h2>{% trans 'Token Details' %}</h2><span>{% trans 'Token Details' %}</span>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                            <p>{% blocktrans %}A total of <span class="nowrap">500 000 000 UNIT</span> tokens will be issued without any
+                                additional tokens. Unsold tokens will be burned after ICO. We accept only ETH.{% endblocktrans %}</p>
+                            <table class="table table-summary">
+                                <tr>
+                                    <td class="td-label">{% trans 'Token name' %}:</td>
+                                    <td>Unilot</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-label">{% trans 'Ticker' %}:</td>
+                                    <td>UNIT</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-label">{% trans 'Project protocol' %}:</td>
+                                    <td>ERC20</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-label">{% trans 'Total tokens supply' %}:</td>
+                                    <td><span class="nowrap">500 000 000 UNIT</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-label">{% trans 'Total tokens for sale' %}:</td>
+                                    <td><span class="nowrap">310 000 000 UNIT</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-label">{% trans 'Price' %}:</td>
+                                    <td>1 UNIT = 0.000079 ETH</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-label">{% trans 'MIN transaction' %}:</td>
+                                    <td>1 UNIT = 1 UNIT (0.000079 ETH)</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-label">{% trans 'MAX transaction' %}:</td>
+                                    <td>379 746 UNIT (30 ETH)</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 tab-wrapper">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active" role="presentation"><a href="#details-presale" role="tab"
+                                                                          aria-controls="details-presale"
+                                                                          data-toggle="tab">{% trans 'Presale details' %}</a></li>
+                                <li role="presentation">
+                                    <a href="#details-ico-1" role="tab" aria-controls="details-ico-1" data-toggle="tab">
+                                        {% trans 'ICO Stage I' %}</a></li>
+                                <li role="presentation"><a href="#details-ico-2" role="tab"
+                                                           aria-controls="details-ico-2" data-toggle="tab">
+                                    {% trans 'ICO Stage II' %}</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane ico-stage-details active" id="details-presale" role="tabpanel">
+                                    <h3>{% trans 'Presale details' %}</h3>
+                                    <table class="table">
+                                        <tr>
+                                            <td>{% trans 'Start date' %}:</td>
+                                            <td>{{ preico_start_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'End date' %}:</td>
+                                            <td>{{ preico_end_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'Available tokens' %}:</td>
+                                            <td><span class="nowrap">25 000 000 UNIT</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'Price' %}:</td>
+                                            <td>1 ETH = 12 658 UNIT</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'Bonus' %}:</td>
+                                            <td>40% ({% blocktrans with you_buy=10000|intcomma you_get=14000|intcomma %}pay for <span class="nowrap">{{ you_buy }} UNIT</span>, get <span
+                                                    class="nowrap">{{ you_get }} UNIT</span>{% endblocktrans %})
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane ico-stage-details" id="details-ico-1" role="tabpanel">
+                                    <h3>{% trans 'ICO Stage I' %}</h3>
+                                    <table class="table">
+                                        <tr>
+                                            <td>{% trans 'Start date' %}:</td>
+                                            <td>{{ ico_1_start_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'End date' %}:</td>
+                                            <td>{{ ico_1_end_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'Available tokens' %}:</td>
+                                            <td><span class="nowrap">142 500 000 UNIT</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'Price' %}:</td>
+                                            <td>1 ETH = 12 658 UNIT</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'Bonus' %}:</td>
+                                            <td>
+                                                <p>{% blocktrans with step_num=1 %}step {{ step_num }}{% endblocktrans %}: 35% ({% blocktrans with you_buy=10000|intcomma you_get=13500|intcomma %}pay for <span class="nowrap">{{ you_buy }} UNIT</span>, get <span
+                                                    class="nowrap">{{ you_get }} UNIT</span>{% endblocktrans %})</p>
+                                                <p>{% blocktrans with step_num=2 %}step {{ step_num }}{% endblocktrans %}: 30% ({% blocktrans with you_buy=10000|intcomma you_get=13000|intcomma %}pay for <span class="nowrap">{{ you_buy }} UNIT</span>, get <span
+                                                    class="nowrap">{{ you_get }} UNIT</span>{% endblocktrans %}) </p>
+                                                <p>{% blocktrans with step_num=3 %}step {{ step_num }}{% endblocktrans %}: 25% ({% blocktrans with you_buy=10000|intcomma you_get=12500|intcomma %}pay for <span class="nowrap">{{ you_buy }} UNIT</span>, get <span
+                                                    class="nowrap">{{ you_get }} UNIT</span>{% endblocktrans %}) </p>
+                                                <p>{% blocktrans with step_num=4 %}step {{ step_num }}{% endblocktrans %}: 20% ({% blocktrans with you_buy=10000|intcomma you_get=12000|intcomma %}pay for <span class="nowrap">{{ you_buy }} UNIT</span>, get <span
+                                                    class="nowrap">{{ you_get }} UNIT</span>{% endblocktrans %})</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane ico-stage-details" id="details-ico-2" role="tabpanel">
+                                    <h3>{% trans 'ICO Stage II' %}</h3>
+                                    <table class="table">
+                                        <tr>
+                                            <td>{% trans 'Start date' %}:</td>
+                                            <td>{{ ico_2_start_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'End date' %}:</td>
+                                            <td>{{ ico_2_end_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'Available tokens' %}:</td>
+                                            <td><span class="nowrap">142 500 000 UNIT</span> +
+                                                {% trans 'unsold tokens from Presale and ICO stage 1 (without bonus)' %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans 'Price' %}:</td>
+                                            <td>1 ETH = 12 658 UNIT</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     {% include 'landing/includes/token-distribution.html' %}
     <section class="whitepaper white" id="whitePaper">
         <div class="container">
@@ -260,7 +425,8 @@
                 <div class="col-sm-5 col-xs-12">
                     <p>{% trans 'Read our whitepaper in order to know more about the Unilot® platform, the token, the team and ICO round details.' %}</p>
                     <div>
-                        <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}" target="_blank">{% trans 'View White Paper' %}<i class="icon-file-text2"></i></a>
+                        <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}"
+                           target="_blank">{% trans 'View White Paper' %}<i class="icon-file-text2"></i></a>
                         <span>English</span>
                     </div>
                 </div>
@@ -268,20 +434,20 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>{% trans 'Start Date' %}</th>
-                            {% get_stage_start_date 0 as preico_start_date %}
                             <td>
-                                {{ preico_start_date }} / 14:00 {% trans 'New York' %} / 19:00 {% trans 'London' %} / 22:00 {% trans 'Moscow' %} /
+                                {{ preico_start_date }} / 14:00 {% trans 'New York' %} / 19:00 {% trans 'London' %} /
+                                22:00 {% trans 'Moscow' %} /
                                 04:00 {% trans 'Tokyo' %} ({{ preico_start_date|add_days:1|date:'MONTH_DAY_FORMAT' }})
                             </td>
                         </tr>
                         <tr>
-                            <th>{% trans 'End Date' %}</th>
-                            {% get_stage_end_date 0 as preico_end_date %}
-                            <td>{{ preico_end_date }} / 14:00 {% trans 'New York' %} / 19:00 {% trans 'London' %} / 22:00 {% trans 'Moscow' %} /
+                            <th>{% trans 'End Date' %}</th>\
+                            <td>{{ preico_end_date }} / 14:00 {% trans 'New York' %} / 19:00 {% trans 'London' %} /
+                                22:00 {% trans 'Moscow' %} /
                                 04:00 {% trans 'Tokyo' %} ({{ preico_end_date|add_days:1|date:'MONTH_DAY_FORMAT' }})
                             </td>
                         </tr>
-                            <tr>
+                        <tr>
                             <th>{% trans 'Token Sale Cap' %}</th>
                             <td><strong><span class="big-amount"
                                               style="padding-left: 0; color: inherit;">25 000 000</span></strong> UNIT
@@ -308,13 +474,18 @@
                             <td>1 UNIT {% trans 'Token' %} (0.000079 ETH)</td>
                         </tr>
                         <tr>
-                            <th>{% trans 'Maximum Transaction' %} <a href="#footnote-sale" title="{% trans 'See footnote' %}"><sup
+                            <th>{% trans 'Maximum Transaction' %} <a href="#footnote-sale"
+                                                                     title="{% trans 'See footnote' %}"><sup
                                     class="footnote-ref footnote-star"></sup></a></th>
-                            <td><span class="big-amount" style="padding-left: 0; color: inherit;">379 746</span> {% trans 'Tokens' %} (30 ETH)</td>
+                            <td><span class="big-amount"
+                                      style="padding-left: 0; color: inherit;">379 746</span> {% trans 'Tokens' %} (30
+                                ETH)
+                            </td>
                         </tr>
                     </table>
                     <p class="footnote footnote-star" id="footnote-sale"><sup></sup>
-                        <small>- {%  trans 'was rounded to the whole number. The calculations in contract will be carried out to 18 decimal places' %}</small>
+                        <small>
+                            - {% trans 'was rounded to the whole number. The calculations in contract will be carried out to 18 decimal places' %}</small>
                     </p>
                 </div>
             </div>
@@ -509,8 +680,10 @@
                         <ul>
                             <li><a href="{% url 'landing:document' 'terms-and-conditions' %}"
                                    target="_blank">{% trans 'Terms and Conditions' %}</a></li>
-                            <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}" target="_blank">{% trans 'Affiliate Program' %}</a></li>
-                            <li><a href="{% url 'landing:document' 'bounty-program' %}" target="_blank">{% trans 'Bounty Program' %}</a></li>
+                            <li><a href="{% url 'landing:document' 'affiliate-terms-and-conditions' %}"
+                                   target="_blank">{% trans 'Affiliate Program' %}</a></li>
+                            <li><a href="{% url 'landing:document' 'bounty-program' %}"
+                                   target="_blank">{% trans 'Bounty Program' %}</a></li>
                             <li><a href="mailto:info@unilot.io" target="_blank">info@unilot.io</a></li>
                         </ul>
                     </div>
