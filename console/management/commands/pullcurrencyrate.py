@@ -42,8 +42,8 @@ class Command(BaseCommand):
 
                 AccountHelper.unlock_base_account()
 
-                exchange_rate.total_tokens = contract.call().TOKEN_AMOUNT_PRE_ICO()
-                exchange_rate.tokens_left = contract.call().getAvailableCoinsForCurrentStage()
+                exchange_rate.total_tokens = 24000000000000000000000000
+                exchange_rate.tokens_left = contract.call().getPool()
                 exchange_rate.eth_raised = web3.eth.getBalance('0xE2A8F147fc808738Cab152b01C7245F386fD8d89')
 
                 exchange_rate.save()

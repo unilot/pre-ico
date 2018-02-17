@@ -9,7 +9,7 @@ from cp import models
 
 class Command(BaseCommand):
     help = 'Reads balances from contract based on submitted wallets'
-    CONTRACT_NAME='UnilotToken'
+    CONTRACT_NAME='PreSaleUNIT'
 
     def handle(self, *args, **options):
         web3 = AppWeb3.get_web3()
