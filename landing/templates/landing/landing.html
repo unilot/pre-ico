@@ -37,7 +37,11 @@
             </div>
             <div class="row">
                 <div class="col-sm-8 col-xs-12">
-                    <p>{% trans 'Unilot is open for business at pre-ICO bonus rates of 40%. ICO starts on time in' %}:</p>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <p>{% trans 'Unilot is open for business at pre-ICO bonus rates of 40%. ICO starts on time in' %}:</p>
+                        </div>
+                    </div>
                     {% token_eth_cap as eth_amount %}
                     {% token_cap as token_cap %}
                     <div class="sentence__timer">
