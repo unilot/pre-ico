@@ -46,13 +46,51 @@
                     {% token_cap as token_cap %}
                     <div class="sentence__timer">
                         <div class="row">
-                            <div class="col-xs-12"><span class="js-countdown"></span></div>
-                            <div class="col-xs-12 flex">
-                                <b>{% trans 'Days' %}</b>
-                                <b>{% trans 'Hours' %}</b>
-                                <b>{% trans 'Minutes' %}</b>
-                                <b>{% trans 'Seсs' %}</b>
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="days-countdown">
+                                            <div class="days" id="jsDaysCountdown"></div>
+                                            <div class="caption">{% trans 'Days' %}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="time-countdown">
+                                            <script id="jsTimeCounterTmpl" type="text/x-jsrender">
+                                                <div class="row">
+                                                  <div class="col-xs-3 text-center">
+                                                    <div class="row">
+                                                      <div class="col-xs-12 hours">%H</div>
+                                                      <div class="col-xs-12 caption">{% trans 'Hours' %}</div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-xs-1 text-center separator">:</div>
+                                                  <div class="col-xs-3 text-center">
+                                                    <div class="row">
+                                                      <div class="col-xs-12 minutes">%M</div>
+                                                      <div class="col-xs-12 caption">{% trans 'Minutes' %}</div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-xs-1 text-center separator">:</div>
+                                                  <div class="col-xs-3 text-center">
+                                                    <div class="row">
+                                                      <div class="col-xs-12 seconds">%S</div>
+                                                      <div class="col-xs-12 caption">{% trans 'Seconds' %}</div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+{#                            <div class="col-xs-12"><span class="js-countdown"></span></div>#}
+{#                            <div class="col-xs-12 flex">#}
+{#                                <b>{% trans 'Days' %}</b>#}
+{#                                <b>{% trans 'Hours' %}</b>#}
+{#                                <b>{% trans 'Minutes' %}</b>#}
+{#                                <b>{% trans 'Seсs' %}</b>#}
+{#                            </div>#}
                             <div class="col-xs-12 end-xs">
                                 <p>{% blocktrans with eth_amount=eth_amount|intcomma token_cap=token_cap|intcomma %}Goal
                                     {{ eth_amount }} ETH ({{ token_cap }} UNIT){% endblocktrans %}</p>
