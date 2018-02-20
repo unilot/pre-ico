@@ -57,3 +57,7 @@ WEB3_CONFIG = {
     'ETHBASE_PWD': 'MY_WALLET_SECRETPASSWORD',
     'GAS_PRICE': (8, 'gwei'),
 }
+
+MARKET_HERO = {
+    'API_KEY': 'api-key'
+}
