@@ -45,6 +45,9 @@ def get_wallet_app_choice():
 
 
 class MarketHero():
+    TAG_UNILOT = 'unilot'
+    TAG_CONTRIBUTOR = 'unilotcontribution'
+
     URL = 'http://api.markethero.io/v1/api/'
 
     @staticmethod
