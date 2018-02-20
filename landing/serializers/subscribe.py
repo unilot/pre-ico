@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework import validators
 
-from preico.utils import SendLane
+from preico.utils import MarketHero
 from .. import models
 from cp import models as cp_models
 from django.contrib.auth import models as django_models
@@ -19,7 +19,7 @@ class SubscribeSerializer(serializers.ModelSerializer):
         result = super().create(validated_data)
 
         try:
-            SendLane.add_lead(validated_data.get('email'))
+            MarketHero.tag_lead(validated_data.get('email'), '', '', ('unilot',))
         except Exception:
             pass
 
@@ -67,11 +67,6 @@ class BetaTesterSerializer(serializers.ModelSerializer):
 
             if beta_tester_data['is_ios']:
                 os_type.append(2404)
-
-            SendLane.add_beta_tester(email=beta_tester_data.get('email'),
-                        name=beta_tester_data['lead'].name,
-                        phone_number=beta_tester_data['lead'].phone_number,
-                        os_type=os_type)
 
             return super().create(beta_tester_data)
 

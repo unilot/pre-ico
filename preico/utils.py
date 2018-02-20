@@ -44,19 +44,21 @@ def get_wallet_app_choice():
     return settings.WALLET_APPS
 
 
-class SendLane():
-    url = 'https://realweb.sendlane.com/api/v1/list-subscriber-add'
-    api_key = 'f7dd4c186f1c57a'
-    hash_key = '47e896c79e6f6e36143569b986296a2f'
+class MarketHero():
+    URL = 'http://api.markethero.io/v1/api/'
 
     @staticmethod
-    def add_lead(email):
-        return requests.post(SendLane.url,
-                      {'api': SendLane.api_key, 'hash': SendLane.hash_key, 'list_id': 2, 'email': email})
+    def API_KEY():
+        return settings.MARKET_HERO.get('API_KEY')
 
     @staticmethod
-    def add_beta_tester(email, name, phone_number, os_type):
-        return requests.post(SendLane.url,
-                             {'api': SendLane.api_key, 'hash': SendLane.hash_key, 'list_id': 1,
-                              'email': email, 'name': name, 'phone_number': phone_number,
-                              'phone_type': os_type})
+    def tag_lead(email, first_name, last_name, tags = ('unilot',)):
+        url = MarketHero.URL + 'tag-lead'
+
+        return requests.post(url, json={
+            'apiKey': MarketHero.API_KEY(),
+            'email': email,
+            'firstName': first_name,
+            'lastName': last_name,
+            'tags': tags
+        })
