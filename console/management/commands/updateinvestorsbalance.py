@@ -30,14 +30,17 @@ class Command(BaseCommand):
             .filter(
             Q(token_balance_last_update__lte=earlier)
             | Q(token_balance_last_update=None))\
-            .exclude(wallet__isnull=True)\
-            .exclude(wallet='')
+            .exclude(wallet__isnull=True) \
+            .exclude(Q(wallet__isnull=True) | Q(wallet__exact=''))
 
         for profile in profiles:
             if not AppWeb3.get_web3().isAddress(profile.wallet):
                 continue
 
             start_balance = profile.token_balance
+
+            if not start_balance:
+                start_balance = 0
 
             profile.token_balance = contract.call().balanceOf(profile.wallet)
             profile.token_balance_last_update = now
