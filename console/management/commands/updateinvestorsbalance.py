@@ -47,5 +47,6 @@ class Command(BaseCommand):
                 MarketHero.tag_lead(user.email, user.first_name, user.last_name,
                                     (MarketHero.TAG_UNILOT, MarketHero.TAG_CONTRIBUTOR,))
                 requests.get('http://15813.tracking.markethero.io/v1/image/pixel-rendered/2d679555e9e778d598bca39b1dabbb17afc1618a306c2e7dd38c8de4e6a142d7')
+                requests.get('https://track.buzz-track.com/pixel?adv_id=656&tx_id={0}'.format(user.email))
 
             profile.save()
