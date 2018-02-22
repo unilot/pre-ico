@@ -26,8 +26,8 @@ msgid "Join Unilot"
 msgstr "Участвовать"
 
 #: templates/landing/base/base.html:18 templates/landing/base/base.html:32
-msgid "Initial Coin Offering Pre-sale"
-msgstr "Предварительная продажа токенов"
+msgid "Initial Coin Offering"
+msgstr "Публичная продажа токенов"
 
 #: templates/landing/base/base.html:75 templates/landing/base/base.html:113
 #: templates/landing/documents/ru-ru/White-Paper.html:10
@@ -381,12 +381,8 @@ msgstr ""
 "даже устроить мировой турнир по ставкам."
 
 #: templates/landing/landing.html:40
-msgid ""
-"Unilot is open for business at pre-ICO bonus rates of 40%%. ICO starts on "
-"time in"
-msgstr ""
-"Последний шанс инвестировать в проект Unilot и получить бонус 40%. Основное "
-"ICO стартует по плану через"
+msgid "ICO ends in"
+msgstr "ICO закончится через"
 
 #: templates/landing/landing.html:47
 msgid "Days"

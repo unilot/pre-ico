@@ -45,8 +45,9 @@ TOKEN_SETTINGS = {
     'NAME': 'UNIT',
     'CONTRACT_NAME': 'UnilotToken',
     'PRICE': 0.000079,
-    'BONUS': 0.4,
-    'CAP': 25000000
+    'BONUS': 0.35,
+    'CAP': 142500000,
+    'ETH_CAP': 11257.5
 }
 
 WEB3_CONFIG = {

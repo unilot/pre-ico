@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
-    <title>Unilot | {% block title %}{% trans 'Initial Coin Offering Pre-sale' %}{% endblock %}</title>
+    <title>Unilot | {% block title %}{% trans 'Initial Coin Offering' %}{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'landing/css/main.min-c35c303e243daadbe49d94fa2580e07e.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
@@ -29,14 +29,14 @@
 
     <meta property="og:site_name" content="Unilot"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering Pre-sale' %}"/>
+    <meta property="og:title" content="Unilot | {% trans 'Initial Coin Offering' %}"/>
     <meta property="og:description"
           content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency."/>
     <meta property="og:url" content="https://unilot.io"/>
     <meta property="og:image" content="https://unilot.io{% static 'landing/img/unilot-share-cover.png' %}"/>
     <meta property="article:publisher" content="https://www.facebook.com/unilot.io/"/>
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Unilot | Initial Coin Offering Pre-sale"/>
+    <meta name="twitter:title" content="Unilot | Initial Coin Offering"/>
     <meta name="twitter:description"
           content="Unilot is a decentralized gambling platform which allows players to play and host online games like poker tournaments, lottery and many other games. Unilot will be available through mobile apps on iOS and Android platforms and transact using Unilots as it’s main currency."/>
     <meta name="twitter:url" content="https://unilot.io"/>
@@ -169,7 +169,7 @@
 {% if not user.is_authenticated %}
 {% include 'landing/includes/exit-intent-popup.html' %}
 {% endif %}
-<script src="{% static 'landing/js/main.min-8d7e2308eae1c10e81a45ed4f7c2292f.js' %}"></script>
+<script src="{% static 'landing/js/main.min-89e124efaa2d2678b59257380b6e29c1.js' %}"></script>
 {% if not user.is_authenticated %}
 <script type="application/javascript">
 bioEp.init({

@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="{{ LANGUAGE_CODE }}">
-                        {% block title %}{% trans 'Initial Coin Offering Presale' %}{% endblock %}</h1>
+                        {% block title %}{% trans 'Initial Coin Offering' %}{% endblock %}</h1>
                 </div>
                 <div class="col-md-6">
                     <p style="margin-top:40px;">{% blocktrans %}Unilot is a blockchain-powered lottery, gambling,
@@ -39,7 +39,7 @@
                 <div class="col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-sm-6 col-xs-12">
-                            <p>{% trans 'Unilot is open for business at pre-ICO bonus rates of 40%. ICO starts on time in' %}:</p>
+                            <p>{% trans 'ICO ends in' %}:</p>
                         </div>
                     </div>
                     {% token_eth_cap as eth_amount %}
@@ -101,7 +101,7 @@
                         <div class="col-xs-12">
                             <div class="sentence__scale">
                                 <!-- <p>ETH 0 Raised</p> -->
-                                <div class="sentence__scale_block" style="width: 8%;"><span>3%</span></div>
+                                <div class="sentence__scale_block" style="width: 8%;"><span>0%</span></div>
                             </div>
                         </div>
                         <div class="col-sm-4 col-xs-12 center-xs">
@@ -471,64 +471,6 @@
                            target="_blank">{% trans 'View White Paper' %}<i class="icon-file-text2"></i></a>
                         <span>English</span>
                     </div>
-                </div>
-                <div class="col-sm-7 col-xs-12">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>{% trans 'Start Date' %}</th>
-                            <td>
-                                {{ preico_start_date }} / 14:00 {% trans 'New York' %} / 19:00 {% trans 'London' %} /
-                                22:00 {% trans 'Moscow' %} /
-                                04:00 {% trans 'Tokyo' %} ({{ preico_start_date|add_days:1|date:'MONTH_DAY_FORMAT' }})
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>{% trans 'End Date' %}</th>
-                            <td>{{ preico_end_date }} / 14:00 {% trans 'New York' %} / 19:00 {% trans 'London' %} /
-                                22:00 {% trans 'Moscow' %} /
-                                04:00 {% trans 'Tokyo' %} ({{ preico_end_date|add_days:1|date:'MONTH_DAY_FORMAT' }})
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>{% trans 'Token Sale Cap' %}</th>
-                            <td><strong><span class="big-amount"
-                                              style="padding-left: 0; color: inherit;">25 000 000</span></strong> UNIT
-                                {% trans 'tokens' %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>{% trans 'Currency Accepted' %}</th>
-                            <td>ETH</td>
-                        </tr>
-                        <tr>
-                            <th>{% trans 'Bonus' %}</th>
-                            <td>40%</td>
-                        </tr>
-                        <tr>
-                            <th>{% trans 'Exchange Rate' %} <a href="#footnote-sale" title="{% trans 'See footnote' %}"><sup
-                                    class="footnote-ref footnote-star"></sup></a></th>
-                            <td>1 ETH = <span class="big-amount" style="padding-left: 0; color: inherit;">12 658</span>
-                                UNIT {% trans 'Tokens' %} + (<strong>40% {% trans 'Bonus' %}</strong>)
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>{% trans 'Minimum Transaction' %}</th>
-                            <td>1 UNIT {% trans 'Token' %} (0.000079 ETH)</td>
-                        </tr>
-                        <tr>
-                            <th>{% trans 'Maximum Transaction' %} <a href="#footnote-sale"
-                                                                     title="{% trans 'See footnote' %}"><sup
-                                    class="footnote-ref footnote-star"></sup></a></th>
-                            <td><span class="big-amount"
-                                      style="padding-left: 0; color: inherit;">379 746</span> {% trans 'Tokens' %} (30
-                                ETH)
-                            </td>
-                        </tr>
-                    </table>
-                    <p class="footnote footnote-star" id="footnote-sale"><sup></sup>
-                        <small>
-                            - {% trans 'was rounded to the whole number. The calculations in contract will be carried out to 18 decimal places' %}</small>
-                    </p>
                 </div>
             </div>
         </div>
