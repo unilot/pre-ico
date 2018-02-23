@@ -1,0 +1,270 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-23 06:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Unilot <info@unilot.io>\n"
+"Language-Team: Unilot <info@unilot.io>\n"
+"Language: ru-RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: document.py:23 document.py:26
+msgid "Terms and Conditions"
+msgstr ""
+
+#: document.py:27
+msgid "PARTIES TO THESE T&Cs"
+msgstr "СТОРОНЫ ДАННЫХ УСЛОВИЙ"
+
+#: document.py:28
+msgid "1. Unilot Platform"
+msgstr "1. Платформа Unilot"
+
+#: document.py:29
+msgid "2. Scope of T&Cs"
+msgstr "2. Сфера действия правил и условий"
+
+#: document.py:30
+msgid "3. Purchase Conditions and Restrictions"
+msgstr "3. Условия и ограничения на покупку"
+
+#: document.py:31
+msgid "4. Purchase Periods"
+msgstr "4. Этапы покупок"
+
+#: document.py:32
+msgid "5. UNIT Token Price and Bonus Allocation"
+msgstr "5. Стоимость токена UNIT и распределение бонусов"
+
+#: document.py:33
+msgid "6. Right to Request Information"
+msgstr "6. Право на запрос информации"
+
+#: document.py:34
+msgid ""
+"7. Creation and Issuance of UNIT Tokens through the Smart Contract System"
+msgstr "7. Создание и выпуск токенов UNIT с помощью системы смарт-контрактов"
+
+#: document.py:35
+msgid "8. Refunds, Refusals, Suspension and Termination of Contributions"
+msgstr "8. Возвраты, отказы и прекращение взносов"
+
+#: document.py:36
+msgid "9. Token Functionality"
+msgstr "9. Функциональность токена"
+
+#: document.py:37
+msgid "10. Purchaser’s Representations and Warranties"
+msgstr "10. Заверения и гарантии покупателя"
+
+#: document.py:38
+msgid "11. Acknowledgement of Risks"
+msgstr "11. Признание рисков"
+
+#: document.py:39
+msgid "12. Audit of the Smart Contract System"
+msgstr "12. Проверка системы смарт-контрактов"
+
+#: document.py:40
+msgid "13. Security"
+msgstr "13. Безопасность"
+
+#: document.py:41
+msgid "14. Intellectual Property"
+msgstr "14. Интеллектуальная собственность"
+
+#: document.py:42
+msgid "15. Indemnity"
+msgstr "15. Возмещение убытков"
+
+#: document.py:43
+msgid "16. Disclaimers"
+msgstr "16. Предупреждения"
+
+#: document.py:44
+msgid "17. Limitation of Liability"
+msgstr "17. Ограничение ответственности"
+
+#: document.py:45
+msgid "18. Taxation"
+msgstr "18. Налоги"
+
+#: document.py:46
+msgid "19. Data Protection"
+msgstr "19. Защита данных"
+
+#: document.py:47
+msgid "20. Dispute Resolution by Arbitration"
+msgstr "20. Разрешение споров посредством арбитража"
+
+#: document.py:48
+msgid "21. Miscellaneous"
+msgstr "21. Прочие положения"
+
+#: document.py:49
+msgid "SCHEDULE 1"
+msgstr "ПРИЛОЖЕНИЕ 1"
+
+#: document.py:50
+msgid "SCHEDULE 2"
+msgstr "ПРИЛОЖЕНИЕ 2"
+
+#: document.py:51
+msgid "SCHEDULE 3"
+msgstr "ПРИЛОЖЕНИЕ 3"
+
+#: document.py:58
+msgid "Affiliate Terms and Conditions"
+msgstr "Партнерское соглашение"
+
+#: document.py:61
+msgid "Affiliate Agreement"
+msgstr "Партнерское соглашение"
+
+#: document.py:62
+msgid "1. Scope"
+msgstr "1. Сфера применения"
+
+#: document.py:63
+msgid "2. Qualifying Conditions"
+msgstr "2. Условия"
+
+#: document.py:64
+msgid "3. Obligations of the Company"
+msgstr "3. Обязательства компании"
+
+#: document.py:65
+msgid "4. Obligations of the Affiliate"
+msgstr "4. Обязательства Партнера"
+
+#: document.py:66
+msgid "5. Payment"
+msgstr "5. Оплата"
+
+#: document.py:67
+msgid "6. Termination"
+msgstr "6. Расторжение соглашения"
+
+#: document.py:68
+msgid "7. Warranties"
+msgstr "7. Гарантии"
+
+#: document.py:69
+msgid "8. Indemnification"
+msgstr "8. Возмещение убытков"
+
+#: document.py:70
+msgid "9. Company Rights"
+msgstr "9. Права компании"
+
+#: document.py:71
+msgid "10. Governing Law &amp; Jurisdiction"
+msgstr "10. Действующее законодательство и юрисдикция"
+
+#: document.py:72
+msgid "11. Assignment"
+msgstr "11. Передача прав"
+
+#: document.py:73
+msgid "12. Non-Waiver"
+msgstr "12. Отказ от прав"
+
+#: document.py:74
+msgid "13. Relationship of the Parties"
+msgstr "13. Взаимоотношения сторон"
+
+#: document.py:75
+msgid "14. Changes to this Agreement"
+msgstr "14. Changes to this Agreement"
+
+#: document.py:76
+msgid "15. Trademarks"
+msgstr "15. Товарные знаки"
+
+#: document.py:77
+msgid "Schedule #1"
+msgstr "Таблица #1"
+
+#: document.py:83
+msgid "Bounty Program"
+msgstr "Bounty-программа"
+
+#: document.py:86
+msgid "Bounty UNILOT"
+msgstr "Bounty-программа UNILOT"
+
+#: document.py:87
+msgid "Bitcointalk"
+msgstr ""
+
+#: document.py:88
+msgid "Translation & Community Management"
+msgstr "Переводы и управление сообществами"
+
+#: document.py:89
+msgid "Facebook"
+msgstr ""
+
+#: document.py:90
+msgid "Twitter"
+msgstr ""
+
+#: document.py:91
+msgid "YouTube"
+msgstr ""
+
+#: document.py:92
+msgid "Reddit"
+msgstr ""
+
+#: document.py:93
+msgid "Telegram"
+msgstr ""
+
+#: document.py:94
+msgid "Media and blogs"
+msgstr "СМИ и блоги"
+
+#: document.py:95
+msgid "Steemit.com"
+msgstr ""
+
+#: document.py:96
+msgid "Golos.io"
+msgstr ""
+
+#: document.py:97
+msgid "Linkedin"
+msgstr ""
+
+#: document.py:98
+msgid "Exclusive support"
+msgstr "Особая деятельность"
+
+#: document.py:99
+msgid "Reserve"
+msgstr "Резерв"
+
+#: rest_framework/validators.py:7
+msgid "Invalid wallet."
+msgstr "Неверный кошелёк"
+
+#: settings.py:225
+msgid "Other (I can easily export and import my private key with it)"
+msgstr ""
+"Другой (я могу выполнить экспорт или импорт приватного ключа без каких-либо "
+"ограничений и сложностей)"
+
+#: validators.py:12
+#, python-format
+msgid ""
+"Image is too small. Width should be at least %(min_width)d and height should "
+"be at least %(min_height)d"
+msgstr ""

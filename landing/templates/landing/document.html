@@ -5,10 +5,10 @@
 
 {% block topmenu %}
 {% main_page_url as main_page_url %}
-<li><a href="{{ main_page_url }}#whatIsUnilot">What is Unilot</a></li>
-<li><a href="{{ main_page_url }}#whitePaper">White Paper</a></li>
-<li><a href="{{ main_page_url }}#unilotBenefits">Unilot Features</a></li>
-<li><a href="{{ main_page_url }}#faq">FAQ</a></li>
+<li><a href="{{ main_page_url }}#whatIsUnilot">{% trans 'What is Unilot' %}</a></li>
+<li><a href="{{ main_page_url }}#whitePaper">{% trans 'White Paper' %}</a></li>
+<li><a href="{{ main_page_url }}#unilotBenefits">{% trans 'Unilot Features' %}</a></li>
+<li><a href="{{ main_page_url }}#faq">{% trans 'FAQ' %}</a></li>
 {% endblock %}
 
 {% block sidemenu %}

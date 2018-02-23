@@ -172,6 +172,7 @@ USE_TZ = True
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'landing', 'locale'),
     os.path.join(BASE_DIR, 'cp', 'locale'),
+    os.path.join(BASE_DIR, 'preico', 'locale'),
 )
 
 FORMAT_MODULE_PATH = (
