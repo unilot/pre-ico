@@ -4,6 +4,7 @@
 
 {% token_coin_min_amount currency as min_investment %}
 {% token_coin_price currency as token_price %}
+{% token_coin_min_num_tokens currency as min_token_amount %}
 <div class="row no-padding">
     <div class="col-md-8">
         <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
@@ -12,10 +13,10 @@
         </div>
         <div class="alert alert-warning" role="alert">
             <p>
-                <strong>Minimum amount</strong>: {{ min_investment }} {{ currency|upper }}
+                <strong>{% blocktrans with min_token_amount=min_token_amount %}Minimum amount ({{  min_token_amount }} UNIT){% endblocktrans %}</strong>: {{ min_investment }} {{ currency|upper }}
             </p>
             <p>
-                <strong>Token price</strong>: {{ token_price }} {{ currency|upper }}
+                <strong>{% trans 'Token price' %}</strong>: {{ token_price }} {{ currency|upper }}
             </p>
         </div>
         <div class="js-has-overlay">

@@ -31,6 +31,11 @@ def token_coin_min_amount(coin):
 
 
 @register.simple_tag()
+def token_coin_min_num_tokens(coin):
+    return '%d' % ( settings.TOKEN_SETTINGS['MIN_CAP'].get(coin, 0) )
+
+
+@register.simple_tag()
 def token_bonus():
     return ( settings.TOKEN_SETTINGS['BONUS'] * 100 )
 
