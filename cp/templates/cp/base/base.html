@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unilot | {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'cp/css/main.min-adab0cad9cfed763e6c24b43da0934e2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cp/css/main.min-d66db68a29e5529e3003d3eee395614d.css' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'landing/img/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'landing/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'landing/img/favicons/favicon-16x16.png' %}">
@@ -74,11 +74,12 @@
     </footer>
 </div>
 {% include 'cp/partials/timer-template.html' %}
+{% include 'cp/partials/payment-info-template.html' %}
 {% include 'cp/partials/beta-invite-submitted-template.html' %}
 
 <script type="application/javascript"
         src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>
-<script type="application/javascript" src="{% static 'cp/js/main.min-5ff3f2dd93618f6773d79f57e91abf35.js' %}"></script>
+<script type="application/javascript" src="{% static 'cp/js/main.min-4aa8b8cc8f65d73aa618eeeb17c5960a.js' %}"></script>
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
 {% if user.is_authenticated %}

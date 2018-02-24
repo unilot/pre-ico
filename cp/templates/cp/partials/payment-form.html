@@ -1,0 +1,57 @@
+{% load static %}
+{% load i18n %}
+{% load config %}
+
+{% token_coin_min_amount currency as min_investment %}
+{% token_coin_price currency as token_price %}
+<div class="row no-padding">
+    <div class="col-md-8">
+        <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
+                                                                   src="{% static 'cp/img/attention.png' %}">
+            <p>{% trans 'Be sure that you read all the information about Unilot project and token sale carefully' %}</p>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <p>
+                <strong>Minimum amount</strong>: {{ min_investment }} {{ currency|upper }}
+            </p>
+            <p>
+                <strong>Token price</strong>: {{ token_price }} {{ currency|upper }}
+            </p>
+        </div>
+        <div class="js-has-overlay">
+            <form method="post" action="{% url 'cp:payment-transaction' 'json' %}"
+                  class="js-render-content-form" data-template="#paymentDetails">
+                {% include 'cp/partials/form-overlay.html' %}
+                {% include 'includes/form-alert.html' %}
+                {% csrf_token %}
+                <input type="hidden" name="currency" value="{{ currency }}"/>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-9 col-xs-8">
+                        <p>
+                            Payment amount: {{ amount }}
+                        </p>
+                        <div class="form-group label-floating">
+                            <label class="control-label"
+                                   for="{{ currency|lower }}Amount">{% trans 'Investment amount' %}
+                                <span class="required"></span>
+                            </label>
+                            <input
+                                    class="form-control" id="ltcAmount" type="text" required
+                                    name="amount" value="{{ min_investment }}">
+                            <div class="help-block pull-left with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <div class="well">{{ currency|upper }}</div>
+                    </div>
+                </div>
+                <button class="btn btn-lg btn-primary" type="submit">
+                    {% trans 'Submit' %}
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4">
+        {% include 'cp/partials/calculator.html' with currency="ETH" %}
+    </div>
+</div>
