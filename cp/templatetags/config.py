@@ -19,6 +19,18 @@ def token_price():
 
 
 @register.simple_tag()
+def token_coin_price(coin):
+    return '{:.9f}'.format(settings.TOKEN_SETTINGS['COIN_PRICE'].get(coin, 0))
+
+
+@register.simple_tag()
+def token_coin_min_amount(coin):
+    return '{:f}'.format(
+        settings.TOKEN_SETTINGS['COIN_PRICE'].get(coin, 0) * settings.TOKEN_SETTINGS['MIN_CAP'].get(coin, 0)
+    )
+
+
+@register.simple_tag()
 def token_bonus():
     return ( settings.TOKEN_SETTINGS['BONUS'] * 100 )
 

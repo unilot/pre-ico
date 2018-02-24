@@ -45,9 +45,27 @@ TOKEN_SETTINGS = {
     'NAME': 'UNIT',
     'CONTRACT_NAME': 'UnilotToken',
     'PRICE': 0.000079,
+    'COIN_PRICE': {
+        'ETH': 0.000079,
+        'LTCT': 0.000362886,
+        'LTC': 0.000362886,
+        'BTC': 0.000007439
+    },
+    'MIN_CAP': {
+        'ETH': 1,
+        'LTCT': 1000,
+        'LTC': 1000,
+        'BTC': 1000
+    },
     'BONUS': 0.35,
     'CAP': 142500000,
     'ETH_CAP': 11257.5
+}
+
+COINTPAYMENTS = {
+    'KEY': 'CP_KEY',
+    'SECRET': 'CP_SECRET',
+
 }
 
 WEB3_CONFIG = {

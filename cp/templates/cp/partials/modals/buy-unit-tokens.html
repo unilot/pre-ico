@@ -13,38 +13,67 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row no-padding">
-                    <div class="col-md-8">
-                        <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
-                                                                                   src="{% static 'cp/img/attention.png' %}">
-                            <p>{% trans 'Be sure that you read all the information about Unilot project and token sale carefully' %}</p></div>
-                        <div class="alert alert-warning" role="alert">
-                            {% content_text 'modal-buy-token' %}
-                        </div>
-                        <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
-                                                                                   src="{% static 'cp/img/attention.png' %}">
-                            <p>{% trans 'Please do not send anything other than ETH to the Unilot smart contract and do not send ETH from an Exchange.' %}</p></div>
-                        <div class="row no-padding">
-                            <div class="col-md-4"><img class="qr" src="{% static 'images/qr-0x378356e2391cb.svg' %}">
-                            </div>
-                            <div class="col-md-8">
-                                <form class="contract-number">
-                                    <div class="form-group"><label class="control-label text-uppercase"
-                                                                   for="contractNumber">{% trans 'Contract number' %}</label><input
-                                            class="form-control" id="tokenBuyContractNumber" type="text" readonly
-                                            name="contract-number" value="{% token_address %}">
-                                        <button type="button" class="btn btn-lg btn-inverse btn-icon js-buy-tokens-copy-contract-number"
-                                           role="button" tabindex="0" data-toggle="focus" data-trigger="focus"
-                                           data-placement="bottom" data-content="{% trans 'Contract number copied' %}">
-                                            <span class="glyphicon glyphicon-duplicate"></span><span>{% trans 'Copy contract number' %}</span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation">
+                        <a href="#litecoin" aria-controls="litecoin" role="tab" data-toggle="tab">Litecoin</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#bitcoin" aria-controls="bitcoin" role="tab" data-toggle="tab">Bitcoin</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#ethereum" aria-controls="ethereum" role="tab" data-toggle="tab">Ethereum</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane" id="litecoin">
+                        {% include 'cp/partials/payment-form.html' with currency='LTC' %}
                     </div>
-                    <div class="col-md-4">
-                        {% include 'cp/partials/calculator.html' %}
+                    <div role="tabpanel" class="tab-pane" id="bitcoin">
+                        {% include 'cp/partials/payment-form.html' with currency='BTC' %}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="ethereum">
+                        <div class="row no-padding">
+                            <div class="col-md-8">
+                                <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
+                                                                                           src="{% static 'cp/img/attention.png' %}">
+                                    <p>{% trans 'Be sure that you read all the information about Unilot project and token sale carefully' %}</p>
+                                </div>
+                                <div class="alert alert-warning" role="alert">
+                                    {% content_text 'modal-buy-token' %}
+                                </div>
+                                <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
+                                                                                           src="{% static 'cp/img/attention.png' %}">
+                                    <p>{% trans 'Please do not send anything other than ETH to the Unilot smart contract and do not send ETH from an Exchange.' %}</p>
+                                </div>
+                                <div class="row no-padding">
+                                    <div class="col-md-4"><img class="qr"
+                                                               src="{% static 'images/qr-0x378356e2391cb.svg' %}">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <form class="contract-number">
+                                            <div class="form-group"><label class="control-label text-uppercase"
+                                                                           for="contractNumber">{% trans 'Contract number' %}</label><input
+                                                    class="form-control" id="tokenBuyContractNumber" type="text"
+                                                    readonly
+                                                    name="contract-number" value="{% token_address %}">
+                                                <button type="button"
+                                                        class="btn btn-lg btn-inverse btn-icon js-buy-tokens-copy-contract-number"
+                                                        role="button" tabindex="0" data-toggle="focus"
+                                                        data-trigger="focus"
+                                                        data-placement="bottom"
+                                                        data-content="{% trans 'Contract number copied' %}">
+                                                    <span class="glyphicon glyphicon-duplicate"></span><span>{% trans 'Copy contract number' %}</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                {% include 'cp/partials/calculator.html' with currency="ETH" %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
