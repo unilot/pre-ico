@@ -20,6 +20,9 @@
                                            <p><strong>{% js_render_var 'address' %}</strong></p>
             </div>
         </form>
+        <p>{% trans 'Coins will be delegated in 24 hours after payment.' %}</p>
+        {% js_render_var 'status_url' as status_url %}
+        <p>{% blocktrans with status_url=status_url%}See <a href="{{ status_url }}" target="_blank">this link</a> to track payment status.{% endblocktrans %}</p>
     </div>
 </div>
 </script>
