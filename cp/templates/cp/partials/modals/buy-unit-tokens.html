@@ -14,15 +14,22 @@
             </div>
             <div class="modal-body">
 
-                <ul class="nav nav-tabs" role="tablist">
+                <ul class="select-currency nav nav-tabs" role="tablist">
                     <li role="presentation">
-                        <a href="#litecoin" aria-controls="litecoin" role="tab" data-toggle="tab">Litecoin</a>
+                        <a href="#ethereum" aria-controls="ethereum" role="tab" data-toggle="tab">
+                            <img class="eth" src="{% static 'cp/img/coins/ETH.svg' %}" />
+                            Ethereum</a>
                     </li>
                     <li role="presentation">
-                        <a href="#bitcoin" aria-controls="bitcoin" role="tab" data-toggle="tab">Bitcoin</a>
+                        <a href="#bitcoin" aria-controls="bitcoin" role="tab" data-toggle="tab">
+                            <img class="btc" src="{% static 'cp/img/coins/BTC.svg' %}" />
+                            Bitcoin</a>
                     </li>
                     <li role="presentation">
-                        <a href="#ethereum" aria-controls="ethereum" role="tab" data-toggle="tab">Ethereum</a>
+                        <a href="#litecoin" aria-controls="litecoin" role="tab" data-toggle="tab">
+                            <img class="ltc" src="{% static 'cp/img/coins/LTC.svg' %}" />
+                            Litecoin
+                        </a>
                     </li>
                 </ul>
                 <div class="tab-content">
