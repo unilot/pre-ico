@@ -50,6 +50,7 @@
                   content="{{ lang_code|slice:":2"|lower }}_{{ lang_code|slice:"-2:"|upper }}"/>
         {% endif %}
     {% endfor %}
+    {% include 'landing/includes/google-analytics.html' %}
 </head>
 <body>
 <header class="header">
