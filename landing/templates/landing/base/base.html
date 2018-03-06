@@ -167,21 +167,7 @@
 <div class="floating-footer">
     {% include 'landing/includes/newsletter-form.html' %}
 </div>
-{% if not user.is_authenticated %}
-{% include 'landing/includes/exit-intent-popup.html' %}
-{% endif %}
 <script src="{% static 'landing/js/main.min-f1faf38e6f5a1e5d65991c82a3778ad1.js' %}"></script>
-{% if not user.is_authenticated %}
-<script type="application/javascript">
-bioEp.init({
-    delay: 3,
-    cookieExp: 1,
-    showOncePerSession: true,
-    width: 600,
-    height: 700
-});
-</script>
-{% endif %}
 
 {% include 'landing/includes/analytics.html' %}
 {% include 'landing/includes/chartra.html' %}
