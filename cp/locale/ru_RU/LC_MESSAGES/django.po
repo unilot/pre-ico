@@ -233,12 +233,9 @@ msgstr "Закрыть"
 
 #: templates/cp/partials/beta-invite-submitted-template.html:11
 msgid ""
-"Application testing will start on <span class=\"text-nowrap\">5th Feb</"
-"span>,\n"
-"    we will notify you via email"
+"We will notify you via email"
 msgstr ""
-"Тестирование прилоежния начнётся <span class=\"text-nowrap\">5-го Февраля</"
-"span>, мы уведомим вас по email."
+"Мы уведомим вас по email."
 
 #: templates/cp/partials/beta-invite.html:8
 msgid ""
@@ -272,10 +269,10 @@ msgstr "Участвовать"
 #: templates/cp/partials/beta-invite.html:34
 msgid ""
 "<span class=\"text-nowrap\">Winners will be announced</span> <span\n"
-"            class=\"text-nowrap\">on March 5th, 2018</span>"
+"            class=\"text-nowrap\">on March 22<sup>nd</sup>, 2018</span>"
 msgstr ""
 "<span class=\"text-nowrap\">Победитель будет объявлен</span> <span\n"
-"            class=\"text-nowrap\">5-го марта, 2018-го года</span>"
+"            class=\"text-nowrap\">22-го марта, 2018-го года</span>"
 
 #: templates/cp/partials/buy-tokens-button.html:5
 msgid "Buy Tokens"
