@@ -1,13 +1,8 @@
-import json
-from collections import namedtuple
-
 from rest_framework import generics, status
 from rest_framework import permissions, response
-from django.utils.translation import ugettext as _
 from django.urls import reverse
 from ..serializers import payment
-from preico import settings
-from cp.utils.pyCoinPayments import CryptoPayments
+from coinpayments.utils.api import APIClient
 
 
 class CoinPayments(generics.GenericAPIView):
@@ -18,17 +13,17 @@ class CoinPayments(generics.GenericAPIView):
         return self.request.user
 
     def post(self, request, *args, **kwargs):
-        cp_config = settings.COINTPAYMENTS
         user = self.get_object()
 
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        client = CryptoPayments(cp_config.get('KEY'), cp_config.get('SECRET'),
-                                str(request.build_absolute_uri(
-                                    reverse('cp:payment-transaction-result',
-                                        kwargs={'user_id': user.id, 'format': 'json'}))
-                                ))
+        client = APIClient.get_client(
+            str(request.build_absolute_uri(
+                reverse('cp:payment-transaction-result',
+                        kwargs={'user_id': user.id, 'format': 'json'}))
+            )
+        )
 
         result = client.createTransaction({
             'amount': serializer.data.get('amount'),

@@ -43,19 +43,69 @@ TOKEN_ADDRESS='token-address'
 
 TOKEN_SETTINGS = {
     'NAME': 'UNIT',
-    'CONTRACT_NAME': 'UnilotToken',
+    'CONTRACT_NAME': 'PreSaleUNIT',
     'PRICE': 0.000079,
-    'COIN_PRICE': {
-        'ETH': 0.000079,
-        'LTCT': 0.000362886,
-        'LTC': 0.000362886,
-        'BTC': 0.000007439
-    },
-    'MIN_CAP': {
-        'ETH': 1,
-        'LTCT': 1000,
-        'LTC': 1000,
-        'BTC': 1000
+    'COINS' : {
+        'LTC': {
+            'NAME': 'Litecoin',
+            'PRICE': 0.0003374046678,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'BTC': {
+            'NAME': 'Bitcoin',
+            'PRICE': 0.000006662039197,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'ETC': {
+            'NAME': 'Ethereum Classic',
+            'PRICE': 0.002980369357,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'NEO': {
+            'NAME': 'Neo',
+            'PRICE': 0.0007096750953,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'BCH': {
+            'NAME': 'Bitcoin Cash',
+            'PRICE': 0.00005818545236,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'XRP': {
+            'NAME': 'Ripple',
+            'PRICE': 0.07547987918,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'ZEC': {
+            'NAME': 'Zcash',
+            'PRICE': 0.0002078481747,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'DASH': {
+            'NAME': 'Dash',
+            'PRICE': 0.0001211403531,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'XMR': {
+            'NAME': 'Monero',
+            'PRICE': 0.0002335830807,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
+        'LSK': {
+            'NAME': 'Lisk ',
+            'PRICE': 0.004302794619,
+            'MIN_CAP': 400,
+            'HAS_ICON': True
+        },
     },
     'BONUS': 0.35,
     'CAP': 142500000,

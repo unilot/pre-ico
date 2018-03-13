@@ -1,49 +1,81 @@
 from django.core.management.base import BaseCommand, CommandError
 from coinbase.wallet.client import Client
+from coinpayments.utils.api import APIClient as CoinpaymentsAPIClient
 from django.db import transaction
 
-from console.currency import CryptoCurrency, CurrencySource
-from console.utils import ContractHelper, AppWeb3, AccountHelper
-from preico.settings import COINBASE_CONFIG
+from console.currency import CurrencySource
+from preico.settings import COINBASE_CONFIG, TOKEN_SETTINGS
 from console.models import ExchangeRate
-from preico import settings
 
 
 class Command(BaseCommand):
-    help = 'Pulls latest exchange rate (ETH -> USD) from coinbase'
-    base_currency = 'ETH'
-    currency = 'USD'
+    help = 'Pulls latest exchange rates'
+
+    __coinbase_client__ = None
+
+    def get_coinbase_api(self):
+        if not self.__coinbase_client__:
+            self.__coinbase_client__ = Client(api_key=COINBASE_CONFIG['API_KEY'],
+                                api_secret=COINBASE_CONFIG['API_SECRET'],
+                                api_version=COINBASE_CONFIG['API_VERSION'])
+
+        return self.__coinbase_client__
 
     def handle(self, *args, **options):
-        api_client = Client(api_key = COINBASE_CONFIG['API_KEY'],
-                            api_secret= COINBASE_CONFIG['API_SECRET'],
-                            api_version= COINBASE_CONFIG['API_VERSION'])
+        rates = {}
 
-        rate = api_client.get_spot_price(
-            currency_pair = ( '%s-%s' % (self.base_currency, self.currency)))
+        rates['ETH'] = {
+            'rate': self.pull_coinbase_rate('ETH'),
+            'source': CurrencySource.COINBASE
+        }
+        rates['BTC'] = {
+            'rate': self.pull_coinbase_rate('BTC'),
+            'source': CurrencySource.COINBASE
+        }
 
-        with transaction.atomic():
-            if rate.base == self.base_currency and rate.currency == self.currency:
+        coinpayments_client = CoinpaymentsAPIClient.get_client()
+
+        raw_response = coinpayments_client.rates({
+            'short': 1,
+            'accepted': 1
+        })
+
+        if raw_response.get('error') != 'ok':
+            raise RuntimeError('Failed to get rates from coinpayments')
+
+        coinpayments_rates = raw_response.get('result', {})
+
+        for coin in TOKEN_SETTINGS.get('COINS', {}).keys():
+            if coin in rates:
+                continue
+
+            btc_rate = float(coinpayments_rates.get(coin, {}).get('rate_btc', 0))
+
+            if btc_rate > 0:
+                rates[coin] = {
+                    'rate': btc_rate * rates['BTC']['rate'],
+                    'source': CurrencySource.COINPAYMENTS
+                }
+
+        for coin, rate_data in rates.items():
+            with transaction.atomic():
                 exchange_rate = ExchangeRate.objects.create(
-                    currency = CryptoCurrency.ETH,
-                    source = CurrencySource.COINBASE,
-                    rate = float(rate.amount)
+                    currency=coin,
+                    source=rate_data['source'],
+                    rate=rate_data['rate']
                 )
 
                 exchange_rate.save()
 
-                web3 = AppWeb3.get_web3()
+    def pull_coinbase_rate(self, currency):
+        api_client = self.get_coinbase_api()
+        base_currency = 'USD'
 
-                contract = web3.eth.contract(abi=ContractHelper.get_abi(settings.TOKEN_SETTINGS.get('CONTRACT_NAME')),
-                                             bytecode=ContractHelper.get_bytecode(
-                                                 settings.TOKEN_SETTINGS.get('CONTRACT_NAME')),
-                                             contract_name=settings.TOKEN_SETTINGS.get('CONTRACT_NAME'),
-                                             address=settings.TOKEN_ADDRESS)
+        rate = api_client.get_spot_price(
+            currency_pair=('%s-%s' % (currency, base_currency)))
 
-                AccountHelper.unlock_base_account()
 
-                exchange_rate.total_tokens = 24000000000000000000000000
-                exchange_rate.tokens_left = contract.call().getPool()
-                exchange_rate.eth_raised = web3.eth.getBalance('0xE2A8F147fc808738Cab152b01C7245F386fD8d89')
+        if rate.base != currency or rate.currency != base_currency:
+            raise RuntimeError('Invalid rate')
 
-                exchange_rate.save()
+        return float(rate.amount)

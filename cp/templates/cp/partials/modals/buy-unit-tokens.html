@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load dynamic_content %}
-{% load config %}
+{% load token %}
 <div class="modal fade" id="buyUnitTokens" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-success modal-lg" role="document">
         <div class="modal-content no-padding">
@@ -20,28 +20,27 @@
                             <img class="eth" src="{% static 'cp/img/coins/ETH.svg' %}" />
                             Ethereum</a>
                     </li>
-                    <li role="presentation">
-                        <a href="#bitcoin" aria-controls="bitcoin" role="tab" data-toggle="tab">
-                            <img class="btc" src="{% static 'cp/img/coins/BTC.svg' %}" />
-                            Bitcoin</a>
+                    {% token_coins as token_coins %}
+                    {% for coin in token_coins %}
+                        {% token_coin_name coin as token_name %}
+                        <li role="presentation">
+                        <a href="#{{ token_name|lower|slugify }}" aria-controls="{{ token_name|lower|slugify }}" role="tab" data-toggle="tab">
+                            <img class="{{ coin|lower }}" src="{% static 'cp/img/coins/' %}{{ coin|upper }}.svg" />
+                            {{ token_name|title }}</a>
                     </li>
-                    <li role="presentation">
-                        <a href="#litecoin" aria-controls="litecoin" role="tab" data-toggle="tab">
-                            <img class="ltc" src="{% static 'cp/img/coins/LTC.svg' %}" />
-                            Litecoin
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane" id="litecoin">
-                        {% include 'cp/partials/payment-form.html' with currency='LTC' %}
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="bitcoin">
-                        {% include 'cp/partials/payment-form.html' with currency='BTC' %}
-                    </div>
+                    {% for coin in token_coins %}
+                        {% token_coin_name coin as token_name %}
+                        <div role="tabpanel" class="tab-pane" id="{{ token_name|lower|slugify }}">
+                            {% include 'cp/partials/payment-form.html' with currency=coin %}
+                        </div>
+                    {% endfor %}
                     <div role="tabpanel" class="tab-pane" id="ethereum">
                         <div class="row no-padding">
                             <div class="col-md-8">
+                                <h3><img class="eth" src="{% static 'cp/img/coins/ETH.svg' %}" style="height: 3em;" /> Ethereum</h3>
                                 <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
                                                                                            src="{% static 'cp/img/attention.png' %}">
                                     <p>{% trans 'Be sure that you read all the information about Unilot project and token sale carefully' %}</p>

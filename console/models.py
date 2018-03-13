@@ -1,26 +1,26 @@
 from django.db import models
-from django.utils.translation import ugettext as _
+from preico.settings import TOKEN_SETTINGS
 
-from console.currency import CryptoCurrency, CurrencySource, FiatCurrency
+from console.currency import CurrencySource
 
 
 class ExchangeRate(models.Model):
     SOURCE_LIST = (
         (CurrencySource.COINBASE, CurrencySource.get_title(CurrencySource.COINBASE)),
+        (CurrencySource.COINPAYMENTS, CurrencySource.get_title(CurrencySource.COINPAYMENTS)),
     )
 
-    CURRENCY_LIST = {
-        (CryptoCurrency.ETH, _(CryptoCurrency.ETH)),
-    }
+    CURRENCY_LIST = [
+        (coin, '%s (%s)' % (data.get('NAME', ''), coin)) for coin, data in TOKEN_SETTINGS.get('COINS', {}).items()
+    ] + [
+        ('ETH', 'Ethereum (ETH)')
+    ]
 
-    currency = models.CharField(null=False, choices=CURRENCY_LIST, max_length=3)
+    currency = models.CharField(null=False, choices=CURRENCY_LIST, max_length=5)
     rate = models.FloatField(null=False)
-    source = models.CharField(null=False, choices=SOURCE_LIST, max_length=8)
+    source = models.CharField(null=False, choices=SOURCE_LIST, max_length=32)
     created_at = models.DateTimeField(auto_now_add=True)
-    tokens_left = models.CharField(null=True, blank=True, max_length=27)
-    total_tokens = models.CharField(null=True, blank=True, max_length=27)
-    eth_raised = models.CharField(null=True, blank=True, max_length=27)
 
     def __str__(self):
-        return '%s: %s > %s : %f' % (
-            CurrencySource.get_title(self.source), self.currency, FiatCurrency.USD, self.rate)
+        return '%s: %s > USD : %f' % (
+            CurrencySource.get_title(self.source), self.currency, self.rate)

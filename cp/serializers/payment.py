@@ -3,7 +3,9 @@ from preico import settings
 
 class CoinPayments(serializers.Serializer):
     amount = serializers.FloatField(required=True)
-    currency = serializers.ChoiceField(choices=[(key, key) for key, value in settings.TOKEN_SETTINGS.get('COIN_PRICE', {}).items()], required=True)
+    currency = serializers.ChoiceField(
+        choices=[(coin, '%s (%s)' % (data.get('NAME', ''), coin)) for coin, data in settings.TOKEN_SETTINGS.get('COINS', {}).items()]
+        , required=True)
     # address = serializers.CharField()
     # txn_id = serializers.CharField()
     # confirms_needed = serializers.IntegerField()

@@ -1,20 +1,11 @@
-import urllib.request, urllib.parse, urllib.error
 import urllib.request, urllib.error, urllib.parse
 import hmac
 import hashlib
 import json
-from collections import namedtuple
+from preico import settings
 
 
-
-def _json_hook(d): 
-    return namedtuple('X', list(d.keys()))(*list(d.values()))
-
-def pObject(data): 
-    return json.loads(data, object_hook=_json_hook).result
-
-
-class CryptoPayments():
+class APIClient():
 
         
     url = 'https://www.coinpayments.net/api.php'
@@ -26,6 +17,12 @@ class CryptoPayments():
         self.ipn_url = ipn_url
         self.format = 'json'
         self.version = 1
+
+    @staticmethod
+    def get_client(ipn_url = None):
+        config = settings.COINTPAYMENTS
+
+        return APIClient(config.get('KEY'), config.get('SECRET'), ipn_url)
 
     def createHmac(self, **params):
         """ Generate an HMAC based upon the url arguments/parameters
