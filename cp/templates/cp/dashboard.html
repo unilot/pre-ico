@@ -16,7 +16,7 @@
             <div class="hidden-md hidden-lg">
                 {% include 'cp/partials/buy-tokens-button.html' %}
                 {% include 'cp/partials/beta-invite.html' %}
-                {% include 'cp/partials/calculator.html' %}
+                {% include 'cp/partials/calculator.html' with currency='ETH' %}
             </div>
             <section>
                 {% content_text 'dashboard-main' %}
@@ -30,7 +30,7 @@
         <aside class="pull-right">
             {% include 'cp/partials/buy-tokens-button.html' %}
             {% include 'cp/partials/beta-invite.html' %}
-            {% include 'cp/partials/calculator.html' %}
+            {% include 'cp/partials/calculator.html' with currency='ETH' %}
         </aside>
     </div>
 </div>

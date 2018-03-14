@@ -1,18 +1,16 @@
-from django.utils.translation import ugettext as _
-
-
-class CryptoCurrency():
-    ETH = 'ETH'
-
 class FiatCurrency():
     USD = 'USD'
 
 class CurrencySource():
-    COINBASE = 'coinbase'
+    COINBASE = 'coinbase',
+    COINPAYMENTS = 'coinpayments'
 
     DETAILS = {
         COINBASE: {
             'title': 'Coinbase'
+        },
+        COINPAYMENTS: {
+            'title': 'Coinpayments'
         }
     }
 

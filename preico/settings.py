@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'cp.app.BackendConfig',
     'console.app.BackendConfig',
     'landing.apps.LandingConfig',
+    'coinpayments.apps.CoinpaymentsConfig',
     'hvad',
     'martor',
     'rest_framework',

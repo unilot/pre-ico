@@ -4,6 +4,7 @@
 {% load social_links %}
 {% load martortags %}
 {% load config %}
+{% load token %}
 {% load humanize %}
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -84,13 +85,6 @@
                                     </div>
                                 </div>
                             </div>
-{#                            <div class="col-xs-12"><span class="js-countdown"></span></div>#}
-{#                            <div class="col-xs-12 flex">#}
-{#                                <b>{% trans 'Days' %}</b>#}
-{#                                <b>{% trans 'Hours' %}</b>#}
-{#                                <b>{% trans 'Minutes' %}</b>#}
-{#                                <b>{% trans 'Seсs' %}</b>#}
-{#                            </div>#}
                             <div class="col-xs-12 end-xs">
                                 <p>{% blocktrans with eth_amount=eth_amount|intcomma token_cap=token_cap|intcomma %}Goal
                                     {{ eth_amount }} ETH ({{ token_cap }} UNIT){% endblocktrans %}</p>

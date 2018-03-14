@@ -11,6 +11,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^cp/', include('cp.urls', namespace='cp')),
+    url(r'^coinpayments/', include('coinpayments.urls', namespace='coinpayments')),
     url('', include('django.conf.urls.i18n')),
     url(r'^', include('landing.urls', namespace='landing')),
 )
