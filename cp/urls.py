@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from cp.views import validator, beta_tester
-from .views import auth, faq, profile, dashboard, js, affiliate, payment
+from .views import auth, faq, profile, dashboard, js, affiliate
 
 
 LOGIN_REDIRECT_URL=reverse_lazy('dashboard', 'html')
