@@ -18,7 +18,7 @@
         {{ currency }}{% endblocktrans %}</label>
         <div class="input-group"><input
                 class="form-control eth-amount js-calculator-eth-amount-input" type="text"
-                value="0" id="{{ currency|lower }}-amount" name="coinAmount"
+                value="0" id="{{ currency|lower }}-amount"
                 data-price="{% token_coin_price currency %}"
                 data-fiat="{% token_coin_fiat_rate currency %}" />
             <span class="input-group-addon">{{ currency|upper }}</span></div>

@@ -5,55 +5,59 @@
 {% token_coin_min_amount currency as min_investment %}
 {% token_coin_price currency as token_price %}
 {% token_coin_min_num_tokens currency as min_token_amount %}
-<form method="post" action="{% url 'cp:payment-transaction' 'json' %}"
-                  class="js-render-content-form js-form-no-focus" data-template="#paymentDetails">
-<div class="row no-padding">
-    <div class="col-md-8">
-        <h3><img class="{{ coin|lower }}" src="{% static 'cp/img/coins/' %}{{ coin|upper }}.svg" style="height: 3em;" /> {% token_coin_name currency %}</h3>
-        <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
-                                                                   src="{% static 'cp/img/attention.png' %}">
-            <p>{% trans 'Be sure that you read all the information about Unilot project and token sale carefully' %}</p>
-        </div>
-        <div class="alert alert-warning" role="alert">
-            <p>
-                <strong>{% blocktrans with min_token_amount=min_token_amount %}Minimum amount ({{ min_token_amount }}
-                    UNIT){% endblocktrans %}</strong>: {{ min_investment }} {{ currency|upper }}
-            </p>
-            <p>
-                <strong>{% trans 'Token price' %}</strong>: {{ token_price }} {{ currency|upper }}
-            </p>
-        </div>
-        <div class="js-has-overlay">
-                {% include 'cp/partials/form-overlay.html' %}
-                {% include 'includes/form-alert.html' %}
-                {% csrf_token %}
-                <input type="hidden" name="currency" value="{{ currency|upper }}"/>
-                <div class="row">
-                    <div class="col-md-10 col-sm-9 col-xs-8">
-                        <div class="form-group label-floating">
-                            <label class="control-label"
-                                   for="{{ currency|lower }}Amount">{% trans 'Investment amount' %}
-                                <span class="required"></span>
-                            </label>
-                            <input
-                                    class="form-control js-calculator-eth-amount-input" id="ltcAmount" type="text"
-                                    required
-                                    name="amount" value="{{ min_investment }}"
-                                    data-price="{% token_coin_price currency %}"/>
-                            <div class="help-block pull-left with-errors"></div>
+<div class="js-has-overlay">
+    <form method="post" action="{% url 'coinpayments:transaction' 'json' %}"
+          class="js-render-content-form js-form-no-focus" data-template="#paymentDetails">
+        {% include 'cp/partials/form-overlay.html' %}
+        <div class="row no-padding">
+            <div class="col-md-8">
+                <h3><img class="{{ coin|lower }}" src="{% static 'cp/img/coins/' %}{{ coin|upper }}.svg"
+                         style="height: 3em;"/> {% token_coin_name currency %}</h3>
+                <div class="alert alert-flex no-padding" role="alert"><img class="pull-left"
+                                                                           src="{% static 'cp/img/attention.png' %}">
+                    <p>{% trans 'Be sure that you read all the information about Unilot project and token sale carefully' %}</p>
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    <p>
+                        <strong>{% blocktrans with min_token_amount=min_token_amount %}Minimum amount (
+                            {{ min_token_amount }}
+                            UNIT){% endblocktrans %}</strong>: {{ min_investment }} {{ currency|upper }}
+                    </p>
+                    <p>
+                        <strong>{% trans 'Token price' %}</strong>: {{ token_price }} {{ currency|upper }}
+                    </p>
+                </div>
+                <div>
+                    {% include 'includes/form-alert.html' %}
+                    {% csrf_token %}
+                    <input type="hidden" name="currency" value="{{ currency|upper }}"/>
+                    <div class="row">
+                        <div class="col-md-10 col-sm-9 col-xs-8">
+                            <div class="form-group label-floating">
+                                <label class="control-label"
+                                       for="{{ currency|lower }}Amount">{% trans 'Investment amount' %}
+                                    <span class="required"></span>
+                                </label>
+                                <input
+                                        class="form-control js-calculator-eth-amount-input" id="ltcAmount" type="text"
+                                        required
+                                        name="amount" value="{{ min_investment }}"
+                                        data-price="{% token_coin_price currency %}"/>
+                                <div class="help-block pull-left with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-xs-4">
+                            <div class="well">{{ currency|upper }}</div>
                         </div>
                     </div>
-                    <div class="col-md-2 col-sm-3 col-xs-4">
-                        <div class="well">{{ currency|upper }}</div>
-                    </div>
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        {% trans 'Submit' %}
+                    </button>
                 </div>
-                <button class="btn btn-lg btn-primary" type="submit">
-                    {% trans 'Submit' %}
-                </button>
+            </div>
+            <div class="col-md-4">
+                {% include 'cp/partials/calculator.html' with currency=currency no_form=True %}
+            </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        {% include 'cp/partials/calculator.html' with currency=currency no_form=True %}
-    </div>
+    </form>
 </div>
-</form>

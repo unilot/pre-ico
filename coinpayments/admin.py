@@ -1,3 +1,8 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ('txn_id', 'user', 'currency', 'amount',)
+
+admin.site.register(models.Transaction, TransactionAdmin)

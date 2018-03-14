@@ -2,27 +2,12 @@
 {% load i18n %}
 {% load to_js_var %}
 
+{% js_render_var 'amount' as amount %}
+{% js_render_var 'currency' as currency %}
+{% js_render_var 'status_url' as status_url %}
+{% js_render_var 'qrcode_url' as qrcode_url %}
+{% js_render_var 'address' as address %}
+
 <script id="paymentDetails" type="text/x-jsrender">
-<div class="alert alert-flex no-padding" role="alert">
-    <img class="pull-left" src="{% static 'cp/img/attention.png' %}">
-    <p>{% blocktrans with currency=currency %}<strong>Do not</strong> send from an Exchange wallets.{% endblocktrans %}</p>
-</div>
-<div class="row no-padding">
-    <div class="col-md-4"><img class="qr"
-                               src="{% js_render_var 'qrcode_url' %}">
-    </div>
-    <div class="col-md-8">
-        <form class="contract-number">
-            {% js_render_var 'amount' as amount %}
-            {% js_render_var 'currency' as currency %}
-            <h5>{% blocktrans with amount=amount currency=currency %}Please send <strong>{{ amount }} {{ currency }}</strong> to address below:</h5>{% endblocktrans %}
-            <div class="form-group"><label class="control-label text-uppercase">{% trans 'Payment address' %}</label>
-                                           <p><strong>{% js_render_var 'address' %}</strong></p>
-            </div>
-        </form>
-        <p>{% trans 'UNIT tokens will be delegated in 24 hours after payment.' %}</p>
-        {% js_render_var 'status_url' as status_url %}
-        <p>{% blocktrans with status_url=status_url%}See <a href="{{ status_url }}" target="_blank">this link</a> to track payment status.{% endblocktrans %}</p>
-    </div>
-</div>
+    {% include 'cp/partials/payment-info.html' with amount=amount currency=currency status_url=status_url qrcode_url=qrcode_url address=address %}
 </script>
