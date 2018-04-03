@@ -5,6 +5,7 @@ from django.conf.urls.i18n import i18n_patterns
 from . import settings
 
 urlpatterns = [
+    url(r'^o2/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url('admin/', admin.site.urls),
     url(r'^martor/', include('martor.urls')),
 ]

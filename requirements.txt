@@ -9,6 +9,7 @@ django-countries==5.0
 django-extensions==1.9.8
 django-filter==1.1.0
 django-hvad==1.8.0
+django-oauth-toolkit==1.0.0
 django-redis-sessions==0.6.1
 djangorestframework==3.7.3
 djrill==2.1.0
@@ -21,6 +22,7 @@ idna==2.6
 lru-dict==1.1.6
 Markdown==2.6.10
 martor==1.2.5
+oauthlib==2.0.7
 olefile==0.44
 phonenumbers==8.8.10
 Pillow==4.3.0

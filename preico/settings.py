@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'martor',
     'rest_framework',
     'djrill',
-    'django_countries'
+    'django_countries',
+    'oauth2_provider',
 ]
 
 MIDDLEWARE = [
@@ -108,14 +109,22 @@ EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
 
 DEFAULT_FROM_EMAIL='noreply@unilot.io'
 
+OAUTH2_PROVIDER = {
+    'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore'
+}
+
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAuthenticated',
+    ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
         'preico.rest_framework.renderers.TemplateHTMLRenderer',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'preico.rest_framework.authentication.SessionAuthentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     ),
     'EXCEPTION_HANDLER': 'preico.rest_framework.views.exception_handler'
 }
