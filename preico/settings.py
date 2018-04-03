@@ -110,6 +110,7 @@ EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
 DEFAULT_FROM_EMAIL='noreply@unilot.io'
 
 OAUTH2_PROVIDER = {
+    'DEFAULT_SCOPES': ('read',),
     'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore'
 }
 
