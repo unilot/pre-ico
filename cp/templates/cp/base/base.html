@@ -49,7 +49,7 @@
 {% include 'cp/partials/modals/network-error.html' %}
 {% block modals %}
 {% endblock %}
-<div id="slideout">
+<div id="slideout" class="slideout-menu slideout-menu-left">
     {% include 'cp/partials/slideout-nav.html' %}
 </div>
 <div id="main-body">
@@ -76,7 +76,6 @@
 </div>
 {% include 'cp/partials/timer-template.html' %}
 {% include 'cp/partials/payment-info-template.html' %}
-{% include 'cp/partials/beta-invite-submitted-template.html' %}
 
 <script type="application/javascript"
         src="{% url 'cp:js_config' 'js' %}?708f525b953659a5fbddd3613ccbc46ce503a208"></script>

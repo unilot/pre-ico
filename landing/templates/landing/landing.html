@@ -20,7 +20,7 @@
     <section class="sentence" id="main">
         <div class="container">
             <div class="scene">
-                <div data-depth="0.03"><img src="{% static 'landing/img/sentence-bg.png' %}" alt=""></div>
+                <div data-depth="0.03"><img data-src="{% static 'landing/img/sentence-bg.png' %}" alt=""></div>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -120,7 +120,7 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="col-sm-4 end-xs"><img src="{% static 'landing/img/sentence-platform.png' %}" alt=""></div>
+                <div class="col-sm-4 end-xs"><img data-src="{% static 'landing/img/sentence-platform.png' %}" alt=""></div>
             </div>
         </div>
     </section>
@@ -142,7 +142,7 @@
                             currency.{% endblocktrans %}
                     </p>
                 </div>
-                <div class="col-md-7 col-sm-5"><img src="{% static 'landing/img/about.png' %}" alt=""></div>
+                <div class="col-md-7 col-sm-5"><img data-src="{% static 'landing/img/about.png' %}" alt=""></div>
             </div>
         </div>
     </section>
@@ -157,7 +157,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="advantages__block advantages__block--margin">
                         <div class="row middle-xs">
-                            <div class="col-xs-3"><img src="{% static 'landing/img/01.svg' %}" alt=""></div>
+                            <div class="col-xs-3"><img data-src="{% static 'landing/img/01.svg' %}" alt=""></div>
                             <div class="col-xs-9">
                                 <p>{% trans 'Unilot will not access or hold any Player Funds' %}</p>
                             </div>
@@ -167,7 +167,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="advantages__block">
                         <div class="row middle-xs">
-                            <div class="col-xs-3"><img src="{% static 'landing/img/02.svg' %}" alt=""></div>
+                            <div class="col-xs-3"><img data-src="{% static 'landing/img/02.svg' %}" alt=""></div>
                             <div class="col-xs-9">
                                 <p>{% trans 'Consensus of game state is reached between players with encrypted P2P messaging' %}</p>
                             </div>
@@ -177,7 +177,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="advantages__block advantages__block--margin">
                         <div class="row middle-xs">
-                            <div class="col-xs-3"><img src="{% static 'landing/img/03.svg' %}" alt=""></div>
+                            <div class="col-xs-3"><img data-src="{% static 'landing/img/03.svg' %}" alt=""></div>
                             <div class="col-xs-9">
                                 <p>{% trans 'Play games globally or make money by hosting your own game tournaments' %}</p>
                             </div>
@@ -187,7 +187,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="advantages__block">
                         <div class="row middle-xs">
-                            <div class="col-xs-3"><img src="{% static 'landing/img/04.svg' %}" alt=""></div>
+                            <div class="col-xs-3"><img data-src="{% static 'landing/img/04.svg' %}" alt=""></div>
                             <div class="col-xs-9">
                                 <p>{% trans 'Feature Single player RNG & Multiplayer games' %}</p>
                             </div>
@@ -197,7 +197,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="advantages__block advantages__block--margin">
                         <div class="row middle-xs">
-                            <div class="col-xs-3"><img src="{% static 'landing/img/05.svg' %}" alt=""></div>
+                            <div class="col-xs-3"><img data-src="{% static 'landing/img/05.svg' %}" alt=""></div>
                             <div class="col-xs-9">
                                 <p>{% trans 'Decentralized and isolated to prevent God Mode' %}</p>
                             </div>
@@ -207,7 +207,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="advantages__block">
                         <div class="row middle-xs">
-                            <div class="col-xs-3"><img src="{% static 'landing/img/06.svg' %}" alt=""></div>
+                            <div class="col-xs-3"><img data-src="{% static 'landing/img/06.svg' %}" alt=""></div>
                             <div class="col-xs-9">
                                 <p>{% trans 'Unilot is white label platform' %}</p>
                             </div>
@@ -220,7 +220,7 @@
     <section class="client dark" id="mobileClient">
         <div class="container">
             <div class="scene1">
-                <div data-depth="0.5"><img src="{% static 'landing/img/client-bg.png' %}" alt=""></div>
+                <div data-depth="0.5"><img data-src="{% static 'landing/img/client-bg.png' %}" alt=""></div>
             </div>
             <div class="row heading">
                 <div class="col-xs-12">
@@ -247,7 +247,7 @@
                                         <div class="col-sm-6 col-xs-12"><a href="#">
                                             <div class="row">
                                                 <div class="col-xs-3"><img
-                                                        src="{% static 'landing/img/google-play.svg' %}"
+                                                        data-src="{% static 'landing/img/google-play.svg' %}"
                                                         alt=""></div>
                                                 <div class="col-xs-9">
                                                     <p>{% trans 'Download on the' %}</p><span>Google Play</span>
@@ -256,7 +256,7 @@
                                         </a></div>
                                         <div class="col-sm-6 col-xs-12"><a href="#">
                                             <div class="row">
-                                                <div class="col-xs-3"><img src="{% static 'landing/img/apple.svg' %}"
+                                                <div class="col-xs-3"><img data-src="{% static 'landing/img/apple.svg' %}"
                                                                            alt="">
                                                 </div>
                                                 <div class="col-xs-9">
@@ -271,7 +271,7 @@
                             {% if LANGUAGES|length > 1 %}
                                 <div class="client__lng">
                                     {% for lang_code, lang_name in LANGUAGES %}
-                                        <a href="#"><img src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"
+                                        <a href="#"><img data-src="{% get_static_prefix %}/landing/img/{{ lang_code }}.svg"
                                                          alt="{{ lang_code|language_name_local }}"></a>
                                     {% endfor %}</div>
                             {% endif %}
@@ -450,7 +450,7 @@
     <section class="whitepaper white" id="whitePaper">
         <div class="container">
             <div class="scene2" style="z-index:0;">
-                <div data-depth="0.5"><img src="{% static 'landing/img/whitepaper-bg.png' %}" alt=""></div>
+                <div data-depth="0.5"><img data-src="{% static 'landing/img/whitepaper-bg.png' %}" alt=""></div>
             </div>
             <div class="row heading">
                 <div class="col-xs-12">
@@ -489,14 +489,14 @@
                                                 {{ slide.start_date|date:'F' }} -
                                                 {{ slide.end_date|date:'F' }}{% else %}
                                                 {{ slide.start_date|date:'F' }}{% endif %} {{ slide.start_date.year }}</p>
-                                        <div class="swiper-slide__block"><img src="{{ slide.cover_image.url }}"
+                                        <div class="swiper-slide__block"><img data-src="{{ slide.cover_image.url }}"
                                                                               alt="Unilot {% trans 'Roadshow' %} {{ slide.title }}">
                                             <p>{{ slide.title }}</p>
                                             <div class="row">
                                                 <div class="col-xs-6"><span>{{ slide.location }}</span></div>
                                                 <div class="col-xs-6 end-xs"><a href="{{ slide.info_url }}"
                                                                                 target="_blank"><img
-                                                        src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
+                                                        data-src="{% static 'landing/img/swiper-i.png' %}" alt=""></a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -556,7 +556,7 @@
                 <div class="row">
                     <div class="col-md-12 flex-wrap">
                         {% for publication in publications_list %}
-                            <div class="thumbnail"><img src="{{ publication.cover_image.url }}"
+                            <div class="thumbnail"><img data-src="{{ publication.cover_image.url }}"
                                                         alt="{{ publication.title }}">
                                 <div class="caption">
                                     <h3>{{ publication.title }}</h3>
@@ -581,23 +581,23 @@
             <div class="row">
                 <div class="col-md-12 flex-wrap">
                     <div class="thumbnail">
-                        <img src="{% static 'landing/img/partners/ico-board.png' %}" alt="ICO Board">
+                        <img data-src="{% static 'landing/img/partners/ico-board.png' %}" alt="ICO Board">
                     </div>
                     <div class="thumbnail">
-                        <img src="{% static 'landing/img/partners/tokenup.png' %}" alt="TokenUp">
+                        <img data-src="{% static 'landing/img/partners/tokenup.png' %}" alt="TokenUp">
                     </div>
                     <div class="thumbnail">
-                        <img src="{% static 'landing/img/partners/igamingadvisors.png' %}" alt="iGamingAdvisors">
+                        <img data-src="{% static 'landing/img/partners/igamingadvisors.png' %}" alt="iGamingAdvisors">
                     </div>
                     <div class="thumbnail">
-                        <img src="{% static 'landing/img/partners/credsberry.png' %}" alt="Credsberry">
+                        <img data-src="{% static 'landing/img/partners/credsberry.png' %}" alt="Credsberry">
                     </div>
                     <div class="thumbnail">
-                        <img src="{% static 'landing/img/partners/zeroone.png' %}" alt="ZeroOne">
+                        <img data-src="{% static 'landing/img/partners/zeroone.png' %}" alt="ZeroOne">
                     </div>
                     <div class="thumbnail track-ico">
                         <a href="https://www.trackico.io/" target="_blank" title="TrackICO">
-                            <img src="https://www.trackico.io/static/img/partner_logo_black.png"
+                            <img data-src="https://www.trackico.io/static/img/partner_logo_black.png"
                                  alt="TrackICO - provider of information about the best ICOs"
                             style="width: 200px; background-color: #F9F9F9;">
                         </a>
@@ -654,13 +654,13 @@
             <div class="footer__bottom">
                 <div class="row middle-md">
                     <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
-                            src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
+                            data-data-src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
                         {% now 'Y' as year %}
                         <p>{% blocktrans %}Unilot&reg; 2017 - {{ year }} All Rights Reserved{% endblocktrans %}</p>
                     </div>
                     <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
                             href="https://www.ethereum.org" target="_blank"><img
-                            src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
+                            data-data-src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
                     <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
                         <ul>
                             <li><a href="{% url 'landing:document' 'terms-and-conditions' %}"

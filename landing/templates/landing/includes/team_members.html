@@ -12,7 +12,7 @@
         <div class="row content center-xs">
             {% for team_member in team_members_list %}
             <div class="col-md-3 col-sm-4 col-xs-12"><a href="https://www.linkedin.com/in/{{ team_member.linkedin_nickname }}/" target="_blank"><img
-                    src="{{ team_member.photo.url }}" alt="Unilot {{ team_member.full_name }} {{ team_member.position }}">
+                    data-src="{{ team_member.photo.url }}" alt="Unilot {{ team_member.full_name }} {{ team_member.position }}">
                 <p>{{ team_member.full_name }}<i class="icon-linkedin"></i></p><b>{{ team_member.position }}</b><span></span></a></div>
             {% endfor %}
         </div>
