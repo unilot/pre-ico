@@ -1,6 +1,6 @@
 {% load i18n %}
 
-{% if not user.beta_tester %}
+{% if false %}
 <section class="beta-invite js-has-overlay">
 <form id="beta-invite" class="js-generic-form" method="post"
               action="{% url 'cp:beta-tester' 'json' %}" data-success-replace-template="beta-tester-added"
