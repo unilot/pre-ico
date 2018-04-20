@@ -1,8 +1,9 @@
+attrdict==2.0.0
 Babel==2.5.3
 certifi==2017.11.5
 chardet==3.0.4
 -e git+https://github.com/coinbase/coinbase-python@f9ed2249865c2012e3b86106dad5f8c6068366ed#egg=coinbase
-cytoolz==0.8.2
+cytoolz==0.9.0.1
 Django==1.11.4
 django-cors-headers==2.1.0
 django-countries==5.0
@@ -13,11 +14,15 @@ django-oauth-toolkit==1.0.0
 django-redis-sessions==0.6.1
 djangorestframework==3.7.3
 djrill==2.1.0
-eth-abi==0.5.0
-eth-keyfile==0.4.1
-eth-keys==0.1.0b4
-eth-tester==0.1.0b11
-eth-utils==0.7.1
+eth-abi==1.0.0
+eth-account==0.1.0a2
+eth-hash==0.1.2
+eth-keyfile==0.5.1
+eth-keys==0.2.0b3
+eth-rlp==0.1.0
+eth-tester==0.1.0b23
+eth-utils==1.0.3
+hexbytes==0.1.0
 idna==2.6
 lru-dict==1.1.6
 Markdown==2.6.10
@@ -41,4 +46,5 @@ six==1.11.0
 toolz==0.8.2
 typing==3.6.2
 urllib3==1.22
-web3==3.16.5
+web3==4.1.0
+websockets==4.0.1
