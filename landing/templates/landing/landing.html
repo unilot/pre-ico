@@ -654,13 +654,13 @@
             <div class="footer__bottom">
                 <div class="row middle-md">
                     <div class="footer__logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><img
-                            data-data-src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
+                            data-src="{% static 'landing/img/logo.svg' %}" alt="Unilot Logo">
                         {% now 'Y' as year %}
                         <p>{% blocktrans %}Unilot&reg; 2017 - {{ year }} All Rights Reserved{% endblocktrans %}</p>
                     </div>
                     <div class="ethereum-logo col-md-3 center-md col-sm-6 center-sm col-xs-12 center-xs center-lg"><a
                             href="https://www.ethereum.org" target="_blank"><img
-                            data-data-src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
+                            data-src="{% static 'landing/img/ethereum-logo.png' %}" alt="Ethereum"></a></div>
                     <div class="footer__nav col-md-6 end-md col-sm-12 center-sm col-xs-12 center-xs end-lg">
                         <ul>
                             <li><a href="{% url 'landing:document' 'terms-and-conditions' %}"

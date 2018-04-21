@@ -17,6 +17,7 @@ from ..serializers import auth
 from preico.rest_framework import permissions as p_permissions
 from preico.mandrill.templates import Templates
 from preico import utils
+from preico.tasks import add_user_to_maillist
 
 
 class ShowAuthPageView(APIView):
@@ -125,6 +126,8 @@ class SignUpView(generics.CreateAPIView):
             }
 
             msg.send()
+
+            add_user_to_maillist.delay(email=user.email, first_name=user.first_name, last_name=user.last_name)
 
             login(request, user)
 
