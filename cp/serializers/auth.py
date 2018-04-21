@@ -4,7 +4,6 @@ from django.contrib.auth import models as django_models
 from django.core import validators as django_validators
 from django.db import transaction
 from preico import utils
-from preico.utils import MarketHero
 from .. import models
 import re
 
@@ -55,9 +54,6 @@ class SignUpSerializer(serializers.ModelSerializer):
             profile_data['user'] = instance
 
             profile = models.Profile.objects.create(**profile_data)
-
-            MarketHero.tag_lead(email=instance.email, first_name=instance.first_name,
-                                last_name=instance.last_name)
 
         return instance
 
