@@ -458,13 +458,13 @@
                 </div>
             </div>
             <div class="row content">
-                <div class="col-sm-5 col-xs-12">
+                <div class="col-md-5 col-xs-12">
                     <p>{% trans 'Read our whitepaper in order to know more about the Unilot® platform, the token, the team and ICO round details.' %}</p>
-                    <div>
-                        <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}"
-                           target="_blank">{% trans 'View White Paper' %}<i class="icon-file-text2"></i></a>
-                        <span>English</span>
-                    </div>
+                </div>
+                <div class="col-md-offset-1 col-md-5 col-xs-12">
+                    <a class="btn" href="{% url 'landing:white-paper' 'white-paper' %}"
+                       target="_blank">{% trans 'View White Paper' %}<i class="icon-file-text2"></i></a>
+                    <span>English</span>
                 </div>
             </div>
         </div>
