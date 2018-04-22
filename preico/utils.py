@@ -57,11 +57,15 @@ class MarketHero():
     @staticmethod
     def tag_lead(email, first_name, last_name, tags = ('unilot',)):
         url = MarketHero.URL + 'tag-lead'
+        result = None
 
-        return requests.post(url, json={
-            'apiKey': MarketHero.API_KEY(),
-            'email': email,
-            'firstName': first_name,
-            'lastName': last_name,
-            'tags': tags
-        })
+        if MarketHero.API_KEY():
+            result = requests.post(url, json={
+                'apiKey': MarketHero.API_KEY(),
+                'email': email,
+                'firstName': first_name,
+                'lastName': last_name,
+                'tags': tags
+            })
+
+        return result
