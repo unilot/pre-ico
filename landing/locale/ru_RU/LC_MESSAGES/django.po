@@ -381,7 +381,7 @@ msgstr ""
 "даже устроить мировой турнир по ставкам."
 
 #: templates/landing/landing.html:42
-msgid "ICO Stage 2 starts in"
+msgid "ICO Stage 2 ends in"
 msgstr "ICO стадия 2 закончится через"
 
 #: templates/landing/landing.html:54
