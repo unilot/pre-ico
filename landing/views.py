@@ -29,16 +29,12 @@ class LandingView(generics.GenericAPIView):
         })
 
         #TODO attach to condition or app configuration
-        data['is_pre_ico'] = True
-
-        referrer_code = kwargs.get('referrer_code')
+        data['is_pre_ico'] = False
 
         if request.user.is_authenticated:
             contribute_url = reverse('cp:dashboard', format='html')
-        elif referrer_code:
-            contribute_url = reverse('cp:sign-up-referred', kwargs={'referrer_code': referrer_code, 'format': 'html'})
         else:
-            contribute_url = reverse('cp:sign-up', format='html')
+            contribute_url = reverse('cp:sign-in', format='html')
 
         data['contribute_url'] = contribute_url
 
@@ -51,9 +47,6 @@ class LandingView(generics.GenericAPIView):
         data['team_members_list'] = models.TeamMember.objects.language().filter(published=True).order_by('id')
 
         result = response.Response(data)
-
-        if referrer_code:
-            result.set_cookie('referrer_code', referrer_code)
 
         return result
 

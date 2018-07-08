@@ -7,10 +7,6 @@
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">
         <main>
-            <div class="hidden-md hidden-lg">
-                {% include 'cp/partials/buy-tokens-button.html' %}
-                {% include 'cp/partials/beta-invite.html' %}
-            </div>
             <section class="programs"><h3>{% block title %}{% trans 'Affiliate &amp; Bounty programs' %}{% endblock %}</h3>
                 <div class="tab-content">
                     <div class="tab-pane document active" id="affiliate" role="tabpanel">
@@ -35,13 +31,10 @@
     </div>
     <div class="col-md-4 hidden-sm hidden-xs">
         <aside class="pull-right">
-            {% include 'cp/partials/buy-tokens-button.html' %}
             {% include 'cp/partials/referrals.html' %}
         </aside>
     </div>
 </div>
 {% endblock %}
 {% block modals %}
-{% include 'cp/partials/modals/buy-unit-tokens.html' %}
-{% include 'cp/partials/modals/source-wallet.html' %}
 {% endblock %}

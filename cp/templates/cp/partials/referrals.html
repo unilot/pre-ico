@@ -2,6 +2,7 @@
 {% load referral %}
 {% load social_links %}
 {% load config %}
+{% load token %}
 
 {% can_refer as is_can_refer %}
 
@@ -13,22 +14,6 @@
 <section class="referrals"><h3 class="no-margin">{% trans 'My UNIT Referral Tokens' %}</h3>
     <output id="referral-amount"><span class="space-after">{{ num_ref_tokens|floatformat:6 }}</span><span class="unit">UNIT</span>
     </output>
-    <h3 class="no-margin">{% trans 'Your Affiliate Link' %}</h3>
-    <form>
-        <div class="form-group">
-            <div class="input-group"><input class="form-control js-referral-link-container"
-                                            id="referralLink" name="referralLink"
-                                            type="url" value="{{ referral_url }}"
-                                            readonly><span class="input-group-addon">
-                <a class="js-copy-referral-link" role="button" tabindex="0"
-                   data-toggle="focus" data-trigger="focus" data-placement="bottom"
-                   data-content="{% trans 'Link copied' %}">
-                    <span class="icon icon-copy"></span>
-                </a></span></div>
-        </div>
-    </form>
-    <p class="subtle">{% blocktrans %}This is your Unilot referral link. Share it with your contacts to get free
-        UNIT coin for every purchased one by your referrer.{% endblocktrans %}</p>
     <ul class="nav nav-pills nav-social">
         <li><a class="btn" href="{% share_telegram referral_url %}" target="_blank" title="{% trans 'Share to Telegram' %}"><span
                 class="icon icon-telegram"></span></a></li>
