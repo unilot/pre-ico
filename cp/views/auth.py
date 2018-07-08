@@ -27,7 +27,6 @@ class ShowAuthPageView(APIView):
     def get(self, request, *args, **kwargs):
         data = {
             'tab': 'sign-in',
-            'sign_up_url': reverse('cp:sign-up', kwargs={'format': 'html'})
         }
 
         if kwargs.get('referrer_code'):
