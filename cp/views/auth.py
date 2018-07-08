@@ -52,94 +52,21 @@ class SignOutView(APIView):
             redirect_to=reverse('cp:auth', kwargs={'format': 'html'}))
 
 
-class SignUpView(generics.CreateAPIView):
-    permission_classes = [ p_permissions.isGuest ]
-    serializer_class = auth.SignUpSerializer
-    template_name = 'cp/auth.html'
-
-    def get(self, request, *args, **kwargs):
-        data = {
-            'tab': 'sign-up',
-            'terms_and_conditions': TermsAndConditions.get_content(),
-        }
-
-        submit_url = reverse('cp:sign-up', kwargs={'format': 'json'})
-
-        referrer_code = kwargs.get('referrer_code')
-
-        try:
-            if not referrer_code:
-                referrer_code = request.COOKIES['referrer_code']
-        except KeyError:
-            pass
-
-        if referrer_code and len(referrer_code) >= 32:
-            submit_url = reverse('cp:sign-up-referred',
-                                 kwargs={'format': 'json', 'referrer_code': referrer_code})
-
-        data['submit_url'] = submit_url
-
-        return response.Response(data=data)
-
-    def create(self, request, *args, **kwargs):
-        referrer_code = kwargs.get('referrer_code', request.COOKIES.get('referrer_code'))
-
-        try:
-            if not referrer_code:
-                referrer_code = request.COOKIES['referrer_code']
-        except KeyError:
-            pass
-
-        if referrer_code and len(referrer_code) >= 32:
-            try:
-                referrer_profile = models.Profile.objects.get(referral_code=referrer_code)
-            except models.Profile.DoesNotExist:
-                pass
-
-        user_password = utils.generate_password(12)
-        input_data = request.data.copy()
-        input_data['password'] = user_password
-        serializer = self.get_serializer(data=input_data)
-        serializer.is_valid(raise_exception=True)
-
-        with transaction.atomic():
-            user = serializer.save()
-
-            if referrer_code:
-                user.profile.referrer = referrer_profile
-                user.profile.referal_level = referrer_profile.referal_level + 1
-
-                user.profile.save()
-
-            # Sending email
-            msg = EmailMessage(to=[user.email])
-            msg.template_name = Templates.get_template_key(Templates.USER_READY_TO_BUY)
-            msg.merge_vars = {
-                user.email: {
-                    'email': user.email,
-                    'first_name': user.first_name,
-                    'last_name': user.last_name,
-                    'password': user_password,
-                    'dashboard_url': request.build_absolute_uri(
-                        reverse('cp:dashboard', kwargs={'format': 'html'}))
-                }
-            }
-
-            msg.send()
-
-            add_user_to_maillist.delay(email=user.email, first_name=user.first_name, last_name=user.last_name)
-
-            login(request, user)
-
-        headers = self.get_success_headers(serializer.data)
-
-        return response.Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
-
 class SignInView(generics.GenericAPIView):
     permission_classes = [ permissions.AllowAny ]
     serializer_class = auth.SignInSerializer
     queryset = auth_models.User.objects.filter(is_active=True)
+    template_name = 'cp/auth.html'
+
+    def get(self, request, *args, **kwargs):
+        data = {
+            'tab': 'sign-in',
+            'terms_and_conditions': TermsAndConditions.get_content(),
+        }
+
+        data['submit_url'] = reverse('cp:sign-in', kwargs={'format': 'json'})
+
+        return response.Response(data=data)
 
     def post(self, request, *args, **kwargs):
         email = request.data.get('email')

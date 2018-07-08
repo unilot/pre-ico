@@ -8,11 +8,6 @@
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12">
             <ul class="nav nav-tabs">
-                <li {% if tab == 'sign-up' %}class="active" {% endif %}role="presentation"><a href="#auth-sign-up"
-                                                                                              role="tab"
-                                                                                              aria-controls="auth-sign-up"
-                                                                                              data-toggle="tab">{% trans 'Sign up' %}</a>
-                </li>
                 <li {% if tab == 'sign-in' %}class="active" {% endif %}role="presentation"><a href="#auth-sign-in"
                                                                                               role="tab"
                                                                                               aria-controls="auth-sign-in"
@@ -20,24 +15,12 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane {% if tab == 'sign-up' %}active {% endif %}js-has-overlay" id="auth-sign-up"
-                     role="tabpanel">
-                    {% include 'cp/partials/form-overlay.html' %}
-                    {% include 'cp/partials/auth/sign-up.html' %}
-                </div>
                 <div class="tab-pane {% if tab == 'sign-in' %}active {% endif %}js-has-overlay" id="auth-sign-in"
                      role="tabpanel">
                     {% include 'cp/partials/form-overlay.html' %}
                     {% include 'cp/partials/auth/sign-in.html' %}
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 hidden-sm hidden-xs">
-            <aside class="pull-right">
-                <section>
-                    {% include 'cp/partials/timer.html' %}
-                </section>
-            </aside>
         </div>
     </div>
 {% endblock %}

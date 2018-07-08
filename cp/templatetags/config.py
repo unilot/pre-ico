@@ -1,6 +1,5 @@
 from django import template
 from django.utils.translation import ugettext as _
-from preico import settings
 
 from preico.utils import (get_investing_countries, get_none_investing_countries,
                           get_wallet_app_choice)

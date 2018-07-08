@@ -6,16 +6,6 @@
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">
         <main>
-            <div class="hidden-md hidden-lg">
-                {% if user.is_authenticated %}
-                    {% include 'cp/partials/buy-tokens-button.html' %}
-                    {% include 'cp/partials/beta-invite.html' %}
-                {% else %}
-                    <section>
-                        {% include 'cp/partials/timer.html' %}
-                    </section>
-                {% endif %}
-            </div>
             <section class="faq">
                 <div class="container">
                     <div class="row heading">
@@ -42,23 +32,11 @@
     </div>
     <div class="col-md-4 hidden-sm hidden-xs">
         <aside class="pull-right">
-            {% if user.is_authenticated %}
-                {% include 'cp/partials/buy-tokens-button.html' %}
-                {% include 'cp/partials/beta-invite.html' %}
-                {% include 'cp/partials/calculator.html' %}
-            {% else %}
-                <section>
-                    {% include 'cp/partials/timer.html' %}
-                </section>
-            {% endif %}
+            {% include 'cp/partials/calculator.html' %}
         </aside>
     </div>
 </div>
 {% endblock %}
 
 {% block modals %}
-    {% if user.is_authenticated %}
-        {% include 'cp/partials/modals/buy-unit-tokens.html' %}
-        {% include 'cp/partials/modals/source-wallet.html' %}
-    {% endif %}
 {% endblock %}

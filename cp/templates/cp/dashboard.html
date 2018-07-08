@@ -8,14 +8,7 @@
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">
         <main>
-            <div class="ico">
-                {% include 'cp/partials/timer.html' %}
-                {% include 'cp/partials/progress.html' %}
-                {% include 'cp/partials/ico-info.html' %}
-            </div>
             <div class="hidden-md hidden-lg">
-                {% include 'cp/partials/buy-tokens-button.html' %}
-                {% include 'cp/partials/beta-invite.html' %}
                 {% include 'cp/partials/calculator.html' with currency='ETH' %}
             </div>
             <section>
@@ -28,14 +21,10 @@
     </div>
     <div class="col-md-4 hidden-sm hidden-xs">
         <aside class="pull-right">
-            {% include 'cp/partials/buy-tokens-button.html' %}
-            {% include 'cp/partials/beta-invite.html' %}
             {% include 'cp/partials/calculator.html' with currency='ETH' %}
         </aside>
     </div>
 </div>
 {% endblock %}
 {% block modals %}
-{% include 'cp/partials/modals/buy-unit-tokens.html' %}
-{% include 'cp/partials/modals/source-wallet.html' %}
 {% endblock %}

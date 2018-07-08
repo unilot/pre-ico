@@ -24,9 +24,6 @@
                         0{% endif %}</strong> UNIT</span></p>
                     <p class="text-right">{% trans 'Referral Tokens' %}: <span class="tokens"><strong
                             class="tokens-amount">{{ num_ref_tokens|floatformat:6 }}</strong> UNIT</span></p>
-                    <p class="text-right">
-                        <small><a href="{% url 'cp:affiliate' 'html' %}">{% trans 'Get more Tokens for free' %}</a></small>
-                    </p>
                 </div>
             </div>
         {% endif %}

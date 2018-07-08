@@ -47,4 +47,4 @@ def main_page_url(context):
 
 @register.simple_tag()
 def contribute_url():
-    return reverse('cp:sign-up', kwargs={'format': 'html'})
+    return reverse('cp:sign-in', kwargs={'format': 'html'})
