@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.core.urlresolvers import reverse_lazy
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from cp.views import validator, beta_tester
+from cp.views import validator
 from .views import auth, faq, profile, dashboard, js, affiliate
 
 
