@@ -2,7 +2,7 @@ amqp==2.2.2
 attrdict==2.0.0
 Babel==2.5.3
 billiard==3.5.0.3
-celery==4.1.0
+celery==5.2.2
 certifi==2017.11.5
 chardet==3.0.4
 -e git+https://github.com/coinbase/coinbase-python@f9ed2249865c2012e3b86106dad5f8c6068366ed#egg=coinbase
